@@ -1,5 +1,21 @@
+// ==================== FIREBASE CLOUD CONFIGURATION ====================
+const firebaseConfig = {
+  apiKey: "AIzaSyAXIF5CrQVNErK6Qefj7vAm2jNTwKbpVvE",
+  authDomain: "sdrmemorialschool.firebaseapp.com",
+  projectId: "sdrmemorialschool",
+  storageBucket: "sdrmemorialschool.firebasestorage.app",
+  messagingSenderId: "200886478103",
+  appId: "1:200886478103:web:bf8596fdc1c3793d100352"
+};
+
+if (!firebase.apps.length) {
+  firebase.initializeApp(firebaseConfig);
+}
+const db = firebase.firestore();
+
+// ==================== DEFAULT SCHOOL DATA ====================
 const defaultSchoolData = {
-  notice: "📢 सत्र 2026-27 के लिए प्रवेश प्रारंभ (नर्सरी से कक्षा 10वीं तक) • 🎓 अर्द्धवार्षिक एवं टेस्ट परीक्षा परिणाम अब ऑनलाइन उपलब्ध हैं • 🚌 बसरी एवं आसपास के गाँवों के लिए सुरक्षित वाहन सुविधा उपलब्ध।",
+  notice: "📢 सत्र 2026-27 के लिए प्रवेश प्रारंभ (नर्सरी से कक्षा 10वीं तक) • 🎓 अर्द्धवार्षिक एवं वार्षिक परीक्षा परिणाम अब ऑनलाइन उपलब्ध हैं • 🚌 बसारी एवं आसपास के गाँवों के लिए सुरक्षित वाहन सुविधा।",
   stats: { alumni: "2,450+", newAdmissions: "148", currentStudents: "520+", teachers: "22" },
   toppers: [
     { rank: 1, name: "Ananya Tiwari", className: "Class 10th", percent: "96.4%" },
@@ -14,17 +30,26 @@ const defaultSchoolData = {
     { rank: 10, name: "Devansh Dubey", className: "Class 9th", percent: "86.2%" }
   ],
   staff: [
-    { name: "Mr. R.K. Sharma", role: "Principal & Senior Maths", wing: "High School", qualification: "M.Sc. (Maths), B.Ed.", since: "2014 (12+ Yrs)", bestSubject: "Class 10th Mathematics • 100% Board Result" },
-    { name: "Mrs. Sunita Mishra", role: "Senior English Teacher", wing: "High School", qualification: "M.A. (English), B.Ed.", since: "2016 (10+ Yrs)", bestSubject: "English Grammar & Spoken English" },
-    { name: "Mr. Arvind Tiwari", role: "Science & Lab In-Charge", wing: "Middle", qualification: "M.Sc. (Physics), B.Ed.", since: "2018 (8+ Yrs)", bestSubject: "Science & Practical Experiments" },
-    { name: "Ms. Pooja Chaturvedi", role: "Hindi & Sanskrit", wing: "Middle", qualification: "M.A. (Hindi), D.El.Ed.", since: "2019 (7+ Yrs)", bestSubject: "Hindi Literature & Cultural Activities" },
-    { name: "Mr. Deepak Sahu", role: "Computer & IT", wing: "Middle", qualification: "BCA, PGDCA", since: "2020 (6+ Yrs)", bestSubject: "Computer Science & Smart Class" },
-    { name: "Mrs. Neha Rajput", role: "Primary Coordinator", wing: "Primary", qualification: "B.A., D.El.Ed.", since: "2017 (9+ Yrs)", bestSubject: "Foundational Learning (Nur–5th)" }
+    { name: "Mr. R.K. Sharma", role: "Principal & Senior Maths", wing: "High School", qualification: "M.Sc. (Maths), B.Ed.", since: "2014 (12+ Yrs)", bestSubject: "Class 10th Mathematics • 100% Board Result", photo: "" },
+    { name: "Mrs. Sunita Mishra", role: "Senior English Teacher", wing: "High School", qualification: "M.A. (English), B.Ed.", since: "2016 (10+ Yrs)", bestSubject: "English Grammar & Spoken English", photo: "" },
+    { name: "Mr. Arvind Tiwari", role: "Science & Lab In-Charge", wing: "Middle", qualification: "M.Sc. (Physics), B.Ed.", since: "2018 (8+ Yrs)", bestSubject: "Science & Practical Experiments", photo: "" },
+    { name: "Ms. Pooja Chaturvedi", role: "Hindi & Sanskrit", wing: "Middle", qualification: "M.A. (Hindi), D.El.Ed.", since: "2019 (7+ Yrs)", bestSubject: "Hindi Literature & Cultural Activities", photo: "" },
+    { name: "Mr. Deepak Sahu", role: "Computer & IT", wing: "Middle", qualification: "BCA, PGDCA", since: "2020 (6+ Yrs)", bestSubject: "Computer Science & Smart Class", photo: "" },
+    { name: "Mrs. Neha Rajput", role: "Primary Coordinator", wing: "Primary", qualification: "B.A., D.El.Ed.", since: "2017 (9+ Yrs)", bestSubject: "Foundational Learning (Nur–5th)", photo: "" }
+  ],
+  holidays: [
+    { date: "15 Aug 2026", day: "Saturday", name: "Independence Day (स्वतंत्रता दिवस)", type: "National" },
+    { date: "02 Oct 2026", day: "Friday", name: "Gandhi Jayanti (गांधी जयंती)", type: "National" },
+    { date: "19–22 Oct 2026", day: "Mon–Thu", name: "Dussehra Vacation (दशहरा अवकाश)", type: "Festival" },
+    { date: "07–12 Nov 2026", day: "Sat–Thu", name: "Diwali Vacation (दीपावली अवकाश)", type: "Festival" },
+    { date: "25–31 Dec 2026", day: "Fri–Thu", name: "Winter Vacation (शीतकालीन अवकाश)", type: "Vacation" },
+    { date: "26 Jan 2027", day: "Tuesday", name: "Republic Day (गणतंत्र दिवस)", type: "National" },
+    { date: "23 Mar 2027", day: "Tuesday", name: "Holi Festival (होली अवकाश)", type: "Festival" }
   ],
   results: [
     {
       roll: "101", dob: "2012-05-15", name: "Aarav Singh", fatherName: "Rajesh Singh", motherName: "Sunita Devi",
-      className: "Class 8th", examTitle: "ANNUAL PROGRESS REPORT 2026–27", attendance: "196 / 205 Days (95%)",
+      className: "Class 8th", examTitle: "ANNUAL PROGRESS REPORT 2026–27", attendance: "196 / 205 Days (95%)", photo: "",
       subjects: [
         { name: "Hindi", max: 100, theory: 68, practical: 19 },
         { name: "English", max: 100, theory: 64, practical: 18 },
@@ -39,19 +64,26 @@ const defaultSchoolData = {
   ]
 };
 
-function getSchoolData() {
+let schoolData = JSON.parse(localStorage.getItem("sdr_school_portal_data") || "null") || defaultSchoolData;
+let currentLang = localStorage.getItem("sdr_lang") || "en";
+let latestAdmissionText = "";
+// ==================== CLOUD REAL-TIME SYNC ====================
+async function syncFromCloud() {
   try {
-    const saved = localStorage.getItem("sdr_school_portal_data");
-    return saved ? JSON.parse(saved) : defaultSchoolData;
+    const doc = await db.collection("sdr_portal").doc("main_data").get();
+    if (doc.exists) {
+      schoolData = { ...defaultSchoolData, ...doc.data() };
+      localStorage.setItem("sdr_school_portal_data", JSON.stringify(schoolData));
+      refreshPublicUI();
+    } else {
+      await db.collection("sdr_portal").doc("main_data").set(schoolData);
+    }
   } catch (e) {
-    return defaultSchoolData;
+    console.log("Offline/Local mode active");
   }
 }
 
-const schoolData = getSchoolData();
-let currentLang = localStorage.getItem("sdr_lang") || "en";
-let latestAdmissionText = "";
-document.addEventListener("DOMContentLoaded", () => {
+function refreshPublicUI() {
   if (document.getElementById("liveNoticeTicker")) {
     document.getElementById("liveNoticeTicker").innerText = schoolData.notice;
     document.getElementById("statAlumni").innerText = schoolData.stats.alumni;
@@ -60,56 +92,51 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("statTeachers").innerText = schoolData.stats.teachers;
     renderToppers();
     renderStaff("All");
-    initScrollReveal();
-    if (currentLang === "hi") applyLanguage("hi");
+    renderHolidays();
   }
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  refreshPublicUI();
+  syncFromCloud();
+  initScrollReveal();
+  if (currentLang === "hi") applyLanguage("hi");
 });
 
 function initScrollReveal() {
   const reveals = document.querySelectorAll(".reveal-up");
-  const check = () => {
-    reveals.forEach((el) => {
-      if (el.getBoundingClientRect().top < window.innerHeight - 40) el.classList.add("active");
-    });
-  };
+  const check = () => reveals.forEach((el) => {
+    if (el.getBoundingClientRect().top < window.innerHeight - 40) el.classList.add("active");
+  });
   window.addEventListener("scroll", check);
   check();
 }
 
 function toggleMobileMenu() {
-  const menu = document.getElementById("mobileMenu");
-  const icon = document.getElementById("menuIcon");
-  menu.classList.toggle("hidden");
-  icon.className = menu.classList.contains("hidden") ? "fa-solid fa-bars" : "fa-solid fa-xmark";
+  const m = document.getElementById("mobileMenu");
+  const i = document.getElementById("menuIcon");
+  m.classList.toggle("hidden");
+  i.className = m.classList.contains("hidden") ? "fa-solid fa-bars" : "fa-solid fa-xmark";
 }
-
 function closeMobileMenu() {
   document.getElementById("mobileMenu").classList.add("hidden");
   document.getElementById("menuIcon").className = "fa-solid fa-bars";
 }
-
-function openAdmissionModal() {
-  document.getElementById("admissionModal").classList.remove("hidden");
-}
-
-function closeAdmissionModal() {
-  document.getElementById("admissionModal").classList.add("hidden");
-}
+function openAdmissionModal() { document.getElementById("admissionModal").classList.remove("hidden"); }
+function closeAdmissionModal() { document.getElementById("admissionModal").classList.add("hidden"); }
 
 function toggleLanguage() {
   currentLang = currentLang === "en" ? "hi" : "en";
   localStorage.setItem("sdr_lang", currentLang);
   applyLanguage(currentLang);
 }
-
 function applyLanguage(lang) {
-  const btnText = document.getElementById("langBtnText");
-  if (btnText) btnText.innerText = lang === "en" ? "हिंदी में देखें" : "Switch to English";
+  const b = document.getElementById("langBtnText");
+  if (b) b.innerText = lang === "en" ? "हिंदी में देखें" : "Switch to English";
   document.querySelectorAll("[data-en]").forEach((el) => {
     el.innerText = lang === "en" ? el.getAttribute("data-en") : el.getAttribute("data-hi");
   });
 }
-
 function renderToppers() {
   const grid = document.getElementById("toppersGrid");
   if (!grid) return;
@@ -132,7 +159,7 @@ function renderStaff(wing) {
   grid.innerHTML = list.map((s) => `
     <div class="hover-lift bg-white rounded-2xl p-5 border border-slate-200 shadow-sm space-y-3">
       <div class="flex items-center gap-3">
-        <div class="w-14 h-14 rounded-2xl bg-[#0F2A4A] text-amber-400 flex items-center justify-center text-xl font-extrabold border-2 border-amber-400 shrink-0">${s.name.replace(/Mr\.|Mrs\.|Ms\./g, "").trim().charAt(0)}</div>
+        ${s.photo ? `<img src="${s.photo}" class="w-14 h-14 rounded-2xl object-cover border-2 border-amber-400 shrink-0" />` : `<div class="w-14 h-14 rounded-2xl bg-[#0F2A4A] text-amber-400 flex items-center justify-center text-xl font-extrabold border-2 border-amber-400 shrink-0">${s.name.replace(/Mr\.|Mrs\.|Ms\./g, "").trim().charAt(0)}</div>`}
         <div>
           <span class="text-[10px] font-bold uppercase bg-amber-100 text-amber-800 px-2 py-0.5 rounded">${s.wing} Wing</span>
           <h4 class="font-extrabold text-base text-[#0F2A4A] mt-0.5">${s.name}</h4>
@@ -153,6 +180,15 @@ function filterStaff(wing) {
     b.className = active ? "staff-filter-btn bg-[#0F2A4A] text-white text-xs font-bold px-4 py-2 rounded-full" : "staff-filter-btn bg-white text-slate-700 text-xs font-bold px-4 py-2 rounded-full border";
   });
   renderStaff(wing);
+}
+
+function renderHolidays() {
+  const tbody = document.getElementById("holidaysTableBody");
+  if (!tbody || !schoolData.holidays) return;
+  tbody.innerHTML = schoolData.holidays.map((h) => {
+    const badge = h.type === "National" ? "bg-amber-100 text-amber-800" : h.type === "Vacation" ? "bg-sky-100 text-sky-800" : "bg-emerald-100 text-emerald-800";
+    return `<tr class="hover:bg-slate-50"><td class="px-4 py-3 font-bold text-[#0F2A4A]">${h.date}</td><td class="px-4 py-3 text-slate-600">${h.day}</td><td class="px-4 py-3 font-semibold">${h.name}</td><td class="px-4 py-3 text-center"><span class="${badge} text-[11px] font-bold px-2.5 py-0.5 rounded-full">${h.type}</span></td></tr>`;
+  }).join("");
 }
 function switchSearchTab(mode) {
   ["roll", "name", "tc"].forEach((k) => {
@@ -211,6 +247,18 @@ function renderMarksheet(st) {
   document.getElementById("msMother").innerText = st.motherName;
   document.getElementById("msDob").innerText = st.dob;
   document.getElementById("msAttendance").innerText = st.attendance;
+
+  const msPhoto = document.getElementById("msStudentPhoto");
+  const msIcon = document.getElementById("msDefaultIcon");
+  if (st.photo) {
+    msPhoto.src = st.photo;
+    msPhoto.classList.remove("hidden");
+    msIcon.classList.add("hidden");
+  } else {
+    msPhoto.classList.add("hidden");
+    msIcon.classList.remove("hidden");
+  }
+
   document.getElementById("msQrCode").src = `https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=${encodeURIComponent(window.location.href)}`;
   let maxT = 0, obtT = 0, pass = true;
   document.getElementById("msSubjectsBody").innerHTML = st.subjects.map((sub) => {
@@ -231,20 +279,25 @@ function renderMarksheet(st) {
 function closeMarksheet() { document.getElementById("marksheetWrapper").classList.add("hidden"); }
 
 function downloadDirectPDF() {
-  html2pdf().set({ margin: 0.3, filename: "SDR_Marksheet.pdf", html2canvas: { scale: 2 }, jsPDF: { unit: "in", format: "a4" } }).from(document.getElementById("printableMarksheet")).save();
+  html2pdf().set({ margin: 0.3, filename: "SDR_Marksheet.pdf", html2canvas: { scale: 2, useCORS: true }, jsPDF: { unit: "in", format: "a4" } }).from(document.getElementById("printableMarksheet")).save();
 }
 
-function submitFullAdmission(e) {
+async function submitFullAdmission(e) {
   e.preventDefault();
   const appId = "SDR-2026-" + Math.floor(100 + Math.random() * 900);
   const entry = {
-    appId, name: document.getElementById("admName").value, className: document.getElementById("admClass").value,
+    appId, date: new Date().toLocaleDateString("en-IN"),
+    name: document.getElementById("admName").value, className: document.getElementById("admClass").value,
     medium: document.getElementById("admMedium").value, father: document.getElementById("admFather").value,
     mobile: document.getElementById("admMobile").value, address: document.getElementById("admAddress").value
   };
-  const list = JSON.parse(localStorage.getItem("sdr_admission_inquiries") || "[]");
-  list.unshift(entry);
-  localStorage.setItem("sdr_admission_inquiries", JSON.stringify(list));
+  try {
+    await db.collection("sdr_admissions").doc(appId).set(entry);
+  } catch (err) {
+    const list = JSON.parse(localStorage.getItem("sdr_admission_inquiries") || "[]");
+    list.unshift(entry);
+    localStorage.setItem("sdr_admission_inquiries", JSON.stringify(list));
+  }
   document.getElementById("recAppId").innerText = appId;
   document.getElementById("recSummaryText").innerText = `${entry.name} (${entry.className}) | Father: ${entry.father} | Mobile: ${entry.mobile}`;
   latestAdmissionText = `*New Admission - SDR School Basari*%0AApp ID: ${appId}%0AName: ${entry.name}%0AClass: ${entry.className}%0AFather: ${entry.father}%0AMobile: ${entry.mobile}`;
