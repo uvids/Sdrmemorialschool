@@ -1,0 +1,81 @@
+/* ==================== BASE & TYPOGRAPHY ==================== */
+body {
+  font-family: 'Poppins', 'Noto Sans Devanagari', sans-serif;
+}
+
+/* ==================== HERO SECTION BACKGROUND ==================== */
+.hero-bg {
+  background: linear-gradient(135deg, rgba(15, 42, 74, 0.94) 0%, rgba(23, 55, 94, 0.86) 100%),
+              url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+}
+
+/* ==================== LIVE NOTICE TICKER ANIMATION ==================== */
+@keyframes marquee {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
+
+.animate-marquee {
+  display: inline-block;
+  white-space: nowrap;
+  animation: marquee 26s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* ==================== OFFICIAL MARKSHEET WATERMARK ==================== */
+.marksheet-watermark {
+  position: absolute;
+  top: 52%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-24deg);
+  font-size: 3rem;
+  font-weight: 800;
+  color: rgba(15, 42, 74, 0.05);
+  white-space: nowrap;
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+  letter-spacing: 0.15em;
+}
+
+@media (max-width: 640px) {
+  .marksheet-watermark {
+    font-size: 1.6rem;
+  }
+}
+
+/* ==================== TOPPERS & STAFF CARD HOVER EFFECTS ==================== */
+.hover-lift {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 18px 30px -10px rgba(15, 42, 74, 0.18);
+}
+
+/* ==================== CLEAN PRINT & A4 PDF STYLING ==================== */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  #printableMarksheet,
+  #printableMarksheet * {
+    visibility: visible;
+  }
+  #printableMarksheet {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    box-shadow: none !important;
+    border: 3px double #0F2A4A !important;
+    background: #ffffff !important;
+  }
+  .no-print {
+    display: none !important;
+  }
+}
