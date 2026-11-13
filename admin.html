@@ -3,436 +3,171 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Office Clerk Admin Panel | SDR Memorial Public High School</title>
+  <title>Admin Panel | SDR Memorial School</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
-  <style>
-    body { font-family: 'Poppins', sans-serif; }
-  </style>
+  <style>body { font-family: 'Poppins', sans-serif; }</style>
 </head>
 <body class="bg-slate-100 text-slate-800 min-h-screen">
 
-  <!-- ==================== CLERK LOGIN SCREEN ==================== -->
-  <div id="loginOverlay" class="min-h-screen flex items-center justify-center p-4 bg-[#091A30]">
-    <div class="bg-white max-w-md w-full rounded-2xl p-8 shadow-2xl space-y-6">
-      <div class="text-center space-y-1">
-        <div class="w-14 h-14 rounded-full bg-[#0F2A4A] text-amber-400 flex items-center justify-center font-extrabold text-xl mx-auto border-2 border-amber-400">
-          SDR
-        </div>
-        <h2 class="text-xl font-extrabold text-[#0F2A4A] pt-2">Office Clerk Admin Portal</h2>
+  <!-- LOGIN BOX -->
+  <div id="loginBox" class="min-h-screen flex items-center justify-center p-4 bg-[#091A30]">
+    <div class="bg-white max-w-sm w-full rounded-2xl p-6 shadow-2xl space-y-4">
+      <div class="text-center">
+        <div class="w-12 h-12 rounded-full bg-[#0F2A4A] text-amber-400 flex items-center justify-center font-extrabold mx-auto border-2 border-amber-400">SDR</div>
+        <h2 class="text-lg font-extrabold text-[#0F2A4A] mt-2">Clerk Admin Login</h2>
         <p class="text-xs text-slate-500">SDR Memorial Public High School, Basari</p>
       </div>
 
-      <form onsubmit="handleAdminLogin(event)" class="space-y-4">
-        <div>
-          <label class="block text-xs font-bold uppercase text-slate-700 mb-1">Admin Username</label>
-          <input type="text" id="adminUser" required placeholder="Enter username"
-                 class="w-full border border-slate-300 rounded-xl px-4 py-2.5 text-sm focus:border-[#0F2A4A] focus:outline-none" />
-        </div>
-        <div>
-          <label class="block text-xs font-bold uppercase text-slate-700 mb-1">Password</label>
-          <input type="password" id="adminPass" required placeholder="Enter password"
-                 class="w-full border border-slate-300 rounded-xl px-4 py-2.5 text-sm focus:border-[#0F2A4A] focus:outline-none" />
-        </div>
-        <div id="loginError" class="hidden text-xs text-rose-600 font-semibold">
-          ❌ Galat Username ya Password!
-        </div>
-        <button type="submit" class="w-full bg-[#0F2A4A] hover:bg-[#193f6e] text-white font-bold py-3 rounded-xl shadow transition">
-          Login to Dashboard <i class="fa-solid fa-arrow-right ml-1"></i>
-        </button>
-      </form>
+      <div class="space-y-3">
+        <input type="text" id="uInput" placeholder="Username (admin)" class="w-full border rounded-xl px-3.5 py-2.5 text-sm" />
+        <input type="password" id="pInput" placeholder="Password (sdr123)" class="w-full border rounded-xl px-3.5 py-2.5 text-sm" />
+        <p id="errText" class="hidden text-xs text-rose-600 font-bold">❌ Galat Username ya Password!</p>
+        <button type="button" onclick="doAdminLogin()" class="w-full bg-[#0F2A4A] text-white font-bold py-3 rounded-xl shadow">Login Now</button>
+      </div>
 
-      <div class="bg-amber-50 border border-amber-200 p-3 rounded-xl text-xs text-amber-900 text-center">
-        <strong>Demo Login:</strong> User: <code class="bg-white px-1 rounded">admin</code> | Pass: <code class="bg-white px-1 rounded">sdr123</code>
+      <div class="bg-amber-50 border border-amber-200 p-2.5 rounded-xl text-xs text-center text-amber-900">
+        User: <strong>admin</strong> | Pass: <strong>sdr123</strong>
       </div>
-      <div class="text-center">
-        <a href="index.html" class="text-xs text-slate-500 hover:text-[#0F2A4A] underline">← Back to Main School Website</a>
-      </div>
+      <div class="text-center"><a href="index.html" class="text-xs text-slate-500 underline">← Back to Website</a></div>
     </div>
   </div>
 
-  <!-- ==================== MAIN ADMIN DASHBOARD ==================== -->
-  <div id="adminDashboard" class="hidden">
-    <!-- Top Navbar -->
-    <header class="bg-[#0F2A4A] text-white py-4 px-4 shadow-lg sticky top-0 z-40">
-      <div class="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-3">
-        <div class="flex items-center gap-3">
-          <span class="bg-amber-400 text-[#0F2A4A] font-extrabold px-2.5 py-1 rounded text-sm">ADMIN</span>
-          <div>
-            <h1 class="font-bold text-sm sm:text-base">SDR Memorial School Control Panel</h1>
-            <p class="text-[11px] text-slate-300">Manage Results, Staff, Toppers & Admissions</p>
-          </div>
-        </div>
-        <div class="flex items-center gap-3 text-xs">
-          <a href="index.html" target="_blank" class="bg-emerald-600 hover:bg-emerald-700 px-3 py-2 rounded-lg font-bold transition">
-            <i class="fa-solid fa-eye mr-1"></i> View Live Site
-          </a>
-          <button onclick="logoutAdmin()" class="bg-rose-600 hover:bg-rose-700 px-3 py-2 rounded-lg font-bold transition">
-            Logout
-          </button>
-        </div>
+  <!-- DASHBOARD -->
+  <div id="dashBox" class="hidden">
+    <header class="bg-[#0F2A4A] text-white p-4 flex justify-between items-center shadow">
+      <h1 class="font-bold text-sm sm:text-base">SDR School Admin Dashboard</h1>
+      <div class="flex gap-2 text-xs">
+        <a href="index.html" class="bg-emerald-600 px-3 py-1.5 rounded-lg font-bold">View Site</a>
+        <button type="button" onclick="doLogout()" class="bg-rose-600 px-3 py-1.5 rounded-lg font-bold">Logout</button>
       </div>
     </header>
 
-    <main class="max-w-7xl mx-auto p-4 sm:p-6 space-y-6">
-      <!-- Navigation Tabs -->
-      <div class="flex flex-wrap gap-2 bg-white p-2 rounded-2xl shadow-sm border border-slate-200">
-        <button onclick="showAdminTab('resultsTab')" class="admin-tab-btn bg-[#0F2A4A] text-white text-xs sm:text-sm font-bold px-4 py-2.5 rounded-xl">
-          🎓 Manage Results
-        </button>
-        <button onclick="showAdminTab('admissionsTab')" class="admin-tab-btn text-slate-600 hover:bg-slate-100 text-xs sm:text-sm font-bold px-4 py-2.5 rounded-xl">
-          📝 Admission Inquiries
-        </button>
-        <button onclick="showAdminTab('staffTab')" class="admin-tab-btn text-slate-600 hover:bg-slate-100 text-xs sm:text-sm font-bold px-4 py-2.5 rounded-xl">
-          👨‍🏫 Staff Portfolio
-        </button>
-        <button onclick="showAdminTab('toppersTab')" class="admin-tab-btn text-slate-600 hover:bg-slate-100 text-xs sm:text-sm font-bold px-4 py-2.5 rounded-xl">
-          🏆 Top 10 Toppers
-        </button>
-        <button onclick="showAdminTab('settingsTab')" class="admin-tab-btn text-slate-600 hover:bg-slate-100 text-xs sm:text-sm font-bold px-4 py-2.5 rounded-xl">
-          📢 Notice & Counters
-        </button>
+    <main class="max-w-5xl mx-auto p-4 space-y-6">
+      <!-- Add Result -->
+      <div class="bg-white p-5 rounded-2xl shadow space-y-3">
+        <h3 class="font-extrabold text-[#0F2A4A] border-b pb-2">1. Add Student Result</h3>
+        <div class="grid sm:grid-cols-3 gap-3 text-sm">
+          <input type="text" id="rRoll" placeholder="Roll No (e.g. 105)" class="border rounded-xl p-2" />
+          <input type="date" id="rDob" class="border rounded-xl p-2" />
+          <input type="text" id="rClass" placeholder="Class (e.g. Class 9th)" class="border rounded-xl p-2" />
+          <input type="text" id="rName" placeholder="Student Name" class="border rounded-xl p-2" />
+          <input type="text" id="rFather" placeholder="Father Name" class="border rounded-xl p-2" />
+          <input type="text" id="rMother" placeholder="Mother Name" class="border rounded-xl p-2" />
+        </div>
+        <div class="grid grid-cols-5 gap-2 text-xs">
+          <input type="number" id="mH" placeholder="Hindi/100" class="border rounded-lg p-2" />
+          <input type="number" id="mE" placeholder="Eng/100" class="border rounded-lg p-2" />
+          <input type="number" id="mM" placeholder="Math/100" class="border rounded-lg p-2" />
+          <input type="number" id="mS" placeholder="Sci/100" class="border rounded-lg p-2" />
+          <input type="number" id="mSS" placeholder="SST/100" class="border rounded-lg p-2" />
+        </div>
+        <button type="button" onclick="saveResult()" class="bg-emerald-600 text-white font-bold text-xs px-5 py-2.5 rounded-xl">Publish Result</button>
+        <div id="resList" class="text-xs space-y-1 pt-2"></div>
       </div>
-            <!-- ==================== TAB 1: ADD / MANAGE STUDENT RESULTS ==================== -->
-      <section id="resultsTab" class="admin-section bg-white rounded-2xl p-6 shadow-md border border-slate-200 space-y-6">
-        <h3 class="text-lg font-extrabold text-[#0F2A4A] border-b pb-2">Add New Student Exam Result</h3>
-        <form onsubmit="addStudentResult(event)" class="space-y-4">
-          <div class="grid sm:grid-cols-3 gap-4">
-            <input type="text" id="resRoll" required placeholder="Roll Number (e.g. 105)" class="border rounded-xl px-3.5 py-2 text-sm" />
-            <input type="date" id="resDob" required class="border rounded-xl px-3.5 py-2 text-sm" />
-            <input type="text" id="resClass" required placeholder="Class (e.g. Class 9th)" class="border rounded-xl px-3.5 py-2 text-sm" />
-            <input type="text" id="resName" required placeholder="Student Full Name" class="border rounded-xl px-3.5 py-2 text-sm" />
-            <input type="text" id="resFather" required placeholder="Father's Name" class="border rounded-xl px-3.5 py-2 text-sm" />
-            <input type="text" id="resMother" required placeholder="Mother's Name" class="border rounded-xl px-3.5 py-2 text-sm" />
-          </div>
-          <div class="grid sm:grid-cols-2 gap-4">
-            <input type="text" id="resExamTitle" value="ANNUAL EXAMINATION PROGRESS REPORT 2026–27" required class="border rounded-xl px-3.5 py-2 text-sm" />
-            <input type="text" id="resAttendance" placeholder="Attendance (e.g. 190 / 205 Days)" required class="border rounded-xl px-3.5 py-2 text-sm" />
-          </div>
+            <!-- Admission Inquiries -->
+      <div class="bg-white p-5 rounded-2xl shadow space-y-3">
+        <h3 class="font-extrabold text-[#0F2A4A] border-b pb-2">2. Online Admission Forms Received</h3>
+        <div id="admList" class="text-xs space-y-2"></div>
+      </div>
 
-          <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-3">
-            <p class="text-xs font-bold uppercase text-slate-600">Enter Subject Marks (Theory out of 80 + Practical out of 20)</p>
-            <div class="grid grid-cols-2 sm:grid-cols-5 gap-3 text-xs">
-              <div><label class="font-bold">Hindi (Total/100)</label><input type="number" id="mHindi" max="100" required class="w-full border rounded-lg p-2 mt-1 bg-white" /></div>
-              <div><label class="font-bold">English (Total/100)</label><input type="number" id="mEng" max="100" required class="w-full border rounded-lg p-2 mt-1 bg-white" /></div>
-              <div><label class="font-bold">Maths (Total/100)</label><input type="number" id="mMath" max="100" required class="w-full border rounded-lg p-2 mt-1 bg-white" /></div>
-              <div><label class="font-bold">Science (Total/100)</label><input type="number" id="mSci" max="100" required class="w-full border rounded-lg p-2 mt-1 bg-white" /></div>
-              <div><label class="font-bold">Social Sc. (Total/100)</label><input type="number" id="mSst" max="100" required class="w-full border rounded-lg p-2 mt-1 bg-white" /></div>
-            </div>
-          </div>
-
-          <button type="submit" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-6 py-2.5 rounded-xl shadow text-sm">
-            <i class="fa-solid fa-plus mr-1"></i> Publish Result Live
-          </button>
-        </form>
-
-        <!-- Published Results List -->
-        <div>
-          <h4 class="font-bold text-sm text-slate-700 mb-2">Published Results List</h4>
-          <div class="overflow-x-auto">
-            <table class="w-full text-xs border-collapse border border-slate-200">
-              <thead class="bg-slate-100">
-                <tr>
-                  <th class="border p-2 text-left">Roll No</th>
-                  <th class="border p-2 text-left">Student Name</th>
-                  <th class="border p-2 text-left">Father Name</th>
-                  <th class="border p-2 text-left">Class</th>
-                  <th class="border p-2 text-center">Action</th>
-                </tr>
-              </thead>
-              <tbody id="adminResultsTable"></tbody>
-            </table>
-          </div>
+      <!-- Notice & Counters -->
+      <div class="bg-white p-5 rounded-2xl shadow space-y-3">
+        <h3 class="font-extrabold text-[#0F2A4A] border-b pb-2">3. Update Notice & School Counters</h3>
+        <input type="text" id="nText" class="w-full border rounded-xl p-2 text-sm" />
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 text-sm">
+          <input type="text" id="cAlum" placeholder="Passed Out" class="border rounded-xl p-2" />
+          <input type="text" id="cNew" placeholder="New Admissions" class="border rounded-xl p-2" />
+          <input type="text" id="cCurr" placeholder="Current Students" class="border rounded-xl p-2" />
+          <input type="text" id="cTeach" placeholder="Teachers" class="border rounded-xl p-2" />
         </div>
-      </section>
-
-      <!-- ==================== TAB 2: NEW ADMISSION INQUIRIES ==================== -->
-      <section id="admissionsTab" class="admin-section hidden bg-white rounded-2xl p-6 shadow-md border border-slate-200 space-y-4">
-        <div class="flex justify-between items-center border-b pb-2">
-          <h3 class="text-lg font-extrabold text-[#0F2A4A]">Online Admission Applications Received</h3>
-          <button onclick="clearAdmissions()" class="text-xs text-rose-600 underline font-semibold">Clear List</button>
-        </div>
-        <div id="adminAdmissionsList" class="space-y-3 text-xs"></div>
-      </section>
-
-      <!-- ==================== TAB 3: STAFF PORTFOLIO MANAGER ==================== -->
-      <section id="staffTab" class="admin-section hidden bg-white rounded-2xl p-6 shadow-md border border-slate-200 space-y-6">
-        <h3 class="text-lg font-extrabold text-[#0F2A4A] border-b pb-2">Add Teacher to Staff Portfolio</h3>
-        <form onsubmit="addStaffMember(event)" class="grid sm:grid-cols-3 gap-4">
-          <input type="text" id="stfName" required placeholder="Teacher Name (e.g. Mr. Amit Verma)" class="border rounded-xl px-3.5 py-2 text-sm" />
-          <input type="text" id="stfRole" required placeholder="Role (e.g. Science Teacher)" class="border rounded-xl px-3.5 py-2 text-sm" />
-          <select id="stfWing" class="border rounded-xl px-3.5 py-2 text-sm">
-            <option value="High School">High School (9th-10th)</option>
-            <option value="Middle">Middle Wing (6th-8th)</option>
-            <option value="Primary">Primary Wing (Nur-5th)</option>
-          </select>
-          <input type="text" id="stfQual" required placeholder="Qualification (e.g. M.Sc., B.Ed.)" class="border rounded-xl px-3.5 py-2 text-sm" />
-          <input type="text" id="stfSince" required placeholder="Teaching Since (e.g. 2019 - 7 Yrs)" class="border rounded-xl px-3.5 py-2 text-sm" />
-          <input type="text" id="stfBest" required placeholder="Best Subject / Achievement" class="border rounded-xl px-3.5 py-2 text-sm" />
-          <input type="url" id="stfPhoto" placeholder="Photo URL (Optional)" class="sm:col-span-2 border rounded-xl px-3.5 py-2 text-sm" />
-          <button type="submit" class="bg-[#0F2A4A] text-white font-bold py-2.5 rounded-xl text-sm">Add Teacher</button>
-        </form>
-        <div id="adminStaffList" class="grid sm:grid-cols-2 gap-3 text-xs"></div>
-      </section>
-
-      <!-- ==================== TAB 4: TOP 10 TOPPERS MANAGER ==================== -->
-      <section id="toppersTab" class="admin-section hidden bg-white rounded-2xl p-6 shadow-md border border-slate-200 space-y-6">
-        <h3 class="text-lg font-extrabold text-[#0F2A4A] border-b pb-2">Update Top 10 Meritorious Students</h3>
-        <form onsubmit="updateTopper(event)" class="grid sm:grid-cols-4 gap-4">
-          <input type="number" id="topRank" min="1" max="10" required placeholder="Rank (1 to 10)" class="border rounded-xl px-3.5 py-2 text-sm" />
-          <input type="text" id="topName" required placeholder="Student Name" class="border rounded-xl px-3.5 py-2 text-sm" />
-          <input type="text" id="topClass" required placeholder="Class (e.g. Class 10th)" class="border rounded-xl px-3.5 py-2 text-sm" />
-          <input type="text" id="topPercent" required placeholder="Percentage (e.g. 95.8%)" class="border rounded-xl px-3.5 py-2 text-sm" />
-          <button type="submit" class="sm:col-span-4 bg-amber-500 text-[#0F2A4A] font-extrabold py-2.5 rounded-xl text-sm">Update Rank Card</button>
-        </form>
-        <div id="adminToppersList" class="grid grid-cols-2 sm:grid-cols-5 gap-2 text-xs"></div>
-      </section>
-
-      <!-- ==================== TAB 5: NOTICE & COUNTERS UPDATE ==================== -->
-      <section id="settingsTab" class="admin-section hidden bg-white rounded-2xl p-6 shadow-md border border-slate-200 space-y-4">
-        <h3 class="text-lg font-extrabold text-[#0F2A4A] border-b pb-2">Update Live Notice Ticker & School Counters</h3>
-        <form onsubmit="saveGeneralSettings(event)" class="space-y-4">
-          <div>
-            <label class="block text-xs font-bold uppercase mb-1">Scrolling Notice Bar Text</label>
-            <textarea id="setNotice" rows="2" class="w-full border rounded-xl p-3 text-sm"></textarea>
-          </div>
-          <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
-            <div><label class="text-xs font-bold">Total Alumni Passed</label><input type="text" id="setAlumni" class="w-full border rounded-xl p-2 text-sm mt-1" /></div>
-            <div><label class="text-xs font-bold">New Admissions (2026)</label><input type="text" id="setNewAdm" class="w-full border rounded-xl p-2 text-sm mt-1" /></div>
-            <div><label class="text-xs font-bold">Current Students</label><input type="text" id="setCurrStu" class="w-full border rounded-xl p-2 text-sm mt-1" /></div>
-            <div><label class="text-xs font-bold">Total Teachers</label><input type="text" id="setTeachers" class="w-full border rounded-xl p-2 text-sm mt-1" /></div>
-          </div>
-          <div class="flex flex-wrap gap-3">
-            <button type="submit" class="bg-[#0F2A4A] text-white font-bold px-6 py-2.5 rounded-xl text-sm">Save Changes</button>
-            <button type="button" onclick="resetAllDefaultData()" class="bg-rose-100 text-rose-700 font-bold px-4 py-2.5 rounded-xl text-xs">Reset to Default Demo Data</button>
-          </div>
-        </form>
-      </section>
+        <button type="button" onclick="saveSettings()" class="bg-[#0F2A4A] text-white font-bold text-xs px-5 py-2.5 rounded-xl">Save Settings</button>
+      </div>
     </main>
   </div>
-    <!-- Load default structure from script.js -->
+
   <script src="script.js"></script>
   <script>
-    // ==================== ADMIN AUTHENTICATION ====================
-    function handleAdminLogin(e) {
-      e.preventDefault();
-      const u = document.getElementById("adminUser").value.trim();
-      const p = document.getElementById("adminPass").value.trim();
-
+    function doAdminLogin() {
+      const u = document.getElementById("uInput").value.trim().toLowerCase();
+      const p = document.getElementById("pInput").value.trim();
       if (u === "admin" && p === "sdr123") {
-        sessionStorage.setItem("sdr_admin_logged", "true");
-        initAdminPanel();
+        sessionStorage.setItem("sdr_ok", "1");
+        showDash();
       } else {
-        document.getElementById("loginError").classList.remove("hidden");
+        document.getElementById("errText").classList.remove("hidden");
       }
     }
 
-    function logoutAdmin() {
-      sessionStorage.removeItem("sdr_admin_logged");
+    function doLogout() {
+      sessionStorage.removeItem("sdr_ok");
       location.reload();
     }
 
-    if (sessionStorage.getItem("sdr_admin_logged") === "true") {
-      initAdminPanel();
+    function showDash() {
+      document.getElementById("loginBox").classList.add("hidden");
+      document.getElementById("dashBox").classList.remove("hidden");
+      loadDashData();
     }
 
-    function initAdminPanel() {
-      document.getElementById("loginOverlay").classList.add("hidden");
-      document.getElementById("adminDashboard").classList.remove("hidden");
-      refreshAdminTables();
+    if (sessionStorage.getItem("sdr_ok") === "1") showDash();
+
+    function loadDashData() {
+      document.getElementById("nText").value = schoolData.notice;
+      document.getElementById("cAlum").value = schoolData.stats.alumni;
+      document.getElementById("cNew").value = schoolData.stats.newAdmissions;
+      document.getElementById("cCurr").value = schoolData.stats.currentStudents;
+      document.getElementById("cTeach").value = schoolData.stats.teachers;
+
+      document.getElementById("resList").innerHTML = schoolData.results.map((r, i) =>
+        `<div class="p-2 bg-slate-50 border rounded flex justify-between"><span><strong>Roll ${r.roll}:</strong> ${r.name} (${r.className})</span><button onclick="delRes(${i})" class="text-rose-600 font-bold">Delete</button></div>`
+      ).join("");
+
+      const adms = JSON.parse(localStorage.getItem("sdr_admission_inquiries") || "[]");
+      document.getElementById("admList").innerHTML = adms.length ? adms.map(a =>
+        `<div class="p-2.5 bg-emerald-50 border border-emerald-200 rounded"><strong>${a.appId}</strong> • ${a.name} (${a.className}) • Father: ${a.father} • Mob: <strong>${a.mobile}</strong></div>`
+      ).join("") : "<p class='text-slate-500'>No admissions yet.</p>";
     }
 
-    // ==================== TAB SWITCHING ====================
-    function showAdminTab(tabId) {
-      document.querySelectorAll(".admin-section").forEach((s) => s.classList.add("hidden"));
-      document.getElementById(tabId).classList.remove("hidden");
-
-      document.querySelectorAll(".admin-tab-btn").forEach((btn) => {
-        btn.classList.remove("bg-[#0F2A4A]", "text-white");
-        btn.classList.add("text-slate-600");
-      });
-      event.target.classList.add("bg-[#0F2A4A]", "text-white");
-      event.target.classList.remove("text-slate-600");
-    }
-
-    function saveDataToStorage() {
-      localStorage.setItem("sdr_school_portal_data", JSON.stringify(schoolData));
-      refreshAdminTables();
-    }
-
-    // ==================== REFRESH ALL ADMIN LISTS ====================
-    function refreshAdminTables() {
-      // 1. Results Table
-      const resBody = document.getElementById("adminResultsTable");
-      resBody.innerHTML = schoolData.results
-        .map(
-          (r, idx) => `
-          <tr>
-            <td class="border p-2 font-bold">${r.roll}</td>
-            <td class="border p-2">${r.name}</td>
-            <td class="border p-2">${r.fatherName}</td>
-            <td class="border p-2">${r.className}</td>
-            <td class="border p-2 text-center">
-              <button onclick="deleteResult(${idx})" class="text-rose-600 font-bold hover:underline">Delete</button>
-            </td>
-          </tr>`
-        )
-        .join("");
-
-      // 2. Admission Inquiries
-      const admList = JSON.parse(localStorage.getItem("sdr_admission_inquiries") || "[]");
-      const admContainer = document.getElementById("adminAdmissionsList");
-      admContainer.innerHTML = admList.length
-        ? admList
-            .map(
-              (a) => `
-              <div class="p-3 bg-slate-50 border rounded-xl flex flex-wrap justify-between items-center gap-2">
-                <div>
-                  <span class="bg-emerald-100 text-emerald-800 font-bold px-2 py-0.5 rounded">${a.appId}</span>
-                  <strong class="ml-1 text-sm text-[#0F2A4A]">${a.name}</strong> (${a.className} • ${a.medium})
-                  <p class="text-slate-600 mt-1">Father: ${a.father} | Mobile: <strong>${a.mobile}</strong> | Village: ${a.address} | Transport: ${a.transport}</p>
-                </div>
-                <a href="tel:${a.mobile}" class="bg-[#0F2A4A] text-white px-3 py-1.5 rounded-lg font-bold">Call Parent</a>
-              </div>`
-            )
-            .join("")
-        : `<p class="text-slate-500">Abhi tak koi online admission form submit nahi hua hai.</p>`;
-
-      // 3. Staff List
-      document.getElementById("adminStaffList").innerHTML = schoolData.staff
-        .map(
-          (s, idx) => `
-          <div class="p-3 border rounded-xl flex justify-between items-center bg-slate-50">
-            <div><strong>${s.name}</strong> (${s.wing})<br><span class="text-slate-500">${s.qualification} • ${s.role}</span></div>
-            <button onclick="deleteStaff(${idx})" class="text-rose-600 font-bold">Remove</button>
-          </div>`
-        )
-        .join("");
-
-      // 4. Toppers List
-      document.getElementById("adminToppersList").innerHTML = schoolData.toppers
-        .map(
-          (t) => `
-          <div class="p-2.5 border rounded-xl bg-amber-50/60 text-center">
-            <span class="font-extrabold text-[#0F2A4A]">Rank #${t.rank}</span>
-            <p class="font-bold truncate">${t.name}</p>
-            <p class="text-emerald-700 font-bold">${t.percent}</p>
-          </div>`
-        )
-        .join("");
-
-      // 5. General Settings Inputs
-      document.getElementById("setNotice").value = schoolData.notice;
-      document.getElementById("setAlumni").value = schoolData.stats.alumni;
-      document.getElementById("setNewAdm").value = schoolData.stats.newAdmissions;
-      document.getElementById("setCurrStu").value = schoolData.stats.currentStudents;
-      document.getElementById("setTeachers").value = schoolData.stats.teachers;
-    }
-
-    // ==================== CRUD ACTIONS ====================
-    function addStudentResult(e) {
-      e.preventDefault();
-      const splitMarks = (total) => {
-        const t = Math.round(total * 0.8);
-        return { theory: t, practical: total - t };
-      };
-
-      const h = splitMarks(Number(document.getElementById("mHindi").value));
-      const en = splitMarks(Number(document.getElementById("mEng").value));
-      const ma = splitMarks(Number(document.getElementById("mMath").value));
-      const sc = splitMarks(Number(document.getElementById("mSci").value));
-      const ss = splitMarks(Number(document.getElementById("mSst").value));
-
-      const newRes = {
-        roll: document.getElementById("resRoll").value.trim(),
-        dob: document.getElementById("resDob").value,
-        name: document.getElementById("resName").value.trim(),
-        fatherName: document.getElementById("resFather").value.trim
-        motherName: document.getElementById("resMother").value.trim(),
-        className: document.getElementById("resClass").value.trim(),
-        examTitle: document.getElementById("resExamTitle").value.trim(),
-        attendance: document.getElementById("resAttendance").value.trim(),
+    function saveResult() {
+      const split = (v) => ({ theory: Math.round(v * 0.8), practical: v - Math.round(v * 0.8) });
+      schoolData.results.unshift({
+        roll: document.getElementById("rRoll").value.trim(),
+        dob: document.getElementById("rDob").value,
+        name: document.getElementById("rName").value.trim(),
+        fatherName: document.getElementById("rFather").value.trim(),
+        motherName: document.getElementById("rMother").value.trim(),
+        className: document.getElementById("rClass").value.trim(),
+        examTitle: "ANNUAL PROGRESS REPORT 2026–27",
+        attendance: "95%",
         subjects: [
-          { name: "Hindi", max: 100, ...h },
-          { name: "English", max: 100, ...en },
-          { name: "Mathematics", max: 100, ...ma },
-          { name: "Science", max: 100, ...sc },
-          { name: "Social Science", max: 100, ...ss }
+          { name: "Hindi", max: 100, ...split(Number(document.getElementById("mH").value)) },
+          { name: "English", max: 100, ...split(Number(document.getElementById("mE").value)) },
+          { name: "Mathematics", max: 100, ...split(Number(document.getElementById("mM").value)) },
+          { name: "Science", max: 100, ...split(Number(document.getElementById("mS").value)) },
+          { name: "Social Science", max: 100, ...split(Number(document.getElementById("mSS").value)) }
         ]
-      };
-
-      schoolData.results.unshift(newRes);
-      saveDataToStorage();
-      e.target.reset();
-      alert("✅ Student Result Published Successfully!");
-    }
-
-    function deleteResult(index) {
-      if (confirm("Kya aap is result ko delete karna chahte hain?")) {
-        schoolData.results.splice(index, 1);
-        saveDataToStorage();
-      }
-    }
-
-    function addStaffMember(e) {
-      e.preventDefault();
-      schoolData.staff.push({
-        name: document.getElementById("stfName").value.trim(),
-        role: document.getElementById("stfRole").value.trim(),
-        wing: document.getElementById("stfWing").value,
-        qualification: document.getElementById("stfQual").value.trim(),
-        since: document.getElementById("stfSince").value.trim(),
-        bestSubject: document.getElementById("stfBest").value.trim(),
-        photo: document.getElementById("stfPhoto").value.trim()
       });
-      saveDataToStorage();
-      e.target.reset();
-      alert("✅ New Teacher Added to Portfolio!");
+      localStorage.setItem("sdr_school_portal_data", JSON.stringify(schoolData));
+      loadDashData();
+      alert("✅ Result Published!");
     }
 
-    function deleteStaff(index) {
-      schoolData.staff.splice(index, 1);
-      saveDataToStorage();
+    function delRes(i) {
+      schoolData.results.splice(i, 1);
+      localStorage.setItem("sdr_school_portal_data", JSON.stringify(schoolData));
+      loadDashData();
     }
 
-    function updateTopper(e) {
-      e.preventDefault();
-      const rank = Number(document.getElementById("topRank").value);
-      const idx = schoolData.toppers.findIndex((t) => t.rank === rank);
-      if (idx !== -1) {
-        schoolData.toppers[idx].name = document.getElementById("topName").value.trim();
-        schoolData.toppers[idx].className = document.getElementById("topClass").value.trim();
-        schoolData.toppers[idx].percent = document.getElementById("topPercent").value.trim();
-        saveDataToStorage();
-        alert(`✅ Rank #${rank} Topper Updated!`);
-      }
-    }
-
-    function saveGeneralSettings(e) {
-      e.preventDefault();
-      schoolData.notice = document.getElementById("setNotice").value.trim();
-      schoolData.stats.alumni = document.getElementById("setAlumni").value.trim();
-      schoolData.stats.newAdmissions = document.getElementById("setNewAdm").value.trim();
-      schoolData.stats.currentStudents = document.getElementById("setCurrStu").value.trim();
-      schoolData.stats.teachers = document.getElementById("setTeachers").value.trim();
-      saveDataToStorage();
-      alert("✅ Notice & School Counters Updated!");
-    }
-
-    function clearAdmissions() {
-      if (confirm("Clear all admission inquiries?")) {
-        localStorage.removeItem("sdr_admission_inquiries");
-        refreshAdminTables();
-      }
-    }
-
-    function resetAllDefaultData() {
-      if (confirm("Reset everything back to default demo data?")) {
-        localStorage.removeItem("sdr_school_portal_data");
-        location.reload();
-      }
+    function saveSettings() {
+      schoolData.notice = document.getElementById("nText").value;
+      schoolData.stats.alumni = document.getElementById("cAlum").value;
+      schoolData.stats.newAdmissions = document.getElementById("cNew").value;
+      schoolData.stats.currentStudents = document.getElementById("cCurr").value;
+      schoolData.stats.teachers = document.getElementById("cTeach").value;
+      localStorage.setItem("sdr_school_portal_data", JSON.stringify(schoolData));
+      alert("✅ Settings Updated!");
     }
   </script>
 </body>
-</html>  
+</html>
