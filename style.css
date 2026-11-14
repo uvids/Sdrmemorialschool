@@ -1,8 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Mukta:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&family=Tiro+Devanagari+Hindi:ital@0;1&display=swap');
 
+:root {
+  --navy-dark: #08152B;
+  --navy-main: #0F2952;
+  --gold-main: #F59E0B;
+  --gold-dark: #B45309;
+}
+
 body {
   font-family: 'Mukta', 'Poppins', sans-serif;
   scroll-behavior: smooth;
+  perspective: 1200px;
+  overflow-x: hidden;
 }
 
 h1, h2, h3, .royal-hindi-heading {
@@ -10,44 +19,125 @@ h1, h2, h3, .royal-hindi-heading {
   letter-spacing: 0.01em;
 }
 
+/* 1. 3D ANIMATED HERO BACKGROUND */
 .hero-bg {
-  background: radial-gradient(circle at top right, #1e427a 0%, #0F2952 45%, #08152B 100%);
+  background: radial-gradient(circle at 80% 20%, #25549c 0%, #0F2952 45%, #061022 100%);
+  background-size: 140% 140%;
+  animation: heroGradient3D 10s ease infinite;
+  position: relative;
+  overflow: hidden;
 }
 
+@keyframes heroGradient3D {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+/* 2. 3D FLOATING GLASS CARD (HERO TRACK RECORD) */
 .glass-card {
-  background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow:
+    0 22px 45px -12px rgba(0, 0, 0, 0.55),
+    inset 0 1px 2px rgba(255, 255, 255, 0.35);
+  transform-style: preserve-3d;
+  animation: float3DCard 5s ease-in-out infinite;
 }
 
+@keyframes float3DCard {
+  0%, 100% { transform: translateY(0px) rotateX(0deg) rotateY(0deg); }
+  50% { transform: translateY(-7px) rotateX(2deg) rotateY(-2deg); }
+}
+
+/* 3. 3D PUSHABLE ROYAL GOLD & NAVY BUTTONS */
 .btn-royal-gold {
-  background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
+  background: linear-gradient(145deg, #FBBF24 0%, #D97706 100%);
   color: #08152B;
-  box-shadow: 0 8px 20px -4px rgba(245, 158, 11, 0.45);
-  transition: all 0.25s ease;
+  border-bottom: 4px solid #92400E;
+  box-shadow:
+    0 10px 20px -5px rgba(245, 158, 11, 0.55),
+    inset 0 1px 1px rgba(255, 255, 255, 0.6);
+  transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transform: translateY(0);
 }
 .btn-royal-gold:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 12px 24px -4px rgba(245, 158, 11, 0.6);
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 15px 26px -5px rgba(245, 158, 11, 0.7);
+}
+.btn-royal-gold:active {
+  transform: translateY(2px);
+  border-bottom-width: 1px;
 }
 
 .btn-royal-navy {
-  background: linear-gradient(135deg, #0F2952 0%, #1E427A 100%);
+  background: linear-gradient(145deg, #1E427A 0%, #0F2952 100%);
   color: #FFFFFF;
-  box-shadow: 0 8px 18px -4px rgba(15, 41, 82, 0.35);
-  transition: all 0.25s ease;
+  border-bottom: 4px solid #061022;
+  box-shadow:
+    0 10px 20px -5px rgba(15, 41, 82, 0.45),
+    inset 0 1px 1px rgba(255, 255, 255, 0.25);
+  transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 .btn-royal-navy:hover {
-  transform: translateY(-2px);
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 14px 24px -5px rgba(15, 41, 82, 0.6);
+}
+.btn-royal-navy:active {
+  transform: translateY(2px);
+  border-bottom-width: 1px;
 }
 
+/* 4. 3D TILT & DEPTH ON ALL CARDS (.hover-lift & rounded-3xl/2xl boxes) */
 .hover-lift {
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s ease;
+  transform-style: preserve-3d;
+  box-shadow:
+    0 10px 25px -8px rgba(15, 41, 82, 0.12),
+    0 4px 0 0 rgba(15, 41, 82, 0.06);
 }
-.hover-lift:hover {
-  transform: translateY(-4px);
+.hover-lift:hover, .hover-lift:active {
+  transform: translateY(-8px) rotateX(3deg) rotateY(-2deg) scale(1.015);
+  box-shadow:
+    0 22px 38px -10px rgba(15, 41, 82, 0.24),
+    0 6px 0 0 rgba(245, 158, 11, 0.45);
 }
 
+/* 5. 3D SCHOOL LOGO GLOW & PULSE */
+header img[alt="SDR Logo"] {
+  box-shadow: 0 6px 16px rgba(245, 158, 11, 0.45);
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+header img[alt="SDR Logo"]:active {
+  transform: scale(0.88) rotate(-8deg);
+}
+
+/* 6. 3D SECTION ENTRANCE & CARD DEPTH */
+section > div.rounded-3xl {
+  box-shadow:
+    0 18px 40px -12px rgba(15, 41, 82, 0.14),
+    0 5px 0 0 rgba(245, 158, 11, 0.3);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+section > div.rounded-3xl:hover {
+  transform: translateY(-4px);
+  box-shadow:
+    0 26px 50px -12px rgba(15, 41, 82, 0.22),
+    0 7px 0 0 rgba(245, 158, 11, 0.55);
+}
+
+/* 7. FLOATING WHATSAPP 3D PULSE */
+a.fixed.bottom-5.right-5 {
+  box-shadow: 0 12px 24px -4px rgba(16, 185, 129, 0.65), inset 0 2px 2px rgba(255,255,255,0.4);
+  animation: pulse3DWhatsApp 2.4s infinite ease-in-out;
+}
+@keyframes pulse3DWhatsApp {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-6px) scale(1.08); }
+}
+
+/* PRINT STYLES FOR OFFICIAL MARKSHEET */
 @media print {
   body * { visibility: hidden; }
   #printableMarksheet, #printableMarksheet * { visibility: visible; }
@@ -58,3 +148,4 @@ h1, h2, h3, .royal-hindi-heading {
     box-shadow: none !important;
   }
 }
+
