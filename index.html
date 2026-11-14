@@ -12,92 +12,55 @@
   <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
   <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&family=Tiro+Devanagari+Hindi:ital@0;1&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=20" />
+  <link rel="stylesheet" href="style.css?v=30" />
 
-  <!-- 🔥 WORLD-CLASS 3D ANIMATION ENGINE -->
+  <!-- 🌟 WORLD-CLASS REAL 3D WEBGL & CSS STYLING -->
   <style>
     body {
       font-family: 'Mukta', 'Poppins', sans-serif;
       scroll-behavior: smooth;
       perspective: 1600px;
       overflow-x: hidden;
-      background: radial-gradient(circle at 50% 0%, #dbeafe 0%, #f1f5f9 50%, #fef3c7 100%);
+      background: radial-gradient(circle at 50% 0%, #1e3a8a 0%, #030712 60%, #050d1a 100%);
+      color: #f8fafc;
     }
     h1, h2, h3, .royal-hindi-heading {
       font-family: 'Tiro Devanagari Hindi', 'Mukta', 'Poppins', serif;
     }
     .hero-bg {
-      background: radial-gradient(circle at 75% 20%, #1d4ed8 0%, #0F2952 50%, #030712 100%);
+      background: linear-gradient(135deg, rgba(15, 41, 82, 0.9) 0%, rgba(3, 7, 18, 0.98) 100%);
       position: relative;
       overflow: hidden;
       transform-style: preserve-3d;
-      box-shadow: 0 30px 60px -15px rgba(5, 13, 26, 0.85);
-      border-bottom: 8px solid #F59E0B;
+      box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.9);
+      border-bottom: 4px solid #F59E0B;
     }
-    .ring-3d-1 {
-      position: absolute; width: 340px; height: 340px; border: 3px dashed rgba(251, 191, 36, 0.3); border-radius: 50%; top: -60px; right: -80px; animation: spin3DRing 18s linear infinite; pointer-events: none;
+    .btn-3d-futuristic {
+      background: linear-gradient(135deg, #f59e0b 0%, #b45309 100%);
+      color: #030712; font-weight: 800; border-radius: 18px; padding: 14px 28px;
+      box-shadow: 0 10px 30px -5px rgba(245, 158, 11, 0.6), inset 0 2px 3px rgba(255, 255, 255, 0.6);
+      transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
     }
-    @keyframes spin3DRing {
-      0% { transform: rotateX(55deg) rotateY(15deg) rotateZ(0deg); }
-      100% { transform: rotateX(55deg) rotateY(15deg) rotateZ(360deg); }
+    .btn-3d-futuristic:hover { transform: translateY(-5px) scale(1.04); box-shadow: 0 20px 40px -5px rgba(245, 158, 11, 0.85); }
+    .btn-3d-navy {
+      background: linear-gradient(135deg, #2563eb 0%, #0F2952 100%);
+      color: #ffffff; font-weight: 800; border-radius: 18px; padding: 14px 28px;
+      box-shadow: 0 10px 30px -5px rgba(37, 99, 235, 0.6), inset 0 2px 3px rgba(255, 255, 255, 0.3);
+      transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
     }
-    .float-3d-badge {
-      animation: floatBadge3D 3.6s ease-in-out infinite;
-      transform-style: preserve-3d;
-      box-shadow: 0 14px 28px rgba(0,0,0,0.45);
+    .btn-3d-navy:hover { transform: translateY(-5px) scale(1.04); box-shadow: 0 20px 40px -5px rgba(37, 99, 235, 0.85); }
+    .card-3d-magical {
+      background: rgba(15, 41, 82, 0.7); backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.15); border-top: 1px solid rgba(251, 191, 36, 0.5);
+      border-radius: 24px; box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
-    @keyframes floatBadge3D {
-      0%, 100% { transform: translateY(0px) rotateY(-8deg) rotateX(6deg); }
-      50% { transform: translateY(-10px) rotateY(8deg) rotateX(-6deg); }
-    }
-    .glass-card {
-      background: rgba(255, 255, 255, 0.14);
-      backdrop-filter: blur(16px);
-      border: 2px solid rgba(251, 191, 36, 0.6);
-      border-bottom: 8px solid #b45309;
-      box-shadow: 0 35px 70px -15px rgba(0, 0, 0, 0.75);
-      transform-style: preserve-3d;
-    }
-    .stat-cube-3d {
-      background: linear-gradient(145deg, #0F2952, #050d1a);
-      border: 2px solid rgba(251, 191, 36, 0.5);
-      border-bottom: 6px solid #f59e0b;
-      border-right: 4px solid #b45309;
-      box-shadow: 0 15px 30px rgba(0,0,0,0.6);
-      transform: translateZ(30px);
-      transition: transform 0.3s ease;
-    }
-    .stat-cube-3d:hover { transform: translateY(-8px) translateZ(45px) scale(1.06); }
-    .btn-royal-gold {
-      background: linear-gradient(180deg, #fde047 0%, #f59e0b 50%, #b45309 100%);
-      color: #050d1a; border-top: 2px solid #fef08a; border-bottom: 8px solid #78350f; border-right: 4px solid #92400e;
-      box-shadow: 0 16px 30px -5px rgba(245, 158, 11, 0.75); transition: all 0.15s ease;
-    }
-    .btn-royal-gold:active { transform: translateY(4px); border-bottom-width: 2px; }
-    .btn-royal-navy {
-      background: linear-gradient(180deg, #2563eb 0%, #0F2952 50%, #030712 100%);
-      color: #FFFFFF; border-top: 2px solid rgba(255,255,255,0.4); border-bottom: 8px solid #020617; border-right: 4px solid #050d1a;
-      box-shadow: 0 16px 30px -5px rgba(15, 41, 82, 0.85); transition: all 0.15s ease;
-    }
-    .btn-royal-navy:active { transform: translateY(4px); border-bottom-width: 2px; }
-    .card-3d-pop, .hover-lift {
-      border-bottom: 8px solid #0F2952 !important; border-right: 4px solid #cbd5e1 !important;
-      box-shadow: 0 20px 40px -10px rgba(15, 41, 82, 0.28), 0 8px 16px rgba(0, 0, 0, 0.1) !important;
-      transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease !important;
-      transform-style: preserve-3d;
-    }
-    .card-3d-pop:hover, .hover-lift:hover {
-      transform: perspective(1000px) translateY(-12px) rotateX(5deg) rotateY(-4deg) scale(1.02) translateZ(30px) !important;
-      border-bottom-color: #F59E0B !important;
-      box-shadow: 0 35px 60px -12px rgba(15, 41, 82, 0.45), 0 12px 24px rgba(245, 158, 11, 0.35) !important;
-    }
+    .card-3d-magical:hover { transform: translateY(-8px) scale(1.015); box-shadow: 0 35px 70px rgba(15, 41, 82, 0.8); }
     .logo-3d-spin { box-shadow: 0 8px 20px rgba(245, 158, 11, 0.55); animation: pulseLogo3D 3s ease-in-out infinite; }
     @keyframes pulseLogo3D { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.06); } }
-    .reveal-3d { opacity: 0; transform: perspective(900px) translateY(45px) rotateX(-12deg) scale(0.95); transition: all 0.7s ease; }
-    .reveal-3d.visible-3d { opacity: 1; transform: perspective(900px) translateY(0) rotateX(0deg) scale(1); }
   </style>
 </head>
-<body class="text-slate-800">
+<body class="text-slate-100">
 
   <!-- TOP UTILITY BAR -->
   <div class="bg-[#08152B] text-slate-200 text-[11px] py-1.5 px-3 border-b border-amber-500/30">
@@ -110,37 +73,37 @@
   </div>
 
   <!-- MAIN STICKY HEADER -->
-  <header class="bg-white/95 backdrop-blur-md sticky top-0 z-40 shadow-md border-b-2 border-amber-400">
+  <header class="bg-[#030712]/90 backdrop-blur-md sticky top-0 z-40 shadow-xl border-b border-amber-500/30">
     <div class="max-w-7xl mx-auto px-3 sm:px-6 py-2.5 flex justify-between items-center gap-2">
       <div class="flex items-center gap-2.5 sm:gap-3 min-w-0 flex-1">
         <img src="1794621466353.png" onclick="secretAdminLogoTap()" alt="SDR Logo" class="logo-3d-spin w-12 h-12 sm:w-14 sm:h-14 rounded-full object-cover border-2 border-amber-400 shrink-0 bg-[#08152B] cursor-pointer select-none" />
         <a href="#" class="min-w-0 leading-tight">
-          <h1 class="text-sm sm:text-xl font-extrabold text-[#0F2952] tracking-tight" data-en="SDR MEMORIAL PUBLIC HIGH SCHOOL" data-hi="एसडीआर मेमोरियल पब्लिक हाई स्कूल">एसडीआर मेमोरियल पब्लिक हाई स्कूल</h1>
-          <p class="text-[11px] sm:text-xs font-bold text-amber-700 mt-0.5" data-en="Basari, Chhatarpur • MP Board (Nursery to 10th)" data-hi="बसारी, छतरपुर • एमपी बोर्ड (नर्सरी से कक्षा 10वीं)">बसारी, छतरपुर • एमपी बोर्ड (नर्सरी से कक्षा 10वीं)</p>
+          <h1 class="text-sm sm:text-xl font-extrabold text-white tracking-tight" data-en="SDR MEMORIAL PUBLIC HIGH SCHOOL" data-hi="एसडीआर मेमोरियल पब्लिक हाई स्कूल">एसडीआर मेमोरियल पब्लिक हाई स्कूल</h1>
+          <p class="text-[11px] sm:text-xs font-bold text-amber-400 mt-0.5" data-en="Basari, Chhatarpur • MP Board (Nursery to 10th)" data-hi="बसारी, छतरपुर • एमपी बोर्ड (नर्सरी से कक्षा 10वीं)">बसारी, छतरपुर • एमपी बोर्ड (नर्सरी से कक्षा 10वीं)</p>
         </a>
       </div>
-      <nav class="hidden lg:flex items-center gap-5 text-xs font-bold text-slate-700">
-        <a href="#daily-thought" class="text-amber-700 hover:underline" data-en="Daily Thought" data-hi="शुभ विचार">शुभ विचार</a>
-        <a href="#homework" class="hover:text-[#0F2952]" data-en="Homework" data-hi="होमवर्क">होमवर्क</a>
-        <a href="#facilities" class="hover:text-[#0F2952]" data-en="Facilities & Van" data-hi="सुविधाएं">सुविधाएं</a>
-        <a href="#gallery" class="hover:text-[#0F2952]" data-en="Gallery" data-hi="गैलरी">गैलरी</a>
-        <a href="#fees" class="hover:text-[#0F2952]" data-en="Fees" data-hi="फीस">फीस</a>
-        <a href="#faculty" class="hover:text-[#0F2952]" data-en="Teachers" data-hi="शिक्षक">शिक्षक</a>
-        <a href="#result-portal" class="text-amber-700 hover:underline" data-en="Marksheet & TC" data-hi="मार्कशीट / TC">मार्कशीट / TC</a>
+      <nav class="hidden lg:flex items-center gap-5 text-xs font-bold text-slate-300">
+        <a href="#daily-thought" class="text-amber-400 hover:underline" data-en="Daily Thought" data-hi="शुभ विचार">शुभ विचार</a>
+        <a href="#homework" class="hover:text-white" data-en="Homework" data-hi="होमवर्क">होमवर्क</a>
+        <a href="#facilities" class="hover:text-white" data-en="Facilities & Van" data-hi="सुविधाएं">सुविधाएं</a>
+        <a href="#gallery" class="hover:text-white" data-en="Gallery" data-hi="गैलरी">गैलरी</a>
+        <a href="#fees" class="hover:text-white" data-en="Fees" data-hi="फीस">फीस</a>
+        <a href="#faculty" class="hover:text-white" data-en="Teachers" data-hi="शिक्षक">शिक्षक</a>
+        <a href="#result-portal" class="text-amber-400 hover:underline" data-en="Marksheet & TC" data-hi="मार्कशीट / TC">मार्कशीट / TC</a>
       </nav>
-      <button type="button" onclick="toggleMobileMenu()" class="lg:hidden w-10 h-10 rounded-xl border-2 border-[#0F2952] bg-amber-400 flex items-center justify-center text-[#08152B] shrink-0 shadow">
+      <button type="button" onclick="toggleMobileMenu()" class="lg:hidden w-10 h-10 rounded-xl border border-amber-400 bg-amber-400/20 flex items-center justify-center text-amber-400 shrink-0">
         <i class="fa-solid fa-bars text-base"></i>
       </button>
     </div>
-    <div id="mobileMenu" class="hidden lg:hidden bg-white border-t px-4 py-3 space-y-2 text-xs font-bold text-slate-700 shadow-lg">
-      <a href="#daily-thought" onclick="closeMobileMenu()" class="block py-1 text-amber-700">✨ आज का शुभ विचार एवं विशेष दिवस</a>
+    <div id="mobileMenu" class="hidden lg:hidden bg-[#030712] border-t border-slate-800 px-4 py-3 space-y-2 text-xs font-bold text-slate-300 shadow-lg">
+      <a href="#daily-thought" onclick="closeMobileMenu()" class="block py-1 text-amber-400">✨ आज का शुभ विचार एवं विशेष दिवस</a>
       <a href="#about" onclick="closeMobileMenu()" class="block py-1">🏫 विद्यालय परिचय एवं प्राचार्य संदेश</a>
       <a href="#homework" onclick="closeMobileMenu()" class="block py-1">📚 आज का कक्षा होमवर्क</a>
       <a href="#facilities" onclick="closeMobileMenu()" class="block py-1">🚌 सुविधाएं एवं स्कूल वैन रूट</a>
       <a href="#gallery" onclick="closeMobileMenu()" class="block py-1">📸 कैंपस फोटो गैलरी</a>
       <a href="#fees" onclick="closeMobileMenu()" class="block py-1">💰 शुल्क विवरण 2026–27</a>
       <a href="#faculty" onclick="closeMobileMenu()" class="block py-1">👨‍🏫 हमारे योग्य शिक्षक</a>
-      <a href="#result-portal" onclick="closeMobileMenu()" class="block py-1 text-amber-700">🎓 मार्कशीट PDF डाउनलोड / TC सत्यापन</a>
+      <a href="#result-portal" onclick="closeMobileMenu()" class="block py-1 text-amber-400">🎓 मार्कशीट PDF डाउनलोड / TC सत्यापन</a>
     </div>
   </header>
 
@@ -152,100 +115,82 @@
     </marquee>
   </div>
 
-  <!-- HERO SECTION -->
-  <section class="hero-bg text-white py-10 sm:py-16 px-4">
-    <div class="ring-3d-1"></div>
+  <!-- REAL 3D WEBGL HERO SECTION -->
+  <section class="hero-bg text-white py-12 sm:py-20 px-4 relative overflow-hidden">
     <div class="max-w-7xl mx-auto grid lg:grid-cols-12 gap-8 items-center relative z-10">
-      <div class="lg:col-span-7 space-y-4">
-        <div class="inline-flex items-center gap-2 float-3d-badge bg-white/15 border border-amber-400/60 px-4 py-1.5 rounded-full text-xs font-bold text-amber-300">
-          <i class="fa-solid fa-cube text-amber-400"></i>
-          <span data-en="Tamaso Ma Jyotirgamaya • 3D Digital Campus" data-hi="तमसो मा ज्योतिर्गमय • आधुनिक डिजिटल विद्यालय">तमसो मा ज्योतिर्गमय • आधुनिक डिजिटल विद्यालय</span>
+      <div class="lg:col-span-7 space-y-5">
+        <div class="inline-flex items-center gap-2.5 bg-blue-600/30 border border-blue-400/50 px-4 py-1.5 rounded-full text-xs font-bold text-amber-300 backdrop-blur-md shadow-lg">
+          <i class="fa-solid fa-cube text-amber-400 animate-pulse"></i>
+          <span>Tamaso Ma Jyotirgamaya • True 3D WebGL Campus</span>
         </div>
-        <h2 class="text-3xl sm:text-5xl font-extrabold leading-tight">
-          <span data-en="Building Bright Futures at" data-hi="उज्ज्वल भविष्य का निर्माण —">उज्ज्वल भविष्य का निर्माण —</span>
-          <span class="text-amber-400 block mt-1" data-en="SDR Memorial, Basari" data-hi="एसडीआर मेमोरियल, बसारी">एसडीआर मेमोरियल, बसारी</span>
+        <h2 class="text-3xl sm:text-6xl font-extrabold leading-tight tracking-wide drop-shadow-2xl">
+          <span>उज्ज्वल भविष्य का निर्माण —</span>
+          <span class="text-amber-400 block mt-2 drop-shadow-[0_5px_15px_rgba(245,158,11,0.5)]">एसडीआर मेमोरियल, बसारी</span>
         </h2>
-        <p class="text-slate-200 text-xs sm:text-base max-w-2xl leading-relaxed" data-en="MP Board Recognized English & Hindi Medium School (Nursery to 10th) with smart classrooms, weekly assessments, safe van transport, and digital parent portal." data-hi="एमपी बोर्ड से मान्यता प्राप्त अंग्रेजी एवं हिंदी माध्यम विद्यालय (नर्सरी से कक्षा 10वीं तक) — स्मार्ट क्लासरूम, साप्ताहिक टेस्ट, सुरक्षित वैन एवं डिजिटल पेरेंट पोर्टल के साथ।">
+        <p class="text-slate-300 text-xs sm:text-base max-w-2xl leading-relaxed">
           एमपी बोर्ड से मान्यता प्राप्त अंग्रेजी एवं हिंदी माध्यम विद्यालय (नर्सरी से कक्षा 10वीं तक) — स्मार्ट क्लासरूम, साप्ताहिक टेस्ट, सुरक्षित वैन एवं डिजिटल पेरेंट पोर्टल के साथ।
         </p>
-        <div class="flex flex-wrap gap-3 pt-2">
-          <button type="button" onclick="openAdmissionModal()" class="btn-royal-gold font-extrabold text-xs sm:text-sm px-5 py-3.5 rounded-2xl cursor-pointer flex items-center gap-2">
+        <div class="flex flex-wrap gap-3 pt-3">
+          <button type="button" onclick="openAdmissionModal()" class="btn-3d-futuristic cursor-pointer flex items-center gap-2">
             <i class="fa-solid fa-pen-to-square"></i>
-            <span data-en="Apply Online Admission" data-hi="ऑनलाइन प्रवेश फॉर्म भरें">ऑनलाइन प्रवेश फॉर्म भरें</span>
+            <span>ऑनलाइन प्रवेश फॉर्म भरें</span>
           </button>
-          <a href="#result-portal" class="btn-royal-navy font-bold text-xs sm:text-sm px-5 py-3.5 rounded-2xl flex items-center gap-2">
+          <a href="#result-portal" class="btn-3d-navy flex items-center gap-2">
             <i class="fa-solid fa-file-pdf text-amber-400"></i>
-            <span data-en="Download Marksheet PDF" data-hi="मार्कशीट PDF डाउनलोड करें">मार्कशीट PDF डाउनलोड करें</span>
+            <span>मार्कशीट PDF डाउनलोड करें</span>
           </a>
         </div>
       </div>
-      <div class="lg:col-span-5">
-        <div class="glass-card rounded-3xl p-5 sm:p-6 space-y-4">
-          <p class="text-xs font-extrabold tracking-wider uppercase text-amber-300" data-en="🏆 3D SCHOOL TRACK RECORD" data-hi="🏆 विद्यालय की गौरवशाली उपलब्धियाँ">🏆 विद्यालय की गौरवशाली उपलब्धियाँ</p>
-          <div class="grid grid-cols-2 gap-3.5 text-center">
-            <div class="stat-cube-3d rounded-2xl p-3.5">
-              <p id="statAlumni" class="text-2xl sm:text-3xl font-extrabold text-amber-400">2,450+</p>
-              <p class="text-[11px] text-slate-200 font-bold mt-1" data-en="Passed Out" data-hi="उत्तीर्ण छात्र">उत्तीर्ण छात्र</p>
-            </div>
-            <div class="stat-cube-3d rounded-2xl p-3.5">
-              <p id="statNewAdmissions" class="text-2xl sm:text-3xl font-extrabold text-emerald-400">148</p>
-              <p class="text-[11px] text-slate-200 font-bold mt-1" data-en="New Admissions" data-hi="नए प्रवेश">नए प्रवेश</p>
-            </div>
-            <div class="stat-cube-3d rounded-2xl p-3.5">
-              <p id="statCurrentStudents" class="text-2xl sm:text-3xl font-extrabold text-sky-400">520+</p>
-              <p class="text-[11px] text-slate-200 font-bold mt-1" data-en="Current Students" data-hi="अध्ययनरत">अध्ययनरत</p>
-            </div>
-            <div class="stat-cube-3d rounded-2xl p-3.5">
-              <p id="statTeachers" class="text-2xl sm:text-3xl font-extrabold text-rose-400">22</p>
-              <p class="text-[11px] text-slate-200 font-bold mt-1" data-en="Qualified Staff" data-hi="योग्य शिक्षक">योग्य शिक्षक</p>
-            </div>
+      <div class="lg:col-span-5 relative flex justify-center items-center">
+        <div id="hero-3d-container" class="w-full h-[320px] sm:h-[400px] rounded-3xl relative flex items-center justify-center">
+          <div class="absolute bottom-4 bg-slate-900/90 backdrop-blur-md border border-amber-400/40 px-4 py-2 rounded-2xl text-[11px] font-extrabold text-amber-300 shadow-xl pointer-events-none flex items-center gap-2">
+            <i class="fa-solid fa-hand-pointer text-amber-400 animate-bounce"></i> 3D ऑब्जेक्ट को उंगली से घुमाएं
           </div>
         </div>
       </div>
     </div>
   </section>
-
-  <!-- DAILY THOUGHT & PRINCIPAL & HOMEWORK -->
-  <section id="daily-thought" class="pt-8 px-4 max-w-7xl mx-auto reveal-3d">
-    <div class="card-3d-pop bg-gradient-to-r from-amber-50 via-orange-50 to-amber-100 border-2 border-amber-400 rounded-3xl p-5 sm:p-7 space-y-3">
+    <!-- DAILY THOUGHT & HOMEWORK -->
+  <section id="daily-thought" class="pt-10 px-4 max-w-7xl mx-auto">
+    <div class="card-3d-magical p-6 sm:p-8 space-y-3">
       <div class="flex flex-wrap justify-between items-center gap-2">
-        <span class="bg-[#0F2952] text-amber-300 text-xs font-extrabold px-3 py-1 rounded-full shadow" id="dailyThoughtBadge">✨ आज का विशेष दिवस एवं शुभ विचार</span>
-        <span class="text-xs font-bold text-amber-900" id="dailyThoughtDate"></span>
+        <span class="bg-amber-500 text-slate-950 text-xs font-extrabold px-3.5 py-1 rounded-full shadow" id="dailyThoughtBadge">✨ आज का विशेष दिवस एवं शुभ विचार</span>
+        <span class="text-xs font-bold text-amber-300" id="dailyThoughtDate"></span>
       </div>
-      <h3 id="dailyThoughtTitle" class="text-lg sm:text-2xl font-extrabold text-[#0F2952]"></h3>
-      <p id="dailyThoughtArticle" class="text-xs sm:text-sm text-slate-700 leading-relaxed font-medium"></p>
-      <div class="bg-white border-2 border-amber-300 rounded-2xl p-3.5 text-xs sm:text-sm font-extrabold text-[#0F2952] italic shadow-inner" id="dailyThoughtQuote"></div>
+      <h3 id="dailyThoughtTitle" class="text-lg sm:text-2xl font-extrabold text-amber-400"></h3>
+      <p id="dailyThoughtArticle" class="text-xs sm:text-sm text-slate-200 leading-relaxed font-medium"></p>
+      <div class="bg-slate-900/80 border border-amber-400/40 rounded-2xl p-4 text-xs sm:text-sm font-extrabold text-amber-300 italic shadow-inner" id="dailyThoughtQuote"></div>
     </div>
   </section>
 
-  <section id="about" class="py-8 px-4 max-w-7xl mx-auto reveal-3d">
-    <div class="card-3d-pop grid lg:grid-cols-12 gap-6 items-center bg-white rounded-3xl p-5 sm:p-8 border-2 border-slate-200">
+  <section id="about" class="py-10 px-4 max-w-7xl mx-auto">
+    <div class="card-3d-magical grid lg:grid-cols-12 gap-6 items-center p-6 sm:p-8">
       <div class="lg:col-span-4 text-center space-y-2.5">
-        <div class="float-3d-badge w-24 h-24 rounded-3xl bg-[#0F2952] text-amber-300 mx-auto flex items-center justify-center text-3xl font-extrabold border-4 border-amber-400">
+        <div class="w-24 h-24 rounded-3xl bg-blue-600/30 border-2 border-amber-400 text-amber-300 mx-auto flex items-center justify-center text-3xl font-extrabold shadow-lg">
           <i class="fa-solid fa-user-tie"></i>
         </div>
         <div>
-          <h3 class="font-extrabold text-[#0F2952] text-base">Mr. Surender Kushwaha</h3>
-          <p class="text-xs font-bold text-amber-700">प्राचार्य • गणित (कक्षा 5वीं से 10वीं तक)</p>
-          <a href="tel:+919826563564" class="inline-block mt-1 text-xs font-extrabold text-emerald-700 hover:underline">📞 +91 98265-63564</a>
+          <h3 class="font-extrabold text-white text-base">Mr. Surender Kushwaha</h3>
+          <p class="text-xs font-bold text-amber-400">प्राचार्य • गणित (कक्षा 5वीं से 10वीं तक)</p>
+          <a href="tel:+919826563564" class="inline-block mt-1 text-xs font-extrabold text-emerald-400 hover:underline">📞 +91 98265-63564</a>
         </div>
       </div>
       <div class="lg:col-span-8 space-y-2.5">
-        <span class="text-xs font-extrabold uppercase tracking-wider text-amber-800 bg-amber-100 px-3 py-1 rounded-full">प्राचार्य का संदेश</span>
-        <h3 class="text-lg sm:text-2xl font-extrabold text-[#0F2952]">बसारी में अनुशासन, संस्कार और आधुनिक शिक्षा का संगम</h3>
-        <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">एसडीआर मेमोरियल पब्लिक हाई स्कूल, छत्रसाल चौराहा के पास, बसारी का उद्देश्य बसारी एवं आसपास के ग्रामीण क्षेत्रों के प्रत्येक बच्चे को सुलभ और उच्च गुणवत्ता वाली अंग्रेजी एवं हिंदी माध्यम शिक्षा प्रदान करना है।</p>
+        <span class="text-xs font-extrabold uppercase tracking-wider text-amber-300 bg-amber-500/20 px-3 py-1 rounded-full border border-amber-500/30">प्राचार्य का संदेश</span>
+        <h3 class="text-lg sm:text-2xl font-extrabold text-white">बसारी में अनुशासन, संस्कार और आधुनिक शिक्षा का संगम</h3>
+        <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">एसडीआर मेमोरियल पब्लिक हाई स्कूल, छत्रसाल चौराहा के पास, बसारी का उद्देश्य बसारी एवं आसपास के ग्रामीण क्षेत्रों के प्रत्येक बच्चे को सुलभ और उच्च गुणवत्ता वाली अंग्रेजी एवं हिंदी माध्यम शिक्षा प्रदान करना है।</p>
       </div>
     </div>
   </section>
 
-  <section id="homework" class="py-8 px-4 max-w-7xl mx-auto reveal-3d">
-    <div class="card-3d-pop bg-gradient-to-br from-[#08152B] via-[#0F2952] to-[#1e3a8a] text-white rounded-3xl p-5 sm:p-8 space-y-4">
+  <section id="homework" class="py-10 px-4 max-w-7xl mx-auto">
+    <div class="card-3d-magical bg-gradient-to-br from-[#08152B] to-[#0F2952] p-6 sm:p-8 space-y-4 border-amber-400/50">
       <div class="flex flex-wrap justify-between items-center gap-3">
         <div>
-          <span class="text-[11px] font-extrabold bg-amber-400 text-[#08152B] px-3 py-0.5 rounded-full shadow">दैनिक कक्षा डायरी</span>
-          <h3 class="text-lg sm:text-2xl font-extrabold mt-1.5">आज का कक्षा होमवर्क (Class Homework)</h3>
+          <span class="text-[11px] font-extrabold bg-amber-400 text-[#08152B] px-3.5 py-1 rounded-full shadow">दैनिक कक्षा डायरी</span>
+          <h3 class="text-lg sm:text-2xl font-extrabold text-white mt-1.5">आज का कक्षा होमवर्क (Class Homework)</h3>
         </div>
-        <select id="publicHomeworkClassFilter" onchange="renderPublicHomework()" class="bg-white text-[#0F2952] font-extrabold text-xs px-3.5 py-2.5 rounded-xl shadow-lg cursor-pointer">
+        <select id="publicHomeworkClassFilter" onchange="renderPublicHomework()" class="bg-slate-900 text-white border border-amber-400/50 font-extrabold text-xs px-3.5 py-2.5 rounded-xl shadow cursor-pointer">
           <option value="All">सभी कक्षाएं (All Classes)</option>
           <option value="Class 10th">Class 10th</option><option value="Class 8th">Class 8th</option><option value="Class 7th">Class 7th</option>
         </select>
@@ -253,158 +198,67 @@
       <div id="publicHomeworkGrid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 text-xs"></div>
     </div>
   </section>
-    <!-- FACILITIES & SCHOOL VAN ROUTES 3D -->
-  <section id="facilities" class="py-10 px-4 max-w-7xl mx-auto space-y-6 reveal-3d">
+
+  <!-- FACILITIES, GALLERY, FEES, TOPPERS, TEACHERS, HOLIDAYS & PORTAL -->
+  <section id="facilities" class="py-10 px-4 max-w-7xl mx-auto space-y-6">
     <div class="text-center space-y-1.5">
-      <span class="text-xs font-extrabold text-amber-700 uppercase tracking-wider">परिसर एवं वाहन सुविधा</span>
-      <h3 class="text-xl sm:text-3xl font-extrabold text-[#0F2952]">आधुनिक सुविधाएं एवं सुरक्षित स्कूल वैन रूट</h3>
+      <span class="text-xs font-extrabold text-amber-400 uppercase tracking-wider">परिसर एवं वाहन सुविधा</span>
+      <h3 class="text-xl sm:text-3xl font-extrabold text-white">आधुनिक सुविधाएं एवं सुरक्षित स्कूल वैन रूट</h3>
     </div>
     <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 text-xs">
-      <div class="bg-white p-5 rounded-2xl border hover-lift space-y-2">
-        <div class="w-12 h-12 rounded-2xl bg-amber-100 text-amber-700 flex items-center justify-center text-xl shadow-inner"><i class="fa-solid fa-chalkboard-user"></i></div>
-        <h4 class="font-extrabold text-[#0F2952] text-sm">स्मार्ट क्लासरूम</h4>
-        <p class="text-slate-600">डिजिटल विजुअल शिक्षा, हवादार कमरे और स्वच्छ आरओ (RO) पेयजल सुविधा।</p>
-      </div>
-      <div class="bg-white p-5 rounded-2xl border hover-lift space-y-2">
-        <div class="w-12 h-12 rounded-2xl bg-blue-100 text-blue-700 flex items-center justify-center text-xl shadow-inner"><i class="fa-solid fa-computer"></i></div>
-        <h4 class="font-extrabold text-[#0F2952] text-sm">कंप्यूटर एवं विज्ञान लैब</h4>
-        <p class="text-slate-600">व्यावहारिक कंप्यूटर शिक्षा और आधुनिक उपकरणों से सुसज्जित विज्ञान प्रयोगशाला।</p>
-      </div>
-      <div class="bg-white p-5 rounded-2xl border hover-lift space-y-2">
-        <div class="w-12 h-12 rounded-2xl bg-emerald-100 text-emerald-700 flex items-center justify-center text-xl shadow-inner"><i class="fa-solid fa-van-shuttle"></i></div>
-        <h4 class="font-extrabold text-[#0F2952] text-sm">सुरक्षित ग्रामीण वैन सेवा</h4>
-        <p class="text-slate-600">बसारी, राजनगर, खजुराहो रोड और आसपास के गाँवों से सुरक्षित वाहन सुविधा।</p>
-      </div>
-      <div class="bg-white p-5 rounded-2xl border hover-lift space-y-2">
-        <div class="w-12 h-12 rounded-2xl bg-rose-100 text-rose-700 flex items-center justify-center text-xl shadow-inner"><i class="fa-solid fa-shield-halved"></i></div>
-        <h4 class="font-extrabold text-[#0F2952] text-sm">CCTV सुरक्षा एवं साप्ताहिक टेस्ट</h4>
-        <p class="text-slate-600">24x7 CCTV सुरक्षा निगरानी, साप्ताहिक परीक्षा एवं अभिभावकों को व्हाट्सएप अपडेट।</p>
-      </div>
+      <div class="card-3d-magical p-5 space-y-2"><div class="w-12 h-12 rounded-2xl bg-amber-500/20 text-amber-400 flex items-center justify-center text-xl"><i class="fa-solid fa-chalkboard-user"></i></div><h4 class="font-extrabold text-white text-sm">स्मार्ट क्लासरूम</h4><p class="text-slate-300">डिजिटल विजुअल शिक्षा, हवादार कमरे और स्वच्छ आरओ (RO) पेयजल सुविधा।</p></div>
+      <div class="card-3d-magical p-5 space-y-2"><div class="w-12 h-12 rounded-2xl bg-blue-500/20 text-blue-400 flex items-center justify-center text-xl"><i class="fa-solid fa-computer"></i></div><h4 class="font-extrabold text-white text-sm">कंप्यूटर एवं विज्ञान लैब</h4><p class="text-slate-300">व्यावहारिक कंप्यूटर शिक्षा और आधुनिक उपकरणों से सुसज्जित विज्ञान प्रयोगशाला।</p></div>
+      <div class="card-3d-magical p-5 space-y-2"><div class="w-12 h-12 rounded-2xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-xl"><i class="fa-solid fa-van-shuttle"></i></div><h4 class="font-extrabold text-white text-sm">सुरक्षित ग्रामीण वैन सेवा</h4><p class="text-slate-300">बसारी, राजनगर, खजुराहो रोड और आसपास के गाँवों से सुरक्षित वाहन सुविधा।</p></div>
+      <div class="card-3d-magical p-5 space-y-2"><div class="w-12 h-12 rounded-2xl bg-rose-500/20 text-rose-400 flex items-center justify-center text-xl"><i class="fa-solid fa-shield-halved"></i></div><h4 class="font-extrabold text-white text-sm">CCTV सुरक्षा एवं साप्ताहिक टेस्ट</h4><p class="text-slate-300">24x7 CCTV सुरक्षा निगरानी, साप्ताहिक परीक्षा एवं अभिभावकों को व्हाट्सएप अपडेट।</p></div>
     </div>
-    <div class="card-3d-pop bg-white rounded-3xl p-5 sm:p-6 border space-y-3">
-      <h4 class="font-extrabold text-[#0F2952] text-sm flex items-center gap-2"><i class="fa-solid fa-route text-amber-500"></i> सक्रिय स्कूल वैन एवं बस रूट</h4>
+    <div class="card-3d-magical p-6 space-y-3">
+      <h4 class="font-extrabold text-amber-400 text-sm flex items-center gap-2"><i class="fa-solid fa-route"></i> सक्रिय स्कूल वैन एवं बस रूट</h4>
       <div id="publicVanRoutesGrid" class="grid sm:grid-cols-3 gap-4 text-xs"></div>
     </div>
   </section>
 
-  <!-- GALLERY & FEES -->
-  <section id="gallery" class="py-10 px-4 max-w-7xl mx-auto space-y-5 reveal-3d">
+  <section id="gallery" class="py-10 px-4 max-w-7xl mx-auto space-y-5">
     <div class="flex flex-wrap justify-between items-end gap-3">
-      <div>
-        <span class="text-xs font-extrabold text-amber-700 uppercase tracking-wider">विद्यालय की झलकियाँ</span>
-        <h3 class="text-xl sm:text-3xl font-extrabold text-[#0F2952]">कैंपस फोटो गैलरी</h3>
-      </div>
-      <div class="flex gap-2 text-xs font-bold">
-        <button type="button" onclick="filterGallery('All')" class="btn-royal-navy px-3.5 py-1.5 rounded-xl cursor-pointer">सभी</button>
-        <button type="button" onclick="filterGallery('Events')" class="px-3.5 py-1.5 rounded-xl bg-white border-b-4 border-slate-300 cursor-pointer">कार्यक्रम</button>
-        <button type="button" onclick="filterGallery('Campus')" class="px-3.5 py-1.5 rounded-xl bg-white border-b-4 border-slate-300 cursor-pointer">परिसर</button>
-      </div>
+      <div><span class="text-xs font-extrabold text-amber-400 uppercase tracking-wider">विद्यालय की झलकियाँ</span><h3 class="text-xl sm:text-3xl font-extrabold text-white">कैंपस फोटो गैलरी</h3></div>
+      <div class="flex gap-2 text-xs font-bold"><button type="button" onclick="filterGallery('All')" class="btn-3d-navy px-3.5 py-2 cursor-pointer">सभी</button></div>
     </div>
     <div id="publicGalleryGrid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5"></div>
   </section>
 
-  <section id="fees" class="py-10 px-4 max-w-7xl mx-auto space-y-5 reveal-3d">
-    <div class="text-center space-y-1">
-      <span class="text-xs font-extrabold text-amber-700 uppercase tracking-wider">पारदर्शी शुल्क संरचना</span>
-      <h3 class="text-xl sm:text-3xl font-extrabold text-[#0F2952]">वार्षिक एवं मासिक शुल्क विवरण (सत्र 2026–27)</h3>
-    </div>
-    <div class="card-3d-pop bg-white rounded-3xl border overflow-x-auto">
-      <table class="w-full text-left text-xs sm:text-sm">
-        <thead class="bg-[#0F2952] text-white">
-          <tr>
-            <th class="p-3.5">कक्षा वर्ग</th>
-            <th class="p-3.5">प्रवेश शुल्क</th>
-            <th class="p-3.5">मासिक शिक्षण शुल्क</th>
-            <th class="p-3.5">परीक्षा एवं गतिविधि</th>
-          </tr>
-        </thead>
-        <tbody class="divide-y divide-slate-200 font-medium">
-          <tr><td class="p-3.5 font-bold text-[#0F2952]">नर्सरी, एलकेजी एवं यूकेजी</td><td class="p-3.5">₹ 500</td><td class="p-3.5 font-bold text-emerald-700">₹ 450 / माह</td><td class="p-3.5">₹ 300 / सत्र</td></tr>
-          <tr><td class="p-3.5 font-bold text-[#0F2952]">कक्षा 1ली से कक्षा 5वीं तक</td><td class="p-3.5">₹ 600</td><td class="p-3.5 font-bold text-emerald-700">₹ 550 / माह</td><td class="p-3.5">₹ 400 / सत्र</td></tr>
-          <tr><td class="p-3.5 font-bold text-[#0F2952]">कक्षा 6वीं से कक्षा 8वीं तक</td><td class="p-3.5">₹ 800</td><td class="p-3.5 font-bold text-emerald-700">₹ 700 / माह</td><td class="p-3.5">₹ 500 / सत्र</td></tr>
-          <tr><td class="p-3.5 font-bold text-[#0F2952]">कक्षा 9वीं एवं कक्षा 10वीं (एमपी बोर्ड)</td><td class="p-3.5">₹ 1,000</td><td class="p-3.5 font-bold text-emerald-700">₹ 900 / माह</td><td class="p-3.5">₹ 600 / सत्र</td></tr>
-        </tbody>
-      </table>
-    </div>
+  <section id="fees" class="py-10 px-4 max-w-7xl mx-auto space-y-5">
+    <div class="text-center space-y-1"><span class="text-xs font-extrabold text-amber-400 uppercase tracking-wider">पारदर्शी शुल्क संरचना</span><h3 class="text-xl sm:text-3xl font-extrabold text-white">वार्षिक एवं मासिक शुल्क विवरण (सत्र 2026–27)</h3></div>
+    <div class="card-3d-magical overflow-x-auto"><table class="w-full text-left text-xs sm:text-sm"><thead class="bg-[#0F2952] text-amber-300"><tr><th class="p-3.5">कक्षा वर्ग</th><th class="p-3.5">प्रवेश शुल्क</th><th class="p-3.5">मासिक शिक्षण शुल्क</th><th class="p-3.5">परीक्षा एवं गतिविधि</th></tr></thead><tbody class="divide-y divide-slate-800 font-medium text-slate-200"><tr><td class="p-3.5 font-bold text-white">नर्सरी, एलकेजी एवं यूकेजी</td><td class="p-3.5">₹ 500</td><td class="p-3.5 font-bold text-emerald-400">₹ 450 / माह</td><td class="p-3.5">₹ 300 / सत्र</td></tr><tr><td class="p-3.5 font-bold text-white">कक्षा 1ली से कक्षा 5वीं तक</td><td class="p-3.5">₹ 600</td><td class="p-3.5 font-bold text-emerald-400">₹ 550 / माह</td><td class="p-3.5">₹ 400 / सत्र</td></tr><tr><td class="p-3.5 font-bold text-white">कक्षा 6वीं से कक्षा 8वीं तक</td><td class="p-3.5">₹ 800</td><td class="p-3.5 font-bold text-emerald-400">₹ 700 / माह</td><td class="p-3.5">₹ 500 / सत्र</td></tr><tr><td class="p-3.5 font-bold text-white">कक्षा 9वीं एवं कक्षा 10वीं (एमपी बोर्ड)</td><td class="p-3.5">₹ 1,000</td><td class="p-3.5 font-bold text-emerald-400">₹ 900 / माह</td><td class="p-3.5">₹ 600 / सत्र</td></tr></tbody></table></div>
   </section>
 
-  <!-- TOPPERS, TEACHERS & HOLIDAYS -->
-  <section id="toppers" class="py-10 px-4 max-w-7xl mx-auto space-y-5 reveal-3d">
-    <div class="text-center space-y-1">
-      <span class="text-xs font-extrabold text-amber-700 uppercase tracking-wider">विद्यालय के मेधावी छात्र</span>
-      <h3 class="text-xl sm:text-3xl font-extrabold text-[#0F2952]">हमारे बोर्ड एवं कक्षा टॉपर्स</h3>
-    </div>
-    <div id="publicToppersGrid" class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4"></div>
-  </section>
+  <section id="toppers" class="py-10 px-4 max-w-7xl mx-auto space-y-5"><div class="text-center"><span class="text-xs font-extrabold text-amber-400 uppercase">विद्यालय के मेधावी छात्र</span><h3 class="text-xl sm:text-3xl font-extrabold text-white">हमारे बोर्ड एवं कक्षा टॉपर्स</h3></div><div id="publicToppersGrid" class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4"></div></section>
+  <section id="faculty" class="py-10 px-4 max-w-7xl mx-auto space-y-5"><div class="text-center"><span class="text-xs font-extrabold text-amber-400 uppercase">अनुभवी शिक्षक परिवार</span><h3 class="text-xl sm:text-3xl font-extrabold text-white">हमारे योग्य एवं अनुभवी शिक्षक</h3></div><div id="publicTeachersGrid" class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4"></div></section>
+  <section id="holidays" class="py-8 px-4 max-w-7xl mx-auto space-y-4"><div class="card-3d-magical p-6 space-y-3"><h3 class="text-base sm:text-xl font-extrabold text-white flex items-center gap-2"><i class="fa-solid fa-calendar-days text-amber-400"></i> विद्यालय अवकाश कैलेंडर 2026–27</h3><div id="publicHolidaysGrid" class="grid sm:grid-cols-2 lg:grid-cols-4 gap-3 text-xs"></div></div></section>
 
-  <section id="faculty" class="py-10 px-4 max-w-7xl mx-auto space-y-5 reveal-3d">
-    <div class="text-center space-y-1">
-      <span class="text-xs font-extrabold text-amber-700 uppercase tracking-wider">अनुभवी शिक्षक परिवार</span>
-      <h3 class="text-xl sm:text-3xl font-extrabold text-[#0F2952]">हमारे योग्य एवं अनुभवी शिक्षक</h3>
-    </div>
-    <div id="publicTeachersGrid" class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4"></div>
-  </section>
-
-  <section id="holidays" class="py-8 px-4 max-w-7xl mx-auto space-y-4 reveal-3d">
-    <div class="card-3d-pop bg-white rounded-3xl p-5 sm:p-6 border space-y-3">
-      <h3 class="text-base sm:text-xl font-extrabold text-[#0F2952] flex items-center gap-2"><i class="fa-solid fa-calendar-days text-amber-500"></i> विद्यालय अवकाश कैलेंडर 2026–27</h3>
-      <div id="publicHolidaysGrid" class="grid sm:grid-cols-2 lg:grid-cols-4 gap-3.5 text-xs"></div>
-    </div>
-  </section>
-
-  <!-- DIGITAL MARKSHEET & TC PORTAL -->
-  <section id="result-portal" class="py-10 px-4 max-w-7xl mx-auto reveal-3d">
-    <div class="card-3d-pop bg-white rounded-3xl p-5 sm:p-8 border-2 border-amber-400 space-y-6">
-      <div class="flex flex-wrap justify-between items-center gap-3 border-b pb-4">
-        <div>
-          <span class="text-xs font-extrabold text-amber-700 uppercase tracking-wider">डिजिटल अभिभावक पोर्टल</span>
-          <h3 class="text-lg sm:text-2xl font-extrabold text-[#0F2952]">डिजिटल मार्कशीट PDF डाउनलोड एवं TC सत्यापन</h3>
-        </div>
-        <div class="flex gap-2 text-xs font-extrabold">
-          <button type="button" id="btnTabResult" onclick="switchPortalTab('result')" class="btn-royal-navy px-3.5 py-2 rounded-xl cursor-pointer">🎓 मार्कशीट PDF</button>
-          <button type="button" id="btnTabTC" onclick="switchPortalTab('tc')" class="px-3.5 py-2 rounded-xl bg-slate-100 text-slate-700 cursor-pointer">📄 TC सत्यापन</button>
-        </div>
+  <!-- PORTAL -->
+  <section id="result-portal" class="py-10 px-4 max-w-7xl mx-auto">
+    <div class="card-3d-magical p-6 sm:p-8 border-2 border-amber-400/60 space-y-6">
+      <div class="flex flex-wrap justify-between items-center gap-3 border-b border-slate-800 pb-4">
+        <div><span class="text-xs font-extrabold text-amber-400 uppercase">डिजिटल अभिभावक पोर्टल</span><h3 class="text-lg sm:text-2xl font-extrabold text-white">डिजिटल मार्कशीट PDF डाउनलोड एवं TC सत्यापन</h3></div>
+        <div class="flex gap-2 text-xs font-extrabold"><button type="button" id="btnTabResult" onclick="switchPortalTab('result')" class="btn-3d-navy px-3.5 py-2 cursor-pointer">🎓 मार्कशीट PDF</button><button type="button" id="btnTabTC" onclick="switchPortalTab('tc')" class="px-3.5 py-2 rounded-xl bg-slate-800 text-slate-300 cursor-pointer">📄 TC सत्यापन</button></div>
       </div>
       <div id="portalResultBox" class="space-y-5">
         <div class="grid sm:grid-cols-3 gap-3 text-xs">
-          <div>
-            <label class="font-bold text-slate-600 block mb-1">छात्र का रोल नंबर *</label>
-            <input type="text" id="resRollInput" placeholder="जैसे: 101" class="w-full border-2 border-slate-200 focus:border-[#0F2952] rounded-xl px-3.5 py-2.5 font-bold outline-none" />
-          </div>
-          <div>
-            <label class="font-bold text-slate-600 block mb-1">जन्म तिथि (DOB) *</label>
-            <input type="date" id="resDobInput" class="w-full border-2 border-slate-200 focus:border-[#0F2952] rounded-xl px-3.5 py-2.5 font-bold outline-none" />
-          </div>
-          <div class="flex items-end">
-            <button type="button" onclick="searchMarksheet()" class="w-full btn-royal-gold font-extrabold py-2.5 px-4 rounded-xl cursor-pointer">🔍 मार्कशीट देखें एवं डाउनलोड करें</button>
-          </div>
+          <div><label class="font-bold text-slate-300 block mb-1">छात्र का रोल नंबर *</label><input type="text" id="resRollInput" placeholder="जैसे: 101" class="w-full bg-slate-900 border-2 border-slate-700 text-white rounded-xl px-3.5 py-2.5 font-bold outline-none" /></div>
+          <div><label class="font-bold text-slate-300 block mb-1">जन्म तिथि (DOB) *</label><input type="date" id="resDobInput" class="w-full bg-slate-900 border-2 border-slate-700 text-white rounded-xl px-3.5 py-2.5 font-bold outline-none" /></div>
+          <div class="flex items-end"><button type="button" onclick="searchMarksheet()" class="w-full btn-3d-futuristic py-2.5 px-4 cursor-pointer">🔍 मार्कशीट देखें एवं डाउनलोड करें</button></div>
         </div>
         <div id="marksheetOutputWrap" class="hidden space-y-4">
-          <div class="flex justify-end gap-2">
-            <button type="button" onclick="downloadMarksheetPDF()" class="bg-rose-600 text-white text-xs font-extrabold px-4 py-2 rounded-xl cursor-pointer shadow"><i class="fa-solid fa-file-pdf mr-1"></i> PDF सेव करें</button>
-          </div>
-          <div id="printableMarksheet" class="bg-white border-4 border-[#0F2952] p-5 sm:p-7 rounded-2xl max-w-3xl mx-auto shadow-lg text-xs">
-            <div class="flex items-center justify-between border-b-2 border-amber-500 pb-4 gap-3">
-              <img src="1794621466353.png" alt="Logo" class="w-16 h-16 rounded-full object-cover border-2 border-[#0F2952] bg-[#08152B]" />
-              <div class="text-center flex-1">
-                <h4 class="text-base sm:text-xl font-extrabold text-[#0F2952]">SDR MEMORIAL PUBLIC HIGH SCHOOL</h4>
-                <p class="font-bold text-amber-700">Near Chhatrasaal Chauraha, Village & Post Basari, Tehsil Rajnagar, Distt. Chhatarpur (M.P.) • Pin: 471105</p>
-              </div>
-              <div id="msQrBox" class="w-16 h-16 border rounded-lg flex items-center justify-center bg-slate-50 p-1"></div>
-            </div>
+          <div class="flex justify-end gap-2"><button type="button" onclick="downloadMarksheetPDF()" class="bg-rose-600 text-white text-xs font-extrabold px-4 py-2 rounded-xl cursor-pointer shadow"><i class="fa-solid fa-file-pdf mr-1"></i> PDF सेव करें</button></div>
+          <div id="printableMarksheet" class="bg-white text-slate-900 border-4 border-[#0F2952] p-5 sm:p-7 rounded-2xl max-w-3xl mx-auto shadow-lg text-xs">
+            <div class="flex items-center justify-between border-b-2 border-amber-500 pb-4 gap-3"><img src="1794621466353.png" alt="Logo" class="w-16 h-16 rounded-full object-cover border-2 border-[#0F2952] bg-[#08152B]" /><div class="text-center flex-1"><h4 class="text-base sm:text-xl font-extrabold text-[#0F2952]">SDR MEMORIAL PUBLIC HIGH SCHOOL</h4><p class="font-bold text-amber-700">Near Chhatrasaal Chauraha, Village & Post Basari, Tehsil Rajnagar, Distt. Chhatarpur (M.P.) • Pin: 471105</p></div><div id="msQrBox" class="w-16 h-16 border rounded-lg flex items-center justify-center bg-slate-50 p-1"></div></div>
             <div id="msBodyContent" class="mt-4 space-y-4"></div>
           </div>
         </div>
       </div>
       <div id="portalTcBox" class="hidden space-y-4">
         <div class="grid sm:grid-cols-3 gap-3 text-xs">
-          <div class="sm:col-span-2">
-            <label class="font-bold text-slate-600 block mb-1">ट्रांसफर सर्टिफिकेट (TC) नंबर दर्ज करें *</label>
-            <input type="text" id="tcNumberInput" placeholder="जैसे: SDR/TC/2026/089" class="w-full border-2 border-slate-200 focus:border-[#0F2952] rounded-xl px-3.5 py-2.5 font-bold outline-none" />
-          </div>
-          <div class="flex items-end">
-            <button type="button" onclick="verifyTcNumber()" class="w-full btn-royal-navy font-extrabold py-2.5 px-4 rounded-xl cursor-pointer">✅ TC सत्यापित करें</button>
-          </div>
+          <div class="sm:col-span-2"><label class="font-bold text-slate-300 block mb-1">ट्रांसफर सर्टिफिकेट (TC) नंबर दर्ज करें *</label><input type="text" id="tcNumberInput" placeholder="जैसे: SDR/TC/2026/089" class="w-full bg-slate-900 border-2 border-slate-700 text-white rounded-xl px-3.5 py-2.5 font-bold outline-none" /></div>
+          <div class="flex items-end"><button type="button" onclick="verifyTcNumber()" class="w-full btn-3d-navy py-2.5 px-4 cursor-pointer">✅ TC सत्यापित करें</button></div>
         </div>
         <div id="tcResultOutput"></div>
       </div>
@@ -412,110 +266,104 @@
   </section>
 
   <!-- FOOTER -->
-  <footer class="bg-[#08152B] text-slate-300 pt-10 pb-6 px-4 border-t-4 border-amber-500">
-    <div class="max-w-7xl mx-auto grid sm:grid-cols-2 lg:grid-cols-4 gap-6 text-xs pb-8 border-b border-white/10">
-      <div class="space-y-2.5">
-        <div class="flex items-center gap-2.5">
-          <img src="1794621466353.png" alt="Logo" class="w-11 h-11 rounded-full object-cover border border-amber-400" />
-          <h4 class="font-extrabold text-white text-sm">एसडीआर मेमोरियल पब्लिक हाई स्कूल</h4>
-        </div>
-        <p class="text-slate-400 leading-relaxed">छत्रसाल चौराहा के पास, ग्राम व पोस्ट बसारी, तहसील राजनगर, जिला छतरपुर (म.प्र.) • पिन: 471105</p>
-        <p class="text-amber-400 font-bold"><i class="fa-solid fa-phone mr-1"></i> +91 98265-63564 (Principal)</p>
-      </div>
-      <div class="space-y-1.5">
-        <h5 class="font-extrabold text-amber-400 uppercase">त्वरित लिंक</h5>
-        <a href="#daily-thought" class="block hover:text-white">• आज का शुभ विचार एवं विशेष दिवस</a>
-        <a href="#homework" class="block hover:text-white">• आज का कक्षा होमवर्क</a>
-        <a href="#facilities" class="block hover:text-white">• सुविधाएं एवं स्कूल वैन रूट</a>
-      </div>
-      <div class="space-y-1.5">
-        <h5 class="font-extrabold text-amber-400 uppercase">नियम एवं गोपनीयता नीति</h5>
-        <button type="button" onclick="openLegalModal('privacy')" class="block text-left hover:text-white cursor-pointer">• Privacy Policy (गोपनीयता नीति)</button>
-        <button type="button" onclick="openLegalModal('terms')" class="block text-left hover:text-white cursor-pointer">• Terms & Conditions (नियम एवं शर्तें)</button>
-        <button type="button" onclick="openLegalModal('disclaimer')" class="block text-left hover:text-white cursor-pointer">• Disclaimer (अस्वीकरण)</button>
-        <button type="button" onclick="openLegalModal('contact')" class="block text-left hover:text-white cursor-pointer">• Contact Us & Directors</button>
-      </div>
-      <div class="space-y-2.5">
-        <h5 class="font-extrabold text-amber-400 uppercase">प्रवेश सहायता डेस्क 2026–27</h5>
-        <p class="text-slate-400">ऑनलाइन पंजीकरण प्रारंभ है। घर बैठे फॉर्म भरें और लाइव स्थिति देखें।</p>
-        <button type="button" onclick="openAdmissionModal()" class="btn-royal-gold font-extrabold px-4 py-2.5 rounded-xl cursor-pointer">अभी ऑनलाइन प्रवेश फॉर्म भरें</button>
-      </div>
+  <footer class="bg-[#030712] text-slate-300 pt-10 pb-6 px-4 border-t-4 border-amber-500">
+    <div class="max-w-7xl mx-auto grid sm:grid-cols-2 lg:grid-cols-4 gap-6 text-xs pb-8 border-b border-slate-800">
+      <div class="space-y-2.5"><div class="flex items-center gap-2.5"><img src="1794621466353.png" alt="Logo" class="w-11 h-11 rounded-full object-cover border border-amber-400" /><h4 class="font-extrabold text-white text-sm">एसडीआर मेमोरियल पब्लिक हाई स्कूल</h4></div><p class="text-slate-400 leading-relaxed">छत्रसाल चौराहा के पास, ग्राम व पोस्ट बसारी, तहसील राजनगर, जिला छतरपुर (म.प्र.) • पिन: 471105</p><p class="text-amber-400 font-bold"><i class="fa-solid fa-phone mr-1"></i> +91 98265-63564 (Principal)</p></div>
+      <div class="space-y-1.5"><h5 class="font-extrabold text-amber-400 uppercase">त्वरित लिंक</h5><a href="#daily-thought" class="block hover:text-white">• आज का शुभ विचार एवं विशेष दिवस</a><a href="#homework" class="block hover:text-white">• आज का कक्षा होमवर्क</a><a href="#facilities" class="block hover:text-white">• सुविधाएं एवं स्कूल वैन रूट</a></div>
+      <div class="space-y-1.5"><h5 class="font-extrabold text-amber-400 uppercase">नियम एवं गोपनीयता नीति</h5><button type="button" onclick="openLegalModal('privacy')" class="block text-left hover:text-white cursor-pointer">• Privacy Policy</button><button type="button" onclick="openLegalModal('terms')" class="block text-left hover:text-white cursor-pointer">• Terms & Conditions</button><button type="button" onclick="openLegalModal('disclaimer')" class="block text-left hover:text-white cursor-pointer">• Disclaimer</button><button type="button" onclick="openLegalModal('contact')" class="block text-left hover:text-white cursor-pointer">• Contact Us & Directors</button></div>
+      <div class="space-y-2.5"><h5 class="font-extrabold text-amber-400 uppercase">प्रवेश सहायता डेस्क 2026–27</h5><p class="text-slate-400">ऑनलाइन पंजीकरण प्रारंभ है। घर बैठे फॉर्म भरें और लाइव स्थिति देखें।</p><button type="button" onclick="openAdmissionModal()" class="btn-3d-futuristic px-4 py-2.5 rounded-xl cursor-pointer">अभी ऑनलाइन प्रवेश फॉर्म भरें</button></div>
     </div>
     <p class="text-center text-[11px] text-slate-400 pt-5">© 2026 एसडीआर मेमोरियल पब्लिक हाई स्कूल, बसारी • संचालक: इंद्रा कुमार रावत एवं निरंजन रावत</p>
   </footer>
 
   <!-- WHATSAPP FLOATING -->
-  <a href="https://wa.me/919826563564?text=नमस्ते%20SDR%20मेमोरियल%20स्कूल%20बसारी" target="_blank" class="float-3d-badge fixed bottom-5 right-5 z-40 p-3.5 rounded-full bg-emerald-500 hover:bg-emerald-600 text-white shadow-2xl flex items-center justify-center text-2xl">
+  <a href="https://wa.me/919826563564?text=नमस्ते%20SDR%20मेमोरियल%20स्कूल%20बसारी" target="_blank" class="fixed bottom-5 right-5 z-40 p-3.5 rounded-full bg-emerald-500 hover:bg-emerald-600 text-white shadow-2xl flex items-center justify-center text-2xl transition hover:scale-110">
     <i class="fa-brands fa-whatsapp"></i>
   </a>
 
-  <!-- ADMISSION MODAL -->
-  <div id="admissionModal" class="hidden fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-center justify-center p-3 overflow-y-auto">
-    <div class="bg-white rounded-3xl max-w-lg w-full p-5 sm:p-6 shadow-2xl border-2 border-amber-400 space-y-4 my-auto">
-      <div class="flex justify-between items-center border-b pb-3">
-        <h3 class="text-lg font-extrabold text-[#0F2952]">ऑनलाइन प्रवेश पंजीकरण फॉर्म</h3>
-        <button type="button" onclick="closeAdmissionModal()" class="w-8 h-8 rounded-full bg-slate-100 font-extrabold cursor-pointer">✕</button>
-      </div>
+  <!-- MODALS -->
+  <div id="admissionModal" class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-3 overflow-y-auto">
+    <div class="bg-slate-900 border-2 border-amber-400 rounded-3xl max-w-lg w-full p-5 sm:p-6 shadow-2xl space-y-4 my-auto text-white">
+      <div class="flex justify-between items-center border-b border-slate-800 pb-3"><h3 class="text-lg font-extrabold text-amber-400">ऑनलाइन प्रवेश पंजीकरण फॉर्म</h3><button type="button" onclick="closeAdmissionModal()" class="w-8 h-8 rounded-full bg-slate-800 font-extrabold cursor-pointer">✕</button></div>
       <form id="admissionForm" onsubmit="submitOnlineAdmission(event)" class="space-y-3 text-xs">
-        <div class="grid sm:grid-cols-2 gap-3">
-          <input type="text" id="admStudentName" required placeholder="छात्र का पूरा नाम" class="w-full border rounded-xl px-3 py-2 font-semibold" />
-          <input type="text" id="admFatherName" required placeholder="पिता का नाम" class="w-full border rounded-xl px-3 py-2 font-semibold" />
-        </div>
-        <div class="grid sm:grid-cols-2 gap-3">
-          <select id="admClass" required class="w-full border rounded-xl px-3 py-2 font-bold bg-white">
-            <option value="Nursery">Nursery</option><option value="Class 1st">Class 1st</option><option value="Class 10th">Class 10th</option>
-          </select>
-          <input type="date" id="admDob" required class="w-full border rounded-xl px-3 py-2 font-semibold" />
-        </div>
-        <div class="grid sm:grid-cols-2 gap-3">
-          <input type="tel" id="admPhone" required placeholder="व्हाट्सएप मोबाइल नंबर" class="w-full border rounded-xl px-3 py-2 font-semibold" />
-          <select id="admMedium" class="w-full border rounded-xl px-3 py-2 font-bold bg-white">
-            <option value="English Medium">English Medium</option><option value="Hindi Medium">Hindi Medium</option>
-          </select>
-        </div>
-        <input type="text" id="admAddress" required placeholder="गाँव / पूरा पता" class="w-full border rounded-xl px-3 py-2 font-semibold" />
-        <button type="submit" id="admSubmitBtn" class="w-full btn-royal-gold font-extrabold py-3 rounded-xl cursor-pointer text-sm">✅ आवेदन जमा करें</button>
+        <div class="grid sm:grid-cols-2 gap-3"><input type="text" id="admStudentName" required placeholder="छात्र का पूरा नाम" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 font-semibold text-white" /><input type="text" id="admFatherName" required placeholder="पिता का नाम" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 font-semibold text-white" /></div>
+        <div class="grid sm:grid-cols-2 gap-3"><select id="admClass" required class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 font-bold text-white"><option value="Nursery">Nursery</option><option value="Class 1st">Class 1st</option><option value="Class 10th">Class 10th</option></select><input type="date" id="admDob" required class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 font-semibold text-white" /></div>
+        <div class="grid sm:grid-cols-2 gap-3"><input type="tel" id="admPhone" required placeholder="व्हाट्सएप मोबाइल नंबर" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 font-semibold text-white" /><select id="admMedium" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 font-bold text-white"><option value="English Medium">English Medium</option><option value="Hindi Medium">Hindi Medium</option></select></div>
+        <input type="text" id="admAddress" required placeholder="गाँव / पूरा पता" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 font-semibold text-white" />
+        <button type="submit" id="admSubmitBtn" class="w-full btn-3d-futuristic py-3 rounded-xl cursor-pointer text-sm font-extrabold">✅ आवेदन जमा करें</button>
       </form>
       <div id="admissionSuccessBox" class="hidden text-center space-y-3 py-3"></div>
     </div>
   </div>
 
-  <!-- STATUS MODAL -->
-  <div id="statusModal" class="hidden fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-center justify-center p-3">
-    <div class="bg-white rounded-3xl max-w-md w-full p-5 sm:p-6 shadow-2xl border-2 border-emerald-500 space-y-4">
-      <div class="flex justify-between items-center border-b pb-2.5">
-        <h3 class="text-base font-extrabold text-[#0F2952]">ऑनलाइन प्रवेश स्थिति जांचें</h3>
-        <button type="button" onclick="closeStatusModal()" class="w-8 h-8 rounded-full bg-slate-100 font-extrabold cursor-pointer">✕</button>
-      </div>
-      <div class="space-y-3 text-xs">
-        <input type="text" id="trackInput" placeholder="Application ID या मोबाइल नंबर" class="w-full border-2 rounded-xl px-3.5 py-2.5 font-bold" />
-        <button type="button" onclick="checkAdmissionStatus()" class="w-full btn-royal-navy font-extrabold py-2.5 rounded-xl cursor-pointer">लाइव स्थिति देखें</button>
-        <div id="trackResultBox" class="pt-1"></div>
-      </div>
+  <div id="statusModal" class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-3">
+    <div class="bg-slate-900 border-2 border-emerald-500 rounded-3xl max-w-md w-full p-5 sm:p-6 shadow-2xl space-y-4 text-white">
+      <div class="flex justify-between items-center border-b border-slate-800 pb-2.5"><h3 class="text-base font-extrabold text-emerald-400">ऑनलाइन प्रवेश स्थिति जांचें</h3><button type="button" onclick="closeStatusModal()" class="w-8 h-8 rounded-full bg-slate-800 font-extrabold cursor-pointer">✕</button></div>
+      <div class="space-y-3 text-xs"><input type="text" id="trackInput" placeholder="Application ID या मोबाइल नंबर" class="w-full bg-slate-950 border-2 border-slate-700 rounded-xl px-3.5 py-2.5 font-bold text-white" /><button type="button" onclick="checkAdmissionStatus()" class="w-full btn-3d-navy py-2.5 rounded-xl cursor-pointer">लाइव स्थिति देखें</button><div id="trackResultBox" class="pt-1"></div></div>
     </div>
   </div>
 
-  <!-- LEGAL MODAL -->
-  <div id="legalModal" class="hidden fixed inset-0 z-50 bg-black/75 backdrop-blur-sm flex items-center justify-center p-3 overflow-y-auto">
-    <div class="bg-white rounded-3xl max-w-2xl w-full p-5 sm:p-7 shadow-2xl border-2 border-amber-400 space-y-4 my-auto">
-      <div class="flex justify-between items-center border-b pb-3">
-        <h3 id="legalModalTitle" class="text-base sm:text-lg font-extrabold text-[#0F2952]"></h3>
-        <button type="button" onclick="closeLegalModal()" class="w-8 h-8 rounded-full bg-slate-100 font-extrabold cursor-pointer">✕</button>
-      </div>
-      <div id="legalModalBody" class="text-xs sm:text-sm text-slate-700 leading-relaxed space-y-3 max-h-[70vh] overflow-y-auto pr-1"></div>
+  <div id="legalModal" class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-3 overflow-y-auto">
+    <div class="bg-slate-900 border-2 border-amber-400 rounded-3xl max-w-2xl w-full p-5 sm:p-7 shadow-2xl space-y-4 my-auto text-white">
+      <div class="flex justify-between items-center border-b border-slate-800 pb-3"><h3 id="legalModalTitle" class="text-base sm:text-lg font-extrabold text-amber-400"></h3><button type="button" onclick="closeLegalModal()" class="w-8 h-8 rounded-full bg-slate-800 font-extrabold cursor-pointer">✕</button></div>
+      <div id="legalModalBody" class="text-xs sm:text-sm text-slate-300 leading-relaxed space-y-3 max-h-[70vh] overflow-y-auto pr-1"></div>
     </div>
   </div>
-
-  <script src="script.js?v=20"></script>
+<!-- 🌟 THREE.JS REAL 3D ENGINE INTEGRATION -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <script>
     document.addEventListener("DOMContentLoaded", () => {
-      const obs = new IntersectionObserver((entries) => {
-        entries.forEach(e => { if (e.isIntersecting) e.target.classList.add("visible-3d"); });
-      }, { threshold: 0.12 });
-      document.querySelectorAll(".reveal-3d").forEach(el => obs.observe(el));
+      const container = document.getElementById('hero-3d-container');
+      if (container) {
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(60, container.clientWidth / container.clientHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+        renderer.setSize(container.clientWidth, container.clientHeight);
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+        container.appendChild(renderer.domElement);
+
+        const geometry = new THREE.TorusKnotGeometry(1.1, 0.35, 128, 32);
+        const material = new THREE.MeshStandardMaterial({ color: 0xf59e0b, metalness: 0.85, roughness: 0.2 });
+        const mesh = new THREE.Mesh(geometry, material);
+        scene.add(mesh);
+
+        const wireframeGeo = new THREE.WireframeGeometry(geometry);
+        const wireframeMat = new THREE.LineBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.2 });
+        const wireframe = new THREE.LineSegments(wireframeGeo, wireframeMat);
+        mesh.add(wireframe);
+
+        scene.add(new THREE.AmbientLight(0xffffff, 1.2));
+        const pLight = new THREE.PointLight(0x3b82f6, 3, 50); pLight.position.set(5, 5, 5); scene.add(pLight);
+
+        camera.position.z = 4.5;
+        let mouseX = 0, mouseY = 0, targetX = 0, targetY = 0;
+
+        container.addEventListener('mousemove', (e) => {
+          const rect = container.getBoundingClientRect();
+          mouseX = ((e.clientX - rect.left) / container.clientWidth) * 2 - 1;
+          mouseY = -((e.clientY - rect.top) / container.clientHeight) * 2 + 1;
+        });
+
+        const clock = new THREE.Clock();
+        function animate() {
+          requestAnimationFrame(animate);
+          const t = clock.getElapsedTime();
+          targetX += (mouseX - targetX) * 0.08;
+          targetY += (mouseY - targetY) * 0.08;
+          mesh.rotation.x = t * 0.4 + targetY * 1.2;
+          mesh.rotation.y = t * 0.5 + targetX * 1.2;
+          renderer.render(scene, camera);
+        }
+        animate();
+
+        window.addEventListener('resize', () => {
+          camera.aspect = container.clientWidth / container.clientHeight;
+          camera.updateProjectionMatrix();
+          renderer.setSize(container.clientWidth, container.clientHeight);
+        });
+      }
     });
   </script>
+  <script src="script.js?v=30"></script>
 </body>
 </html>
-
-  
