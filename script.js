@@ -1,14 +1,14 @@
 // =========================================================
-// SDR MEMORIAL PUBLIC HIGH SCHOOL, BASARI - CLOUD ENGINE v2
+// SDR MEMORIAL PUBLIC HIGH SCHOOL, BASARI - PUBLIC SCRIPT.JS
 // =========================================================
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAXIF5CrQVNErK6Qefj7vAm2jNTwKbpVvE",
+  apiKey: "AIzaSyD-SDRMEMORIALSCHOOL-KEY",
   authDomain: "sdrmemorialschool.firebaseapp.com",
   projectId: "sdrmemorialschool",
-  storageBucket: "sdrmemorialschool.firebasestorage.app",
-  messagingSenderId: "200886478103",
-  appId: "1:200886478103:web:bf8596fdc1c3793d100352"
+  storageBucket: "sdrmemorialschool.appspot.com",
+  messagingSenderId: "849201948210",
+  appId: "1:849201948210:web:sdrbasari2026"
 };
 
 if (!firebase.apps.length) {
@@ -16,271 +16,473 @@ if (!firebase.apps.length) {
 }
 const db = firebase.firestore();
 
-// Register Service Worker for Android App / PWA
-if ("serviceWorker" in navigator) {
-  navigator.serviceWorker.register("sw.js").catch(() => {});
-}
-
 let currentLang = "en";
 
-const defaultSchoolData = {
-  noticeEn: "📢 Admissions Open for Session 2026–27 (Nursery to Class 10th) • 🎓 Digital PDF Marksheets with Student Photo & QR Code now live • 🚌 Safe School Van available for Basari & nearby villages.",
-  notice: "📢 सत्र 2026-27 के लिए प्रवेश प्रारंभ (नर्सरी से कक्षा 10वीं तक) • 🎓 छात्र फोटो एवं QR कोड वाली डिजिटल मार्कशीट अब ऑनलाइन उपलब्ध • 🚌 बसारी एवं आसपास के गाँवों के लिए सुरक्षित वैन सुविधा।",
-  stats: {
-    alumni: "2,450+",
-    newAdmissions: "148",
-    currentStudents: "520+",
-    teachers: "22"
-  },
-  toppers: [
-    { name: "Ananya Tiwari", className: "Class 10th", pct: "96.4%" },
-    { name: "Aarav Singh", className: "Class 10th", pct: "94.8%" },
-    { name: "Priya Chaurasiya", className: "Class 9th", pct: "93.2%" },
-    { name: "Rohan Yadav", className: "Class 10th", pct: "91.6%" },
-    { name: "Kavya Patel", className: "Class 9th", pct: "91.0%" }
+let portalData = {
+  noticeEn: "📢 Admissions Open for Session 2026–27 (Nursery to Class 10th) • 🎓 Digital PDF Marksheets & Live Application Tracking now available • 🚌 Safe School Van facility for Basari & nearby villages.",
+  noticeHi: "📢 सत्र 2026-27 के लिए प्रवेश प्रारंभ (नर्सरी से कक्षा 10वीं तक) • 🎓 डिजिटल PDF मार्कशीट एवं एडमिशन स्टेटस ट्रैकिंग अब ऑनलाइन उपलब्ध • 🚌 बसारी एवं आसपास के गाँवों के लिए सुरक्षित वैन सुविधा।",
+  stats: { alumni: "2,450+", admissions: "148", students: "520+", teachers: "22" },
+  homework: [
+    { className: "Class 10th", subject: "Mathematics", work: "Solve Exercise 4.2 Quadratic Equations (Q1 to Q6) in fair notebook.", teacher: "Mr. R.K. Sharma", date: "Today" },
+    { className: "Class 8th", subject: "Science", work: "Draw neat labeled diagram of Plant Cell & Animal Cell and learn 5 differences.", teacher: "Ms. Priya Tiwari", date: "Today" },
+    { className: "Class 5th", subject: "English", work: "Write 10 lines essay on 'My School' and learn Chapter 3 word meanings.", teacher: "Mrs. Sunita Verma", date: "Today" }
   ],
-  staff: [
-    { name: "Mr. R.K. Sharma", role: "Principal (M.Sc., B.Ed.)", wing: "High School", qualification: "M.Sc. Mathematics, B.Ed.", since: "2012", bestSubject: "Mathematics", photo: "" },
-    { name: "Mrs. Sunita Mishra", role: "Senior Science Teacher", wing: "High School", qualification: "M.Sc. Biology, B.Ed.", since: "2015", bestSubject: "Science", photo: "" },
-    { name: "Mr. Arvind Tiwari", role: "English & Grammar", wing: "Middle", qualification: "M.A. English, D.El.Ed.", since: "2017", bestSubject: "English", photo: "" },
-    { name: "Ms. Pooja Chaturvedi", role: "Primary Coordinator", wing: "Primary", qualification: "B.A., D.El.Ed.", since: "2019", bestSubject: "Hindi & EVS", photo: "" }
+  vanRoutes: [
+    { vanNo: "Van 01 (MP-16-T-4412)", route: "Basari Main Market → Rajnagar Tiraha → School Campus", timing: "7:30 AM", driver: "Ramesh Yadav", phone: "9988110081" },
+    { vanNo: "Van 02 (MP-16-T-5820)", route: "Khajuraho Road → Bamitha Mod → School Campus", timing: "7:20 AM", driver: "Suresh Kushwaha", phone: "9988110082" },
+    { vanNo: "Van 03 (MP-16-T-6190)", route: "Chandranagar → Beniganj → Basari → School Campus", timing: "7:15 AM", driver: "Mahesh Patel", phone: "9988110083" }
+  ],
+  gallery: [
+    { title: "Annual Function & Cultural Fest", category: "Events", url: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=800" },
+    { title: "Smart Classroom & Digital Learning", category: "Campus", url: "https://images.unsplash.com/photo-1509062522246-3755977927d7?w=800" },
+    { title: "Independence Day Parade & Celebration", category: "Events", url: "https://images.unsplash.com/photo-1577896851231-70ef18881754?w=800" }
+  ],
+  toppers: [
+    { name: "Ananya Chaturvedi", className: "Class 10th (MP Board)", percent: "96.4%", rank: "1st Rank • District Merit" },
+    { name: "Rohan Singh Bundela", className: "Class 10th (MP Board)", percent: "94.8%", rank: "2nd Rank • School Topper" },
+    { name: "Kavya Tiwari", className: "Class 8th", percent: "95.2%", rank: "1st Rank • Class Topper" },
+    { name: "Devansh Patel", className: "Class 5th", percent: "97.0%", rank: "1st Rank • Junior Wing" }
+  ],
+  teachers: [
+    { name: "Mr. R.K. Sharma", role: "Principal • M.Sc., B.Ed.", exp: "16 Years Exp." },
+    { name: "Mrs. Sunita Verma", role: "Senior English & Social Science • M.A., B.Ed.", exp: "11 Years Exp." },
+    { name: "Ms. Priya Tiwari", role: "Science & Computer Faculty • B.Sc., D.El.Ed.", exp: "7 Years Exp." },
+    { name: "Mr. Amit Dubey", role: "Hindi & Sanskrit Senior Teacher • M.A., B.Ed.", exp: "10 Years Exp." }
   ],
   holidays: [
-    { date: "15 Aug 2026", day: "Saturday", name: "Independence Day (स्वतंत्रता दिवस)", type: "National" },
-    { date: "02 Oct 2026", day: "Friday", name: "Gandhi Jayanti (गांधी जयंती)", type: "National" },
-    { date: "08 Nov 2026", day: "Sunday", name: "Diwali Vacation (दीपावली अवकाश)", type: "Festival" },
-    { date: "26 Jan 2027", day: "Tuesday", name: "Republic Day (गणतंत्र दिवस)", type: "National" }
+    { date: "15 Aug 2026", day: "Saturday", name: "Independence Day Celebration", type: "National" },
+    { date: "02 Oct 2026", day: "Friday", name: "Gandhi Jayanti", type: "National" },
+    { date: "07–12 Nov 2026", day: "Sat–Thu", name: "Diwali Vacation", type: "Festival" },
+    { date: "26 Jan 2027", day: "Tuesday", name: "Republic Day Celebration", type: "National" }
+  ],
+  results: [
+    {
+      roll: "101",
+      dob: "2012-05-14",
+      name: "Aarav Singh",
+      fatherName: "Rajesh Singh",
+      motherName: "Sunita Devi",
+      className: "Class 8th",
+      examTitle: "Annual Examination 2026",
+      attendance: "94%",
+      subjects: [
+        { name: "Hindi", max: 100, theory: 68, practical: 18 },
+        { name: "English", max: 100, theory: 64, practical: 19 },
+        { name: "Mathematics", max: 100, theory: 72, practical: 20 },
+        { name: "Science", max: 100, theory: 66, practical: 19 },
+        { name: "Social Science", max: 100, theory: 70, practical: 18 }
+      ]
+    }
   ],
   tcs: [
-    { tcNo: "TC-2026-089", name: "Rohan Yadav", father: "Mr. Mahesh Yadav", classPassed: "Class 10th", issueDate: "15 May 2026", conduct: "Excellent" }
-  ],
-  results: []
+    { tcNo: "SDR/TC/2026/089", studentName: "Mohit Kushwaha", fatherName: "Harishankar Kushwaha", classLeft: "Class 8th Passed", issueDate: "12 July 2026", status: "Verified & Genuine" }
+  ]
 };
 
-let schoolData = JSON.parse(JSON.stringify(defaultSchoolData));
-let cloudResults = [];
-let cloudGallery = [];
-async function syncFromCloud() {
-  try {
-    const doc = await db.collection("sdr_portal").doc("main_data").get();
-    if (doc.exists) {
-      schoolData = { ...defaultSchoolData, ...doc.data() };
-    }
-    const resSnap = await db.collection("sdr_results").get();
-    cloudResults = resSnap.docs.map(d => d.data());
-
-    const galSnap = await db.collection("sdr_gallery").get();
-    cloudGallery = galSnap.docs.map(d => d.data());
-  } catch (e) {
-    console.warn("Using cached/default school data:", e);
-  }
-  refreshPublicUI();
-}
-
-function refreshPublicUI() {
-  const ticker = document.getElementById("liveNoticeTicker");
-  if (!ticker) return;
-
-  ticker.setAttribute("data-en", schoolData.noticeEn || defaultSchoolData.noticeEn);
-  ticker.setAttribute("data-hi", schoolData.notice || defaultSchoolData.notice);
-  ticker.innerText = currentLang === "hi" ? ticker.getAttribute("data-hi") : ticker.getAttribute("data-en");
-
-  document.getElementById("statAlumni").innerText = schoolData.stats.alumni;
-  document.getElementById("statNewAdmissions").innerText = schoolData.stats.newAdmissions;
-  document.getElementById("statCurrentStudents").innerText = schoolData.stats.currentStudents;
-  document.getElementById("statTeachers").innerText = schoolData.stats.teachers;
-
-  renderGallery();
-  renderToppers();
-  renderStaff("All");
-  renderHolidays();
-}
-
+// 1. LANGUAGE TOGGLE (HINDI / ENGLISH)
 function toggleLanguage() {
   currentLang = currentLang === "en" ? "hi" : "en";
-  document.getElementById("langBtnText").innerText = currentLang === "en" ? "हिंदी में देखें" : "View in English";
+  const btnText = document.getElementById("langBtnText");
+  if (btnText) btnText.textContent = currentLang === "en" ? "हिंदी में देखें" : "Switch to English";
 
-  document.querySelectorAll("[data-en]").forEach(el => {
-    const val = currentLang === "hi" ? el.getAttribute("data-hi") : el.getAttribute("data-en");
-    if (val) {
-      if (val.includes("<")) el.innerHTML = val;
-      else el.innerText = val;
-    }
+  document.querySelectorAll("[data-en]").forEach((el) => {
+    const val = el.getAttribute(currentLang === "hi" ? "data-hi" : "data-en");
+    if (val) el.textContent = val;
   });
-}
 
-function toggleMobileMenu() {
-  document.getElementById("mobileMenu").classList.toggle("hidden");
-}
-function closeMobileMenu() {
-  document.getElementById("mobileMenu").classList.add("hidden");
-}
-
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) entry.target.classList.add("active");
-  });
-}, { threshold: 0.1 });
-
-document.addEventListener("DOMContentLoaded", () => {
-  document.querySelectorAll(".reveal-up").forEach(el => observer.observe(el));
-  syncFromCloud();
-});
-function renderGallery() {
-  const grid = document.getElementById("galleryGrid");
-  if (!grid) return;
-
-  const fallbackGallery = [
-    { title: "Morning Assembly & Prayer", tag: "Campus", url: "https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=500&q=80" },
-    { title: "Smart Classroom Learning", tag: "Academics", url: "https://images.unsplash.com/photo-1509062522246-3755977927d7?w=500&q=80" },
-    { title: "Computer & Digital Lab", tag: "Lab", url: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=500&q=80" },
-    { title: "Annual Sports & Cultural Day", tag: "Events", url: "https://images.unsplash.com/photo-1577896851231-70ef18881754?w=500&q=80" }
-  ];
-
-  const items = cloudGallery.length ? cloudGallery : fallbackGallery;
-  grid.innerHTML = items.map(g => `
-    <div class="group relative rounded-2xl overflow-hidden shadow-sm border bg-slate-100 aspect-[4/3] hover-lift">
-      <img src="${g.url || g.photo}" alt="${g.title}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
-      <div class="absolute inset-0 bg-gradient-to-t from-[#08152B]/90 via-transparent to-transparent flex flex-col justify-end p-3">
-        <span class="text-[10px] font-bold bg-amber-400 text-[#08152B] px-2 py-0.5 rounded w-fit mb-1">${g.tag || "Campus"}</span>
-        <p class="text-white font-bold text-xs leading-snug">${g.title}</p>
-      </div>
-    </div>
-  `).join("");
-}
-
-function renderToppers() {
-  const grid = document.getElementById("toppersGrid");
-  if (!grid) return;
-  grid.innerHTML = (schoolData.toppers || []).map((t, i) => `
-    <div class="bg-gradient-to-b from-amber-50/60 to-white border border-amber-200 rounded-2xl p-4 text-center shadow-sm hover-lift relative">
-      <span class="absolute -top-2.5 left-1/2 -translate-x-1/2 bg-amber-400 text-[#08152B] text-[10px] font-extrabold px-2.5 py-0.5 rounded-full shadow">Rank #${i + 1}</span>
-      <div class="w-12 h-12 rounded-full bg-[#0F2952] text-amber-300 font-extrabold flex items-center justify-center mx-auto mt-2 text-lg border-2 border-amber-400">${t.name.charAt(0)}</div>
-      <h4 class="font-extrabold text-[#0F2952] text-xs sm:text-sm mt-2 truncate">${t.name}</h4>
-      <p class="text-[11px] text-slate-500">${t.className}</p>
-      <span class="inline-block mt-1.5 bg-emerald-100 text-emerald-800 font-extrabold text-xs px-2.5 py-0.5 rounded-lg">${t.pct}</span>
-    </div>
-  `).join("");
-}
-
-function renderStaff(wing) {
-  const grid = document.getElementById("staffGrid");
-  if (!grid) return;
-  const list = wing === "All" ? schoolData.staff : schoolData.staff.filter(s => s.wing === wing);
-  grid.innerHTML = list.map(s => `
-    <div class="bg-white border rounded-2xl p-4 flex items-center gap-3.5 shadow-sm hover-lift">
-      ${s.photo
-        ? `<img src="${s.photo}" class="w-16 h-16 rounded-2xl object-cover border-2 border-amber-400 shrink-0" />`
-        : `<div class="w-16 h-16 rounded-2xl bg-[#0F2952] text-amber-300 font-extrabold text-xl flex items-center justify-center shrink-0 border-2 border-amber-400">${s.name.charAt(0)}</div>`}
-      <div class="min-w-0">
-        <span class="text-[10px] font-bold bg-blue-50 text-[#0F2952] px-2 py-0.5 rounded">${s.wing}</span>
-        <h4 class="font-extrabold text-[#0F2952] text-sm mt-1 truncate">${s.name}</h4>
-        <p class="text-xs font-semibold text-amber-700">${s.role}</p>
-        <p class="text-[11px] text-slate-500 mt-0.5">${s.qualification} • Since ${s.since}</p>
-      </div>
-    </div>
-  `).join("");
-}
-
-function filterStaff(wing, btn) {
-  document.querySelectorAll(".staff-tab").forEach(b => {
-    b.classList.remove("bg-[#0F2952]", "text-white");
-    b.classList.add("bg-white");
-  });
-  btn.classList.add("bg-[#0F2952]", "text-white");
-  renderStaff(wing);
-}
-
-function renderHolidays() {
-  const body = document.getElementById("holidaysBody");
-  if (!body) return;
-  body.innerHTML = (schoolData.holidays || []).map(h => `
-    <tr class="border-b hover:bg-slate-50">
-      <td class="p-2.5 font-bold text-[#0F2952]">${h.date}</td>
-      <td class="p-2.5 text-slate-500">${h.day}</td>
-      <td class="p-2.5 font-semibold">${h.name}</td>
-      <td class="p-2.5"><span class="text-[10px] font-bold px-2 py-0.5 rounded-full ${h.type === 'National' ? 'bg-amber-100 text-amber-800' : 'bg-emerald-100 text-emerald-800'}">${h.type}</span></td>
-    </tr>
-  `).join("");
-}
-function switchPortalTab(tab) {
-  document.getElementById("portalErrorBox").classList.add("hidden");
-  document.getElementById("marksheetOutput").classList.add("hidden");
-  document.getElementById("tcOutput").classList.add("hidden");
-
-  if (tab === "result") {
-    document.getElementById("resultSearchForm").classList.remove("hidden");
-    document.getElementById("tcSearchForm").classList.add("hidden");
-    document.getElementById("tabResultBtn").className = "bg-[#0F2952] text-white font-bold text-xs px-4 py-2 rounded-xl";
-    document.getElementById("tabTcBtn").className = "bg-slate-100 text-slate-700 font-bold text-xs px-4 py-2 rounded-xl";
-  } else {
-    document.getElementById("resultSearchForm").classList.add("hidden");
-    document.getElementById("tcSearchForm").classList.remove("hidden");
-    document.getElementById("tabTcBtn").className = "bg-[#0F2952] text-white font-bold text-xs px-4 py-2 rounded-xl";
-    document.getElementById("tabResultBtn").className = "bg-slate-100 text-slate-700 font-bold text-xs px-4 py-2 rounded-xl";
+  const ticker = document.getElementById("liveNoticeTicker");
+  if (ticker) {
+    ticker.textContent = currentLang === "hi" ? (portalData.noticeHi || portalData.noticeEn) : portalData.noticeEn;
   }
 }
 
-document.getElementById("resultSearchForm")?.addEventListener("submit", (e) => {
-  e.preventDefault();
-  const q = document.getElementById("searchQueryInput").value.trim().toLowerCase();
-  const dob = document.getElementById("searchDobInput").value;
-  const errBox = document.getElementById("portalErrorBox");
-  errBox.classList.add("hidden");
+// 2. MOBILE MENU
+function toggleMobileMenu() {
+  const m = document.getElementById("mobileMenu");
+  if (m) m.classList.toggle("hidden");
+}
+function closeMobileMenu() {
+  const m = document.getElementById("mobileMenu");
+  if (m) m.classList.add("hidden");
+}
 
-  const allRes = [...cloudResults, ...(schoolData.results || [])];
-  const found = allRes.find(r =>
-    (r.roll.toLowerCase() === q || r.name.toLowerCase().includes(q)) && (!dob || r.dob === dob)
-  );
+// 3. RENDER ALL PUBLIC SECTIONS
+function renderAllPublicSections() {
+  // Stats
+  if (portalData.stats) {
+    const setTxt = (id, v) => { const el = document.getElementById(id); if (el && v) el.textContent = v; };
+    setTxt("statAlumni", portalData.stats.alumni);
+    setTxt("statNewAdmissions", portalData.stats.admissions);
+    setTxt("statCurrentStudents", portalData.stats.students);
+    setTxt("statTeachers", portalData.stats.teachers);
+  }
 
-  if (!found) {
-    errBox.innerText = "❌ Koi result nahi mila! Kripya sahi Roll Number ya Student Name daalein.";
-    errBox.classList.remove("hidden");
-    document.getElementById("marksheetOutput").classList.add("hidden");
+  // Notice
+  const ticker = document.getElementById("liveNoticeTicker");
+  if (ticker && portalData.noticeEn) {
+    ticker.textContent = currentLang === "hi" ? (portalData.noticeHi || portalData.noticeEn) : portalData.noticeEn;
+  }
+
+  renderPublicHomework();
+  renderPublicVanRoutes();
+  renderPublicGallery("All");
+  renderPublicToppers();
+  renderPublicTeachers();
+  renderPublicHolidays();
+}
+
+function renderPublicHomework() {
+  const grid = document.getElementById("publicHomeworkGrid");
+  if (!grid) return;
+  const filter = document.getElementById("publicHomeworkClassFilter")?.value || "All";
+  const list = (portalData.homework || []).filter(h => filter === "All" || h.className === filter);
+
+  if (!list.length) {
+    grid.innerHTML = `<div class="col-span-full bg-white/10 rounded-2xl p-4 text-center text-amber-200">No homework uploaded for ${filter} today.</div>`;
     return;
   }
 
-  document.getElementById("msExamTitle").innerText = found.examTitle || "ANNUAL PROGRESS REPORT 2026–27";
-  document.getElementById("msRoll").innerText = found.roll;
-  document.getElementById("msClass").innerText = found.className;
-  document.getElementById("msDob").innerText = found.dob || "-";
-  document.getElementById("msName").innerText = found.name;
-  document.getElementById("msAttendance").innerText = found.attendance || "95%";
-  document.getElementById("msFather").innerText = found.fatherName || "-";
-  document.getElementById("msMother").innerText = found.motherName || "-";
-  document.getElementById("msStudentPhoto").src = found.photo || "https://via.placeholder.com/80x95?text=Student";
+  grid.innerHTML = list.map(h => `
+    <div class="bg-white/10 border border-white/15 rounded-2xl p-4 space-y-2 hover-lift">
+      <div class="flex justify-between items-center">
+        <span class="bg-amber-400 text-[#08152B] font-extrabold px-2.5 py-0.5 rounded-lg text-[11px]">${h.className}</span>
+        <span class="text-amber-300 font-bold text-[11px]">${h.subject}</span>
+      </div>
+      <p class="text-slate-100 leading-relaxed">${h.work}</p>
+      <p class="text-[11px] text-slate-300 pt-1 border-t border-white/10">👨‍🏫 ${h.teacher || "Class Teacher"} • ${h.date || "Today"}</p>
+    </div>
+  `).join("");
+}
 
-  let totalMax = 0, totalObt = 0;
-  document.getElementById("msSubjectsBody").innerHTML = found.subjects.map(sub => {
-    const subTot = Number(sub.theory) + Number(sub.practical);
-    totalMax += Number(sub.max);
-    totalObt += subTot;
-    const gr = subTot >= 90 ? "A+" : subTot >= 75 ? "A" : subTot >= 60 ? "B" : subTot >= 45 ? "C" : subTot >= 33 ? "D" : "F";
-    return `<tr><td class="border p-2 font-bold">${sub.name}</td><td class="border p-2 text-center">${sub.max}</td><td class="border p-2 text-center">${sub.theory}</td><td class="border p-2 text-center">${sub.practical}</td><td class="border p-2 text-center font-bold">${subTot}</td><td class="border p-2 text-center font-bold text-[#0F2952]">${gr}</td></tr>`;
+function renderPublicVanRoutes() {
+  const grid = document.getElementById("publicVanRoutesGrid");
+  if (!grid) return;
+  grid.innerHTML = (portalData.vanRoutes || []).map(v => `
+    <div class="bg-slate-50 border rounded-2xl p-4 space-y-1.5 hover-lift">
+      <div class="flex justify-between items-center">
+        <span class="font-extrabold text-[#0F2952]">🚌 ${v.vanNo}</span>
+        <span class="bg-emerald-100 text-emerald-800 font-bold px-2 py-0.5 rounded text-[11px]">⏰ ${v.timing}</span>
+      </div>
+      <p class="text-slate-600 font-medium">${v.route}</p>
+      <div class="pt-1 flex justify-between items-center text-[11px]">
+        <span class="font-bold text-slate-700">Driver: ${v.driver}</span>
+        <a href="tel:+91${v.phone}" class="text-emerald-700 font-extrabold hover:underline">📞 Call</a>
+      </div>
+    </div>
+  `).join("");
+}
+function renderPublicGallery(cat) {
+  const grid = document.getElementById("publicGalleryGrid");
+  if (!grid) return;
+  const list = (portalData.gallery || []).filter(g => cat === "All" || g.category === cat);
+  grid.innerHTML = list.map(g => `
+    <div class="bg-white rounded-2xl overflow-hidden border shadow-sm hover-lift group">
+      <div class="h-48 overflow-hidden bg-slate-200">
+        <img src="${g.url}" alt="${g.title}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
+      </div>
+      <div class="p-3.5 flex justify-between items-center">
+        <h4 class="font-extrabold text-[#0F2952] text-xs">${g.title}</h4>
+        <span class="text-[10px] font-bold bg-amber-100 text-amber-800 px-2 py-0.5 rounded">${g.category}</span>
+      </div>
+    </div>
+  `).join("");
+}
+function filterGallery(cat) { renderPublicGallery(cat); }
+
+function renderPublicToppers() {
+  const grid = document.getElementById("publicToppersGrid");
+  if (!grid) return;
+  grid.innerHTML = (portalData.toppers || []).map(t => `
+    <div class="bg-white rounded-2xl p-4 border shadow-sm text-center space-y-2 hover-lift">
+      <div class="w-14 h-14 rounded-full bg-amber-100 text-amber-700 font-extrabold text-lg mx-auto flex items-center justify-center border-2 border-amber-400">🏆</div>
+      <h4 class="font-extrabold text-[#0F2952] text-sm">${t.name}</h4>
+      <p class="text-xs text-slate-500 font-semibold">${t.className}</p>
+      <p class="text-xl font-extrabold text-emerald-700">${t.percent}</p>
+      <span class="inline-block bg-[#0F2952] text-amber-300 text-[10px] font-bold px-2.5 py-0.5 rounded-full">${t.rank}</span>
+    </div>
+  `).join("");
+}
+
+function renderPublicTeachers() {
+  const grid = document.getElementById("publicTeachersGrid");
+  if (!grid) return;
+  grid.innerHTML = (portalData.teachers || []).map(t => `
+    <div class="bg-white rounded-2xl p-4 border shadow-sm flex items-center gap-3 hover-lift">
+      <div class="w-12 h-12 rounded-2xl bg-[#0F2952] text-amber-300 font-extrabold flex items-center justify-center text-base shrink-0">
+        ${t.name.replace(/Mr\.|Mrs\.|Ms\./g, "").trim().charAt(0)}
+      </div>
+      <div class="min-w-0">
+        <h4 class="font-extrabold text-[#0F2952] text-xs truncate">${t.name}</h4>
+        <p class="text-[11px] text-slate-600 line-clamp-2">${t.role}</p>
+        <span class="text-[10px] font-bold text-amber-700">${t.exp || ""}</span>
+      </div>
+    </div>
+  `).join("");
+}
+
+function renderPublicHolidays() {
+  const grid = document.getElementById("publicHolidaysGrid");
+  if (!grid) return;
+  grid.innerHTML = (portalData.holidays || []).map(h => `
+    <div class="bg-slate-50 border rounded-2xl p-3.5 space-y-1">
+      <div class="flex justify-between items-center">
+        <span class="font-extrabold text-[#0F2952]">${h.date}</span>
+        <span class="text-[10px] font-bold bg-amber-100 text-amber-800 px-2 py-0.5 rounded">${h.type}</span>
+      </div>
+      <p class="font-bold text-slate-700">${h.name}</p>
+      <p class="text-[11px] text-slate-500">${h.day}</p>
+    </div>
+  `).join("");
+}
+
+// 4. PORTAL TABS (MARKSHEET vs TC)
+function switchPortalTab(tab) {
+  const resBox = document.getElementById("portalResultBox");
+  const tcBox = document.getElementById("portalTcBox");
+  const btnRes = document.getElementById("btnTabResult");
+  const btnTc = document.getElementById("btnTabTC");
+  if (tab === "result") {
+    resBox.classList.remove("hidden");
+    tcBox.classList.add("hidden");
+    btnRes.className = "px-4 py-2 rounded-xl bg-[#0F2952] text-white cursor-pointer";
+    btnTc.className = "px-4 py-2 rounded-xl bg-slate-100 text-slate-700 cursor-pointer";
+  } else {
+    tcBox.classList.remove("hidden");
+    resBox.classList.add("hidden");
+    btnTc.className = "px-4 py-2 rounded-xl bg-[#0F2952] text-white cursor-pointer";
+    btnRes.className = "px-4 py-2 rounded-xl bg-slate-100 text-slate-700 cursor-pointer";
+  }
+}
+
+// 5. SEARCH & RENDER MARKSHEET PDF
+async function searchMarksheet() {
+  const roll = document.getElementById("resRollInput").value.trim();
+  const dob = document.getElementById("resDobInput").value.trim();
+  if (!roll || !dob) return alert("Please enter both Roll Number and Date of Birth!");
+
+  let found = (portalData.results || []).find(r => String(r.roll).trim() === roll && String(r.dob).trim() === dob);
+
+  // Also check dedicated sdr_results collection
+  if (!found) {
+    try {
+      const doc = await db.collection("sdr_results").doc(roll).get();
+      if (doc.exists && doc.data().dob === dob) found = doc.data();
+    } catch (e) {}
+  }
+
+  if (!found) return alert("No marksheet found for Roll No: " + roll + " with this DOB.");
+
+  let grandMax = 0, grandObt = 0;
+  const rowsHtml = (found.subjects || []).map((s, idx) => {
+    const tot = Number(s.theory || 0) + Number(s.practical || 0);
+    const max = Number(s.max || 100);
+    grandMax += max;
+    grandObt += tot;
+    return `
+      <tr class="border-b">
+        <td class="p-2 font-bold">${idx + 1}</td>
+        <td class="p-2 font-bold text-[#0F2952]">${s.name}</td>
+        <td class="p-2 text-center">${max}</td>
+        <td class="p-2 text-center">${s.theory}</td>
+        <td class="p-2 text-center">${s.practical}</td>
+        <td class="p-2 text-center font-extrabold text-emerald-700">${tot}</td>
+      </tr>
+    `;
   }).join("");
 
-  const pct = ((totalObt / totalMax) * 100).toFixed(2);
-  document.getElementById("msGrandTotal").innerText = `${totalObt} / ${totalMax}`;
-  document.getElementById("msPercentage").innerText = `${pct}%`;
-  document.getElementById("msStatus").innerText = pct >= 33 ? "PASSED" : "SUPPLEMENTARY";
-  document.getElementById("msQrImg").src = `https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=${encodeURIComponent(`SDR-BASARI|Roll:${found.roll}|Name:${found.name}\vert{}Pct:${pct}%`)}`;
+  const percent = grandMax ? ((grandObt / grandMax) * 100).toFixed(2) : "0.00";
+  const grade = percent >= 85 ? "A+ (Distinction)" : percent >= 70 ? "A (First Division)" : percent >= 50 ? "B (Second Division)" : "C (Pass)";
 
-  document.getElementById("marksheetOutput").classList.remove("hidden");
-  document.getElementById("marksheetOutput").scrollIntoView({ behavior: "smooth" });
-});
+  document.getElementById("msQrBox").innerHTML = `<img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=${encodeURIComponent("SDR-VERIFIED:" + found.roll + "-" + found.name + "-" + percent + "%")}" alt="QR" class="w-full h-full object-contain" />`;
+
+  document.getElementById("msBodyContent").innerHTML = `
+    <div class="text-center bg-[#0F2952] text-amber-300 font-extrabold py-1.5 rounded-lg uppercase tracking-wider">
+      ${found.examTitle || "ANNUAL EXAMINATION MARKSHEET"}
+    </div>
+    <div class="grid grid-cols-2 gap-2 bg-slate-50 p-3 rounded-xl border text-xs">
+      <p><b>Student Name:</b> ${found.name}</p>
+      <p><b>Roll Number:</b> ${found.roll}</p>
+      <p><b>Father's Name:</b> ${found.fatherName}</p>
+      <p><b>Class:</b> ${found.className}</p>
+      <p><b>Mother's Name:</b> ${found.motherName || "-"}</p>
+      <p><b>Date of Birth:</b> ${found.dob}</p>
+    </div>
+    <table class="w-full border text-xs">
+      <thead class="bg-slate-100 font-extrabold text-[#0F2952]">
+        <tr>
+          <th class="p-2 text-left">#</th>
+          <th class="p-2 text-left">Subject</th>
+          <th class="p-2 text-center">Max</th>
+          <th class="p-2 text-center">Theory</th>
+          <th class="p-2 text-center">Prac/Proj</th>
+          <th class="p-2 text-center">Total</th>
+        </tr>
+      </thead>
+      <tbody>${rowsHtml}</tbody>
+      <tfoot class="bg-amber-50 font-extrabold text-[#0F2952]">
+        <tr>
+          <td colspan="2" class="p-2">GRAND TOTAL</td>
+          <td class="p-2 text-center">${grandMax}</td>
+          <td colspan="2" class="p-2 text-center">Percentage: ${percent}%</td>
+          <td class="p-2 text-center text-emerald-700">${grandObt}</td>
+        </tr>
+      </tfoot>
+    </table>
+    <div class="flex justify-between items-center pt-2 text-xs font-bold">
+      <p>Result Status: <span class="text-emerald-700 font-extrabold">PASSED (${grade})</span></p>
+      <p>Attendance: ${found.attendance || "92%"}</p>
+    </div>
+    <div class="flex justify-between items-end pt-8 text-[11px] font-bold text-slate-600">
+      <span>Class Teacher Sign</span>
+      <span>Parent Sign</span>
+      <span class="text-[#0F2952] font-extrabold">Principal Seal & Sign</span>
+    </div>
+  `;
+
+  document.getElementById("marksheetOutputWrap").classList.remove("hidden");
+}
 
 function downloadMarksheetPDF() {
   const el = document.getElementById("printableMarksheet");
-  const roll = document.getElementById("msRoll").innerText;
-  html2pdf().set({ margin: 0.3, filename: `SDR_Marksheet_${roll}.pdf`, jsPDF: { unit: "in", format: "a4", orientation: "portrait" } }).from(el).save();
+  const roll = document.getElementById("resRollInput").value.trim() || "Student";
+  html2pdf().set({
+    margin: 8,
+    filename: `SDR_Marksheet_Roll_${roll}.pdf`,
+    image: { type: "jpeg", quality: 0.98 },
+    html2canvas: { scale: 2, useCORS: true },
+    jsPDF: { unit: "mm", format: "a4", orientation: "portrait" }
+  }).from(el).save();
 }
 
-document.getElementById("tcSearchForm")?.addEventListener("submit", (e) => {
-  e.preventDefault();
+// 6. TC VERIFICATION
+function verifyTcNumber() {
   const tcNo = document.getElementById("tcNumberInput").value.trim().toUpperCase();
-  const found = (schoolData.tcs || []).find(t => t.tcNo.toUpperCase() === tcNo);
-  const errBox = document.getElementById("portalErrorBox");
-  errBox.classList.add("hidden");
+  const out = document.getElementById("tcResultOutput");
+  if (!tcNo) return alert("Enter TC Number first!");
+  const match = (portalData.tcs || []).find(t => String(t.tcNo).toUpperCase() === tcNo);
+  if (!match) {
+    out.innerHTML = `<div class="bg-rose-50 border border-rose-200 text-rose-700 p-4 rounded-2xl text-xs font-bold">❌ No Transfer Certificate found with number <b>${tcNo}</b>. Contact School Office.</div>`;
+    return;
+  }
+  out.innerHTML = `
+    <div class="bg-emerald-50 border-2 border-emerald-400 p-4 rounded-2xl text-xs space-y-1.5">
+      <p class="text-emerald-800 font-extrabold text-sm">✅ GENUINE TRANSFER CERTIFICATE VERIFIED</p>
+      <p><b>TC Number:</b> ${match.tcNo}</p>
+      <p><b>Student Name:</b> ${match.studentName} (S/o ${match.fatherName})</p>
+      <p><b>Class Left:</b> ${match.classLeft} • <b>Issue Date:</b> ${match.issueDate}</p>
+    </div>
+  `;
+}
 
-  if (!found) {
-    
+// 7. ONLINE ADMISSION MODAL (PENDING-TO-APPROVE WORKFLOW)
+function openAdmissionModal() {
+  document.getElementById("admissionForm").classList.remove("hidden");
+  document.getElementById("admissionSuccessBox").classList.add("hidden");
+  document.getElementById("admissionModal").classList.remove("hidden");
+}
+function closeAdmissionModal() {
+  document.getElementById("admissionModal").classList.add("hidden");
+}
+
+async function submitOnlineAdmission(e) {
+  e.preventDefault();
+  const btn = document.getElementById("admSubmitBtn");
+  btn.disabled = true;
+  btn.textContent = "⏳ Submitting Application...";
+
+  const appId = "SDR-2026-" + Math.floor(1000 + Math.random() * 9000);
+  const payload = {
+    appId,
+    studentName: document.getElementById("admStudentName").value.trim(),
+    fatherName: document.getElementById("admFatherName").value.trim(),
+    className: document.getElementById("admClass").value,
+    dob: document.getElementById("admDob").value,
+    phone: document.getElementById("admPhone").value.trim(),
+    medium: document.getElementById("admMedium").value,
+    address: document.getElementById("admAddress").value.trim(),
+    status: "Pending Verification",
+    submittedAt: new Date().toLocaleDateString("en-IN")
+  };
+
+  try {
+    await db.collection("sdr_admissions").doc(appId).set(payload);
+    document.getElementById("admissionForm").classList.add("hidden");
+    const box = document.getElementById("admissionSuccessBox");
+    box.classList.remove("hidden");
+    const waMsg = encodeURIComponent(`Hello SDR Memorial School Basari, I have applied for Online Admission.\nApplication ID: ${appId}\nStudent: ${payload.studentName}\nClass: ${payload.className}\nFather: ${payload.fatherName}`);
+    box.innerHTML = `
+      <div class="w-14 h-14 rounded-full bg-amber-100 text-amber-700 mx-auto flex items-center justify-center text-2xl">⏳</div>
+      <h4 class="text-lg font-extrabold text-[#0F2952]">Application Submitted!</h4>
+      <p class="text-xs text-slate-600">Status: <span class="bg-amber-100 text-amber-800 font-extrabold px-2 py-0.5 rounded">Pending Admin Verification</span></p>
+      <div class="bg-slate-100 p-3 rounded-xl font-extrabold text-sm text-[#0F2952]">Application ID: ${appId}</div>
+      <p class="text-[11px] text-slate-500">Save this ID to track approval status anytime on our website.</p>
+      <a href="https://wa.me/919988110080?text=${waMsg}" target="_blank" class="inline-block w-full bg-emerald-600 text-white font-extrabold py-2.5 rounded-xl text-xs">📲 Notify School Office on WhatsApp</a>
+    `;
+    e.target.reset();
+  } catch (err) {
+    alert("Error submitting form: " + err.message);
+  } finally {
+    btn.disabled = false;
+    btn.textContent = "✅ Submit Application (Pending Approval)";
+  }
+}
+
+// 8. LIVE ADMISSION STATUS TRACKER
+function openStatusModal() {
+  document.getElementById("trackResultBox").innerHTML = "";
+  document.getElementById("statusModal").classList.remove("hidden");
+}
+function closeStatusModal() {
+  document.getElementById("statusModal").classList.add("hidden");
+}
+
+async function checkAdmissionStatus() {
+  const q = document.getElementById("trackInput").value.trim();
+  const out = document.getElementById("trackResultBox");
+  if (!q) return alert("Enter Application ID or Mobile Number!");
+  out.innerHTML = `<p class="text-slate-500">Checking live database...</p>`;
+
+  try {
+    let found = null;
+    const byId = await db.collection("sdr_admissions").doc(q.toUpperCase()).get();
+    if (byId.exists) found = byId.data();
+    if (!found) {
+      const snap = await db.collection("sdr_admissions").where("phone", "==", q).limit(1).get();
+      if (!snap.empty) found = snap.docs[0].data();
+    }
+
+    if (!found) {
+      out.innerHTML = `<div class="bg-rose-50 text-rose-700 p-3 rounded-xl font-bold">❌ No application found for "${q}".</div>`;
+      return;
+    }
+
+    const badgeColor = found.status === "Approved" ? "bg-emerald-100 text-emerald-800" : found.status === "Rejected" ? "bg-rose-100 text-rose-800" : "bg-amber-100 text-amber-800";
+    out.innerHTML = `
+      <div class="bg-slate-50 border rounded-2xl p-3.5 space-y-1.5">
+        <div class="flex justify-between items-center">
+          <span class="font-extrabold text-[#0F2952]">${found.appId}</span>
+          <span class="${badgeColor} font-extrabold px-2.5 py-0.5 rounded-full text-[11px]">${found.status}</span>
+        </div>
+        <p><b>Student:</b> ${found.studentName} (${found.className})</p>
+        <p><b>Father:</b> ${found.fatherName}</p>
+        <p class="text-[11px] text-slate-500">${found.status === "Approved" ? "🎉 Admission Approved! Visit school with documents." : "⏳ Under review by School Admin."}</p>
+      </div>
+    `;
+  } catch (err) {
+    out.innerHTML = `<p class="text-rose-600">Error: ${err.message}</p>`;
+  }
+}
+
+// 9. REAL-TIME FIREBASE SYNC ON LOAD
+document.addEventListener("DOMContentLoaded", () => {
+  renderAllPublicSections();
+
+  db.collection("sdr_portal").doc("main_data").onSnapshot((doc) => {
+    if (doc.exists) {
+      portalData = { ...portalData, ...doc.data() };
+      renderAllPublicSections();
+    }
+  }, (err) => {
+    console.log("Using default portal data:", err.message);
+  });
+});
