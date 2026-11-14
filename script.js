@@ -3,12 +3,12 @@
 // =========================================================
 
 const firebaseConfig = {
-  apiKey: "AIzaSyD-SDRMEMORIALSCHOOL-KEY",
+  apiKey: "AIzaSyAKIF5CrQYNErK6Qefj7vAm2jNTwKbpVvE",
   authDomain: "sdrmemorialschool.firebaseapp.com",
   projectId: "sdrmemorialschool",
-  storageBucket: "sdrmemorialschool.appspot.com",
-  messagingSenderId: "849201948210",
-  appId: "1:849201948210:web:sdrbasari2026"
+  storageBucket: "sdrmemorialschool.firebasestorage.app",
+  messagingSenderId: "200886478103",
+  appId: "1:200886478103:web:bf8596fdc1c3793d100352"
 };
 
 if (!firebase.apps.length) {
@@ -78,12 +78,11 @@ let portalData = {
     { tcNo: "SDR/TC/2026/089", studentName: "Mohit Kushwaha", fatherName: "Harishankar Kushwaha", classLeft: "Class 8th Passed", issueDate: "12 July 2026", status: "Verified & Genuine" }
   ]
 };
-
 // 1. LANGUAGE TOGGLE (HINDI / ENGLISH)
 function toggleLanguage() {
   currentLang = currentLang === "en" ? "hi" : "en";
   const btnText = document.getElementById("langBtnText");
-  if (btnText) btnText.textContent = currentLang === "en" ? "हिंदी में देखें" : "Switch to English";
+  if (btnText) btnText.textContent = currentLang === "en" ? "हिंदी" : "English";
 
   document.querySelectorAll("[data-en]").forEach((el) => {
     const val = el.getAttribute(currentLang === "hi" ? "data-hi" : "data-en");
@@ -108,7 +107,6 @@ function closeMobileMenu() {
 
 // 3. RENDER ALL PUBLIC SECTIONS
 function renderAllPublicSections() {
-  // Stats
   if (portalData.stats) {
     const setTxt = (id, v) => { const el = document.getElementById(id); if (el && v) el.textContent = v; };
     setTxt("statAlumni", portalData.stats.alumni);
@@ -117,7 +115,6 @@ function renderAllPublicSections() {
     setTxt("statTeachers", portalData.stats.teachers);
   }
 
-  // Notice
   const ticker = document.getElementById("liveNoticeTicker");
   if (ticker && portalData.noticeEn) {
     ticker.textContent = currentLang === "hi" ? (portalData.noticeHi || portalData.noticeEn) : portalData.noticeEn;
@@ -235,7 +232,7 @@ function renderPublicHolidays() {
   `).join("");
 }
 
-// 4. PORTAL TABS (MARKSHEET vs TC)
+// 4. PORTAL TABS & MARKSHEET PDF
 function switchPortalTab(tab) {
   const resBox = document.getElementById("portalResultBox");
   const tcBox = document.getElementById("portalTcBox");
@@ -244,17 +241,16 @@ function switchPortalTab(tab) {
   if (tab === "result") {
     resBox.classList.remove("hidden");
     tcBox.classList.add("hidden");
-    btnRes.className = "px-4 py-2 rounded-xl bg-[#0F2952] text-white cursor-pointer";
-    btnTc.className = "px-4 py-2 rounded-xl bg-slate-100 text-slate-700 cursor-pointer";
+    btnRes.className = "px-3.5 py-2 rounded-xl bg-[#0F2952] text-white cursor-pointer";
+    btnTc.className = "px-3.5 py-2 rounded-xl bg-slate-100 text-slate-700 cursor-pointer";
   } else {
     tcBox.classList.remove("hidden");
     resBox.classList.add("hidden");
-    btnTc.className = "px-4 py-2 rounded-xl bg-[#0F2952] text-white cursor-pointer";
-    btnRes.className = "px-4 py-2 rounded-xl bg-slate-100 text-slate-700 cursor-pointer";
+    btnTc.className = "px-3.5 py-2 rounded-xl bg-[#0F2952] text-white cursor-pointer";
+    btnRes.className = "px-3.5 py-2 rounded-xl bg-slate-100 text-slate-700 cursor-pointer";
   }
 }
 
-// 5. SEARCH & RENDER MARKSHEET PDF
 async function searchMarksheet() {
   const roll = document.getElementById("resRollInput").value.trim();
   const dob = document.getElementById("resDobInput").value.trim();
@@ -262,7 +258,6 @@ async function searchMarksheet() {
 
   let found = (portalData.results || []).find(r => String(r.roll).trim() === roll && String(r.dob).trim() === dob);
 
-  // Also check dedicated sdr_results collection
   if (!found) {
     try {
       const doc = await db.collection("sdr_results").doc(roll).get();
@@ -341,7 +336,6 @@ async function searchMarksheet() {
 
   document.getElementById("marksheetOutputWrap").classList.remove("hidden");
 }
-
 function downloadMarksheetPDF() {
   const el = document.getElementById("printableMarksheet");
   const roll = document.getElementById("resRollInput").value.trim() || "Student";
@@ -354,7 +348,7 @@ function downloadMarksheetPDF() {
   }).from(el).save();
 }
 
-// 6. TC VERIFICATION
+// 5. TC VERIFICATION
 function verifyTcNumber() {
   const tcNo = document.getElementById("tcNumberInput").value.trim().toUpperCase();
   const out = document.getElementById("tcResultOutput");
@@ -374,7 +368,7 @@ function verifyTcNumber() {
   `;
 }
 
-// 7. ONLINE ADMISSION MODAL (PENDING-TO-APPROVE WORKFLOW)
+// 6. ONLINE ADMISSION MODAL (PENDING-TO-APPROVE)
 function openAdmissionModal() {
   document.getElementById("admissionForm").classList.remove("hidden");
   document.getElementById("admissionSuccessBox").classList.add("hidden");
@@ -427,7 +421,7 @@ async function submitOnlineAdmission(e) {
   }
 }
 
-// 8. LIVE ADMISSION STATUS TRACKER
+// 7. LIVE ADMISSION STATUS TRACKER
 function openStatusModal() {
   document.getElementById("trackResultBox").innerHTML = "";
   document.getElementById("statusModal").classList.remove("hidden");
@@ -473,7 +467,7 @@ async function checkAdmissionStatus() {
   }
 }
 
-// 9. REAL-TIME FIREBASE SYNC ON LOAD
+// 8. REAL-TIME FIREBASE SYNC ON LOAD
 document.addEventListener("DOMContentLoaded", () => {
   renderAllPublicSections();
 
