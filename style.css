@@ -1,143 +1,124 @@
 @import url('https://fonts.googleapis.com/css2?family=Mukta:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&family=Tiro+Devanagari+Hindi:ital@0;1&display=swap');
 
 :root {
-  --navy-dark: #08152B;
-  --navy-main: #0F2952;
-  --gold-main: #F59E0B;
-  --gold-dark: #B45309;
+  --bg-space: #030712;
+  --primary-glow: #3b82f6;
+  --gold-glow: #f59e0b;
 }
 
 body {
   font-family: 'Mukta', 'Poppins', sans-serif;
   scroll-behavior: smooth;
-  perspective: 1200px;
+  perspective: 1800px;
   overflow-x: hidden;
+  background-color: var(--bg-space);
+  color: #f8fafc;
 }
 
-h1, h2, h3, .royal-hindi-heading {
-  font-family: 'Tiro Devanagari Hindi', 'Mukta', 'Poppins', serif;
-  letter-spacing: 0.01em;
+/* THREE.JS 3D CANVAS BACKGROUND CONTAINER */
+#canvas-3d-bg {
+  position: fixed;
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  pointer-events: none;
+  z-index: 1;
 }
 
-/* 1. 3D ANIMATED HERO BACKGROUND */
+/* MAKE CONTENT SIT ABOVE 3D CANVAS */
+header, section, footer, .modal-backdrop {
+  position: relative;
+  z-index: 2;
+}
+
+/* 1. HOLOGRAPHIC 3D HERO STAGE */
 .hero-bg {
-  background: radial-gradient(circle at 80% 20%, #25549c 0%, #0F2952 45%, #061022 100%);
-  background-size: 140% 140%;
-  animation: heroGradient3D 10s ease infinite;
+  background: linear-gradient(135deg, rgba(15, 41, 82, 0.85) 0%, rgba(3, 7, 18, 0.95) 100%);
+  backdrop-filter: blur(20px);
+  border-bottom: 2px solid rgba(245, 158, 11, 0.4);
+  box-shadow: 0 40px 100px -20px rgba(0, 0, 0, 0.9);
+  transform-style: preserve-3d;
+}
+
+/* 2. ULTIMATE 3D MAGNETIC TILT CARD WITH LIGHT GLARE */
+.card-3d-magical {
+  background: rgba(15, 41, 82, 0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-top: 1px solid rgba(251, 191, 36, 0.5);
+  border-radius: 28px;
+  box-shadow: 
+    0 30px 60px rgba(0, 0, 0, 0.6),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  transform-style: preserve-3d;
+  transition: transform 0.1s ease-out, box-shadow 0.3s ease;
   position: relative;
   overflow: hidden;
 }
 
-@keyframes heroGradient3D {
-  0%, 100% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
+/* DYNAMIC LIGHT GLARE EFFECT ON HOVER/TOUCH */
+.card-3d-magical::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%; width: 50%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.12), transparent);
+  transform: skewX(-25deg);
+  transition: 0.7s;
+}
+.card-3d-magical:hover::before {
+  left: 150%;
 }
 
-/* 2. 3D FLOATING GLASS CARD (HERO TRACK RECORD) */
-.glass-card {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  box-shadow:
-    0 22px 45px -12px rgba(0, 0, 0, 0.55),
-    inset 0 1px 2px rgba(255, 255, 255, 0.35);
-  transform-style: preserve-3d;
-  animation: float3DCard 5s ease-in-out infinite;
+/* 3. FUTURISTIC 3D GLOWING BUTTONS */
+.btn-3d-futuristic {
+  background: linear-gradient(135deg, #f59e0b 0%, #b45309 100%);
+  color: #030712;
+  font-weight: 800;
+  border-radius: 18px;
+  padding: 14px 28px;
+  box-shadow: 
+    0 10px 30px -5px rgba(245, 158, 11, 0.6),
+    inset 0 2px 3px rgba(255, 255, 255, 0.6);
+  transform: translateZ(30px);
+  transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+  position: relative;
+}
+.btn-3d-futuristic:hover {
+  transform: translateY(-5px) translateZ(50px) scale(1.04);
+  box-shadow: 0 20px 40px -5px rgba(245, 158, 11, 0.85);
 }
 
-@keyframes float3DCard {
-  0%, 100% { transform: translateY(0px) rotateX(0deg) rotateY(0deg); }
-  50% { transform: translateY(-7px) rotateX(2deg) rotateY(-2deg); }
+.btn-3d-navy {
+  background: linear-gradient(135deg, #2563eb 0%, #0F2952 100%);
+  color: #ffffff;
+  font-weight: 800;
+  border-radius: 18px;
+  padding: 14px 28px;
+  box-shadow: 
+    0 10px 30px -5px rgba(37, 99, 235, 0.6),
+    inset 0 2px 3px rgba(255, 255, 255, 0.3);
+  transform: translateZ(30px);
+  transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.btn-3d-navy:hover {
+  transform: translateY(-5px) translateZ(50px) scale(1.04);
+  box-shadow: 0 20px 40px -5px rgba(37, 99, 235, 0.85);
 }
 
-/* 3. 3D PUSHABLE ROYAL GOLD & NAVY BUTTONS */
-.btn-royal-gold {
-  background: linear-gradient(145deg, #FBBF24 0%, #D97706 100%);
-  color: #08152B;
-  border-bottom: 4px solid #92400E;
-  box-shadow:
-    0 10px 20px -5px rgba(245, 158, 11, 0.55),
-    inset 0 1px 1px rgba(255, 255, 255, 0.6);
-  transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
-  transform: translateY(0);
+/* 4. FLOATING 3D STAT CUBES */
+.stat-cube-3d {
+  background: rgba(8, 21, 43, 0.85);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  border-radius: 22px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+  transform: translateZ(40px);
+  transition: transform 0.3s ease;
 }
-.btn-royal-gold:hover {
-  transform: translateY(-3px) scale(1.02);
-  box-shadow: 0 15px 26px -5px rgba(245, 158, 11, 0.7);
-}
-.btn-royal-gold:active {
-  transform: translateY(2px);
-  border-bottom-width: 1px;
+.stat-cube-3d:hover {
+  transform: translateY(-8px) translateZ(60px) scale(1.05);
+  border-color: #f59e0b;
 }
 
-.btn-royal-navy {
-  background: linear-gradient(145deg, #1E427A 0%, #0F2952 100%);
-  color: #FFFFFF;
-  border-bottom: 4px solid #061022;
-  box-shadow:
-    0 10px 20px -5px rgba(15, 41, 82, 0.45),
-    inset 0 1px 1px rgba(255, 255, 255, 0.25);
-  transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-.btn-royal-navy:hover {
-  transform: translateY(-3px) scale(1.02);
-  box-shadow: 0 14px 24px -5px rgba(15, 41, 82, 0.6);
-}
-.btn-royal-navy:active {
-  transform: translateY(2px);
-  border-bottom-width: 1px;
-}
-
-/* 4. 3D TILT & DEPTH ON ALL CARDS (.hover-lift & rounded-3xl/2xl boxes) */
-.hover-lift {
-  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s ease;
-  transform-style: preserve-3d;
-  box-shadow:
-    0 10px 25px -8px rgba(15, 41, 82, 0.12),
-    0 4px 0 0 rgba(15, 41, 82, 0.06);
-}
-.hover-lift:hover, .hover-lift:active {
-  transform: translateY(-8px) rotateX(3deg) rotateY(-2deg) scale(1.015);
-  box-shadow:
-    0 22px 38px -10px rgba(15, 41, 82, 0.24),
-    0 6px 0 0 rgba(245, 158, 11, 0.45);
-}
-
-/* 5. 3D SCHOOL LOGO GLOW & PULSE */
-header img[alt="SDR Logo"] {
-  box-shadow: 0 6px 16px rgba(245, 158, 11, 0.45);
-  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-header img[alt="SDR Logo"]:active {
-  transform: scale(0.88) rotate(-8deg);
-}
-
-/* 6. 3D SECTION ENTRANCE & CARD DEPTH */
-section > div.rounded-3xl {
-  box-shadow:
-    0 18px 40px -12px rgba(15, 41, 82, 0.14),
-    0 5px 0 0 rgba(245, 158, 11, 0.3);
-  transition: transform 0.35s ease, box-shadow 0.35s ease;
-}
-section > div.rounded-3xl:hover {
-  transform: translateY(-4px);
-  box-shadow:
-    0 26px 50px -12px rgba(15, 41, 82, 0.22),
-    0 7px 0 0 rgba(245, 158, 11, 0.55);
-}
-
-/* 7. FLOATING WHATSAPP 3D PULSE */
-a.fixed.bottom-5.right-5 {
-  box-shadow: 0 12px 24px -4px rgba(16, 185, 129, 0.65), inset 0 2px 2px rgba(255,255,255,0.4);
-  animation: pulse3DWhatsApp 2.4s infinite ease-in-out;
-}
-@keyframes pulse3DWhatsApp {
-  0%, 100% { transform: translateY(0) scale(1); }
-  50% { transform: translateY(-6px) scale(1.08); }
-}
-
-/* PRINT STYLES FOR OFFICIAL MARKSHEET */
+/* PRINT STYLES */
 @media print {
   body * { visibility: hidden; }
   #printableMarksheet, #printableMarksheet * { visibility: visible; }
@@ -148,4 +129,3 @@ a.fixed.bottom-5.right-5 {
     box-shadow: none !important;
   }
 }
-
