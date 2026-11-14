@@ -1,0 +1,17 @@
+{
+  "name": "SDR Memorial Public High School, Basari",
+  "short_name": "SDR School",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#08152B",
+  "theme_color": "#0F2952",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
