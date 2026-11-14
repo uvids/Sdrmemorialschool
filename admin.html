@@ -75,7 +75,8 @@
     </header>
 
     <main class="max-w-7xl mx-auto px-3 sm:px-6 pt-5 space-y-6">
-            <!-- TAB 1: LIVE DASHBOARD -->
+
+      <!-- TAB 1: LIVE DASHBOARD -->
       <section id="tab-dashboard" class="admin-section space-y-5">
         <div class="flex flex-wrap justify-between items-center gap-2">
           <div>
@@ -223,7 +224,8 @@
           </div>
         </div>
       </section>
-            <!-- TAB 4: LIVE STUDENT & TEACHER ATTENDANCE REGISTER -->
+
+      <!-- TAB 4: LIVE STUDENT & TEACHER ATTENDANCE REGISTER -->
       <section id="tab-attendance" class="admin-section hidden space-y-5">
         <div class="grid lg:grid-cols-2 gap-5">
           <div class="bg-white rounded-3xl p-5 border shadow-sm space-y-3">
@@ -473,7 +475,8 @@
 
     </main>
   </div>
-    <script>
+
+  <script>
     const firebaseConfig = {
       apiKey: "AIzaSyAKIF5CrQYNErK6Qefj7vAm2jNTwKbpVvE",
       authDomain: "sdrmemorialschool.firebaseapp.com",
@@ -727,14 +730,17 @@
     }
 
     function exportStudentsCSV() {
-      let csv = "Roll,Student Name,Father Name,Class,Mobile,Address,Photo URL\n";
-      studentsList.forEach(s => { csv += `"${s.roll}","${s.name}","${s.fatherName}","${s.className}","${s.phone}","${s.address || ""}","${s.photoUrl || ""}"\n`; });
+      let csv = "Roll,Student Name,Father Name,Class,Mobile,Address,Photo URL
+";
+      studentsList.forEach(s => { csv += `"${s.roll}","${s.name}","${s.fatherName}","${s.className}","${s.phone}","${s.address || ""}","${s.photoUrl || ""}"
+`; });
       const a = document.createElement("a");
       a.href = URL.createObjectURL(new Blob([csv], { type: "text/csv" }));
       a.download = "SDR_Students_ID_Cards.csv";
       a.click();
     }
-          // ATTENDANCE
+
+    // ATTENDANCE
     function renderAttendanceLists() {
       const teachers = portalDoc.teachers || [];
       document.getElementById("adminTeacherAttList").innerHTML = teachers.map(t => {
@@ -743,8 +749,8 @@
           <div class="flex justify-between items-center p-2.5 rounded-xl border bg-slate-50">
             <div><p class="font-extrabold text-[#0F2952]">${t.name}</p><p class="text-[11px] text-slate-500">${t.role}</p></div>
             <div class="flex gap-1.5 font-extrabold">
-              <button type="button" onclick="markTeacherAtt('${t.name.replace(/'/g, "\\'")}', 'P')" class="px-3 py-1 rounded-lg cursor-pointer ${st === 'P' ? 'bg-emerald-600 text-white' : 'bg-white border'}">P</button>
-              <button type="button" onclick="markTeacherAtt('${t.name.replace(/'/g, "\\'")}', 'A')" class="px-3 py-1 rounded-lg cursor-pointer ${st === 'A' ? 'bg-rose-600 text-white' : 'bg-white border'}">A</button>
+              <button type="button" onclick="markTeacherAtt('${t.name.replace(/'/g, "\'")}', 'P')" class="px-3 py-1 rounded-lg cursor-pointer ${st === 'P' ? 'bg-emerald-600 text-white' : 'bg-white border'}">P</button>
+              <button type="button" onclick="markTeacherAtt('${t.name.replace(/'/g, "\'")}', 'A')" class="px-3 py-1 rounded-lg cursor-pointer ${st === 'A' ? 'bg-rose-600 text-white' : 'bg-white border'}">A</button>
             </div>
           </div>
         `;
@@ -802,7 +808,15 @@
 
     function renderFeeList() {
       document.getElementById("adminFeeList").innerHTML = feesList.map(f => {
-        const msg = encodeURIComponent(`*SDR MEMORIAL PUBLIC HIGH SCHOOL, BASARI*\n🧾 *OFFICIAL FEE RECEIPT*\nReceipt No: ${f.recNo}\nStudent: ${f.studentName} (${f.classRoll})\nFor: ${f.month}\nAmount Paid: ₹${f.amount}\nBalance Due: ₹${f.due}\nDate: ${f.date}\nThank you!`);
+        const msg = encodeURIComponent(`*SDR MEMORIAL PUBLIC HIGH SCHOOL, BASARI*
+🧾 *OFFICIAL FEE RECEIPT*
+Receipt No: ${f.recNo}
+Student: ${f.studentName} (${f.classRoll})
+For: ${f.month}
+Amount Paid: ₹${f.amount}
+Balance Due: ₹${f.due}
+Date: ${f.date}
+Thank you!`);
         return `
           <div class="flex flex-wrap justify-between items-center gap-2 p-3 rounded-xl border bg-slate-50">
             <div><p class="font-extrabold text-[#0F2952]">${f.recNo} • ${f.studentName} (${f.classRoll})</p><p class="text-slate-600">${f.month} • Paid: <b class="text-emerald-700">₹${f.amount}</b> | Due: <b class="text-rose-600">₹${f.due}</b></p></div>
