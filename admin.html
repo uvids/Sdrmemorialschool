@@ -20,7 +20,7 @@
       <div class="text-center space-y-2">
         <img src="1794621466353.png" alt="SDR Logo" class="w-20 h-20 rounded-full object-cover mx-auto border-2 border-amber-400 shadow-lg bg-[#08152B]" />
         <h1 class="text-lg font-extrabold text-[#0F2952]">SDR MEMORIAL ERP ADMIN</h1>
-        <p class="text-xs text-slate-500 font-semibold">बसारी, छतरपुर (म.प्र.) • Secure Staff & Principal Login</p>
+        <p class="text-xs text-slate-500 font-semibold">बसारी, छतरपुर (म.प्र.) 471105 • Secure Principal & Staff Login</p>
       </div>
 
       <form onsubmit="adminLogin(event)" class="space-y-3.5 text-xs">
@@ -41,10 +41,9 @@
       </div>
     </div>
   </div>
-    <!-- MAIN ADMIN ERP WORKSPACE -->
-  <div id="adminWorkspace" class="hidden pb-12">
 
-    <!-- STICKY TOP ERP NAVBAR -->
+  <!-- MAIN ADMIN ERP WORKSPACE -->
+  <div id="adminWorkspace" class="hidden pb-12">
     <header class="bg-[#08152B] text-white sticky top-0 z-40 shadow-lg border-b-2 border-amber-500">
       <div class="max-w-7xl mx-auto px-3 sm:px-6 py-2.5 flex justify-between items-center gap-2">
         <div class="flex items-center gap-2.5 min-w-0">
@@ -60,24 +59,23 @@
         </div>
       </div>
 
-      <!-- 9-SECTION HORIZONTAL SCROLLABLE TAB BAR -->
       <div class="bg-[#0F2952] px-3 py-2 overflow-x-auto border-t border-white/10">
         <div class="max-w-7xl mx-auto flex gap-2 text-[11px] font-extrabold whitespace-nowrap">
           <button type="button" onclick="switchAdminTab('dashboard')" id="nav-dashboard" class="admin-tab px-3.5 py-1.5 rounded-xl bg-amber-400 text-[#08152B] cursor-pointer">📊 Live Dashboard</button>
           <button type="button" onclick="switchAdminTab('admissions')" id="nav-admissions" class="admin-tab px-3.5 py-1.5 rounded-xl bg-white/10 text-white cursor-pointer">📥 Admissions (<span id="badgePendingAdm">0</span>)</button>
-          <button type="button" onclick="switchAdminTab('students')" id="nav-students" class="admin-tab px-3.5 py-1.5 rounded-xl bg-white/10 text-white cursor-pointer">👨‍🎓 Students</button>
+          <button type="button" onclick="switchAdminTab('students')" id="nav-students" class="admin-tab px-3.5 py-1.5 rounded-xl bg-white/10 text-white cursor-pointer">👨‍🎓 Students & Photo</button>
           <button type="button" onclick="switchAdminTab('attendance')" id="nav-attendance" class="admin-tab px-3.5 py-1.5 rounded-xl bg-white/10 text-white cursor-pointer">✅ Attendance</button>
           <button type="button" onclick="switchAdminTab('fees')" id="nav-fees" class="admin-tab px-3.5 py-1.5 rounded-xl bg-white/10 text-white cursor-pointer">💰 Fees & Receipt</button>
           <button type="button" onclick="switchAdminTab('marksheets')" id="nav-marksheets" class="admin-tab px-3.5 py-1.5 rounded-xl bg-white/10 text-white cursor-pointer">🎓 Marksheets & TC</button>
           <button type="button" onclick="switchAdminTab('homework')" id="nav-homework" class="admin-tab px-3.5 py-1.5 rounded-xl bg-white/10 text-white cursor-pointer">📚 Homework</button>
-          <button type="button" onclick="switchAdminTab('staff')" id="nav-staff" class="admin-tab px-3.5 py-1.5 rounded-xl bg-white/10 text-white cursor-pointer">👨‍🏫 Teachers & Van</button>
-          <button type="button" onclick="switchAdminTab('website')" id="nav-website" class="admin-tab px-3.5 py-1.5 rounded-xl bg-white/10 text-white cursor-pointer">✨ शुभ विचार, Notice & Gallery</button>
+          <button type="button" onclick="switchAdminTab('staff')" id="nav-staff" class="admin-tab px-3.5 py-1.5 rounded-xl bg-white/10 text-white cursor-pointer">👨‍🏫 Teachers Photo & Van</button>
+          <button type="button" onclick="switchAdminTab('website')" id="nav-website" class="admin-tab px-3.5 py-1.5 rounded-xl bg-white/10 text-white cursor-pointer">✨ शुभ विचार & Gallery</button>
         </div>
       </div>
     </header>
 
     <main class="max-w-7xl mx-auto px-3 sm:px-6 pt-5 space-y-6">
-           <!-- TAB 1: LIVE DASHBOARD -->
+            <!-- TAB 1: LIVE DASHBOARD -->
       <section id="tab-dashboard" class="admin-section space-y-5">
         <div class="flex flex-wrap justify-between items-center gap-2">
           <div>
@@ -135,13 +133,14 @@
           <h3 class="text-sm font-extrabold text-[#0F2952]">⚡ Quick Daily Operations</h3>
           <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs font-extrabold">
             <button type="button" onclick="switchAdminTab('attendance')" class="p-3.5 rounded-2xl bg-emerald-50 hover:bg-emerald-100 text-emerald-900 border border-emerald-200 cursor-pointer">✅ Mark Attendance</button>
-            <button type="button" onclick="switchAdminTab('admissions')" class="p-3.5 rounded-2xl bg-amber-50 hover:bg-amber-100 text-amber-900 border border-amber-200 cursor-pointer">📥 Approve Admissions</button>
-            <button type="button" onclick="switchAdminTab('website')" class="p-3.5 rounded-2xl bg-blue-50 hover:bg-blue-100 text-blue-900 border border-blue-200 cursor-pointer">✨ Post शुभ विचार</button>
-            <button type="button" onclick="switchAdminTab('marksheets')" class="p-3.5 rounded-2xl bg-rose-50 hover:bg-rose-100 text-rose-900 border border-rose-200 cursor-pointer">🎓 Generate Marksheet</button>
+            <button type="button" onclick="switchAdminTab('staff')" class="p-3.5 rounded-2xl bg-amber-50 hover:bg-amber-100 text-amber-900 border border-amber-200 cursor-pointer">👨‍🏫 Upload Teacher Photo</button>
+            <button type="button" onclick="switchAdminTab('students')" class="p-3.5 rounded-2xl bg-blue-50 hover:bg-blue-100 text-blue-900 border border-blue-200 cursor-pointer">👨‍🎓 Upload Student Photo</button>
+            <button type="button" onclick="switchAdminTab('website')" class="p-3.5 rounded-2xl bg-rose-50 hover:bg-rose-100 text-rose-900 border border-rose-200 cursor-pointer">✨ Post शुभ विचार</button>
           </div>
         </div>
       </section>
-            <!-- TAB 2: PENDING-TO-APPROVE ONLINE ADMISSIONS -->
+
+      <!-- TAB 2: PENDING-TO-APPROVE ONLINE ADMISSIONS -->
       <section id="tab-admissions" class="admin-section hidden space-y-4">
         <div class="bg-white rounded-3xl p-5 sm:p-6 border shadow-sm space-y-4">
           <div class="border-b pb-3">
@@ -151,11 +150,12 @@
           <div id="adminAdmissionsList" class="grid sm:grid-cols-2 gap-4 text-xs"></div>
         </div>
       </section>
-            <!-- TAB 3: MASTER STUDENT DATABASE -->
+
+      <!-- TAB 3: MASTER STUDENT DATABASE (WITH STUDENT PHOTO URL) -->
       <section id="tab-students" class="admin-section hidden space-y-5">
         <div class="bg-white rounded-3xl p-5 sm:p-6 border shadow-sm space-y-4">
           <div class="flex flex-wrap justify-between items-center gap-2 border-b pb-3">
-            <h2 class="text-base sm:text-lg font-extrabold text-[#0F2952]">👨‍🎓 Add / Update Student Record</h2>
+            <h2 class="text-base sm:text-lg font-extrabold text-[#0F2952]">👨‍🎓 Add / Update Student Record & Photo</h2>
             <button type="button" onclick="exportStudentsCSV()" class="bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-extrabold px-3.5 py-2 rounded-xl cursor-pointer">📥 Download Excel CSV (ID Cards)</button>
           </div>
 
@@ -189,8 +189,12 @@
               <label class="font-bold text-slate-600 block mb-1">Village / Address</label>
               <input type="text" id="stuAddress" placeholder="Basari, Chhatarpur" class="w-full border rounded-xl px-3 py-2 font-bold" />
             </div>
+            <div class="sm:col-span-3">
+              <label class="font-bold text-amber-800 block mb-1">📸 Student Photo URL (ID Card & Marksheet के लिए फोटो का लिंक)</label>
+              <input type="url" id="stuPhotoUrl" placeholder="https://... (यहाँ छात्र की फोटो का लिंक पेस्ट करें)" class="w-full border-2 border-amber-300 rounded-xl px-3 py-2 font-bold bg-amber-50/30" />
+            </div>
             <div class="sm:col-span-3 flex gap-2">
-              <button type="submit" class="btn-royal-gold font-extrabold px-5 py-2.5 rounded-xl cursor-pointer">💾 Save Student</button>
+              <button type="submit" class="btn-royal-gold font-extrabold px-5 py-2.5 rounded-xl cursor-pointer">💾 Save Student & Photo</button>
               <button type="button" onclick="resetStudentForm()" class="bg-slate-200 font-bold px-4 py-2.5 rounded-xl cursor-pointer">Clear</button>
             </div>
           </form>
@@ -205,6 +209,7 @@
             <table class="w-full text-left text-xs">
               <thead class="bg-[#0F2952] text-white">
                 <tr>
+                  <th class="p-2.5">Photo</th>
                   <th class="p-2.5">Roll</th>
                   <th class="p-2.5">Student Name</th>
                   <th class="p-2.5">Father Name</th>
@@ -285,7 +290,8 @@
           <div id="adminFeeList" class="space-y-2 text-xs"></div>
         </div>
       </section>
-            <!-- TAB 6: UNLIMITED MARKSHEET GENERATOR & TC ISSUER -->
+
+      <!-- TAB 6: UNLIMITED MARKSHEET GENERATOR (WITH STUDENT PHOTO) & TC ISSUER -->
       <section id="tab-marksheets" class="admin-section hidden space-y-5">
         <div class="grid lg:grid-cols-12 gap-5">
           <div class="lg:col-span-7 bg-white rounded-3xl p-5 border shadow-sm space-y-3">
@@ -301,9 +307,10 @@
                 <input type="text" id="msFather" required placeholder="Father's Name" class="border rounded-xl px-3 py-2 font-bold" />
                 <input type="text" id="msMother" placeholder="Mother's Name" class="border rounded-xl px-3 py-2 font-bold" />
               </div>
-              <div class="grid sm:grid-cols-2 gap-2.5">
+              <div class="grid sm:grid-cols-3 gap-2.5">
                 <input type="text" id="msExam" value="Annual Examination 2026" class="border rounded-xl px-3 py-2 font-bold" />
                 <input type="text" id="msAtt" value="94%" placeholder="Attendance %" class="border rounded-xl px-3 py-2 font-bold" />
+                <input type="url" id="msPhotoUrl" placeholder="Student Photo URL (Optional)" class="border rounded-xl px-3 py-2 font-bold" />
               </div>
               <div class="bg-slate-50 p-3 rounded-2xl border space-y-2">
                 <p class="font-extrabold text-[#0F2952]">Enter Subject Marks (Theory + Practical out of 100):</p>
@@ -370,16 +377,22 @@
         </div>
         <div id="adminHomeworkList" class="grid sm:grid-cols-2 gap-3 text-xs"></div>
       </section>
-            <!-- TAB 8: TEACHERS & SCHOOL VAN ROUTES MANAGER -->
+
+      <!-- TAB 8: TEACHERS (WITH PHOTO UPLOAD/EDIT) & SCHOOL VAN ROUTES -->
       <section id="tab-staff" class="admin-section hidden space-y-5">
         <div class="grid lg:grid-cols-2 gap-5">
           <div class="bg-white rounded-3xl p-5 border shadow-sm space-y-3">
-            <h2 class="text-base font-extrabold text-[#0F2952] border-b pb-2">👨‍🏫 Add Teacher / Faculty Member</h2>
-            <form onsubmit="addTeacherMember(event)" class="space-y-2.5 text-xs">
-              <input type="text" id="tchName" required placeholder="Teacher Full Name (e.g. Mr. R.K. Sharma)" class="w-full border rounded-xl px-3 py-2 font-bold" />
-              <input type="text" id="tchRole" required placeholder="Qualification & Subject (e.g. M.Sc., B.Ed. • Maths)" class="w-full border rounded-xl px-3 py-2 font-bold" />
-              <input type="text" id="tchExp" placeholder="Experience (e.g. 10 Years Exp.)" class="w-full border rounded-xl px-3 py-2 font-bold" />
-              <button type="submit" class="w-full btn-royal-navy font-extrabold py-2.5 rounded-xl cursor-pointer">+ Add Teacher</button>
+            <h2 class="text-base font-extrabold text-[#0F2952] border-b pb-2">👨‍🏫 Add / Edit Teacher & Photo</h2>
+            <form id="teacherForm" onsubmit="saveTeacherMember(event)" class="space-y-2.5 text-xs">
+              <input type="hidden" id="tchEditIndex" value="-1" />
+              <input type="text" id="tchName" required placeholder="Teacher Full Name (e.g. Payal Shrivas)" class="w-full border rounded-xl px-3 py-2 font-bold" />
+              <input type="text" id="tchRole" required placeholder="Subject & Qualification (e.g. सामाजिक विज्ञान • B.A.)" class="w-full border rounded-xl px-3 py-2 font-bold" />
+              <input type="text" id="tchExp" placeholder="Experience / Mobile (e.g. अनुभव: 2022 से अब तक)" class="w-full border rounded-xl px-3 py-2 font-bold" />
+              <input type="url" id="tchPhotoUrl" placeholder="📸 Teacher Photo URL (https://... यहाँ फोटो लिंक लगाएं)" class="w-full border-2 border-amber-300 rounded-xl px-3 py-2 font-bold bg-amber-50/30" />
+              <div class="flex gap-2">
+                <button type="submit" class="flex-1 btn-royal-navy font-extrabold py-2.5 rounded-xl cursor-pointer">💾 Save Teacher & Photo</button>
+                <button type="button" onclick="resetTeacherForm()" class="bg-slate-200 font-bold px-3.5 py-2.5 rounded-xl cursor-pointer">Clear</button>
+              </div>
             </form>
             <div id="adminTeachersList" class="space-y-2 text-xs pt-2"></div>
           </div>
@@ -403,7 +416,6 @@
 
       <!-- TAB 9: SHUBH VICHAR, NOTICE, GALLERY & TOPPERS -->
       <section id="tab-website" class="admin-section hidden space-y-5">
-        <!-- DAILY SHUBH VICHAR / SPECIAL DAY POST -->
         <div class="bg-amber-50/80 rounded-3xl p-5 border-2 border-amber-400 shadow-sm space-y-3">
           <div class="flex flex-wrap justify-between items-center gap-2 border-b border-amber-200 pb-2">
             <h2 class="text-base font-extrabold text-[#0F2952]">✨ आज का शुभ विचार / विशेष दिवस लेख पोस्ट करें</h2>
@@ -418,7 +430,6 @@
           <button type="button" onclick="saveCustomDailyPost()" class="btn-royal-navy text-xs font-extrabold px-5 py-2.5 rounded-xl cursor-pointer">🚀 शुभ विचार लाइव करें</button>
         </div>
 
-        <!-- NOTICE TICKER -->
         <div class="bg-white rounded-3xl p-5 border shadow-sm space-y-3">
           <h2 class="text-base font-extrabold text-[#0F2952] border-b pb-2">📢 Update Live Scrolling Notice Ticker</h2>
           <div class="grid sm:grid-cols-2 gap-3 text-xs">
@@ -436,6 +447,7 @@
               <input type="text" id="topClass" required placeholder="Class 10th" class="border rounded-xl px-3 py-2 font-bold" />
               <input type="text" id="topPercent" required placeholder="96.5%" class="border rounded-xl px-3 py-2 font-bold" />
               <input type="text" id="topRank" required placeholder="1st Rank" class="border rounded-xl px-3 py-2 font-bold" />
+              <input type="url" id="topPhotoUrl" placeholder="Student Photo URL (Optional)" class="col-span-2 border rounded-xl px-3 py-2 font-bold" />
               <button type="submit" class="col-span-2 btn-royal-navy font-extrabold py-2 rounded-xl cursor-pointer">+ Add Topper</button>
             </form>
             <div id="adminToppersList" class="space-y-1.5 text-xs"></div>
@@ -478,9 +490,10 @@
     let portalDoc = {
       noticeEn: "", noticeHi: "", dailyPost: null, homework: [], vanRoutes: [], gallery: [], toppers: [],
       teachers: [
-        { name: "Mr. R.K. Sharma", role: "प्राचार्य • M.Sc., B.Ed.", exp: "16 वर्षों का अनुभव" },
-        { name: "Mrs. Sunita Verma", role: "वरिष्ठ अंग्रेजी • M.A., B.Ed.", exp: "11 वर्षों का अनुभव" },
-        { name: "Ms. Priya Tiwari", role: "विज्ञान एवं कंप्यूटर • B.Sc.", exp: "7 वर्षों का अनुभव" }
+        { name: "Surender Kushwaha", role: "प्राचार्य • गणित (कक्षा 5वीं से 10वीं तक)", exp: "📞 9826563564", photoUrl: "" },
+        { name: "Anita Chaurasia", role: "नर्सरी एवं केजी-1 कक्षा शिक्षिका • B.A.", exp: "अनुभव: 2019 से अब तक", photoUrl: "" },
+        { name: "Payal Shrivas", role: "सामाजिक विज्ञान शिक्षिका • B.A.", exp: "अनुभव: 2022 से अब तक", photoUrl: "" },
+        { name: "Mehak Raja", role: "कक्षा 6वीं एवं 7वीं विज्ञान शिक्षिका • B.Ed.", exp: "अनुभव: 2023 से अब तक", photoUrl: "" }
       ],
       results: [], tcs: []
     };
@@ -531,7 +544,14 @@
     async function loadAllAdminData() {
       try {
         const pSnap = await db.collection("sdr_portal").doc("main_data").get();
-        if (pSnap.exists) portalDoc = { ...portalDoc, ...pSnap.data() };
+        if (pSnap.exists) {
+          const data = pSnap.data();
+          portalDoc = {
+            ...portalDoc,
+            ...data,
+            teachers: (data.teachers && data.teachers.length) ? data.teachers : portalDoc.teachers
+          };
+        }
 
         const sSnap = await db.collection("sdr_students").get();
         studentsList = sSnap.docs.map(d => ({ id: d.id, ...d.data() }));
@@ -604,6 +624,7 @@
       renderGalleryAdmin();
     }
 
+    // ADMISSIONS
     function renderAdmissionsList() {
       const box = document.getElementById("adminAdmissionsList");
       if (!admissionsList.length) return box.innerHTML = `<p class="text-slate-500 col-span-full">No online admission forms yet.</p>`;
@@ -636,7 +657,7 @@
       await db.collection("sdr_admissions").doc(appId).update({ status: "Approved", assignedRoll: roll });
       await db.collection("sdr_students").doc(roll).set({
         roll, name: adm.studentName, fatherName: adm.fatherName,
-        className: adm.className, phone: adm.phone, address: adm.address || "Basari"
+        className: adm.className, phone: adm.phone, address: adm.address || "Basari", photoUrl: ""
       });
       alert("✅ Admission Approved & Added to Master Student Database (Roll: " + roll + ")");
       loadAllAdminData();
@@ -647,7 +668,8 @@
       await db.collection("sdr_admissions").doc(appId).update({ status: "Rejected" });
       loadAllAdminData();
     }
-          // MASTER STUDENTS CRUD
+
+    // MASTER STUDENTS CRUD (WITH PHOTO URL)
     async function saveStudentRecord(e) {
       e.preventDefault();
       const roll = document.getElementById("stuRoll").value.trim();
@@ -657,7 +679,8 @@
         fatherName: document.getElementById("stuFather").value.trim(),
         className: document.getElementById("stuClass").value,
         phone: document.getElementById("stuPhone").value.trim(),
-        address: document.getElementById("stuAddress").value.trim()
+        address: document.getElementById("stuAddress").value.trim(),
+        photoUrl: document.getElementById("stuPhotoUrl").value.trim()
       });
       resetStudentForm();
       loadAllAdminData();
@@ -672,6 +695,7 @@
       document.getElementById("stuClass").value = s.className;
       document.getElementById("stuPhone").value = s.phone;
       document.getElementById("stuAddress").value = s.address || "";
+      document.getElementById("stuPhotoUrl").value = s.photoUrl || "";
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
 
@@ -688,29 +712,29 @@
       const filtered = studentsList.filter(s => s.name.toLowerCase().includes(q) || String(s.roll).includes(q) || s.className.toLowerCase().includes(q));
       document.getElementById("adminStudentsTableBody").innerHTML = filtered.map(s => `
         <tr class="hover:bg-slate-50">
+          <td class="p-2.5">${s.photoUrl ? `<img src="${s.photoUrl}" class="w-9 h-9 rounded-full object-cover border border-amber-400" />` : `<div class="w-9 h-9 rounded-full bg-slate-200 flex items-center justify-center font-bold text-slate-600">${s.name.charAt(0)}</div>`}</td>
           <td class="p-2.5 font-extrabold">${s.roll}</td>
           <td class="p-2.5 font-bold text-[#0F2952]">${s.name}</td>
           <td class="p-2.5">${s.fatherName}</td>
           <td class="p-2.5"><span class="bg-amber-100 text-amber-800 px-2 py-0.5 rounded font-bold">${s.className}</span></td>
           <td class="p-2.5">${s.phone}</td>
           <td class="p-2.5 space-x-1">
-            <button type="button" onclick="editStudent('${s.roll}')" class="bg-blue-100 text-blue-800 font-bold px-2 py-1 rounded cursor-pointer">Edit</button>
+            <button type="button" onclick="editStudent('${s.roll}')" class="bg-blue-100 text-blue-800 font-bold px-2 py-1 rounded cursor-pointer">Edit / Photo</button>
             <button type="button" onclick="deleteStudent('${s.roll}')" class="bg-rose-100 text-rose-700 font-bold px-2 py-1 rounded cursor-pointer">Del</button>
           </td>
         </tr>
-      `).join("") || `<tr><td colspan="6" class="p-4 text-center text-slate-500">No students added yet.</td></tr>`;
+      `).join("") || `<tr><td colspan="7" class="p-4 text-center text-slate-500">No students added yet.</td></tr>`;
     }
 
     function exportStudentsCSV() {
-      let csv = "Roll,Student Name,Father Name,Class,Mobile,Address\n";
-      studentsList.forEach(s => { csv += `"${s.roll}","${s.name}","${s.fatherName}","${s.className}","${s.phone}","${s.address || ""}"\n`; });
+      let csv = "Roll,Student Name,Father Name,Class,Mobile,Address,Photo URL\n";
+      studentsList.forEach(s => { csv += `"${s.roll}","${s.name}","${s.fatherName}","${s.className}","${s.phone}","${s.address || ""}","${s.photoUrl || ""}"\n`; });
       const a = document.createElement("a");
       a.href = URL.createObjectURL(new Blob([csv], { type: "text/csv" }));
       a.download = "SDR_Students_ID_Cards.csv";
       a.click();
     }
-
-    // ATTENDANCE
+          // ATTENDANCE
     function renderAttendanceLists() {
       const teachers = portalDoc.teachers || [];
       document.getElementById("adminTeacherAttList").innerHTML = teachers.map(t => {
@@ -788,15 +812,18 @@
       }).join("") || `<p class="text-slate-500">No fee receipts recorded yet.</p>`;
     }
 
-    // MARKSHEET & TC
+    // MARKSHEET (WITH STUDENT PHOTO) & TC
     async function publishMarksheet(e) {
       e.preventDefault();
       const roll = document.getElementById("msRoll").value.trim();
+      const matchedStu = studentsList.find(s => String(s.roll) === roll);
+      const customPhoto = document.getElementById("msPhotoUrl").value.trim();
       const msObj = {
         roll, dob: document.getElementById("msDob").value, className: document.getElementById("msClass").value.trim(),
         name: document.getElementById("msName").value.trim(), fatherName: document.getElementById("msFather").value.trim(),
         motherName: document.getElementById("msMother").value.trim(), examTitle: document.getElementById("msExam").value.trim(),
         attendance: document.getElementById("msAtt").value.trim(),
+        photoUrl: customPhoto || (matchedStu ? matchedStu.photoUrl || "" : ""),
         subjects: [
           { name: "Hindi", max: 100, theory: Number(document.getElementById("subHindiTh").value), practical: Number(document.getElementById("subHindiPr").value) },
           { name: "English", max: 100, theory: Number(document.getElementById("subEngTh").value), practical: Number(document.getElementById("subEngPr").value) },
@@ -822,7 +849,7 @@
       document.getElementById("adminTcList").innerHTML = (portalDoc.tcs || []).map(t => `<div class="p-2 rounded-lg bg-slate-50 border flex justify-between"><span><b>${t.tcNo}</b> — ${t.studentName}</span><span class="text-emerald-700 font-bold">Verified</span></div>`).join("");
     }
 
-    // HOMEWORK, TEACHERS, VANS, SHUBH VICHAR & NOTICE
+    // HOMEWORK
     async function addDailyHomework(e) {
       e.preventDefault();
       portalDoc.homework = [{ className: document.getElementById("hwClass").value, subject: document.getElementById("hwSubject").value.trim(), teacher: document.getElementById("hwTeacher").value.trim(), work: document.getElementById("hwText").value.trim(), date: todayKey }, ...(portalDoc.homework || [])];
@@ -833,16 +860,57 @@
       document.getElementById("adminHomeworkList").innerHTML = (portalDoc.homework || []).map((h, i) => `<div class="bg-white p-3.5 rounded-2xl border flex justify-between items-start gap-2"><div><p class="font-extrabold text-[#0F2952]">${h.className} • ${h.subject}</p><p class="text-slate-600 mt-1">${h.work}</p></div><button type="button" onclick="portalDoc.homework.splice(${i},1);savePortalDoc()" class="text-rose-600 font-extrabold cursor-pointer">✕</button></div>`).join("");
     }
 
-    async function addTeacherMember(e) {
+    // TEACHERS (WITH PHOTO UPLOAD & EDIT)
+    async function saveTeacherMember(e) {
       e.preventDefault();
-      portalDoc.teachers = [...(portalDoc.teachers || []), { name: document.getElementById("tchName").value.trim(), role: document.getElementById("tchRole").value.trim(), exp: document.getElementById("tchExp").value.trim() }];
+      const idx = Number(document.getElementById("tchEditIndex").value);
+      const tObj = {
+        name: document.getElementById("tchName").value.trim(),
+        role: document.getElementById("tchRole").value.trim(),
+        exp: document.getElementById("tchExp").value.trim(),
+        photoUrl: document.getElementById("tchPhotoUrl").value.trim()
+      };
+      portalDoc.teachers = portalDoc.teachers || [];
+      if (idx >= 0 && portalDoc.teachers[idx]) {
+        portalDoc.teachers[idx] = tObj;
+      } else {
+        portalDoc.teachers.push(tObj);
+      }
       await savePortalDoc();
-      e.target.reset();
-    }
-    function renderTeachersAdmin() {
-      document.getElementById("adminTeachersList").innerHTML = (portalDoc.teachers || []).map((t, i) => `<div class="p-2.5 rounded-xl bg-slate-50 border flex justify-between items-center"><span><b>${t.name}</b> — ${t.role}</span><button type="button" onclick="portalDoc.teachers.splice(${i},1);savePortalDoc()" class="text-rose-600 font-bold cursor-pointer">Del</button></div>`).join("");
+      resetTeacherForm();
     }
 
+    function editTeacher(idx) {
+      const t = (portalDoc.teachers || [])[idx];
+      if (!t) return;
+      document.getElementById("tchEditIndex").value = idx;
+      document.getElementById("tchName").value = t.name;
+      document.getElementById("tchRole").value = t.role;
+      document.getElementById("tchExp").value = t.exp || "";
+      document.getElementById("tchPhotoUrl").value = t.photoUrl || "";
+    }
+
+    function resetTeacherForm() {
+      document.getElementById("teacherForm").reset();
+      document.getElementById("tchEditIndex").value = "-1";
+    }
+
+    function renderTeachersAdmin() {
+      document.getElementById("adminTeachersList").innerHTML = (portalDoc.teachers || []).map((t, i) => `
+        <div class="p-2.5 rounded-xl bg-slate-50 border flex justify-between items-center gap-2">
+          <div class="flex items-center gap-2.5 min-w-0">
+            ${t.photoUrl ? `<img src="${t.photoUrl}" class="w-9 h-9 rounded-full object-cover border border-amber-400 shrink-0" />` : `<div class="w-9 h-9 rounded-full bg-[#0F2952] text-amber-300 flex items-center justify-center font-bold shrink-0">${t.name.charAt(0)}</div>`}
+            <div class="truncate"><b>${t.name}</b> — <span class="text-slate-600">${t.role}</span></div>
+          </div>
+          <div class="flex gap-1 shrink-0">
+            <button type="button" onclick="editTeacher(${i})" class="bg-blue-100 text-blue-800 font-bold px-2 py-1 rounded cursor-pointer">Edit / Photo</button>
+            <button type="button" onclick="portalDoc.teachers.splice(${i},1);savePortalDoc()" class="bg-rose-100 text-rose-700 font-bold px-2 py-1 rounded cursor-pointer">Del</button>
+          </div>
+        </div>
+      `).join("");
+    }
+
+    // VAN ROUTES, SHUBH VICHAR, NOTICE, TOPPERS & GALLERY
     async function addVanRoute(e) {
       e.preventDefault();
       portalDoc.vanRoutes = [...(portalDoc.vanRoutes || []), { vanNo: document.getElementById("vanNo").value.trim(), route: document.getElementById("vanRoute").value.trim(), timing: document.getElementById("vanTime").value.trim(), driver: document.getElementById("vanDriver").value.trim(), phone: document.getElementById("vanPhone").value.trim() }];
@@ -881,7 +949,7 @@
 
     async function addTopperItem(e) {
       e.preventDefault();
-      portalDoc.toppers = [{ name: document.getElementById("topName").value.trim(), className: document.getElementById("topClass").value.trim(), percent: document.getElementById("topPercent").value.trim(), rank: document.getElementById("topRank").value.trim() }, ...(portalDoc.toppers || [])];
+      portalDoc.toppers = [{ name: document.getElementById("topName").value.trim(), className: document.getElementById("topClass").value.trim(), percent: document.getElementById("topPercent").value.trim(), rank: document.getElementById("topRank").value.trim(), photoUrl: document.getElementById("topPhotoUrl").value.trim() }, ...(portalDoc.toppers || [])];
       await savePortalDoc();
       e.target.reset();
     }
@@ -901,5 +969,3 @@
   </script>
 </body>
 </html>
-
-      
