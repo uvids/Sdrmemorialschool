@@ -99,29 +99,7 @@
               <option value="Printed">ID Card: Printed</option>
             </select>
             <div class="sm:col-span-2 flex items-center gap-2 border rounded-xl px-3 py-2 bg-slate-50">
-              <span class="font-bold text-slate-600">Photo:</span>
-              <input type="file" id="stPhotoInput" accept="image/*" class="text-xs" />
-            </div>
-            <button type="submit" class="sm:col-span-3 btn-royal-gold font-extrabold py-2.5 rounded-xl cursor-pointer">💾 Save Student Profile to Cloud</button>
-          </form>
-        </div>
-
-        <!-- LIVE SEARCH & FILTER -->
-        <div class="bg-white p-5 rounded-2xl shadow-sm border space-y-3">
-          <div class="flex flex-col sm:flex-row gap-2 justify-between">
-            <input type="text" id="studentSearchBox" oninput="renderAdminStudents()" placeholder="🔍 Search by Name, Roll No, or Mobile..." class="border rounded-xl px-3.5 py-2 text-xs flex-1" />
-            <select id="studentClassFilter" onchange="renderAdminStudents()" class="border rounded-xl px-3 py-2 text-xs font-bold">
-              <option value="All">All Classes</option>
-              <option value="Nursery">Nursery</option><option value="LKG">LKG</option><option value="UKG">UKG</option>
-              <option value="Class 1st">Class 1st</option><option value="Class 2nd">Class 2nd</option><option value="Class 3rd">Class 3rd</option>
-              <option value="Class 4th">Class 4th</option><option value="Class 5th">Class 5th</option><option value="Class 6th">Class 6th</option>
-              <option value="Class 7th">Class 7th</option><option value="Class 8th">Class 8th</option><option value="Class 9th">Class 9th</option><option value="Class 10th">Class 10th</option>
-            </select>
-          </div>
-          <div id="adminStudentsList" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 text-xs"></div>
-        </div>
-      </section>
-            <!-- TAB 2: UNLIMITED RESULTS (sdr_results collection) -->
+                    <!-- TAB 2: UNLIMITED RESULTS (sdr_results collection) -->
       <section id="tab-results" class="adm-section hidden space-y-5">
         <div class="bg-white p-5 rounded-2xl shadow-sm border space-y-3">
           <h2 class="font-extrabold text-[#0F2952] text-sm border-b pb-2">🎓 Publish Student Marksheet (Unlimited Cloud Storage)</h2>
@@ -246,15 +224,15 @@
         </div>
       </section>
     </main>
-  </div>
-    <script>
+            </div>
+              <script>
     const firebaseConfig = {
-      apiKey: "AIzaSyDummyKeyReplaceWithYoursIfNeeded",
+      apiKey: "AIzaSyAXIF5CrQVNErK6Qefj7vAm2jNTwKbpVvE",
       authDomain: "sdrmemorialschool.firebaseapp.com",
       projectId: "sdrmemorialschool",
-      storageBucket: "sdrmemorialschool.appspot.com",
-      messagingSenderId: "1234567890",
-      appId: "1:1234567890:web:abcdef123456"
+      storageBucket: "sdrmemorialschool.firebasestorage.app",
+      messagingSenderId: "200886478103",
+      appId: "1:200886478103:web:bf8596fdc1c3793d100352"
     };
     if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
     const auth = firebase.auth();
@@ -435,8 +413,8 @@
       a.download = "SDR_Pending_ID_Cards.zip";
       a.click();
     }
-    </script>
-      <script>
+              </script>
+                <script>
     // Dynamic Subject Rows for Marksheet
     function addSubjectRow(name = "", max = 100, th = "", pr = 0) {
       const div = document.createElement("div");
@@ -641,4 +619,5 @@
     }
   </script>
 </body>
-</html>
+          </html>
+            
