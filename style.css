@@ -1,81 +1,160 @@
-/* ==================== BASE & TYPOGRAPHY ==================== */
+:root {
+  --royal-navy: #08152B;
+  --sapphire-blue: #0F2952;
+  --metallic-gold: #D97706;
+  --bright-gold: #F59E0B;
+  --crimson-red: #B91C1C;
+  --ribbon-emerald: #059669;
+  --ivory-bg: #F8FAFC;
+}
+
+html { scroll-behavior: smooth; }
+
 body {
   font-family: 'Poppins', 'Noto Sans Devanagari', sans-serif;
+  background-color: var(--ivory-bg);
+  color: #1E293B;
+  overflow-x: hidden;
 }
 
-/* ==================== HERO SECTION BACKGROUND ==================== */
+/* Royal Crest Hero Background */
 .hero-bg {
-  background: linear-gradient(135deg, rgba(15, 42, 74, 0.94) 0%, rgba(23, 55, 94, 0.86) 100%),
-              url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+  background:
+    radial-gradient(circle at 85% 15%, rgba(245, 158, 11, 0.24) 0%, transparent 42%),
+    radial-gradient(circle at 12% 85%, rgba(5, 150, 105, 0.16) 0%, transparent 40%),
+    linear-gradient(135deg, #061021 0%, #0F2952 52%, #173B7A 100%);
+  position: relative;
 }
 
-/* ==================== LIVE NOTICE TICKER ANIMATION ==================== */
-@keyframes marquee {
+.hero-bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(245, 158, 11, 0.12) 1px, transparent 1px);
+  background-size: 26px 26px;
+  pointer-events: none;
+}
+
+/* Floating 3D Logo Animation */
+@keyframes floatLogo {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-4px) rotate(1.5deg); }
+}
+.logo-3d-float {
+  animation: floatLogo 4s ease-in-out infinite;
+  box-shadow: 0 8px 20px rgba(245, 158, 11, 0.35);
+}
+
+/* Metallic Gold Shimmer Text */
+@keyframes goldShimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+.text-gold-shimmer {
+  background: linear-gradient(90deg, #F59E0B 0%, #FDE68A 35%, #D97706 65%, #F59E0B 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: goldShimmer 4.5s linear infinite;
+}
+/* Royal Gradient Buttons */
+.btn-royal-gold {
+  background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
+  color: #08152B;
+  box-shadow: 0 10px 22px -6px rgba(217, 119, 6, 0.55);
+  transition: all 0.3s ease;
+}
+.btn-royal-gold:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 14px 28px -6px rgba(245, 158, 11, 0.7);
+}
+
+.btn-royal-navy {
+  background: linear-gradient(135deg, #08152B 0%, #173B7A 100%);
+  color: #FDE68A;
+  border: 1px solid rgba(245, 158, 11, 0.45);
+  box-shadow: 0 8px 20px -6px rgba(8, 21, 43, 0.45);
+  transition: all 0.3s ease;
+}
+.btn-royal-navy:hover {
+  transform: translateY(-2px);
+  border-color: #F59E0B;
+}
+
+/* Glassmorphism Cards */
+.glass-card {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(245, 158, 11, 0.28);
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+.glass-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(245, 158, 11, 0.75);
+}
+
+/* Smooth Marquee Ticker */
+@keyframes marqueeScroll {
   0% { transform: translateX(100%); }
   100% { transform: translateX(-100%); }
 }
-
 .animate-marquee {
   display: inline-block;
   white-space: nowrap;
-  animation: marquee 26s linear infinite;
+  animation: marqueeScroll 28s linear infinite;
 }
+.animate-marquee:hover { animation-play-state: paused; }
 
-.animate-marquee:hover {
-  animation-play-state: paused;
+/* Scroll Reveal & 3D Card Lift */
+.reveal-up {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: all 0.65s cubic-bezier(0.16, 1, 0.3, 1);
 }
-
-/* ==================== OFFICIAL MARKSHEET WATERMARK ==================== */
-.marksheet-watermark {
-  position: absolute;
-  top: 52%;
-  left: 50%;
-  transform: translate(-50%, -50%) rotate(-24deg);
-  font-size: 3rem;
-  font-weight: 800;
-  color: rgba(15, 42, 74, 0.05);
-  white-space: nowrap;
-  pointer-events: none;
-  user-select: none;
-  z-index: 0;
-  letter-spacing: 0.15em;
+.reveal-up.active {
+  opacity: 1;
+  transform: translateY(0);
 }
-
-@media (max-width: 640px) {
-  .marksheet-watermark {
-    font-size: 1.6rem;
-  }
-}
-
-/* ==================== TOPPERS & STAFF CARD HOVER EFFECTS ==================== */
 .hover-lift {
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 }
-
 .hover-lift:hover {
   transform: translateY(-5px);
-  box-shadow: 0 18px 30px -10px rgba(15, 42, 74, 0.18);
+  box-shadow: 0 18px 36px -12px rgba(15, 41, 82, 0.22);
+  border-color: #F59E0B;
 }
 
-/* ==================== CLEAN PRINT & A4 PDF STYLING ==================== */
+/* Modal Animation */
+@keyframes modalPop {
+  from { opacity: 0; transform: scale(0.93); }
+  to { opacity: 1; transform: scale(1); }
+}
+.animate-modal { animation: modalPop 0.25s ease-out forwards; }
+
+/* Marksheet Watermark & Print Rules */
+.marksheet-watermark {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-28deg);
+  font-size: 2.8rem;
+  font-weight: 800;
+  color: rgba(15, 41, 82, 0.055);
+  pointer-events: none;
+  white-space: nowrap;
+  z-index: 1;
+}
+
 @media print {
-  body * {
-    visibility: hidden;
-  }
-  #printableMarksheet,
-  #printableMarksheet * {
-    visibility: visible;
-  }
+  body * { visibility: hidden; }
+  #printableMarksheet, #printableMarksheet * { visibility: visible; }
   #printableMarksheet {
-    position: absolute;
+    position: fixed;
     left: 0;
     top: 0;
     width: 100%;
     box-shadow: none !important;
-    border: 3px double #0F2A4A !important;
-    background: #ffffff !important;
   }
-  .no-print {
-    display: none !important;
-  }
+  .no-print { display: none !important; }
 }
