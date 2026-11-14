@@ -1,5 +1,5 @@
 // =========================================================
-// SDR MEMORIAL PUBLIC HIGH SCHOOL, BASARI - PUBLIC SCRIPT.JS
+// SDR MEMORIAL PUBLIC HIGH SCHOOL, BASARI - PUBLIC SCRIPT.JS (v4)
 // =========================================================
 
 const firebaseConfig = {
@@ -26,10 +26,10 @@ function secretAdminLogoTap() {
   clearTimeout(logoTapTimer);
   if (logoTapCount >= 5) {
     logoTapCount = 0;
-    window.location.href = "admin.html";
+    window.location.href = "admin.html?v=4";
     return;
   }
-  logoTapTimer = setTimeout(() => { logoTapCount = 0; }, 2500);
+  logoTapTimer = setTimeout(() => { logoTapCount = 0; }, 3000);
 }
 
 let portalData = {
@@ -52,16 +52,16 @@ let portalData = {
     { title: "स्वतंत्रता दिवस समारोह एवं परेड", category: "Events", url: "https://images.unsplash.com/photo-1577896851231-70ef18881754?w=800" }
   ],
   toppers: [
-    { name: "अनन्या चतुर्वेदी", className: "कक्षा 10वीं (एमपी बोर्ड)", percent: "96.4%", rank: "प्रथम स्थान • जिला मेरिट" },
-    { name: "रोहन सिंह बुंदेला", className: "कक्षा 10वीं (एमपी बोर्ड)", percent: "94.8%", rank: "द्वितीय स्थान • स्कूल टॉपर" },
-    { name: "काव्या तिवारी", className: "कक्षा 8वीं", percent: "95.2%", rank: "प्रथम स्थान • कक्षा टॉपर" },
-    { name: "देवांश पटेल", className: "कक्षा 5वीं", percent: "97.0%", rank: "प्रथम स्थान • जूनियर विंग" }
+    { name: "अनन्या चतुर्वेदी", className: "कक्षा 10वीं (एमपी बोर्ड)", percent: "96.4%", rank: "प्रथम स्थान • जिला मेरिट", photoUrl: "" },
+    { name: "रोहन सिंह बुंदेला", className: "कक्षा 10वीं (एमपी बोर्ड)", percent: "94.8%", rank: "द्वितीय स्थान • स्कूल टॉपर", photoUrl: "" },
+    { name: "काव्या तिवारी", className: "कक्षा 8वीं", percent: "95.2%", rank: "प्रथम स्थान • कक्षा टॉपर", photoUrl: "" },
+    { name: "देवांश पटेल", className: "कक्षा 5वीं", percent: "97.0%", rank: "प्रथम स्थान • जूनियर विंग", photoUrl: "" }
   ],
   teachers: [
-    { name: "Surender Kushwaha", role: "प्राचार्य • गणित (कक्षा 5वीं से 10वीं तक)", exp: "📞 9826563564" },
-    { name: "Anita Chaurasia", role: "नर्सरी एवं केजी-1 कक्षा शिक्षिका • B.A.", exp: "अनुभव: 2019 से अब तक" },
-    { name: "Payal Shrivas", role: "सामाजिक विज्ञान शिक्षिका • B.A.", exp: "अनुभव: 2022 से अब तक" },
-    { name: "Mehak Raja", role: "कक्षा 6वीं एवं 7वीं विज्ञान शिक्षिका • B.Ed.", exp: "अनुभव: 2023 से अब तक" }
+    { name: "Surender Kushwaha", role: "प्राचार्य • गणित (कक्षा 5वीं से 10वीं तक)", exp: "📞 9826563564", photoUrl: "" },
+    { name: "Anita Chaurasia", role: "नर्सरी एवं केजी-1 कक्षा शिक्षिका • B.A.", exp: "अनुभव: 2019 से अब तक", photoUrl: "" },
+    { name: "Payal Shrivas", role: "सामाजिक विज्ञान शिक्षिका • B.A.", exp: "अनुभव: 2022 से अब तक", photoUrl: "" },
+    { name: "Mehak Raja", role: "कक्षा 6वीं एवं 7वीं विज्ञान शिक्षिका • B.Ed.", exp: "अनुभव: 2023 से अब तक", photoUrl: "" }
   ],
   holidays: [
     { date: "15 अगस्त 2026", day: "शनिवार", name: "स्वतंत्रता दिवस समारोह", type: "राष्ट्रीय" },
@@ -72,7 +72,7 @@ let portalData = {
   results: [
     {
       roll: "101", dob: "2012-05-14", name: "Aarav Singh", fatherName: "Rajesh Singh", motherName: "Sunita Devi",
-      className: "Class 8th", examTitle: "Annual Examination 2026", attendance: "94%",
+      className: "Class 8th", examTitle: "Annual Examination 2026", attendance: "94%", photoUrl: "",
       subjects: [
         { name: "Hindi", max: 100, theory: 68, practical: 18 },
         { name: "English", max: 100, theory: 64, practical: 19 },
@@ -86,7 +86,7 @@ let portalData = {
     { tcNo: "SDR/TC/2026/089", studentName: "Mohit Kushwaha", fatherName: "Harishankar Kushwaha", classLeft: "Class 8th Passed", issueDate: "12 July 2026", status: "Verified & Genuine" }
   ]
 };
-// 1. LANGUAGE TOGGLE (DEFAULT HINDI + ENGLISH SWITCH)
+
 function applyLanguage(lang) {
   currentLang = lang;
   const btnText = document.getElementById("langBtnText");
@@ -112,7 +112,6 @@ function toggleLanguage() {
   applyLanguage(currentLang === "hi" ? "en" : "hi");
 }
 
-// 2. MOBILE MENU
 function toggleMobileMenu() {
   const m = document.getElementById("mobileMenu");
   if (m) m.classList.toggle("hidden");
@@ -122,7 +121,6 @@ function closeMobileMenu() {
   if (m) m.classList.add("hidden");
 }
 
-// 3. RENDER ALL PUBLIC SECTIONS
 function renderAllPublicSections() {
   if (portalData.stats) {
     const setTxt = (id, v) => { const el = document.getElementById(id); if (el && v) el.textContent = v; };
@@ -250,7 +248,7 @@ function renderPublicHolidays() {
     </div>
   `).join("");
 }
-// 4. PORTAL TABS, MARKSHEET PDF (WITH STUDENT PHOTO) & TC VERIFICATION
+
 function switchPortalTab(tab) {
   const resBox = document.getElementById("portalResultBox");
   const tcBox = document.getElementById("portalTcBox");
@@ -393,7 +391,6 @@ function verifyTcNumber() {
   `;
 }
 
-// 5. ONLINE ADMISSION & LIVE STATUS TRACKER
 function openAdmissionModal() {
   document.getElementById("admissionForm").classList.remove("hidden");
   document.getElementById("admissionSuccessBox").classList.add("hidden");
@@ -408,7 +405,7 @@ async function submitOnlineAdmission(e) {
   const appId = "SDR-2026-" + Math.floor(1000 + Math.random() * 9000);
   const payload = {
     appId,
-    studentName: document.getElementById("admStudentName").value.trim(),
+  studentName: document.getElementById("admStudentName").value.trim(),
     fatherName: document.getElementById("admFatherName").value.trim(),
     className: document.getElementById("admClass").value,
     dob: document.getElementById("admDob").value,
@@ -423,7 +420,7 @@ async function submitOnlineAdmission(e) {
     document.getElementById("admissionForm").classList.add("hidden");
     const box = document.getElementById("admissionSuccessBox");
     box.classList.remove("hidden");
-    const waMsg = encodeURIComponent(`नमस्ते SDR मेमोरियल स्कूल बसारी, मैंने ऑनलाइन प्रवेश आवेदन किया है।\nApplication ID: ${appId}\nछात्र: ${payload.studentName}\nकक्षा: ${payload.className}\nपिता: ${payload.fatherName}`);
+    const waMsg = encodeURIComponent("नमस्ते SDR मेमोरियल स्कूल बसारी, मैंने ऑनलाइन प्रवेश आवेदन किया है।\nApplication ID: " + appId + "\nछात्र: " + payload.studentName + "\nकक्षा: " + payload.className + "\nपिता: " + payload.fatherName);
     box.innerHTML = `
       <div class="w-14 h-14 rounded-full bg-amber-100 text-amber-700 mx-auto flex items-center justify-center text-2xl">⏳</div>
       <h4 class="text-lg font-extrabold text-[#0F2952]">आवेदन सफलतापूर्वक जमा हो गया!</h4>
@@ -469,7 +466,6 @@ async function checkAdmissionStatus() {
   } catch (err) { out.innerHTML = `<p class="text-rose-600">Error: ${err.message}</p>`; }
 }
 
-// 6. DAILY SHUBH VICHAR & SPECIAL DAY ENGINE
 const specialDaysDB = {
   "11-14": {
     badge: "🎉 आज का विशेष दिवस • बाल दिवस (Children's Day)",
@@ -505,10 +501,10 @@ function shareDailyThoughtWhatsApp() {
   const t = document.getElementById("dailyThoughtTitle")?.textContent || "";
   const a = document.getElementById("dailyThoughtArticle")?.textContent || "";
   const q = document.getElementById("dailyThoughtQuote")?.textContent || "";
-  window.open("https://wa.me/?text=" + encodeURIComponent(`*एसडीआर मेमोरियल पब्लिक हाई स्कूल, बसारी*\n\n*${t}*\n\n${a}\n\n_${q}_\n\n🌐 https://uvids.github.io/Sdrmemorialschool/`), "_blank");
+  const shareTxt = "*एसडीआर मेमोरियल पब्लिक हाई स्कूल, बसारी*\n\n*" + t + "*\n\n" + a + "\n\n_" + q + "_\n\n🌐 https://uvids.github.io/Sdrmemorialschool/";
+  window.open("https://wa.me/?text=" + encodeURIComponent(shareTxt), "_blank");
 }
 
-// 7. ADSENSE REQUIRED LEGAL PAGES (PRIVACY, TERMS, DISCLAIMER, CONTACT)
 const legalPagesData = {
   privacy: {
     title: "Privacy Policy (गोपनीयता नीति)",
@@ -534,7 +530,7 @@ const legalPagesData = {
     title: "Contact Us & School Management (संपर्क विवरण)",
     body: `<p><b>School Name:</b> SDR Memorial Public High School, Basari</p>
     <p><b>School Owners / Directors:</b> Indera Kumar Rawat & Niranjan Rawat</p>
-    <p><b>Principal:</b> Mr. Surender Kushwaha (M.Sc./Maths, Class 5th–10th)</p>
+    <p><b>Principal:</b> Mr. Surender Kushwaha (Math, Class 5th–10th)</p>
     <p><b>Direct Contact / WhatsApp:</b> +91 98265-63564</p>
     <p><b>Full Campus Address:</b> Near Chhatrasaal Chauraha, Village & Post Basari, Tehsil Rajnagar, Distt. Chhatarpur, Madhya Pradesh - 471105</p>
     <p><b>Office Hours:</b> Monday to Saturday, 8:00 AM to 2:00 PM</p>`
@@ -552,7 +548,6 @@ function closeLegalModal() {
   document.getElementById("legalModal").classList.add("hidden");
 }
 
-// 8. REAL-TIME FIREBASE SYNC ON LOAD
 document.addEventListener("DOMContentLoaded", () => {
   renderAllPublicSections();
   db.collection("sdr_portal").doc("main_data").onSnapshot((doc) => {
@@ -562,4 +557,3 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }, (err) => console.log("Default data active:", err.message));
 });
-
