@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SDR Memorial Public High School, Basari | Official Cloud Portal</title>
+  <title>SDR Memorial Public High School, Basari | MP Board English & Hindi Medium</title>
   <link rel="manifest" href="manifest.json" />
   <meta name="theme-color" content="#0F2952" />
   <script src="https://cdn.tailwindcss.com"></script>
@@ -16,386 +16,503 @@
 </head>
 <body class="bg-slate-50 text-slate-800">
 
-  <!-- TOP BAR -->
-  <div class="bg-[#08152B] text-slate-200 text-[11px] py-1.5 px-3 border-b border-amber-500/20">
-    <div class="max-w-7xl mx-auto flex justify-between items-center gap-2">
-      <span class="truncate"><i class="fa-solid fa-location-dot text-amber-400 mr-1"></i> <span data-en="Basari, Chhatarpur (M.P.)" data-hi="बसारी, छतरपुर (म.प्र.)">Basari, Chhatarpur (M.P.)</span></span>
-      <div class="flex items-center gap-2 shrink-0">
-        <button type="button" onclick="toggleLanguage()" class="btn-royal-gold font-extrabold px-2.5 py-0.5 rounded-full cursor-pointer text-[11px]">
-          <i class="fa-solid fa-language"></i> <span id="langBtnText">हिंदी में देखें</span>
+  <!-- TOP UTILITY BAR -->
+  <div class="bg-[#08152B] text-slate-200 text-xs py-2 px-3 border-b border-amber-500/30">
+    <div class="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-2">
+      <div class="flex items-center gap-3">
+        <span><i class="fa-solid fa-location-dot text-amber-400 mr-1"></i> Basari, Chhatarpur (M.P.)</span>
+        <a href="tel:+919988110080" class="hidden sm:inline hover:text-amber-300"><i class="fa-solid fa-phone text-amber-400 mr-1"></i> +91 99881-10080</a>
+      </div>
+      <div class="flex items-center gap-2">
+        <button type="button" onclick="toggleLanguage()" class="bg-amber-400 hover:bg-amber-300 text-[#08152B] font-extrabold px-3 py-1 rounded-lg transition cursor-pointer shadow-sm">
+          🌐 <span id="langBtnText">हिंदी में देखें</span>
         </button>
-        <a href="admin.html" class="bg-white/10 hover:bg-white/20 text-amber-300 px-2.5 py-0.5 rounded-full font-semibold">🔒 Admin</a>
+        <a href="admin.html" class="bg-white/10 hover:bg-white/20 text-amber-300 border border-amber-400/40 font-bold px-3 py-1 rounded-lg transition">
+          🔒 Admin
+        </a>
       </div>
     </div>
   </div>
 
-  <!-- ROYAL PREMIUM HEADER -->
-  <header class="bg-white/95 backdrop-blur-md shadow-md sticky top-0 z-40 border-b-2 border-amber-400">
-    <div class="max-w-7xl mx-auto px-3 sm:px-4 py-2 flex justify-between items-center gap-2">
-      <a href="#home" class="flex items-center gap-2.5 min-w-0 flex-1">
-        <img src="logo.png" alt="SDR Logo" onerror="this.src='https://via.placeholder.com/60/0F2952/F59E0B?text=SDR'" class="w-12 h-12 sm:w-14 sm:h-14 rounded-full object-contain bg-white p-0.5 logo-3d-float border-2 border-amber-400 shrink-0" />
+  <!-- MAIN STICKY HEADER -->
+  <header class="bg-white/95 backdrop-blur-md sticky top-0 z-40 shadow-sm border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-3 sm:px-6 py-2.5 flex justify-between items-center gap-2">
+      <a href="#" class="flex items-center gap-3 min-w-0">
+        <img src="1794621466353.png" alt="SDR Logo" class="w-12 h-12 sm:w-14 sm:h-14 rounded-full object-cover border-2 border-amber-400 shadow-md shrink-0 bg-[#08152B]" />
         <div class="min-w-0">
-          <h1 class="text-[13px] sm:text-xl font-extrabold text-[#0F2952] leading-tight" data-en="SDR MEMORIAL PUBLIC HIGH SCHOOL" data-hi="एस.डी.आर. मेमोरियल पब्लिक हाई स्कूल">SDR MEMORIAL PUBLIC HIGH SCHOOL</h1>
-          <p class="text-[10px] sm:text-xs font-bold text-amber-600 truncate" data-en="Basari • MP Board (Nursery to 10th)" data-hi="बसारी • म.प्र. बोर्ड (नर्सरी से 10वीं)">Basari • MP Board (Nursery to 10th)</p>
+          <h1 class="text-sm sm:text-lg font-extrabold text-[#0F2952] leading-tight truncate" data-en="SDR MEMORIAL PUBLIC HIGH SCHOOL" data-hi="एसडीआर मेमोरियल पब्लिक हाई स्कूल">SDR MEMORIAL PUBLIC HIGH SCHOOL</h1>
+          <p class="text-[11px] sm:text-xs font-bold text-amber-700 truncate" data-en="Basari • MP Board (Nursery to 10th)" data-hi="बसारी • एमपी बोर्ड (नर्सरी से कक्षा 10वीं तक)">Basari • MP Board (Nursery to 10th)</p>
         </div>
       </a>
 
-      <nav class="hidden lg:flex items-center gap-4 text-xs font-bold text-slate-700">
-        <a href="#facilities" class="hover:text-amber-600" data-en="Facilities" data-hi="सुविधाएं">Facilities</a>
-        <a href="#gallery" class="hover:text-amber-600" data-en="Gallery" data-hi="गैलरी">Gallery</a>
-        <a href="#fees" class="hover:text-amber-600" data-en="Fee Chart" data-hi="शुल्क">Fee Chart</a>
-        <a href="#toppers" class="hover:text-amber-600" data-en="Toppers" data-hi="टॉपर्स">Toppers</a>
-        <a href="#faculty" class="hover:text-amber-600" data-en="Staff" data-hi="शिक्षक">Staff</a>
-        <a href="#result-portal" class="text-red-700 underline decoration-2" data-en="Result & TC" data-hi="परिणाम & TC">Result & TC</a>
+      <nav class="hidden lg:flex items-center gap-5 text-xs font-bold text-slate-700">
+        <a href="#about" class="hover:text-[#0F2952]" data-en="About" data-hi="परिचय">About</a>
+        <a href="#homework" class="hover:text-[#0F2952]" data-en="Homework" data-hi="होमवर्क">Homework</a>
+        <a href="#facilities" class="hover:text-[#0F2952]" data-en="Facilities & Van" data-hi="सुविधाएं">Facilities & Van</a>
+        <a href="#gallery" class="hover:text-[#0F2952]" data-en="Gallery" data-hi="गैलरी">Gallery</a>
+        <a href="#fees" class="hover:text-[#0F2952]" data-en="Fees" data-hi="फीस">Fees</a>
+        <a href="#faculty" class="hover:text-[#0F2952]" data-en="Teachers" data-hi="शिक्षक">Teachers</a>
+        <a href="#result-portal" class="text-amber-700 hover:underline" data-en="Marksheet & TC" data-hi="मार्कशीट / TC">Marksheet & TC</a>
       </nav>
 
-      <div class="flex items-center gap-1.5 shrink-0">
-        <button type="button" onclick="openAdmissionModal()" class="btn-royal-navy font-extrabold text-[11px] sm:text-xs px-3 py-2 rounded-xl cursor-pointer whitespace-nowrap" data-en="Admission" data-hi="प्रवेश">Admission</button>
-        <button type="button" onclick="toggleMobileMenu()" class="lg:hidden bg-amber-50 border border-amber-300 text-[#0F2952] w-9 h-9 rounded-xl flex items-center justify-center text-lg cursor-pointer">
-          <i id="menuIcon" class="fa-solid fa-bars"></i>
+      <div class="flex items-center gap-2 shrink-0">
+        <button type="button" onclick="openAdmissionModal()" class="btn-royal-navy text-xs font-extrabold px-3.5 py-2 rounded-xl cursor-pointer" data-en="Admission" data-hi="प्रवेश फॉर्म">Admission</button>
+        <button type="button" onclick="toggleMobileMenu()" class="lg:hidden w-9 h-9 rounded-xl border border-slate-200 flex items-center justify-center text-[#0F2952]">
+          <i class="fa-solid fa-bars"></i>
         </button>
       </div>
     </div>
 
-    <!-- MOBILE DRAWER -->
-    <div id="mobileMenu" class="hidden lg:hidden bg-white text-slate-800 px-5 py-4 space-y-2 text-xs font-bold border-t shadow-2xl">
-      <a href="#home" onclick="closeMobileMenu()" class="block py-1.5 border-b">🏠 Home / मुख्य पृष्ठ</a>
-      <a href="#facilities" onclick="closeMobileMenu()" class="block py-1.5 border-b">🏫 Facilities & Van / सुविधाएं</a>
-      <a href="#gallery" onclick="closeMobileMenu()" class="block py-1.5 border-b">📸 Campus Gallery / फोटो गैलरी</a>
-      <a href="#fees" onclick="closeMobileMenu()" class="block py-1.5 border-b">💰 Fee Structure / शुल्क विवरण</a>
-      <a href="#toppers" onclick="closeMobileMenu()" class="block py-1.5 border-b">🏆 Top 10 Toppers / मेधावी छात्र</a>
-      <a href="#faculty" onclick="closeMobileMenu()" class="block py-1.5 border-b">👨‍🏫 Staff Portfolio / शिक्षक परिवार</a>
-      <a href="#result-portal" onclick="closeMobileMenu()" class="block py-1.5 border-b text-red-700">🎓 Exam Result PDF & TC</a>
-      <a href="#holidays" onclick="closeMobileMenu()" class="block py-1.5 border-b">📅 Holidays & Uniform / अवकाश</a>
-      <button type="button" onclick="closeMobileMenu(); openAdmissionModal();" class="w-full btn-royal-gold py-2.5 rounded-xl font-extrabold">📝 Apply Online Admission</button>
+    <!-- MOBILE MENU -->
+    <div id="mobileMenu" class="hidden lg:hidden bg-white border-t px-4 py-3 space-y-2.5 text-xs font-bold text-slate-700 shadow-lg">
+      <a href="#about" onclick="closeMobileMenu()" class="block py-1">🏫 About School & Principal</a>
+      <a href="#homework" onclick="closeMobileMenu()" class="block py-1">📚 Today's Class Homework</a>
+      <a href="#facilities" onclick="closeMobileMenu()" class="block py-1">🚌 Facilities & School Van Routes</a>
+      <a href="#gallery" onclick="closeMobileMenu()" class="block py-1">📸 Campus Photo Gallery</a>
+      <a href="#fees" onclick="closeMobileMenu()" class="block py-1">💰 Fee Structure 2026–27</a>
+      <a href="#faculty" onclick="closeMobileMenu()" class="block py-1">👨‍🏫 Our Qualified Teachers</a>
+      <a href="#result-portal" onclick="closeMobileMenu()" class="block py-1 text-amber-700">🎓 Download Marksheet PDF / Verify TC</a>
     </div>
   </header>
-    <!-- LIVE NOTICE TICKER -->
-  <div class="bg-gradient-to-r from-amber-500 via-amber-400 to-amber-500 text-[#08152B] py-1.5 px-3 overflow-hidden flex items-center gap-2 border-b border-amber-600/30">
-    <span class="bg-[#B91C1C] text-white text-[10px] font-extrabold px-2.5 py-0.5 rounded shrink-0 uppercase tracking-wider">Notice</span>
-    <div class="overflow-hidden flex-1 text-xs font-bold">
-      <div id="liveNoticeTicker" class="animate-marquee">📢 Admissions Open for Session 2026–27 (Nursery to Class 10th) • 🎓 Digital PDF Marksheets with Photo now live!</div>
+
+  <!-- LIVE SCROLLING NOTICE BAR -->
+  <div class="bg-gradient-to-r from-amber-500 via-amber-400 to-amber-500 text-[#08152B] py-1.5 px-3 flex items-center gap-2 shadow-sm">
+    <span class="bg-rose-600 text-white text-[10px] font-extrabold px-2.5 py-0.5 rounded uppercase shrink-0 tracking-wider">NOTICE</span>
+    <div class="marquee-wrap flex-1 text-xs font-bold">
+      <span id="liveNoticeTicker" class="marquee-text" data-en="📢 Admissions Open for Session 2026–27 (Nursery to Class 10th) • 🎓 Digital PDF Marksheets & Live Application Tracking now available • 🚌 Safe School Van facility for Basari & nearby villages." data-hi="📢 सत्र 2026-27 के लिए प्रवेश प्रारंभ (नर्सरी से कक्षा 10वीं तक) • 🎓 डिजिटल PDF मार्कशीट एवं एडमिशन स्टेटस ट्रैकिंग अब ऑनलाइन उपलब्ध • 🚌 बसारी एवं आसपास के गाँवों के लिए सुरक्षित वैन सुविधा।">
+        📢 Admissions Open for Session 2026–27 (Nursery to Class 10th) • 🎓 Digital PDF Marksheets & Live Application Tracking now available • 🚌 Safe School Van facility for Basari & nearby villages.
+      </span>
     </div>
   </div>
 
   <!-- HERO SECTION -->
-  <section id="home" class="hero-bg text-white py-12 sm:py-16 px-4">
-    <div class="max-w-7xl mx-auto grid lg:grid-cols-12 gap-8 items-center relative z-10">
-      <div class="lg:col-span-7 space-y-5">
-        <div class="inline-flex items-center gap-2 bg-white/10 border border-amber-400/40 px-3.5 py-1 rounded-full text-amber-300 text-xs font-semibold">
-          <i class="fa-solid fa-star"></i> <span data-en="Tamaso Ma Jyotirgamaya • Excellence in Education" data-hi="तमसो मा ज्योतिर्गमय • संस्कारयुक्त आधुनिक शिक्षा">Tamaso Ma Jyotirgamaya • Excellence in Education</span>
+  <section class="hero-bg text-white py-12 sm:py-16 px-4">
+    <div class="max-w-7xl mx-auto grid lg:grid-cols-12 gap-8 items-center">
+      <div class="lg:col-span-7 space-y-5 reveal-up">
+        <div class="inline-flex items-center gap-2 glass-card px-3.5 py-1.5 rounded-full text-xs font-semibold text-amber-300">
+          <i class="fa-solid fa-star"></i>
+          <span data-en="Tamaso Ma Jyotirgamaya • Excellence in Education" data-hi="तमसो मा ज्योतिर्गमय • शिक्षा में उत्कृष्टता">Tamaso Ma Jyotirgamaya • Excellence in Education</span>
         </div>
+
         <h2 class="text-3xl sm:text-5xl font-extrabold leading-tight">
           <span data-en="Building Bright Futures at" data-hi="उज्ज्वल भविष्य का निर्माण —">Building Bright Futures at</span>
-          <span class="text-gold-shimmer block mt-1" data-en="SDR Memorial, Basari" data-hi="एस.डी.आर. मेमोरियल, बसारी">SDR Memorial, Basari</span>
+          <span class="text-amber-400 block mt-1" data-en="SDR Memorial, Basari" data-hi="एसडीआर मेमोरियल, बसारी">SDR Memorial, Basari</span>
         </h2>
-        <p class="text-slate-200 text-sm sm:text-base max-w-2xl" data-en="MP Board Recognized English & Hindi Medium School (Nursery to 10th) with smart learning, weekly tests, and digital parent portal." data-hi="म.प्र. बोर्ड मान्यता प्राप्त विद्यालय (नर्सरी से कक्षा 10वीं तक) — अनुभवी शिक्षक, साप्ताहिक टेस्ट एवं डिजिटल पेरेंट पोर्टल।">MP Board Recognized English & Hindi Medium School (Nursery to 10th) with smart learning, weekly tests, and digital parent portal.</p>
+
+        <p class="text-slate-200 text-sm sm:text-base max-w-2xl leading-relaxed" data-en="MP Board Recognized English & Hindi Medium School (Nursery to 10th) with smart classrooms, weekly assessments, safe van transport, and digital parent portal." data-hi="एमपी बोर्ड से मान्यता प्राप्त अंग्रेजी एवं हिंदी माध्यम विद्यालय (नर्सरी से कक्षा 10वीं तक) — स्मार्ट क्लासरूम, साप्ताहिक टेस्ट, सुरक्षित वैन एवं डिजिटल पेरेंट पोर्टल के साथ।">
+          MP Board Recognized English & Hindi Medium School (Nursery to 10th) with smart classrooms, weekly assessments, safe van transport, and digital parent portal.
+        </p>
+
         <div class="flex flex-wrap gap-3 pt-1">
-          <button type="button" onclick="openAdmissionModal()" class="btn-royal-gold font-extrabold px-6 py-3 rounded-xl text-sm cursor-pointer"><i class="fa-solid fa-pen-to-square mr-1.5"></i> <span data-en="Apply Online Admission" data-hi="ऑनलाइन प्रवेश फॉर्म भरें">Apply Online Admission</span></button>
-          <a href="#result-portal" class="bg-white/15 hover:bg-white/25 border border-white/30 text-white font-bold px-6 py-3 rounded-xl text-sm"><i class="fa-solid fa-file-pdf mr-1.5 text-amber-300"></i> <span data-en="Download Marksheet PDF" data-hi="डिजिटल मार्कशीट डाउनलोड">Download Marksheet PDF</span></a>
+          <button type="button" onclick="openAdmissionModal()" class="btn-royal-gold font-extrabold text-xs sm:text-sm px-5 py-3.5 rounded-2xl cursor-pointer flex items-center gap-2">
+            <i class="fa-solid fa-pen-to-square"></i>
+            <span data-en="Apply Online Admission" data-hi="ऑनलाइन प्रवेश फॉर्म भरें">Apply Online Admission</span>
+          </button>
+          <a href="#result-portal" class="glass-card hover:bg-white/15 text-white font-bold text-xs sm:text-sm px-5 py-3.5 rounded-2xl flex items-center gap-2 transition">
+            <i class="fa-solid fa-file-pdf text-amber-400"></i>
+            <span data-en="Download Marksheet PDF" data-hi="मार्कशीट PDF डाउनलोड करें">Download Marksheet PDF</span>
+          </a>
+          <button type="button" onclick="openStatusModal()" class="bg-emerald-600/90 hover:bg-emerald-600 text-white font-bold text-xs sm:text-sm px-4 py-3.5 rounded-2xl cursor-pointer flex items-center gap-2 transition">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <span data-en="Track Admission Status" data-hi="एडमिशन स्टेटस देखें">Track Admission Status</span>
+          </button>
         </div>
       </div>
 
-      <div class="lg:col-span-5 glass-card rounded-3xl p-5 sm:p-6">
-        <h3 class="text-amber-300 font-bold text-xs uppercase tracking-wider mb-3" data-en="School Track Record" data-hi="विद्यालय की उपलब्धियाँ">School Track Record</h3>
-        <div class="grid grid-cols-2 gap-3 text-center">
-          <div class="bg-[#08152B]/75 p-4 rounded-2xl border border-amber-400/20"><p id="statAlumni" class="text-2xl font-extrabold text-amber-400">2,450+</p><p class="text-[11px] text-slate-300" data-en="Passed Out Students" data-hi="उत्तीर्ण विद्यार्थी">Passed Out Students</p></div>
-          <div class="bg-[#08152B]/75 p-4 rounded-2xl border border-amber-400/20"><p id="statNewAdmissions" class="text-2xl font-extrabold text-emerald-400">148</p><p class="text-[11px] text-slate-300" data-en="New Admissions" data-hi="नए प्रवेश">New Admissions</p></div>
-          <div class="bg-[#08152B]/75 p-4 rounded-2xl border border-amber-400/20"><p id="statCurrentStudents" class="text-2xl font-extrabold text-sky-400">520+</p><p class="text-[11px] text-slate-300" data-en="Current Students" data-hi="वर्तमान छात्र">Current Students</p></div>
-          <div class="bg-[#08152B]/75 p-4 rounded-2xl border border-amber-400/20"><p id="statTeachers" class="text-2xl font-extrabold text-rose-400">22</p><p class="text-[11px] text-slate-300" data-en="Qualified Staff" data-hi="योग्य शिक्षक">Qualified Staff</p></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- PRINCIPAL MESSAGE -->
-  <section id="about" class="max-w-7xl mx-auto px-4 -mt-6 relative z-20 reveal-up">
-    <div class="bg-gradient-to-r from-[#0F2952] to-[#173B7A] text-white rounded-2xl p-5 sm:p-6 shadow-xl border border-amber-400/40 flex flex-col sm:flex-row items-center gap-4">
-      <div class="w-14 h-14 rounded-2xl bg-amber-400 text-[#08152B] flex items-center justify-center text-2xl shrink-0 shadow"><i class="fa-solid fa-user-tie"></i></div>
-      <div>
-        <span class="text-[11px] uppercase tracking-wider text-amber-300 font-bold" data-en="From the Principal's Desk" data-hi="प्राचार्य की कलम से">From the Principal's Desk</span>
-        <p class="text-xs sm:text-sm text-slate-100 italic mt-1" data-en="“Our mission is to illuminate every child's mind in Basari and nearby villages with modern education, discipline, and strong moral values.”" data-hi="“हमारा संकल्प बसारी एवं आसपास के ग्रामीण क्षेत्र के प्रत्येक बच्चे को आधुनिक शिक्षा, अनुशासन और उच्च संस्कारों से प्रकाशित करना है।”">“Our mission is to illuminate every child's mind in Basari and nearby villages with modern education, discipline, and strong moral values.”</p>
-      </div>
-    </div>
-  </section>
-    <!-- FACILITIES & TRANSPORT ROUTES -->
-  <section id="facilities" class="max-w-7xl mx-auto px-4 py-12 reveal-up">
-    <div class="text-center mb-8">
-      <span class="text-xs font-extrabold uppercase tracking-wider text-amber-700 bg-amber-100 px-3 py-1 rounded-full">Campus & Transport</span>
-      <h2 class="text-2xl sm:text-3xl font-extrabold text-[#0F2952] mt-2" data-en="Modern Facilities & Safe Van Routes" data-hi="आधुनिक सुविधाएं एवं सुरक्षित वाहन मार्ग">Modern Facilities & Safe Van Routes</h2>
-    </div>
-    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-      <div class="bg-white p-5 rounded-2xl shadow-sm border hover-lift">
-        <div class="w-11 h-11 rounded-xl bg-blue-50 text-[#0F2952] flex items-center justify-center text-xl mb-3"><i class="fa-solid fa-chalkboard-user"></i></div>
-        <h3 class="font-bold text-[#0F2952] text-sm" data-en="Smart & Digital Classrooms" data-hi="स्मार्ट एवं डिजिटल कक्षाएं">Smart & Digital Classrooms</h3>
-        <p class="text-xs text-slate-600 mt-1" data-en="Interactive teaching, weekly unit tests, and spoken English practice." data-hi="रोचक शिक्षण पद्धति, साप्ताहिक टेस्ट एवं इंग्लिश स्पीकिंग अभ्यास।">Interactive teaching, weekly unit tests, and spoken English practice.</p>
-      </div>
-      <div class="bg-white p-5 rounded-2xl shadow-sm border hover-lift">
-        <div class="w-11 h-11 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center text-xl mb-3"><i class="fa-solid fa-computer"></i></div>
-        <h3 class="font-bold text-[#0F2952] text-sm" data-en="Computer & Science Lab" data-hi="कंप्यूटर एवं विज्ञान प्रयोगशाला">Computer & Science Lab</h3>
-        <p class="text-xs text-slate-600 mt-1" data-en="Practical computer training and well-equipped science experiments." data-hi="व्यावहारिक कंप्यूटर शिक्षा एवं सुसज्जित विज्ञान प्रयोगशाला।">Practical computer training and well-equipped science experiments.</p>
-      </div>
-      <div class="bg-white p-5 rounded-2xl shadow-sm border hover-lift">
-        <div class="w-11 h-11 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-xl mb-3"><i class="fa-solid fa-van-shuttle"></i></div>
-        <h3 class="font-bold text-[#0F2952] text-sm" data-en="School Van Facility" data-hi="सुरक्षित स्कूल वैन सुविधा">School Van Facility</h3>
-        <p class="text-xs text-slate-600 mt-1" data-en="Daily pickup & drop for Basari, Khajuraho Road, Bamitha & nearby villages." data-hi="बसारी, बमीठा रोड एवं आसपास के सभी गाँवों के लिए सुरक्षित वाहन सुविधा।">Daily pickup & drop for Basari, Khajuraho Road, Bamitha & nearby villages.</p>
-      </div>
-      <div class="bg-white p-5 rounded-2xl shadow-sm border hover-lift">
-        <div class="w-11 h-11 rounded-xl bg-rose-50 text-red-700 flex items-center justify-center text-xl mb-3"><i class="fa-solid fa-shield-halved"></i></div>
-        <h3 class="font-bold text-[#0F2952] text-sm" data-en="CCTV & Pure RO Water" data-hi="CCTV सुरक्षा एवं शुद्ध RO जल">CCTV & Pure RO Water</h3>
-        <p class="text-xs text-slate-600 mt-1" data-en="24x7 CCTV monitored campus, clean washrooms, and playground." data-hi="24x7 CCTV निगरानी, स्वच्छ परिसर, शुद्ध पेयजल एवं खेल मैदान।">24x7 CCTV monitored campus, clean washrooms, and playground.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- CAMPUS PHOTO & EVENTS GALLERY -->
-  <section id="gallery" class="bg-white py-12 border-y reveal-up">
-    <div class="max-w-7xl mx-auto px-4">
-      <div class="text-center mb-8">
-        <span class="text-xs font-extrabold uppercase tracking-wider text-emerald-700 bg-emerald-50 px-3 py-1 rounded-full">Campus Life</span>
-        <h2 class="text-2xl sm:text-3xl font-extrabold text-[#0F2952] mt-2" data-en="School Photo & Events Gallery" data-hi="विद्यालय फोटो एवं कार्यक्रम गैलरी">School Photo & Events Gallery</h2>
-      </div>
-      <div id="galleryGrid" class="grid grid-cols-2 md:grid-cols-4 gap-4"></div>
-    </div>
-  </section>
-
-  <!-- FEE STRUCTURE & ADMISSION RULES -->
-  <section id="fees" class="max-w-7xl mx-auto px-4 py-12 reveal-up">
-    <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-slate-200">
-      <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 border-b pb-4 mb-5">
-        <div>
-          <span class="text-xs font-extrabold uppercase text-amber-700 bg-amber-100 px-3 py-1 rounded-full">Session 2026–27</span>
-          <h2 class="text-xl sm:text-2xl font-extrabold text-[#0F2952] mt-2" data-en="Fee Structure & Admission Checklist" data-hi="शुल्क विवरण एवं प्रवेश नियम">Fee Structure & Admission Checklist</h2>
-        </div>
-        <button type="button" onclick="openAdmissionModal()" class="btn-royal-gold text-xs font-extrabold px-4 py-2.5 rounded-xl">Apply Admission →</button>
-      </div>
-      <div class="grid lg:grid-cols-3 gap-6 text-xs">
-        <div class="lg:col-span-2 overflow-x-auto">
-          <table class="w-full text-left border-collapse border rounded-xl overflow-hidden">
-            <thead class="bg-[#0F2952] text-white">
-              <tr><th class="p-3 border">Class Group</th><th class="p-3 border">Admission Fee</th><th class="p-3 border">Monthly Tuition</th><th class="p-3 border">Exam / Annual</th></tr>
-            </thead>
-            <tbody>
-              <tr class="border-b"><td class="p-3 font-bold">Nursery – UKG</td><td class="p-3">₹500</td><td class="p-3 font-bold text-emerald-700">₹450 / month</td><td class="p-3">₹400</td></tr>
-              <tr class="border-b bg-slate-50"><td class="p-3 font-bold">Class 1st – 5th</td><td class="p-3">₹600</td><td class="p-3 font-bold text-emerald-700">₹550 / month</td><td class="p-3">₹500</td></tr>
-              <tr class="border-b"><td class="p-3 font-bold">Class 6th – 8th</td><td class="p-3">₹800</td><td class="p-3 font-bold text-emerald-700">₹700 / month</td><td class="p-3">₹600</td></tr>
-              <tr><td class="p-3 font-bold">Class 9th – 10th</td><td class="p-3">₹1,000</td><td class="p-3 font-bold text-emerald-700">₹900 / month</td><td class="p-3">₹800</td></tr>
-            </tbody>
-          </table>
-        </div>
-        <div class="bg-amber-50/70 border border-amber-200 p-4 rounded-2xl space-y-2">
-          <h4 class="font-extrabold text-[#0F2952] text-sm" data-en="Required Documents:" data-hi="प्रवेश हेतु आवश्यक दस्तावेज:">Required Documents:</h4>
-          <ul class="space-y-1.5 text-slate-700">
-            <li>✅ Birth Certificate / जन्म प्रमाण पत्र</li>
-            <li>✅ Aadhaar Card & Samagra ID</li>
-            <li>✅ Previous Class Marksheet & Original TC</li>
-            <li>✅ 2 Passport Size Photos (Student & Father)</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-    <!-- TOP 10 TOPPERS -->
-  <section id="toppers" class="bg-white py-12 border-y reveal-up">
-    <div class="max-w-7xl mx-auto px-4">
-      <div class="text-center mb-8">
-        <span class="text-xs font-extrabold uppercase text-amber-700 bg-amber-100 px-3 py-1 rounded-full">🏆 Wall of Fame</span>
-        <h2 class="text-2xl sm:text-3xl font-extrabold text-[#0F2952] mt-2" data-en="Our Top 10 Meritorious Students" data-hi="हमारे शीर्ष 10 मेधावी विद्यार्थी">Our Top 10 Meritorious Students</h2>
-      </div>
-      <div id="toppersGrid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4"></div>
-    </div>
-  </section>
-
-  <!-- TEACHING STAFF -->
-  <section id="faculty" class="max-w-7xl mx-auto px-4 py-12 reveal-up">
-    <div class="flex flex-col sm:flex-row justify-between items-center gap-4 mb-8">
-      <div>
-        <span class="text-xs font-extrabold uppercase text-[#0F2952] bg-blue-50 px-3 py-1 rounded-full">Experienced Educators</span>
-        <h2 class="text-2xl sm:text-3xl font-extrabold text-[#0F2952] mt-1" data-en="Our Teaching Family" data-hi="हमारा शिक्षक परिवार">Our Teaching Family</h2>
-      </div>
-      <div class="flex flex-wrap gap-2 text-xs font-bold">
-        <button type="button" onclick="filterStaff('All', this)" class="staff-tab bg-[#0F2952] text-white px-3.5 py-2 rounded-xl">All</button>
-        <button type="button" onclick="filterStaff('High School', this)" class="staff-tab bg-white border px-3.5 py-2 rounded-xl">High School</button>
-        <button type="button" onclick="filterStaff('Middle', this)" class="staff-tab bg-white border px-3.5 py-2 rounded-xl">Middle</button>
-        <button type="button" onclick="filterStaff('Primary', this)" class="staff-tab bg-white border px-3.5 py-2 rounded-xl">Primary</button>
-      </div>
-    </div>
-    <div id="staffGrid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5"></div>
-  </section>
-    <!-- RESULT & TC PORTAL -->
-  <section id="result-portal" class="bg-slate-100 py-12 border-t reveal-up">
-    <div class="max-w-4xl mx-auto px-4 space-y-6">
-      <div class="text-center">
-        <span class="text-xs font-extrabold uppercase text-emerald-700 bg-emerald-100 px-3 py-1 rounded-full">Digital Examination Cell</span>
-        <h2 class="text-2xl sm:text-3xl font-extrabold text-[#0F2952] mt-2" data-en="Student Marksheet PDF & TC Verification" data-hi="डिजिटल परीक्षा परिणाम एवं टी.सी. सत्यापन">Student Marksheet PDF & TC Verification</h2>
-      </div>
-
-      <div class="bg-white p-5 rounded-2xl shadow-sm border space-y-4">
-        <div class="flex gap-2 border-b pb-3">
-          <button type="button" id="tabResultBtn" onclick="switchPortalTab('result')" class="bg-[#0F2952] text-white font-bold text-xs px-4 py-2 rounded-xl">🎓 Search Result PDF</button>
-          <button type="button" id="tabTcBtn" onclick="switchPortalTab('tc')" class="bg-slate-100 text-slate-700 font-bold text-xs px-4 py-2 rounded-xl">📄 Verify TC</button>
-        </div>
-
-        <form id="resultSearchForm" class="grid sm:grid-cols-3 gap-3">
-          <input type="text" id="searchQueryInput" required placeholder="Roll No (101) ya Student Name" class="border rounded-xl px-4 py-2.5 text-sm" />
-          <input type="date" id="searchDobInput" class="border rounded-xl px-4 py-2.5 text-sm" />
-          <button type="submit" class="btn-royal-gold font-extrabold rounded-xl px-5 py-2.5 text-sm cursor-pointer">View Marksheet</button>
-        </form>
-
-        <form id="tcSearchForm" class="hidden grid sm:grid-cols-3 gap-3">
-          <input type="text" id="tcNumberInput" required placeholder="TC No (e.g. TC-2026-089)" class="sm:col-span-2 border rounded-xl px-4 py-2.5 text-sm" />
-          <button type="submit" class="bg-emerald-600 text-white font-bold rounded-xl px-5 py-2.5 text-sm">Verify TC</button>
-        </form>
-        <div id="portalErrorBox" class="hidden bg-rose-50 border border-rose-200 text-rose-700 p-3 rounded-xl text-xs font-bold"></div>
-      </div>
-
-      <!-- A4 MARKSHEET OUTPUT -->
-      <div id="marksheetOutput" class="hidden space-y-3">
-        <div class="flex justify-end gap-2 no-print">
-          <button type="button" onclick="downloadMarksheetPDF()" class="bg-rose-600 text-white font-bold text-xs px-4 py-2 rounded-xl shadow"><i class="fa-solid fa-file-pdf mr-1"></i> Download PDF</button>
-          <button type="button" onclick="window.print()" class="bg-[#0F2952] text-white font-bold text-xs px-4 py-2 rounded-xl"><i class="fa-solid fa-print mr-1"></i> Print</button>
-        </div>
-        <div id="printableMarksheet" class="bg-white border-4 border-double border-[#0F2952] p-5 sm:p-8 rounded-xl shadow-xl relative overflow-hidden">
-          <div class="marksheet-watermark">SDR MEMORIAL BASARI</div>
-          <div class="flex items-center justify-between border-b-2 border-[#0F2952] pb-3 mb-4 gap-3 relative z-10">
-            <img src="logo.png" alt="SDR Logo" class="w-16 h-16 rounded-full object-contain bg-white p-0.5 border-2 border-amber-400 shrink-0" />
-            <div class="text-center flex-1">
-              <h3 class="text-base sm:text-xl font-extrabold text-[#0F2952]">SDR MEMORIAL PUBLIC HIGH SCHOOL, BASARI</h3>
-              <p class="text-[11px] text-slate-600 font-semibold">Dist. Chhatarpur (M.P.) • Recognized by MP Board (Nursery to 10th)</p>
-              <span id="msExamTitle" class="inline-block mt-1 bg-amber-100 text-amber-900 font-extrabold text-[11px] px-3 py-0.5 rounded-full">ANNUAL PROGRESS REPORT 2026–27</span>
+      <!-- LIVE TRACK RECORD GLASS CARD -->
+      <div class="lg:col-span-5 reveal-up">
+        <div class="glass-card rounded-3xl p-5 sm:p-6 shadow-2xl space-y-4">
+          <p class="text-xs font-extrabold tracking-wider uppercase text-amber-300" data-en="SCHOOL TRACK RECORD" data-hi="विद्यालय की उपलब्धियाँ">SCHOOL TRACK RECORD</p>
+          <div class="grid grid-cols-2 gap-3 text-center">
+            <div class="bg-[#08152B]/70 border border-white/10 rounded-2xl p-4">
+              <p id="statAlumni" class="text-2xl sm:text-3xl font-extrabold text-amber-400">2,450+</p>
+              <p class="text-xs text-slate-300 mt-1" data-en="Passed Out Students" data-hi="उत्तीर्ण छात्र-छात्राएं">Passed Out Students</p>
             </div>
-            <img id="msStudentPhoto" src="https://via.placeholder.com/80x95?text=Photo" class="w-16 h-20 object-cover rounded border-2 border-[#0F2952] shrink-0" />
+            <div class="bg-[#08152B]/70 border border-white/10 rounded-2xl p-4">
+              <p id="statNewAdmissions" class="text-2xl sm:text-3xl font-extrabold text-emerald-400">148</p>
+              <p class="text-xs text-slate-300 mt-1" data-en="New Admissions" data-hi="नए प्रवेश">New Admissions</p>
+            </div>
+            <div class="bg-[#08152B]/70 border border-white/10 rounded-2xl p-4">
+              <p id="statCurrentStudents" class="text-2xl sm:text-3xl font-extrabold text-sky-400">520+</p>
+              <p class="text-xs text-slate-300 mt-1" data-en="Current Students" data-hi="अध्ययनरत छात्र">Current Students</p>
+            </div>
+            <div class="bg-[#08152B]/70 border border-white/10 rounded-2xl p-4">
+              <p id="statTeachers" class="text-2xl sm:text-3xl font-extrabold text-rose-400">22</p>
+              <p class="text-xs text-slate-300 mt-1" data-en="Qualified Staff" data-hi="योग्य शिक्षक">Qualified Staff</p>
+            </div>
           </div>
-          <div class="grid grid-cols-2 sm:grid-cols-3 gap-2 text-xs bg-slate-50 p-3 rounded-lg border mb-4 relative z-10">
-            <div><span class="text-slate-500">Roll No:</span> <strong id="msRoll"></strong></div>
-            <div><span class="text-slate-500">Class:</span> <strong id="msClass"></strong></div>
-            <div><span class="text-slate-500">DOB:</span> <strong id="msDob"></strong></div>
-            <div class="col-span-2"><span class="text-slate-500">Student Name:</span> <strong id="msName"></strong></div>
-            <div><span class="text-slate-500">Attendance:</span> <strong id="msAttendance" class="text-emerald-700"></strong></div>
-            <div><span class="text-slate-500">Father's Name:</span> <strong id="msFather"></strong></div>
-            <div class="col-span-2"><span class="text-slate-500">Mother's Name:</span> <strong id="msMother"></strong></div>
-          </div>
-          <table class="w-full text-xs border-collapse border border-slate-400 mb-4 relative z-10">
-            <thead class="bg-[#0F2952] text-white">
-              <tr><th class="border p-2 text-left">Subject</th><th class="border p-2">Max</th><th class="border p-2">Theory</th><th class="border p-2">Prac.</th><th class="border p-2">Total</th><th class="border p-2">Grade</th></tr>
-            </thead>
-            <tbody id="msSubjectsBody"></tbody>
-          </table>
-          <div class="grid grid-cols-3 gap-2 text-xs font-bold bg-amber-50 p-3 rounded-lg border border-amber-200 mb-5 relative z-10">
-            <div>Grand Total: <span id="msGrandTotal" class="text-[#0F2952]"></span></div>
-            <div>Percentage: <span id="msPercentage" class="text-emerald-700"></span></div>
-            <div>Result: <span id="msStatus" class="text-emerald-700"></span></div>
-          </div>
-          <div class="flex justify-between items-end text-[11px] pt-3 border-t relative z-10">
-            <img id="msQrImg" src="" alt="QR" class="w-14 h-14 border p-0.5 bg-white" />
-            <div class="text-center"><div class="w-24 border-b border-slate-700 mb-1"></div>Class Teacher</div>
-            <div class="text-center"><div class="w-28 border-b border-slate-700 mb-1"></div>Principal Seal & Sign</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- TC OUTPUT -->
-      <div id="tcOutput" class="hidden bg-white border-2 border-emerald-600 p-5 rounded-2xl shadow space-y-2 text-xs">
-        <span class="bg-emerald-600 text-white font-bold px-3 py-1 rounded-full">✓ VERIFIED OFFICIAL TRANSFER CERTIFICATE</span>
-        <div class="grid sm:grid-cols-2 gap-2 pt-2">
-          <div>TC No: <strong id="tcOutNo"></strong></div><div>Student: <strong id="tcOutName"></strong></div>
-          <div>Father: <strong id="tcOutFather"></strong></div><div>Class Passed: <strong id="tcOutClass"></strong></div>
-          <div>Issue Date: <strong id="tcOutDate"></strong></div><div>Conduct: <strong id="tcOutConduct"></strong></div>
         </div>
       </div>
     </div>
   </section>
-    <!-- HOLIDAYS & UNIFORM -->
-  <section id="holidays" class="max-w-7xl mx-auto px-4 py-12 grid lg:grid-cols-2 gap-6 reveal-up">
-    <div class="bg-white p-5 rounded-2xl shadow-sm border">
-      <h3 class="text-lg font-extrabold text-[#0F2952] mb-3" data-en="📅 Annual Holidays Calendar" data-hi="📅 वार्षिक अवकाश कैलेंडर">📅 Annual Holidays Calendar</h3>
-      <div class="overflow-x-auto"><table class="w-full text-xs text-left"><thead class="bg-slate-100"><tr><th class="p-2.5">Date</th><th class="p-2.5">Day</th><th class="p-2.5">Occasion</th><th class="p-2.5">Type</th></tr></thead><tbody id="holidaysBody"></tbody></table></div>
-    </div>
-    <div id="uniform" class="bg-white p-5 rounded-2xl shadow-sm border space-y-3">
-      <h3 class="text-lg font-extrabold text-[#0F2952]" data-en="👔 School Uniform & Timing" data-hi="👔 विद्यालय यूनिफॉर्म एवं समय">👔 School Uniform & Timing</h3>
-      <div class="text-xs text-slate-600 space-y-2" data-en="<strong>Boys (Mon–Fri):</strong> Sky Blue Shirt, Navy Blue Trousers, School Tie, Belt & Black Shoes.<br><strong>Girls (Mon–Fri):</strong> Sky Blue Shirt, Navy Blue Divided Skirt / Tunic, School Tie, Belt & Black Shoes.<br><strong>Saturday (PT / House):</strong> White Shirt, White Trousers/Skirt & White Canvas Shoes.<br><strong>School Timing:</strong> Mon–Sat (8:00 AM to 2:00 PM)" data-hi="<strong>छात्र (सोम–शुक्र):</strong> आसमानी नीली शर्ट, नेवी ब्लू पैंट, स्कूल टाई, बेल्ट और काले जूते।<br><strong>छात्राएं (सोम–शुक्र):</strong> आसमानी नीली शर्ट, नेवी ब्लू स्कर्ट/ट्यूनिक, स्कूल टाई, बेल्ट और काले जूते।<br><strong>शनिवार (PT ड्रेस):</strong> सफेद शर्ट, सफेद पैंट/स्कर्ट और सफेद कैनवास जूते।<br><strong>विद्यालय समय:</strong> सोम–शनि (सुबह 8:00 से दोपहर 2:00 बजे तक)">
-        <p><strong>Boys (Mon–Fri):</strong> Sky Blue Shirt, Navy Blue Trousers, School Tie, Belt & Black Shoes.</p>
-        <p><strong>Girls (Mon–Fri):</strong> Sky Blue Shirt, Navy Blue Divided Skirt / Tunic, School Tie, Belt & Black Shoes.</p>
-        <p><strong>Saturday (PT / House):</strong> White Shirt, White Trousers/Skirt & White Canvas Shoes.</p>
-        <p><strong>School Timing:</strong> Mon–Sat (8:00 AM to 2:00 PM)</p>
+    <!-- ABOUT & PRINCIPAL'S MESSAGE -->
+  <section id="about" class="py-12 px-4 max-w-7xl mx-auto">
+    <div class="grid lg:grid-cols-12 gap-6 items-center bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-slate-200 reveal-up">
+      <div class="lg:col-span-4 text-center space-y-3">
+        <div class="w-28 h-28 rounded-3xl bg-[#0F2952] text-amber-300 mx-auto flex items-center justify-center text-4xl font-extrabold border-4 border-amber-400 shadow-lg">
+          <i class="fa-solid fa-user-tie"></i>
+        </div>
+        <div>
+          <h3 class="font-extrabold text-[#0F2952] text-base">Mr. R.K. Sharma</h3>
+          <p class="text-xs font-bold text-amber-700" data-en="Principal • SDR Memorial Public High School" data-hi="प्राचार्य • एसडीआर मेमोरियल पब्लिक हाई स्कूल">Principal • SDR Memorial Public High School</p>
+        </div>
+      </div>
+      <div class="lg:col-span-8 space-y-3">
+        <span class="text-xs font-extrabold uppercase tracking-wider text-amber-700 bg-amber-50 px-3 py-1 rounded-full" data-en="Principal's Desk" data-hi="प्राचार्य का संदेश">Principal's Desk</span>
+        <h3 class="text-xl sm:text-2xl font-extrabold text-[#0F2952]" data-en="Nurturing Discipline, Sanskar & Modern Education in Basari" data-hi="बसारी में अनुशासन, संस्कार और आधुनिक शिक्षा का संगम">Nurturing Discipline, Sanskar & Modern Education in Basari</h3>
+        <p class="text-xs sm:text-sm text-slate-600 leading-relaxed" data-en="At SDR Memorial Public High School, Basari, our mission is to provide affordable, high-quality English and Hindi medium education to every child in Basari and surrounding villages. With personal attention, regular parent-teacher feedback, and digital transparency, we prepare students for board excellence and strong character." data-hi="एसडीआर मेमोरियल पब्लिक हाई स्कूल, बसारी का उद्देश्य बसारी एवं आसपास के ग्रामीण क्षेत्रों के प्रत्येक बच्चे को सुलभ और उच्च गुणवत्ता वाली अंग्रेजी एवं हिंदी माध्यम शिक्षा प्रदान करना है। व्यक्तिगत ध्यान, नियमित परीक्षा और डिजिटल पारदर्शिता के साथ हम बच्चों को बोर्ड परीक्षा और जीवन की हर चुनौती के लिए तैयार करते हैं।">
+          At SDR Memorial Public High School, Basari, our mission is to provide affordable, high-quality English and Hindi medium education to every child in Basari and surrounding villages. With personal attention, regular parent-teacher feedback, and digital transparency, we prepare students for board excellence and strong character.
+        </p>
       </div>
     </div>
   </section>
 
-  <!-- MANDATORY PUBLIC DISCLOSURE & FOOTER -->
-  <footer class="bg-[#08152B] text-slate-300 pt-10 pb-8 px-4 border-t-4 border-amber-400">
-    <div class="max-w-7xl mx-auto grid sm:grid-cols-2 lg:grid-cols-4 gap-6 text-xs">
-      <div class="space-y-2">
-        <div class="flex items-center gap-2.5">
-          <img src="logo.png" alt="SDR Logo" class="w-11 h-11 rounded-full bg-white p-0.5 border border-amber-400" />
-          <h4 class="text-white font-extrabold text-sm">SDR MEMORIAL PUBLIC HIGH SCHOOL</h4>
+  <!-- TODAY'S CLASS HOMEWORK CORNER -->
+  <section id="homework" class="py-10 px-4 max-w-7xl mx-auto">
+    <div class="bg-gradient-to-br from-[#08152B] to-[#0F2952] text-white rounded-3xl p-6 sm:p-8 shadow-xl space-y-5 reveal-up">
+      <div class="flex flex-wrap justify-between items-center gap-3">
+        <div>
+          <span class="text-[11px] font-extrabold bg-amber-400 text-[#08152B] px-3 py-0.5 rounded-full">DAILY CLASS DIARY</span>
+          <h3 class="text-xl sm:text-2xl font-extrabold mt-1.5" data-en="Today's Homework & Study Work" data-hi="आज का कक्षा होमवर्क (Class Homework)">Today's Homework & Study Work</h3>
         </div>
-        <p>Basari, Tehsil Rajnagar, Dist. Chhatarpur (M.P.) • Pin: 471606</p>
-        <p class="text-amber-300 font-bold">📞 +91 99881-10080</p>
-      </div>
-      <div>
-        <h4 class="text-amber-400 font-bold mb-2">Quick Links</h4>
-        <ul class="space-y-1.5">
-          <li><a href="#facilities" class="hover:text-white">• Facilities & Van Routes</a></li>
-          <li><a href="#gallery" class="hover:text-white">• Campus Photo Gallery</a></li>
-          <li><a href="#fees" class="hover:text-white">• Fee Structure 2026–27</a></li>
-          <li><a href="#result-portal" class="hover:text-white">• Result PDF & TC Verify</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4 class="text-amber-400 font-bold mb-2">Mandatory Disclosure (MP Board)</h4>
-        <ul class="space-y-1 text-[11px]">
-          <li>• Affiliation: MP Board Bhopal Recognized</li>
-          <li>• Medium: English & Hindi Medium</li>
-          <li>• Classes: Nursery to Class 10th</li>
-          <li>• <button type="button" onclick="document.getElementById('privacyModal').classList.remove('hidden')" class="underline text-amber-300">Privacy Policy & Data Security</button></li>
-        </ul>
-      </div>
-      <div>
-        <h4 class="text-amber-400 font-bold mb-2">Admission Desk</h4>
-        <p class="mb-3">Online registration open for Session 2026–27.</p>
-        <button type="button" onclick="openAdmissionModal()" class="btn-royal-gold font-extrabold px-4 py-2 rounded-xl">Apply Admission Now</button>
-      </div>
-    </div>
-    <div class="max-w-7xl mx-auto border-t border-slate-800 mt-8 pt-4 text-center text-[11px] text-slate-400">
-      © 2026 SDR Memorial Public High School, Basari • Digital Portal Developed by <strong class="text-amber-400">Veeru Shrivas</strong>
-    </div>
-  </footer>
-
-  <!-- ADMISSION MODAL -->
-  <div id="admissionModal" class="hidden fixed inset-0 bg-black/70 z-50 flex items-center justify-center p-4">
-    <div class="bg-white max-w-md w-full rounded-2xl p-6 shadow-2xl animate-modal space-y-3 border-t-4 border-amber-400">
-      <div class="flex justify-between items-center border-b pb-2"><h3 class="font-extrabold text-[#0F2952]">📝 Online Admission Form 2026–27</h3><button type="button" onclick="closeAdmissionModal()" class="text-xl font-bold text-slate-500">×</button></div>
-      <form id="admissionForm" class="space-y-2.5 text-xs">
-        <input type="text" id="admStudentName" required placeholder="Student Full Name *" class="w-full border rounded-xl px-3.5 py-2.5" />
-        <input type="text" id="admFatherName" required placeholder="Father's Name *" class="w-full border rounded-xl px-3.5 py-2.5" />
-        <select id="admClass" class="w-full border rounded-xl px-3.5 py-2.5">
+        <select id="publicHomeworkClassFilter" onchange="renderPublicHomework()" class="bg-white text-[#0F2952] font-extrabold text-xs px-4 py-2.5 rounded-xl shadow cursor-pointer">
+          <option value="All">All Classes (सभी कक्षाएं)</option>
           <option value="Nursery">Nursery</option><option value="LKG">LKG</option><option value="UKG">UKG</option>
           <option value="Class 1st">Class 1st</option><option value="Class 2nd">Class 2nd</option><option value="Class 3rd">Class 3rd</option>
           <option value="Class 4th">Class 4th</option><option value="Class 5th">Class 5th</option><option value="Class 6th">Class 6th</option>
           <option value="Class 7th">Class 7th</option><option value="Class 8th">Class 8th</option><option value="Class 9th">Class 9th</option><option value="Class 10th">Class 10th</option>
         </select>
-        <input type="tel" id="admMobile" required placeholder="Parent Mobile Number *" class="w-full border rounded-xl px-3.5 py-2.5" />
-        <input type="text" id="admAddress" required placeholder="Village / Address *" class="w-full border rounded-xl px-3.5 py-2.5" />
-        <button type="submit" class="w-full btn-royal-navy font-bold py-3 rounded-xl">Submit Application</button>
+      </div>
+      <div id="publicHomeworkGrid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-3.5 text-xs"></div>
+    </div>
+  </section>
+
+  <!-- FACILITIES & SCHOOL VAN ROUTES -->
+  <section id="facilities" class="py-10 px-4 max-w-7xl mx-auto space-y-8">
+    <div class="text-center space-y-2">
+      <span class="text-xs font-extrabold text-amber-700 uppercase tracking-wider" data-en="CAMPUS & TRANSPORT" data-hi="परिसर एवं वाहन सुविधा">CAMPUS & TRANSPORT</span>
+      <h3 class="text-2xl sm:text-3xl font-extrabold text-[#0F2952]" data-en="World-Class Facilities & Safe School Van Routes" data-hi="आधुनिक सुविधाएं एवं सुरक्षित स्कूल वैन रूट">World-Class Facilities & Safe School Van Routes</h3>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 text-xs">
+      <div class="bg-white p-5 rounded-2xl border shadow-sm hover-lift space-y-2">
+        <div class="w-11 h-11 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center text-lg"><i class="fa-solid fa-chalkboard-user"></i></div>
+        <h4 class="font-extrabold text-[#0F2952] text-sm">Smart Classrooms</h4>
+        <p class="text-slate-600">Digital visual learning, airy rooms, and clean RO drinking water facility.</p>
+      </div>
+      <div class="bg-white p-5 rounded-2xl border shadow-sm hover-lift space-y-2">
+        <div class="w-11 h-11 rounded-xl bg-blue-100 text-blue-700 flex items-center justify-center text-lg"><i class="fa-solid fa-computer"></i></div>
+        <h4 class="font-extrabold text-[#0F2952] text-sm">Computer & Science Lab</h4>
+        <p class="text-slate-600">Practical computer education and fully equipped science laboratory.</p>
+      </div>
+      <div class="bg-white p-5 rounded-2xl border shadow-sm hover-lift space-y-2">
+        <div class="w-11 h-11 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center text-lg"><i class="fa-solid fa-van-shuttle"></i></div>
+        <h4 class="font-extrabold text-[#0F2952] text-sm">Safe Village Van Service</h4>
+        <p class="text-slate-600">Door-to-door pickup for Basari, Rajnagar, Khajuraho Road & nearby villages.</p>
+      </div>
+      <div class="bg-white p-5 rounded-2xl border shadow-sm hover-lift space-y-2">
+        <div class="w-11 h-11 rounded-xl bg-rose-100 text-rose-700 flex items-center justify-center text-lg"><i class="fa-solid fa-shield-halved"></i></div>
+        <h4 class="font-extrabold text-[#0F2952] text-sm">CCTV & Weekly Tests</h4>
+        <p class="text-slate-600">24x7 CCTV campus security with weekly progress tracking and SMS/WhatsApp updates.</p>
+      </div>
+    </div>
+
+    <!-- SCHOOL VAN ROUTES CARD -->
+    <div class="bg-white rounded-3xl p-5 sm:p-6 border shadow-sm space-y-3">
+      <h4 class="font-extrabold text-[#0F2952] text-sm flex items-center gap-2"><i class="fa-solid fa-route text-amber-500"></i> Active School Van / Bus Routes</h4>
+      <div id="publicVanRoutesGrid" class="grid sm:grid-cols-3 gap-3 text-xs"></div>
+    </div>
+  </section>
+    <!-- CAMPUS PHOTO GALLERY -->
+  <section id="gallery" class="py-10 px-4 max-w-7xl mx-auto space-y-5">
+    <div class="flex flex-wrap justify-between items-end gap-3">
+      <div>
+        <span class="text-xs font-extrabold text-amber-700 uppercase tracking-wider" data-en="SCHOOL LIFE & EVENTS" data-hi="विद्यालय की झलकियाँ">SCHOOL LIFE & EVENTS</span>
+        <h3 class="text-2xl sm:text-3xl font-extrabold text-[#0F2952]" data-en="Campus Photo Gallery" data-hi="कैंपस फोटो गैलरी">Campus Photo Gallery</h3>
+      </div>
+      <div class="flex gap-2 text-xs font-bold">
+        <button type="button" onclick="filterGallery('All')" class="px-3 py-1.5 rounded-xl bg-[#0F2952] text-white cursor-pointer">All</button>
+        <button type="button" onclick="filterGallery('Events')" class="px-3 py-1.5 rounded-xl bg-white border hover:bg-slate-100 cursor-pointer">Events</button>
+        <button type="button" onclick="filterGallery('Campus')" class="px-3 py-1.5 rounded-xl bg-white border hover:bg-slate-100 cursor-pointer">Campus</button>
+      </div>
+    </div>
+    <div id="publicGalleryGrid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+  </section>
+
+  <!-- FEE STRUCTURE 2026-27 -->
+  <section id="fees" class="py-10 px-4 max-w-7xl mx-auto space-y-5">
+    <div class="text-center space-y-1">
+      <span class="text-xs font-extrabold text-amber-700 uppercase tracking-wider" data-en="TRANSPARENT FEES" data-hi="पारदर्शी शुल्क संरचना">TRANSPARENT FEES</span>
+      <h3 class="text-2xl sm:text-3xl font-extrabold text-[#0F2952]" data-en="Fee Structure (Session 2026–27)" data-hi="वार्षिक एवं मासिक शुल्क विवरण (2026–27)">Fee Structure (Session 2026–27)</h3>
+    </div>
+
+    <div class="bg-white rounded-3xl border shadow-sm overflow-x-auto">
+      <table class="w-full text-left text-xs sm:text-sm">
+        <thead class="bg-[#0F2952] text-white">
+          <tr>
+            <th class="p-3.5" data-en="Class Group" data-hi="कक्षा वर्ग">Class Group</th>
+            <th class="p-3.5" data-en="Admission Fee" data-hi="प्रवेश शुल्क">Admission Fee</th>
+            <th class="p-3.5" data-en="Monthly Tuition Fee" data-hi="मासिक शिक्षण शुल्क">Monthly Tuition Fee</th>
+            <th class="p-3.5" data-en="Exam & Activity" data-hi="परीक्षा एवं गतिविधि">Exam & Activity</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-slate-200 font-medium">
+          <tr class="hover:bg-slate-50">
+            <td class="p-3.5 font-bold text-[#0F2952]">Nursery, LKG & UKG</td>
+            <td class="p-3.5">₹ 500</td>
+            <td class="p-3.5 font-bold text-emerald-700">₹ 450 / month</td>
+            <td class="p-3.5">₹ 300 / term</td>
+          </tr>
+          <tr class="hover:bg-slate-50">
+            <td class="p-3.5 font-bold text-[#0F2952]">Class 1st to Class 5th</td>
+            <td class="p-3.5">₹ 600</td>
+            <td class="p-3.5 font-bold text-emerald-700">₹ 550 / month</td>
+            <td class="p-3.5">₹ 400 / term</td>
+          </tr>
+          <tr class="hover:bg-slate-50">
+            <td class="p-3.5 font-bold text-[#0F2952]">Class 6th to Class 8th</td>
+            <td class="p-3.5">₹ 800</td>
+            <td class="p-3.5 font-bold text-emerald-700">₹ 700 / month</td>
+            <td class="p-3.5">₹ 500 / term</td>
+          </tr>
+          <tr class="hover:bg-slate-50">
+            <td class="p-3.5 font-bold text-[#0F2952]">Class 9th & Class 10th (MP Board)</td>
+            <td class="p-3.5">₹ 1,000</td>
+            <td class="p-3.5 font-bold text-emerald-700">₹ 900 / month</td>
+            <td class="p-3.5">₹ 600 / term</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- BOARD TOPPERS & WALL OF FAME -->
+  <section id="toppers" class="py-10 px-4 max-w-7xl mx-auto space-y-5">
+    <div class="text-center space-y-1">
+      <span class="text-xs font-extrabold text-amber-700 uppercase tracking-wider" data-en="ACADEMIC PRIDE" data-hi="विद्यालय के मेधावी छात्र">ACADEMIC PRIDE</span>
+      <h3 class="text-2xl sm:text-3xl font-extrabold text-[#0F2952]" data-en="Our School Toppers" data-hi="हमारे बोर्ड एवं कक्षा टॉपर्स">Our School Toppers</h3>
+    </div>
+    <div id="publicToppersGrid" class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4"></div>
+  </section>
+
+  <!-- QUALIFIED TEACHERS / STAFF -->
+  <section id="faculty" class="py-10 px-4 max-w-7xl mx-auto space-y-5">
+    <div class="text-center space-y-1">
+      <span class="text-xs font-extrabold text-amber-700 uppercase tracking-wider" data-en="DEDICATED MENTORS" data-hi="अनुभवी शिक्षक परिवार">DEDICATED MENTORS</span>
+      <h3 class="text-2xl sm:text-3xl font-extrabold text-[#0F2952]" data-en="Our Qualified Faculty" data-hi="हमारे योग्य एवं अनुभवी शिक्षक">Our Qualified Faculty</h3>
+    </div>
+    <div id="publicTeachersGrid" class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4"></div>
+  </section>
+
+  <!-- SCHOOL HOLIDAY CALENDAR -->
+  <section id="holidays" class="py-10 px-4 max-w-7xl mx-auto space-y-4">
+    <div class="bg-white rounded-3xl p-5 sm:p-6 border shadow-sm space-y-3">
+      <h3 class="text-lg sm:text-xl font-extrabold text-[#0F2952] flex items-center gap-2"><i class="fa-solid fa-calendar-days text-amber-500"></i> <span data-en="Academic Holiday Calendar 2026–27" data-hi="विद्यालय अवकाश कैलेंडर 2026–27">Academic Holiday Calendar 2026–27</span></h3>
+      <div id="publicHolidaysGrid" class="grid sm:grid-cols-2 lg:grid-cols-4 gap-3 text-xs"></div>
+    </div>
+  </section>
+    <!-- DIGITAL MARKSHEET & TC VERIFICATION PORTAL -->
+  <section id="result-portal" class="py-12 px-4 max-w-7xl mx-auto">
+    <div class="bg-white rounded-3xl p-6 sm:p-8 border-2 border-amber-400/50 shadow-xl space-y-6">
+      <div class="flex flex-wrap justify-between items-center gap-3 border-b pb-4">
+        <div>
+          <span class="text-xs font-extrabold text-amber-700 uppercase tracking-wider">DIGITAL PARENT PORTAL</span>
+          <h3 class="text-xl sm:text-2xl font-extrabold text-[#0F2952]" data-en="Download Official Marksheet PDF & Verify TC" data-hi="डिजिटल मार्कशीट PDF डाउनलोड एवं TC सत्यापन">Download Official Marksheet PDF & Verify TC</h3>
+        </div>
+        <div class="flex gap-2 text-xs font-extrabold">
+          <button type="button" id="btnTabResult" onclick="switchPortalTab('result')" class="px-4 py-2 rounded-xl bg-[#0F2952] text-white cursor-pointer">🎓 Marksheet PDF</button>
+          <button type="button" id="btnTabTC" onclick="switchPortalTab('tc')" class="px-4 py-2 rounded-xl bg-slate-100 text-slate-700 cursor-pointer">📄 Verify TC</button>
+        </div>
+      </div>
+
+      <!-- MARKSHEET SEARCH FORM -->
+      <div id="portalResultBox" class="space-y-5">
+        <div class="grid sm:grid-cols-3 gap-3 text-xs">
+          <div>
+            <label class="font-bold text-slate-600 block mb-1">Student Roll Number *</label>
+            <input type="text" id="resRollInput" placeholder="e.g. 101" class="w-full border-2 border-slate-200 focus:border-[#0F2952] rounded-xl px-3.5 py-2.5 font-bold outline-none" />
+          </div>
+          <div>
+            <label class="font-bold text-slate-600 block mb-1">Date of Birth (DOB) *</label>
+            <input type="date" id="resDobInput" class="w-full border-2 border-slate-200 focus:border-[#0F2952] rounded-xl px-3.5 py-2.5 font-bold outline-none" />
+          </div>
+          <div class="flex items-end">
+            <button type="button" onclick="searchMarksheet()" class="w-full btn-royal-gold font-extrabold py-2.5 px-4 rounded-xl cursor-pointer">
+              🔍 View & Download Marksheet
+            </button>
+          </div>
+        </div>
+        <p class="text-[11px] text-slate-500">Demo Check: Roll No <b>101</b> | DOB <b>2012-05-14</b></p>
+
+        <!-- RENDERED MARKSHEET PREVIEW -->
+        <div id="marksheetOutputWrap" class="hidden space-y-4">
+          <div class="flex flex-wrap gap-2 justify-end">
+            <button type="button" onclick="downloadMarksheetPDF()" class="bg-rose-600 hover:bg-rose-700 text-white text-xs font-extrabold px-4 py-2 rounded-xl cursor-pointer shadow">
+              <i class="fa-solid fa-file-pdf mr-1"></i> Save Official PDF
+            </button>
+            <button type="button" onclick="window.print()" class="bg-slate-800 text-white text-xs font-extrabold px-4 py-2 rounded-xl cursor-pointer">
+              <i class="fa-solid fa-print mr-1"></i> Print A4
+            </button>
+          </div>
+
+          <div id="printableMarksheet" class="bg-white border-4 border-[#0F2952] p-5 sm:p-7 rounded-2xl max-w-3xl mx-auto shadow-lg text-xs">
+            <div class="flex items-center justify-between border-b-2 border-amber-500 pb-4 gap-3">
+              <img src="1794621466353.png" alt="Logo" class="w-16 h-16 rounded-full object-cover border-2 border-[#0F2952] bg-[#08152B]" />
+              <div class="text-center flex-1">
+                <h4 class="text-base sm:text-xl font-extrabold text-[#0F2952]">SDR MEMORIAL PUBLIC HIGH SCHOOL</h4>
+                <p class="font-bold text-amber-700">Basari, Tehsil Rajnagar, Dist. Chhatarpur (M.P.) • Pin: 471606</p>
+                <p class="text-[11px] text-slate-500">MP Board Recognized • English & Hindi Medium (Nursery to 10th)</p>
+              </div>
+              <div id="msQrBox" class="w-16 h-16 border rounded-lg flex items-center justify-center bg-slate-50 p-1"></div>
+            </div>
+            <div id="msBodyContent" class="mt-4 space-y-4"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TC VERIFICATION FORM -->
+      <div id="portalTcBox" class="hidden space-y-4">
+        <div class="grid sm:grid-cols-3 gap-3 text-xs">
+          <div class="sm:col-span-2">
+            <label class="font-bold text-slate-600 block mb-1">Enter Transfer Certificate (TC) Number *</label>
+            <input type="text" id="tcNumberInput" placeholder="e.g. SDR/TC/2026/089" class="w-full border-2 border-slate-200 focus:border-[#0F2952] rounded-xl px-3.5 py-2.5 font-bold outline-none" />
+          </div>
+          <div class="flex items-end">
+            <button type="button" onclick="verifyTcNumber()" class="w-full btn-royal-navy font-extrabold py-2.5 px-4 rounded-xl cursor-pointer">
+              ✅ Verify Official TC
+            </button>
+          </div>
+        </div>
+        <div id="tcResultOutput"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-[#08152B] text-slate-300 pt-10 pb-6 px-4 border-t-4 border-amber-500">
+    <div class="max-w-7xl mx-auto grid sm:grid-cols-2 lg:grid-cols-4 gap-6 text-xs pb-8 border-b border-white/10">
+      <div class="space-y-2.5">
+        <div class="flex items-center gap-2.5">
+          <img src="1794621466353.png" alt="Logo" class="w-11 h-11 rounded-full object-cover border border-amber-400" />
+          <h4 class="font-extrabold text-white text-sm">SDR MEMORIAL PUBLIC HIGH SCHOOL</h4>
+        </div>
+        <p class="text-slate-400">Basari, Tehsil Rajnagar, Dist. Chhatarpur (M.P.) • Pin: 471606</p>
+        <p class="text-amber-400 font-bold"><i class="fa-solid fa-phone mr-1"></i> +91 99881-10080</p>
+      </div>
+      <div class="space-y-1.5">
+        <h5 class="font-extrabold text-amber-400 uppercase">Quick Links</h5>
+        <a href="#homework" class="block hover:text-white">• Today's Class Homework</a>
+        <a href="#facilities" class="block hover:text-white">• Facilities & Van Routes</a>
+        <a href="#gallery" class="block hover:text-white">• Campus Photo Gallery</a>
+        <a href="#fees" class="block hover:text-white">• Fee Structure 2026–27</a>
+        <a href="#result-portal" class="block hover:text-white">• Marksheet PDF & TC Verify</a>
+      </div>
+      <div class="space-y-1.5">
+        <h5 class="font-extrabold text-amber-400 uppercase">Mandatory Disclosure</h5>
+        <p>• Affiliation: MP Board Bhopal Recognized</p>
+        <p>• Medium: English & Hindi Medium</p>
+        <p>• Classes: Nursery to Class 10th</p>
+        <p>• School Timing: 8:00 AM – 2:00 PM</p>
+      </div>
+      <div class="space-y-2.5">
+        <h5 class="font-extrabold text-amber-400 uppercase">Admission Desk 2026–27</h5>
+        <p class="text-slate-400">Online registration open. Fill form online and track verification status live.</p>
+        <button type="button" onclick="openAdmissionModal()" class="btn-royal-gold font-extrabold px-4 py-2.5 rounded-xl cursor-pointer">Apply Admission Now</button>
+      </div>
+    </div>
+    <p class="text-center text-[11px] text-slate-400 pt-5">© 2026 SDR Memorial Public High School, Basari • Digital ERP Portal</p>
+  </footer>
+
+  <!-- FLOATING WHATSAPP HELP -->
+  <a href="https://wa.me/919988110080?text=Hello%20SDR%20Memorial%20School%20Basari,%20I%20want%20admission%20information." target="_blank" class="fixed bottom-5 right-5 z-40 w-13 h-13 p-3.5 rounded-full bg-emerald-500 hover:bg-emerald-600 text-white shadow-2xl flex items-center justify-center text-2xl transition hover:scale-110">
+    <i class="fa-brands fa-whatsapp"></i>
+  </a>
+
+  <!-- ONLINE ADMISSION MODAL (PENDING-TO-APPROVE WORKFLOW) -->
+  <div id="admissionModal" class="hidden fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-center justify-center p-3 overflow-y-auto">
+    <div class="bg-white rounded-3xl max-w-lg w-full p-5 sm:p-6 shadow-2xl border-2 border-amber-400 space-y-4 my-auto">
+      <div class="flex justify-between items-center border-b pb-3">
+        <div>
+          <span class="text-[10px] font-extrabold bg-amber-100 text-amber-800 px-2.5 py-0.5 rounded-full">SESSION 2026–27</span>
+          <h3 class="text-lg font-extrabold text-[#0F2952] mt-0.5">Online Admission Registration</h3>
+        </div>
+        <button type="button" onclick="closeAdmissionModal()" class="w-8 h-8 rounded-full bg-slate-100 hover:bg-rose-100 text-slate-700 font-extrabold cursor-pointer">✕</button>
+      </div>
+
+      <form id="admissionForm" onsubmit="submitOnlineAdmission(event)" class="space-y-3 text-xs">
+        <div class="grid sm:grid-cols-2 gap-3">
+          <div>
+            <label class="font-bold text-slate-600 block mb-1">Student Full Name *</label>
+            <input type="text" id="admStudentName" required placeholder="e.g. Aarav Singh" class="w-full border rounded-xl px-3 py-2 font-semibold" />
+          </div>
+          <div>
+            <label class="font-bold text-slate-600 block mb-1">Father's Name *</label>
+            <input type="text" id="admFatherName" required placeholder="e.g. Rajesh Singh" class="w-full border rounded-xl px-3 py-2 font-semibold" />
+          </div>
+        </div>
+
+        <div class="grid sm:grid-cols-2 gap-3">
+          <div>
+            <label class="font-bold text-slate-600 block mb-1">Class Applying For *</label>
+            <select id="admClass" required class="w-full border rounded-xl px-3 py-2 font-bold bg-white">
+              <option value="Nursery">Nursery</option><option value="LKG">LKG</option><option value="UKG">UKG</option>
+              <option value="Class 1st">Class 1st</option><option value="Class 2nd">Class 2nd</option><option value="Class 3rd">Class 3rd</option>
+              <option value="Class 4th">Class 4th</option><option value="Class 5th">Class 5th</option><option value="Class 6th">Class 6th</option>
+              <option value="Class 7th">Class 7th</option><option value="Class 8th">Class 8th</option><option value="Class 9th">Class 9th</option><option value="Class 10th">Class 10th</option>
+            </select>
+          </div>
+          <div>
+            <label class="font-bold text-slate-600 block mb-1">Date of Birth *</label>
+            <input type="date" id="admDob" required class="w-full border rounded-xl px-3 py-2 font-semibold" />
+          </div>
+        </div>
+
+        <div class="grid sm:grid-cols-2 gap-3">
+          <div>
+            <label class="font-bold text-slate-600 block mb-1">Parent WhatsApp Mobile *</label>
+            <input type="tel" id="admPhone" required pattern="[0-9]{10}" placeholder="10-digit mobile number" class="w-full border rounded-xl px-3 py-2 font-semibold" />
+          </div>
+          <div>
+            <label class="font-bold text-slate-600 block mb-1">Medium *</label>
+            <select id="admMedium" class="w-full border rounded-xl px-3 py-2 font-bold bg-white">
+              <option value="English Medium">English Medium</option>
+              <option value="Hindi Medium">Hindi Medium</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <label class="font-bold text-slate-600 block mb-1">Village / Full Address *</label>
+          <input type="text" id="admAddress" required placeholder="Village, Post, Tehsil Rajnagar, Chhatarpur" class="w-full border rounded-xl px-3 py-2 font-semibold" />
+        </div>
+
+        <div class="bg-amber-50 border border-amber-200 rounded-xl p-2.5 text-[11px] text-amber-900">
+          ℹ️ Form submit karne ke baad aapko ek <b>Application ID</b> milegi. School office se document verification ke baad Admin aapka admission approve karenge.
+        </div>
+
+        <button type="submit" id="admSubmitBtn" class="w-full btn-royal-gold font-extrabold py-3 rounded-xl cursor-pointer text-sm">
+          ✅ Submit Application (Pending Approval)
+        </button>
       </form>
-      <div id="admissionSuccessBox" class="hidden bg-emerald-50 border border-emerald-200 p-4 rounded-xl text-center space-y-2 text-xs">
-        <p class="font-bold text-emerald-800">✅ Application Submitted! ID: <span id="generatedAppId"></span></p>
-        <a id="whatsappAdmissionLink" href="#" target="_blank" class="inline-block bg-emerald-600 text-white font-bold px-4 py-2 rounded-xl"><i class="fa-brands fa-whatsapp"></i> Send Slip on WhatsApp</a>
+
+      <div id="admissionSuccessBox" class="hidden text-center space-y-3 py-3"></div>
+    </div>
+  </div>
+
+  <!-- LIVE ADMISSION STATUS TRACKER MODAL -->
+  <div id="statusModal" class="hidden fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-center justify-center p-3">
+    <div class="bg-white rounded-3xl max-w-md w-full p-5 sm:p-6 shadow-2xl border-2 border-emerald-500 space-y-4">
+      <div class="flex justify-between items-center border-b pb-2.5">
+        <h3 class="text-base font-extrabold text-[#0F2952]">🔍 Track Online Admission Status</h3>
+        <button type="button" onclick="closeStatusModal()" class="w-8 h-8 rounded-full bg-slate-100 font-extrabold cursor-pointer">✕</button>
+      </div>
+      <div class="space-y-3 text-xs">
+        <input type="text" id="trackInput" placeholder="Enter Application ID (SDR-2026-XXXX) or Mobile No" class="w-full border-2 rounded-xl px-3.5 py-2.5 font-bold" />
+        <button type="button" onclick="checkAdmissionStatus()" class="w-full btn-royal-navy font-extrabold py-2.5 rounded-xl cursor-pointer">Check Live Status</button>
+        <div id="trackResultBox" class="pt-1"></div>
       </div>
     </div>
   </div>
-
-  <!-- PRIVACY POLICY MODAL -->
-  <div id="privacyModal" class="hidden fixed inset-0 bg-black/70 z-50 flex items-center justify-center p-4">
-    <div class="bg-white max-w-md w-full rounded-2xl p-6 shadow-2xl space-y-3 text-xs">
-      <div class="flex justify-between items-center border-b pb-2"><h3 class="font-extrabold text-[#0F2952]">🔒 Student Data Privacy Policy</h3><button type="button" onclick="document.getElementById('privacyModal').classList.add('hidden')" class="text-xl font-bold">×</button></div>
-      <p>All student personal records (Aadhaar, mobile numbers, residential address, and photographs) are encrypted on Google Cloud Firestore and strictly accessible only to authorized school administration.</p>
-    </div>
-  </div>
-
-  <!-- FLOATING WHATSAPP BUTTON -->
-  <a href="https://wa.me/919988110080?text=Namaste%20SDR%20Memorial%20School%20Basari" target="_blank" class="fixed bottom-5 right-5 bg-emerald-500 hover:bg-emerald-600 text-white w-12 h-12 rounded-full flex items-center justify-center shadow-xl text-2xl z-30"><i class="fa-brands fa-whatsapp"></i></a>
 
   <script src="script.js"></script>
 </body>
