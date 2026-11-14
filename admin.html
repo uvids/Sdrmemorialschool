@@ -260,3 +260,771 @@
           </div>
         </div>
       </section>
+            <!-- TAB 5: FEES COLLECTION & WHATSAPP DIGITAL RECEIPT -->
+      <section id="tab-fees" class="admin-section hidden space-y-5">
+        <div class="bg-white rounded-3xl p-5 sm:p-6 border shadow-sm space-y-4">
+          <h2 class="text-base sm:text-lg font-extrabold text-[#0F2952] border-b pb-2.5">💰 Collect Student Fee & Send WhatsApp Receipt</h2>
+          <form onsubmit="collectStudentFee(event)" class="grid sm:grid-cols-3 gap-3 text-xs">
+            <div>
+              <label class="font-bold text-slate-600 block mb-1">Student Name *</label>
+              <input type="text" id="feeStuName" required placeholder="e.g. Aarav Singh" class="w-full border rounded-xl px-3 py-2 font-bold" />
+            </div>
+            <div>
+              <label class="font-bold text-slate-600 block mb-1">Class & Roll No *</label>
+              <input type="text" id="feeClassRoll" required placeholder="Class 8th (Roll 101)" class="w-full border rounded-xl px-3 py-2 font-bold" />
+            </div>
+            <div>
+              <label class="font-bold text-slate-600 block mb-1">Parent WhatsApp Mobile *</label>
+              <input type="tel" id="feePhone" required placeholder="9876543210" class="w-full border rounded-xl px-3 py-2 font-bold" />
+            </div>
+            <div>
+              <label class="font-bold text-slate-600 block mb-1">Fee Month / Purpose *</label>
+              <input type="text" id="feeMonth" required placeholder="November 2026 Tuition Fee" class="w-full border rounded-xl px-3 py-2 font-bold" />
+            </div>
+            <div>
+              <label class="font-bold text-slate-600 block mb-1">Amount Paid (₹) *</label>
+              <input type="number" id="feeAmount" required placeholder="700" class="w-full border rounded-xl px-3 py-2 font-bold" />
+            </div>
+            <div>
+              <label class="font-bold text-slate-600 block mb-1">Due Balance (₹)</label>
+              <input type="number" id="feeDue" value="0" class="w-full border rounded-xl px-3 py-2 font-bold" />
+            </div>
+            <div class="sm:col-span-3">
+              <button type="submit" class="btn-royal-gold font-extrabold px-5 py-2.5 rounded-xl cursor-pointer">🧾 Save Fee & Generate WhatsApp Receipt</button>
+            </div>
+          </form>
+        </div>
+
+        <div class="bg-white rounded-3xl p-5 border shadow-sm space-y-3">
+          <h3 class="font-extrabold text-[#0F2952] text-sm">Recent Fee Receipts</h3>
+          <div id="adminFeeList" class="space-y-2 text-xs"></div>
+        </div>
+      </section>
+
+      <!-- TAB 6: UNLIMITED MARKSHEET GENERATOR & TC ISSUER -->
+      <section id="tab-marksheets" class="admin-section hidden space-y-5">
+        <div class="grid lg:grid-cols-12 gap-5">
+          <!-- MARKSHEET FORM -->
+          <div class="lg:col-span-7 bg-white rounded-3xl p-5 border shadow-sm space-y-3">
+            <h2 class="text-base font-extrabold text-[#0F2952] border-b pb-2">🎓 Publish Student Marksheet (Live PDF)</h2>
+            <form onsubmit="publishMarksheet(event)" class="space-y-3 text-xs">
+              <div class="grid sm:grid-cols-3 gap-2.5">
+                <input type="text" id="msRoll" required placeholder="Roll No (e.g. 102)" class="border rounded-xl px-3 py-2 font-bold" />
+                <input type="date" id="msDob" required class="border rounded-xl px-3 py-2 font-bold" />
+                <input type="text" id="msClass" required placeholder="Class (e.g. Class 9th)" class="border rounded-xl px-3 py-2 font-bold" />
+              </div>
+              <div class="grid sm:grid-cols-3 gap-2.5">
+                <input type="text" id="msName" required placeholder="Student Name" class="border rounded-xl px-3 py-2 font-bold" />
+                <input type="text" id="msFather" required placeholder="Father's Name" class="border rounded-xl px-3 py-2 font-bold" />
+                <input type="text" id="msMother" placeholder="Mother's Name" class="border rounded-xl px-3 py-2 font-bold" />
+              </div>
+              <div class="grid sm:grid-cols-2 gap-2.5">
+                <input type="text" id="msExam" value="Annual Examination 2026" class="border rounded-xl px-3 py-2 font-bold" />
+                <input type="text" id="msAtt" value="94%" placeholder="Attendance %" class="border rounded-xl px-3 py-2 font-bold" />
+              </div>
+              <div class="bg-slate-50 p-3 rounded-2xl border space-y-2">
+                <p class="font-extrabold text-[#0F2952]">Enter Subject Marks (Theory + Practical out of 100):</p>
+                <div class="grid grid-cols-3 gap-2 font-bold">
+                  <span>Hindi</span>
+                  <input type="number" id="subHindiTh" value="65" placeholder="Theory" class="border rounded-lg px-2 py-1" />
+                  <input type="number" id="subHindiPr" value="18" placeholder="Prac" class="border rounded-lg px-2 py-1" />
+                </div>
+                <div class="grid grid-cols-3 gap-2 font-bold">
+                  <span>English</span>
+                  <input type="number" id="subEngTh" value="62" placeholder="Theory" class="border rounded-lg px-2 py-1" />
+                  <input type="number" id="subEngPr" value="19" placeholder="Prac" class="border rounded-lg px-2 py-1" />
+                </div>
+                <div class="grid grid-cols-3 gap-2 font-bold">
+                  <span>Mathematics</span>
+                  <input type="number" id="subMathTh" value="70" placeholder="Theory" class="border rounded-lg px-2 py-1" />
+                  <input type="number" id="subMathPr" value="20" placeholder="Prac" class="border rounded-lg px-2 py-1" />
+                </div>
+                <div class="grid grid-cols-3 gap-2 font-bold">
+                  <span>Science</span>
+                  <input type="number" id="subSciTh" value="64" placeholder="Theory" class="border rounded-lg px-2 py-1" />
+                  <input type="number" id="subSciPr" value="18" placeholder="Prac" class="border rounded-lg px-2 py-1" />
+                </div>
+                <div class="grid grid-cols-3 gap-2 font-bold">
+                  <span>Social Science</span>
+                  <input type="number" id="subSstTh" value="68" placeholder="Theory" class="border rounded-lg px-2 py-1" />
+                  <input type="number" id="subSstPr" value="19" placeholder="Prac" class="border rounded-lg px-2 py-1" />
+                </div>
+              </div>
+              <button type="submit" class="btn-royal-gold font-extrabold px-5 py-2.5 rounded-xl cursor-pointer">🚀 Publish Marksheet Live</button>
+            </form>
+          </div>
+
+          <!-- TC ISSUER -->
+          <div class="lg:col-span-5 bg-white rounded-3xl p-5 border shadow-sm space-y-3">
+            <h2 class="text-base font-extrabold text-[#0F2952] border-b pb-2">📄 Issue Transfer Certificate (TC)</h2>
+            <form onsubmit="issueNewTC(event)" class="space-y-2.5 text-xs">
+              <input type="text" id="tcNoNew" required placeholder="TC No (e.g. SDR/TC/2026/090)" class="w-full border rounded-xl px-3 py-2 font-bold" />
+              <input type="text" id="tcStuNew" required placeholder="Student Name" class="w-full border rounded-xl px-3 py-2 font-bold" />
+              <input type="text" id="tcFatNew" required placeholder="Father's Name" class="w-full border rounded-xl px-3 py-2 font-bold" />
+              <input type="text" id="tcClsNew" required placeholder="Class Left (e.g. Class 8th Passed)" class="w-full border rounded-xl px-3 py-2 font-bold" />
+              <button type="submit" class="w-full btn-royal-navy font-extrabold py-2.5 rounded-xl cursor-pointer">✅ Register Official TC</button>
+            </form>
+            <div id="adminTcList" class="pt-2 space-y-1.5 text-xs"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 7: DAILY CLASS HOMEWORK MANAGER -->
+      <section id="tab-homework" class="admin-section hidden space-y-5">
+        <div class="bg-white rounded-3xl p-5 border shadow-sm space-y-3">
+          <h2 class="text-base font-extrabold text-[#0F2952] border-b pb-2">📚 Post Today's Class Homework</h2>
+          <form onsubmit="addDailyHomework(event)" class="grid sm:grid-cols-3 gap-3 text-xs">
+            <select id="hwClass" class="border rounded-xl px-3 py-2 font-bold bg-white">
+              <option value="Nursery">Nursery</option><option value="LKG">LKG</option><option value="UKG">UKG</option>
+              <option value="Class 1st">Class 1st</option><option value="Class 2nd">Class 2nd</option><option value="Class 3rd">Class 3rd</option>
+              <option value="Class 4th">Class 4th</option><option value="Class 5th">Class 5th</option><option value="Class 6th">Class 6th</option>
+              <option value="Class 7th">Class 7th</option><option value="Class 8th">Class 8th</option><option value="Class 9th">Class 9th</option><option value="Class 10th">Class 10th</option>
+            </select>
+            <input type="text" id="hwSubject" required placeholder="Subject (e.g. Mathematics)" class="border rounded-xl px-3 py-2 font-bold" />
+            <input type="text" id="hwTeacher" required placeholder="Teacher Name" class="border rounded-xl px-3 py-2 font-bold" />
+            <textarea id="hwText" required rows="2" placeholder="Write homework details for parents..." class="sm:col-span-3 border rounded-xl p-3 font-semibold"></textarea>
+            <button type="submit" class="sm:col-span-3 btn-royal-gold font-extrabold py-2.5 rounded-xl cursor-pointer">📢 Publish Homework on Website</button>
+          </form>
+        </div>
+        <div id="adminHomeworkList" class="grid sm:grid-cols-2 gap-3 text-xs"></div>
+      </section>
+
+      <!-- TAB 8: TEACHERS & SCHOOL VAN ROUTES MANAGER -->
+      <section id="tab-staff" class="admin-section hidden space-y-5">
+        <div class="grid lg:grid-cols-2 gap-5">
+          <div class="bg-white rounded-3xl p-5 border shadow-sm space-y-3">
+            <h2 class="text-base font-extrabold text-[#0F2952] border-b pb-2">👨‍🏫 Add Teacher / Faculty Member</h2>
+            <form onsubmit="addTeacherMember(event)" class="space-y-2.5 text-xs">
+              <input type="text" id="tchName" required placeholder="Teacher Full Name (e.g. Mr. R.K. Sharma)" class="w-full border rounded-xl px-3 py-2 font-bold" />
+              <input type="text" id="tchRole" required placeholder="Qualification & Subject (e.g. M.Sc., B.Ed. • Maths)" class="w-full border rounded-xl px-3 py-2 font-bold" />
+              <input type="text" id="tchExp" placeholder="Experience (e.g. 10 Years Exp.)" class="w-full border rounded-xl px-3 py-2 font-bold" />
+              <button type="submit" class="w-full btn-royal-navy font-extrabold py-2.5 rounded-xl cursor-pointer">+ Add Teacher</button>
+            </form>
+            <div id="adminTeachersList" class="space-y-2 text-xs pt-2"></div>
+          </div>
+
+          <div class="bg-white rounded-3xl p-5 border shadow-sm space-y-3">
+            <h2 class="text-base font-extrabold text-[#0F2952] border-b pb-2">🚌 Add School Van / Bus Route</h2>
+            <form onsubmit="addVanRoute(event)" class="space-y-2.5 text-xs">
+              <input type="text" id="vanNo" required placeholder="Van No (e.g. Van 04 MP-16-T-7721)" class="w-full border rounded-xl px-3 py-2 font-bold" />
+              <input type="text" id="vanRoute" required placeholder="Villages / Route Stops" class="w-full border rounded-xl px-3 py-2 font-bold" />
+              <div class="grid grid-cols-3 gap-2">
+                <input type="text" id="vanTime" required placeholder="7:30 AM" class="border rounded-xl px-3 py-2 font-bold" />
+                <input type="text" id="vanDriver" required placeholder="Driver Name" class="border rounded-xl px-3 py-2 font-bold" />
+                <input type="tel" id="vanPhone" required placeholder="Mobile" class="border rounded-xl px-3 py-2 font-bold" />
+              </div>
+              <button type="submit" class="w-full btn-royal-gold font-extrabold py-2.5 rounded-xl cursor-pointer">+ Add Van Route</button>
+            </form>
+            <div id="adminVanList" class="space-y-2 text-xs pt-2"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 9: WEBSITE LIVE CONTROL (NOTICE, GALLERY & TOPPERS) -->
+      <section id="tab-website" class="admin-section hidden space-y-5">
+        <div class="bg-white rounded-3xl p-5 border shadow-sm space-y-3">
+          <h2 class="text-base font-extrabold text-[#0F2952] border-b pb-2">📢 Update Live Scrolling Notice Ticker</h2>
+          <div class="grid sm:grid-cols-2 gap-3 text-xs">
+            <textarea id="editNoticeEn" rows="2" placeholder="English Notice..." class="border rounded-xl p-3 font-semibold"></textarea>
+            <textarea id="editNoticeHi" rows="2" placeholder="हिंदी सूचना..." class="border rounded-xl p-3 font-semibold"></textarea>
+          </div>
+          <button type="button" onclick="saveLiveNotice()" class="btn-royal-gold text-xs font-extrabold px-5 py-2.5 rounded-xl cursor-pointer">💾 Update Notice Live</button>
+        </div>
+
+        <div class="grid lg:grid-cols-2 gap-5">
+          <!-- TOPPERS -->
+          <div class="bg-white rounded-3xl p-5 border shadow-sm space-y-3">
+            <h3 class="text-sm font-extrabold text-[#0F2952]">🏆 Add Board / School Topper</h3>
+            <form onsubmit="addTopperItem(event)" class="grid grid-cols-2 gap-2 text-xs">
+              <input type="text" id="topName" required placeholder="Student Name" class="border rounded-xl px-3 py-2 font-bold" />
+              <input type="text" id="topClass" required placeholder="Class 10th" class="border rounded-xl px-3 py-2 font-bold" />
+              <input type="text" id="topPercent" required placeholder="96.5%" class="border rounded-xl px-3 py-2 font-bold" />
+              <input type="text" id="topRank" required placeholder="1st Rank" class="border rounded-xl px-3 py-2 font-bold" />
+              <button type="submit" class="col-span-2 btn-royal-navy font-extrabold py-2 rounded-xl cursor-pointer">+ Add Topper</button>
+            </form>
+            <div id="adminToppersList" class="space-y-1.5 text-xs"></div>
+          </div>
+
+          <!-- PHOTO GALLERY -->
+          <div class="bg-white rounded-3xl p-5 border shadow-sm space-y-3">
+            <h3 class="text-sm font-extrabold text-[#0F2952]">📸 Add Campus / Event Photo</h3>
+            <form onsubmit="addGalleryPhoto(event)" class="space-y-2 text-xs">
+              <input type="text" id="galTitle" required placeholder="Event Title" class="w-full border rounded-xl px-3 py-2 font-bold" />
+              <div class="grid grid-cols-3 gap-2">
+                <select id="galCat" class="border rounded-xl px-3 py-2 font-bold bg-white">
+                  <option value="Events">Events</option>
+                  <option value="Campus">Campus</option>
+                </select>
+                <input type="url" id="galUrl" required placeholder="Image URL (https://...)" class="col-span-2 border rounded-xl px-3 py-2 font-bold" />
+              </div>
+              <button type="submit" class="w-full btn-royal-gold font-extrabold py-2 rounded-xl cursor-pointer">+ Add to Gallery</button>
+            </form>
+            <div id="adminGalleryList" class="space-y-1.5 text-xs"></div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+    <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyD-SDRMEMORIALSCHOOL-KEY",
+      authDomain: "sdrmemorialschool.firebaseapp.com",
+      projectId: "sdrmemorialschool",
+      storageBucket: "sdrmemorialschool.appspot.com",
+      messagingSenderId: "849201948210",
+      appId: "1:849201948210:web:sdrbasari2026"
+    };
+    if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+    const db = firebase.firestore();
+
+    const todayKey = new Date().toISOString().slice(0, 10);
+    let portalDoc = {
+      noticeEn: "", noticeHi: "", homework: [], vanRoutes: [], gallery: [], toppers: [],
+      teachers: [
+        { name: "Mr. R.K. Sharma", role: "Principal • M.Sc., B.Ed.", exp: "16 Years Exp." },
+        { name: "Mrs. Sunita Verma", role: "Senior English • M.A., B.Ed.", exp: "11 Years Exp." },
+        { name: "Ms. Priya Tiwari", role: "Science & Computer • B.Sc.", exp: "7 Years Exp." }
+      ],
+      results: [], tcs: []
+    };
+    let studentsList = [];
+    let admissionsList = [];
+    let feesList = [];
+    let attendanceToday = { students: {}, teachers: {} };
+
+    // AUTH STATE
+    auth.onAuthStateChanged((user) => {
+      if (user) {
+        document.getElementById("loginScreen").classList.add("hidden");
+        document.getElementById("adminWorkspace").classList.remove("hidden");
+        document.getElementById("loggedAdminEmail").textContent = "Logged in: " + user.email;
+        document.getElementById("todayDateLabel").textContent = "Date: " + new Date().toDateString() + " • Live Sync Active";
+        loadAllAdminData();
+      } else {
+        document.getElementById("loginScreen").classList.remove("hidden");
+        document.getElementById("adminWorkspace").classList.add("hidden");
+      }
+    });
+
+    async function adminLogin(e) {
+      e.preventDefault();
+      const btn = document.getElementById("loginBtn");
+      btn.disabled = true; btn.textContent = "⏳ Logging in...";
+      try {
+        await auth.signInWithEmailAndPassword(
+          document.getElementById("loginEmail").value.trim(),
+          document.getElementById("loginPassword").value
+        );
+      } catch (err) {
+        alert("Login Failed: " + err.message);
+      } finally {
+        btn.disabled = false; btn.textContent = "🔐 Login to School ERP";
+      }
+    }
+    function adminLogout() { auth.signOut(); }
+
+    function switchAdminTab(tabId) {
+      document.querySelectorAll(".admin-section").forEach(s => s.classList.add("hidden"));
+      document.getElementById("tab-" + tabId).classList.remove("hidden");
+      document.querySelectorAll(".admin-tab").forEach(b => {
+        b.className = "admin-tab px-3.5 py-1.5 rounded-xl bg-white/10 text-white cursor-pointer";
+      });
+      document.getElementById("nav-" + tabId).className = "admin-tab px-3.5 py-1.5 rounded-xl bg-amber-400 text-[#08152B] cursor-pointer";
+    }
+
+    async function loadAllAdminData() {
+      try {
+        const pSnap = await db.collection("sdr_portal").doc("main_data").get();
+        if (pSnap.exists) portalDoc = { ...portalDoc, ...pSnap.data() };
+
+        const sSnap = await db.collection("sdr_students").get();
+        studentsList = sSnap.docs.map(d => ({ id: d.id, ...d.data() }));
+
+        const aSnap = await db.collection("sdr_admissions").get();
+        admissionsList = aSnap.docs.map(d => ({ id: d.id, ...d.data() }));
+
+        const fSnap = await db.collection("sdr_fees").get();
+        feesList = fSnap.docs.map(d => ({ id: d.id, ...d.data() }));
+
+        const attSnap = await db.collection("sdr_attendance").doc(todayKey).get();
+        if (attSnap.exists) attendanceToday = { students: {}, teachers: {}, ...attSnap.data() };
+
+        refreshAllUI();
+      } catch (err) {
+        console.error("Load error:", err);
+      }
+    }
+
+    async function savePortalDoc() {
+      await db.collection("sdr_portal").doc("main_data").set(portalDoc, { merge: true });
+      refreshAllUI();
+    }
+
+    function refreshAllUI() {
+      // 1. LIVE DASHBOARD COUNTS (STUDENTS & TEACHERS PRESENT/ABSENT)
+      const totStu = studentsList.length;
+      const stuVals = Object.values(attendanceToday.students || {});
+      const presStu = stuVals.filter(v => v === "P").length;
+      const absStu = stuVals.filter(v => v === "A").length;
+
+      const teachers = portalDoc.teachers || [];
+      const totTch = teachers.length;
+      const tchVals = Object.values(attendanceToday.teachers || {});
+      const presTch = tchVals.filter(v => v === "P").length;
+      const absTch = tchVals.filter(v => v === "A").length;
+
+      const pendingAdm = admissionsList.filter(a => a.status !== "Approved" && a.status !== "Rejected").length;
+      const totalFeeSum = feesList.reduce((sum, f) => sum + Number(f.amount || 0), 0);
+
+      document.getElementById("dashTotalStudents").textContent = totStu;
+      document.getElementById("dashPresentStudents").textContent = presStu;
+      document.getElementById("dashAbsentStudents").textContent = absStu;
+
+      document.getElementById("dashTotalTeachers").textContent = totTch;
+      document.getElementById("dashPresentTeachers").textContent = presTch;
+      document.getElementById("dashAbsentTeachers").textContent = absTch;
+      document.getElementById("attTeacherSummary").textContent = `${presTch} Present / ${absTch} Absent`;
+
+      document.getElementById("dashPendingAdmissions").textContent = pendingAdm;
+      document.getElementById("badgePendingAdm").textContent = pendingAdm;
+      document.getElementById("dashTotalFees").textContent = "₹ " + totalFeeSum.toLocaleString("en-IN");
+
+      document.getElementById("editNoticeEn").value = portalDoc.noticeEn || "";
+      document.getElementById("editNoticeHi").value = portalDoc.noticeHi || "";
+
+      renderAdmissionsList();
+      renderStudentsTable();
+      renderAttendanceLists();
+      renderFeeList();
+      renderTcList();
+      renderHomeworkAdmin();
+      renderTeachersAdmin();
+      renderVansAdmin();
+      renderToppersAdmin();
+      renderGalleryAdmin();
+    }
+
+    // PENDING -> APPROVE ADMISSIONS
+    function renderAdmissionsList() {
+      const box = document.getElementById("adminAdmissionsList");
+      if (!admissionsList.length) {
+        box.innerHTML = `<p class="text-slate-500 col-span-full">No online admission forms yet.</p>`;
+        return;
+      }
+      box.innerHTML = admissionsList.map(a => {
+        const badge = a.status === "Approved" ? "bg-emerald-100 text-emerald-800" : a.status === "Rejected" ? "bg-rose-100 text-rose-800" : "bg-amber-100 text-amber-800";
+        return `
+          <div class="border rounded-2xl p-4 bg-slate-50 space-y-2">
+            <div class="flex justify-between items-center">
+              <span class="font-extrabold text-[#0F2952]">${a.appId}</span>
+              <span class="${badge} font-extrabold px-2.5 py-0.5 rounded-full text-[11px]">${a.status}</span>
+            </div>
+            <p class="font-extrabold text-sm">${a.studentName} • <span class="text-amber-700">${a.className}</span></p>
+            <p><b>Father:</b> ${a.fatherName} | <b>Mobile:</b> ${a.phone}</p>
+            <p class="text-slate-600"><b>Address:</b> ${a.address || "-"} (${a.medium || ""})</p>
+            <div class="flex flex-wrap gap-2 pt-2">
+              <a href="https://wa.me/91${a.phone}?text=${encodeURIComponent('Hello ' + a.fatherName + ', your admission application (' + a.appId + ') for ' + a.studentName + ' at SDR Memorial School Basari is received. Please visit school with documents.')}" target="_blank" class="bg-emerald-600 text-white font-bold px-3 py-1.5 rounded-lg">📲 WhatsApp</a>
+              ${a.status !== "Approved" ? `<button type="button" onclick="approveAdmission('${a.id}')" class="bg-[#0F2952] text-amber-300 font-extrabold px-3 py-1.5 rounded-lg cursor-pointer">✅ Approve & Admit</button>` : ""}
+              <button type="button" onclick="rejectAdmission('${a.id}')" class="bg-rose-100 text-rose-700 font-bold px-3 py-1.5 rounded-lg cursor-pointer">❌ Reject</button>
+            </div>
+          </div>
+        `;
+      }).join("");
+    }
+
+    async function approveAdmission(appId) {
+      const adm = admissionsList.find(x => x.id === appId);
+      if (!adm) return;
+      const roll = prompt("Assign Roll / Scholar Number for " + adm.studentName + ":", String(101 + studentsList.length));
+      if (!roll) return;
+
+      await db.collection("sdr_admissions").doc(appId).update({ status: "Approved", assignedRoll: roll });
+      await db.collection("sdr_students").doc(roll).set({
+        roll, name: adm.studentName, fatherName: adm.fatherName,
+        className: adm.className, phone: adm.phone, address: adm.address || "Basari"
+      });
+      alert("✅ Admission Approved & Added to Master Student Database (Roll: " + roll + ")");
+      loadAllAdminData();
+    }
+
+    async function rejectAdmission(appId) {
+      if (!confirm("Reject this application?")) return;
+      await db.collection("sdr_admissions").doc(appId).update({ status: "Rejected" });
+      loadAllAdminData();
+    }
+
+    // MASTER STUDENTS CRUD
+    async function saveStudentRecord(e) {
+      e.preventDefault();
+      const roll = document.getElementById("stuRoll").value.trim();
+      const data = {
+        roll,
+        name: document.getElementById("stuName").value.trim(),
+        fatherName: document.getElementById("stuFather").value.trim(),
+        className: document.getElementById("stuClass").value,
+        phone: document.getElementById("stuPhone").value.trim(),
+        address: document.getElementById("stuAddress").value.trim()
+      };
+      await db.collection("sdr_students").doc(roll).set(data);
+      resetStudentForm();
+      loadAllAdminData();
+    }
+
+    function editStudent(roll) {
+      const s = studentsList.find(x => x.roll === roll);
+      if (!s) return;
+      document.getElementById("stuRoll").value = s.roll;
+      document.getElementById("stuName").value = s.name;
+      document.getElementById("stuFather").value = s.fatherName;
+      document.getElementById("stuClass").value = s.className;
+      document.getElementById("stuPhone").value = s.phone;
+      document.getElementById("stuAddress").value = s.address || "";
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    async function deleteStudent(roll) {
+      if (!confirm("Delete student Roll " + roll + "?")) return;
+      await db.collection("sdr_students").doc(roll).delete();
+      loadAllAdminData();
+    }
+
+    function resetStudentForm() { document.getElementById("studentForm").reset(); }
+
+    function renderStudentsTable() {
+      const q = (document.getElementById("stuSearchInput")?.value || "").toLowerCase();
+      const filtered = studentsList.filter(s =>
+        s.name.toLowerCase().includes(q) || String(s.roll).includes(q) || s.className.toLowerCase().includes(q)
+      );
+      document.getElementById("adminStudentsTableBody").innerHTML = filtered.map(s => `
+        <tr class="hover:bg-slate-50">
+          <td class="p-2.5 font-extrabold">${s.roll}</td>
+          <td class="p-2.5 font-bold text-[#0F2952]">${s.name}</td>
+          <td class="p-2.5">${s.fatherName}</td>
+          <td class="p-2.5"><span class="bg-amber-100 text-amber-800 px-2 py-0.5 rounded font-bold">${s.className}</span></td>
+          <td class="p-2.5">${s.phone}</td>
+          <td class="p-2.5 space-x-1">
+            <button type="button" onclick="editStudent('${s.roll}')" class="bg-blue-100 text-blue-800 font-bold px-2 py-1 rounded cursor-pointer">Edit</button>
+            <button type="button" onclick="deleteStudent('${s.roll}')" class="bg-rose-100 text-rose-700 font-bold px-2 py-1 rounded cursor-pointer">Del</button>
+          </td>
+        </tr>
+      `).join("") || `<tr><td colspan="6" class="p-4 text-center text-slate-500">No students added yet.</td></tr>`;
+    }
+
+    function exportStudentsCSV() {
+      let csv = "Roll,Student Name,Father Name,Class,Mobile,Address\n";
+      studentsList.forEach(s => { csv += `"${s.roll}","${s.name}","${s.fatherName}","${s.className}","${s.phone}","${s.address || ""}"\n`; });
+      const a = document.createElement("a");
+      a.href = URL.createObjectURL(new Blob([csv], { type: "text/csv" }));
+      a.download = "SDR_Students_ID_Cards.csv";
+      a.click();
+    }
+
+    // ATTENDANCE (TEACHERS & STUDENTS)
+    function renderAttendanceLists() {
+      // Teachers
+      const teachers = portalDoc.teachers || [];
+      document.getElementById("adminTeacherAttList").innerHTML = teachers.map((t, idx) => {
+        const st = (attendanceToday.teachers || {})[t.name] || "";
+        return `
+          <div class="flex justify-between items-center p-2.5 rounded-xl border bg-slate-50">
+            <div>
+              <p class="font-extrabold text-[#0F2952]">${t.name}</p>
+              <p class="text-[11px] text-slate-500">${t.role}</p>
+            </div>
+            <div class="flex gap-1.5 font-extrabold">
+              <button type="button" onclick="markTeacherAtt('${t.name.replace(/'/g, "\\'")}', 'P')" class="px-3 py-1 rounded-lg cursor-pointer ${st === 'P' ? 'bg-emerald-600 text-white' : 'bg-white border'}">P</button>
+              <button type="button" onclick="markTeacherAtt('${t.name.replace(/'/g, "\\'")}', 'A')" class="px-3 py-1 rounded-lg cursor-pointer ${st === 'A' ? 'bg-rose-600 text-white' : 'bg-white border'}">A</button>
+            </div>
+          </div>
+        `;
+      }).join("");
+
+      // Students
+      const clsFilter = document.getElementById("attClassFilter")?.value || "All";
+      const list = studentsList.filter(s => clsFilter === "All" || s.className === clsFilter);
+      document.getElementById("adminStudentAttList").innerHTML = list.map(s => {
+        const st = (attendanceToday.students || {})[s.roll] || "";
+        const waAbs = `https://wa.me/91${s.phone}?text=${encodeURIComponent("Dear Parent, your ward " + s.name + " (" + s.className + ") is ABSENT today (" + todayKey + ") at SDR Memorial Public High School, Basari.")}`;
+        return `
+          <div class="flex justify-between items-center p-2.5 rounded-xl border bg-slate-50">
+            <div>
+              <p class="font-extrabold text-[#0F2952]">${s.roll}. ${s.name} <span class="text-amber-700">(${s.className})</span></p>
+              <p class="text-[11px] text-slate-500">Father: ${s.fatherName}</p>
+            </div>
+            <div class="flex items-center gap-1.5 font-extrabold">
+              <button type="button" onclick="markStudentAtt('${s.roll}', 'P')" class="px-3 py-1 rounded-lg cursor-pointer ${st === 'P' ? 'bg-emerald-600 text-white' : 'bg-white border'}">P</button>
+              <button type="button" onclick="markStudentAtt('${s.roll}', 'A')" class="px-3 py-1 rounded-lg cursor-pointer ${st === 'A' ? 'bg-rose-600 text-white' : 'bg-white border'}">A</button>
+              ${st === 'A' ? `<a href="${waAbs}" target="_blank" class="bg-emerald-600 text-white px-2 py-1 rounded-lg text-[10px]">📲 Alert</a>` : ""}
+            </div>
+          </div>
+        `;
+      }).join("") || `<p class="text-slate-500">No students in this class.</p>`;
+    }
+
+    async function markTeacherAtt(name, status) {
+      attendanceToday.teachers = attendanceToday.teachers || {};
+      attendanceToday.teachers[name] = status;
+      await db.collection("sdr_attendance").doc(todayKey).set(attendanceToday, { merge: true });
+      refreshAllUI();
+    }
+
+    async function markStudentAtt(roll, status) {
+      attendanceToday.students = attendanceToday.students || {};
+      attendanceToday.students[roll] = status;
+      await db.collection("sdr_attendance").doc(todayKey).set(attendanceToday, { merge: true });
+      refreshAllUI();
+    }
+
+    // FEES & WHATSAPP RECEIPT
+    async function collectStudentFee(e) {
+      e.preventDefault();
+      const recNo = "REC-" + Math.floor(10000 + Math.random() * 90000);
+      const item = {
+        recNo,
+        studentName: document.getElementById("feeStuName").value.trim(),
+        classRoll: document.getElementById("feeClassRoll").value.trim(),
+        phone: document.getElementById("feePhone").value.trim(),
+        month: document.getElementById("feeMonth").value.trim(),
+        amount: Number(document.getElementById("feeAmount").value),
+        due: Number(document.getElementById("feeDue").value || 0),
+        date: todayKey
+      };
+      await db.collection("sdr_fees").doc(recNo).set(item);
+      e.target.reset();
+      loadAllAdminData();
+    }
+
+    function renderFeeList() {
+      document.getElementById("adminFeeList").innerHTML = feesList.map(f => {
+        const msg = encodeURIComponent(`*SDR MEMORIAL PUBLIC HIGH SCHOOL, BASARI*\n🧾 *OFFICIAL FEE RECEIPT*\nReceipt No: ${f.recNo}\nStudent: ${f.studentName} (${f.classRoll})\nFor: ${f.month}\nAmount Paid: ₹${f.amount}\nBalance Due: ₹${f.due}\nDate: ${f.date}\nThank you!`);
+        return `
+          <div class="flex flex-wrap justify-between items-center gap-2 p-3 rounded-xl border bg-slate-50">
+            <div>
+              <p class="font-extrabold text-[#0F2952]">${f.recNo} • ${f.studentName} (${f.classRoll})</p>
+              <p class="text-slate-600">${f.month} • Paid: <b class="text-emerald-700">₹${f.amount}</b> | Due: <b class="text-rose-600">₹${f.due}</b></p>
+            </div>
+            <a href="https://wa.me/91${f.phone}?text=${msg}" target="_blank" class="bg-emerald-600 text-white font-extrabold px-3 py-1.5 rounded-lg">📲 Send WhatsApp Receipt</a>
+          </div>
+        `;
+      }).join("") || `<p class="text-slate-500">No fee receipts recorded yet.</p>`;
+    }
+
+    // MARKSHEET & TC
+    async function publishMarksheet(e) {
+      e.preventDefault();
+      const roll = document.getElementById("msRoll").value.trim();
+      const msObj = {
+        roll,
+        dob: document.getElementById("msDob").value,
+        className: document.getElementById("msClass").value.trim(),
+        name: document.getElementById("msName").value.trim(),
+        fatherName: document.getElementById("msFather").value.trim(),
+        motherName: document.getElementById("msMother").value.trim(),
+        examTitle: document.getElementById("msExam").value.trim(),
+        attendance: document.getElementById("msAtt").value.trim(),
+        subjects: [
+          { name: "Hindi", max: 100, theory: Number(document.getElementById("subHindiTh").value), practical: Number(document.getElementById("subHindiPr").value) },
+          { name: "English", max: 100, theory: Number(document.getElementById("subEngTh").value), practical: Number(document.getElementById("subEngPr").value) },
+          { name: "Mathematics", max: 100, theory: Number(document.getElementById("subMathTh").value), practical: Number(document.getElementById("subMathPr").value) },
+          { name: "Science", max: 100, theory: Number(document.getElementById("subSciTh").value), practical: Number(document.getElementById("subSciPr").value) },
+          { name: "Social Science", max: 100, theory: Number(document.getElementById("subSstTh").value), practical: Number(document.getElementById("subSstPr").value) }
+        ]
+      };
+      await db.collection("sdr_results").doc(roll).set(msObj);
+      portalDoc.results = [msObj, ...(portalDoc.results || []).filter(r => r.roll !== roll)];
+      await savePortalDoc();
+      alert("✅ Marksheet Published Live for Roll No: " + roll);
+      e.target.reset();
+    }
+
+    async function issueNewTC(e) {
+      e.preventDefault();
+      const tc = {
+        tcNo: document.getElementById("tcNoNew").value.trim(),
+        studentName: document.getElementById("tcStuNew").value.trim(),
+        fatherName: document.getElementById("tcFatNew").value.trim(),
+        classLeft: document.getElementById("tcClsNew").value.trim(),
+        issueDate: todayKey
+      };
+      await db.collection("sdr_fees").doc(recNo).set(item);
+      e.target.reset();
+      loadAllAdminData();
+    }
+
+    function renderFeeList() {
+      document.getElementById("adminFeeList").innerHTML = feesList.map(f => {
+        const msg = encodeURIComponent(`*SDR MEMORIAL PUBLIC HIGH SCHOOL, BASARI*\n🧾 *OFFICIAL FEE RECEIPT*\nReceipt No: ${f.recNo}\nStudent: ${f.studentName} (${f.classRoll})\nFor: ${f.month}\nAmount Paid: ₹${f.amount}\nBalance Due: ₹${f.due}\nDate: ${f.date}\nThank you!`);
+        return `
+          <div class="flex flex-wrap justify-between items-center gap-2 p-3 rounded-xl border bg-slate-50">
+            <div>
+              <p class="font-extrabold text-[#0F2952]">${f.recNo} • ${f.studentName} (${f.classRoll})</p>
+              <p class="text-slate-600">${f.month} • Paid: <b class="text-emerald-700">₹${f.amount}</b> | Due: <b class="text-rose-600">₹${f.due}</b></p>
+            </div>
+            <a href="https://wa.me/91${f.phone}?text=${msg}" target="_blank" class="bg-emerald-600 text-white font-extrabold px-3 py-1.5 rounded-lg">📲 Send WhatsApp Receipt</a>
+          </div>
+        `;
+      }).join("") || `<p class="text-slate-500">No fee receipts recorded yet.</p>`;
+    }
+
+    // MARKSHEET & TC
+    async function publishMarksheet(e) {
+      e.preventDefault();
+      const roll = document.getElementById("msRoll").value.trim();
+      const msObj = {
+        roll,
+        dob: document.getElementById("msDob").value,
+        className: document.getElementById("msClass").value.trim(),
+        name: document.getElementById("msName").value.trim(),
+        fatherName: document.getElementById("msFather").value.trim(),
+        motherName: document.getElementById("msMother").value.trim(),
+        examTitle: document.getElementById("msExam").value.trim(),
+        attendance: document.getElementById("msAtt").value.trim(),
+        subjects: [
+          { name: "Hindi", max: 100, theory: Number(document.getElementById("subHindiTh").value), practical: Number(document.getElementById("subHindiPr").value) },
+          { name: "English", max: 100, theory: Number(document.getElementById("subEngTh").value), practical: Number(document.getElementById("subEngPr").value) },
+          { name: "Mathematics", max: 100, theory: Number(document.getElementById("subMathTh").value), practical: Number(document.getElementById("subMathPr").value) },
+          { name: "Science", max: 100, theory: Number(document.getElementById("subSciTh").value), practical: Number(document.getElementById("subSciPr").value) },
+          { name: "Social Science", max: 100, theory: Number(document.getElementById("subSstTh").value), practical: Number(document.getElementById("subSstPr").value) }
+        ]
+      };
+      await db.collection("sdr_results").doc(roll).set(msObj);
+      portalDoc.results = [msObj, ...(portalDoc.results || []).filter(r => r.roll !== roll)];
+      await savePortalDoc();
+      alert("✅ Marksheet Published Live for Roll No: " + roll);
+      e.target.reset();
+    }
+
+    async function issueNewTC(e) {
+      e.preventDefault();
+      const tc = {
+        tcNo: document.getElementById("tcNoNew").value.trim(),
+        studentName: document.getElementById("tcStuNew").value.trim(),
+        fatherName: document.getElementById("tcFatNew").value.trim(),
+        classLeft: document.getElementById("tcClsNew").value.trim(),
+        issueDate: todayKey
+      };
+      portalDoc.tcs = [tc, ...(portalDoc.tcs || [])];
+      await savePortalDoc();
+      e.target.reset();
+    }
+    function renderTcList() {
+      document.getElementById("adminTcList").innerHTML = (portalDoc.tcs || []).map(t => `
+        <div class="p-2 rounded-lg bg-slate-50 border flex justify-between">
+          <span><b>${t.tcNo}</b> — ${t.studentName}</span>
+          <span class="text-emerald-700 font-bold">Verified</span>
+        </div>
+      `).join("");
+    }
+
+    // HOMEWORK, TEACHERS, VANS, WEBSITE CONTROL
+    async function addDailyHomework(e) {
+      e.preventDefault();
+      portalDoc.homework = [{
+        className: document.getElementById("hwClass").value,
+        subject: document.getElementById("hwSubject").value.trim(),
+        teacher: document.getElementById("hwTeacher").value.trim(),
+        work: document.getElementById("hwText").value.trim(),
+        date: todayKey
+      }, ...(portalDoc.homework || [])];
+      await savePortalDoc();
+      e.target.reset();
+    }
+    function renderHomeworkAdmin() {
+      document.getElementById("adminHomeworkList").innerHTML = (portalDoc.homework || []).map((h, i) => `
+        <div class="bg-white p-3.5 rounded-2xl border flex justify-between items-start gap-2">
+          <div><p class="font-extrabold text-[#0F2952]">${h.className} • ${h.subject}</p><p class="text-slate-600 mt-1">${h.work}</p></div>
+          <button type="button" onclick="portalDoc.homework.splice(${i},1);savePortalDoc()" class="text-rose-600 font-extrabold cursor-pointer">✕</button>
+        </div>
+      `).join("");
+    }
+
+    async function addTeacherMember(e) {
+      e.preventDefault();
+      portalDoc.teachers = [...(portalDoc.teachers || []), {
+        name: document.getElementById("tchName").value.trim(),
+        role: document.getElementById("tchRole").value.trim(),
+        exp: document.getElementById("tchExp").value.trim()
+      }];
+      await savePortalDoc();
+      e.target.reset();
+    }
+    function renderTeachersAdmin() {
+      document.getElementById("adminTeachersList").innerHTML = (portalDoc.teachers || []).map((t, i) => `
+        <div class="p-2.5 rounded-xl bg-slate-50 border flex justify-between items-center">
+          <span><b>${t.name}</b> — ${t.role}</span>
+          <button type="button" onclick="portalDoc.teachers.splice(${i},1);savePortalDoc()" class="text-rose-600 font-bold cursor-pointer">Del</button>
+        </div>
+      `).join("");
+    }
+
+    async function addVanRoute(e) {
+      e.preventDefault();
+      portalDoc.vanRoutes = [...(portalDoc.vanRoutes || []), {
+        vanNo: document.getElementById("vanNo").value.trim(),
+        route: document.getElementById("vanRoute").value.trim(),
+        timing: document.getElementById("vanTime").value.trim(),
+        driver: document.getElementById("vanDriver").value.trim(),
+        phone: document.getElementById("vanPhone").value.trim()
+      }];
+      await savePortalDoc();
+      e.target.reset();
+    }
+    function renderVansAdmin() {
+      document.getElementById("adminVanList").innerHTML = (portalDoc.vanRoutes || []).map((v, i) => `
+        <div class="p-2.5 rounded-xl bg-slate-50 border flex justify-between items-center">
+          <span><b>${v.vanNo}</b> (${v.timing}) — ${v.route}</span>
+          <button type="button" onclick="portalDoc.vanRoutes.splice(${i},1);savePortalDoc()" class="text-rose-600 font-bold cursor-pointer">Del</button>
+        </div>
+      `).join("");
+    }
+
+    async function saveLiveNotice() {
+      portalDoc.noticeEn = document.getElementById("editNoticeEn").value.trim();
+      portalDoc.noticeHi = document.getElementById("editNoticeHi").value.trim();
+      await savePortalDoc();
+      alert("✅ Live Notice Updated!");
+    }
+
+    async function addTopperItem(e) {
+      e.preventDefault();
+      portalDoc.toppers = [{
+        name: document.getElementById("topName").value.trim(),
+        className: document.getElementById("topClass").value.trim(),
+        percent: document.getElementById("topPercent").value.trim(),
+        rank: document.getElementById("topRank").value.trim()
+      }, ...(portalDoc.toppers || [])];
+      await savePortalDoc();
+      e.target.reset();
+    }
+    function renderToppersAdmin() {
+      document.getElementById("adminToppersList").innerHTML = (portalDoc.toppers || []).map((t, i) => `
+        <div class="p-2 rounded-lg bg-slate-50 border flex justify-between">
+          <span><b>${t.name}</b> (${t.className}) — ${t.percent}</span>
+          <button type="button" onclick="portalDoc.toppers.splice(${i},1);savePortalDoc()" class="text-rose-600 font-bold cursor-pointer">Del</button>
+        </div>
+      `).join("");
+    }
+
+    async function addGalleryPhoto(e) {
+      e.preventDefault();
+      portalDoc.gallery = [{
+        title: document.getElementById("galTitle").value.trim(),
+        category: document.getElementById("galCat").value,
+        url: document.getElementById("galUrl").value.trim()
+      }, ...(portalDoc.gallery || [])];
+      await savePortalDoc();
+      e.target.reset();
+    }
+    function renderGalleryAdmin() {
+      document.getElementById("adminGalleryList").innerHTML = (portalDoc.gallery || []).map((g, i) => `
+        <div class="p-2 rounded-lg bg-slate-50 border flex justify-between">
+          <span><b>${g.title}</b> (${g.category})</span>
+          <button type="button" onclick="portalDoc.gallery.splice(${i},1);savePortalDoc()" class="text-rose-600 font-bold cursor-pointer">Del</button>
+        </div>
+      `).join("");
+    }
+  </script>
+</body>
+</html>
