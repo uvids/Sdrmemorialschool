@@ -12,14 +12,14 @@
   <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
   <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&family=Tiro+Devanagari+Hindi:ital@0;1&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=30" />
+  <link rel="stylesheet" href="style.css?v=40" />
 
-  <!-- 🌟 WORLD-CLASS REAL 3D WEBGL & CSS STYLING -->
+  <!-- 🌟 ADVANCED 3D & CINEMATIC STYLING -->
   <style>
     body {
       font-family: 'Mukta', 'Poppins', sans-serif;
       scroll-behavior: smooth;
-      perspective: 1600px;
+      perspective: 1800px;
       overflow-x: hidden;
       background: radial-gradient(circle at 50% 0%, #1e3a8a 0%, #030712 60%, #050d1a 100%);
       color: #f8fafc;
@@ -53,9 +53,13 @@
       background: rgba(15, 41, 82, 0.7); backdrop-filter: blur(16px);
       border: 1px solid rgba(255, 255, 255, 0.15); border-top: 1px solid rgba(251, 191, 36, 0.5);
       border-radius: 24px; box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      transform-style: preserve-3d;
     }
-    .card-3d-magical:hover { transform: translateY(-8px) scale(1.015); box-shadow: 0 35px 70px rgba(15, 41, 82, 0.8); }
+    .stat-cube-3d {
+      background: linear-gradient(145deg, #0F2952, #050d1a);
+      border: 2px solid rgba(251, 191, 36, 0.5); border-bottom: 6px solid #f59e0b;
+      box-shadow: 0 15px 30px rgba(0,0,0,0.6); transform: translateZ(30px);
+    }
     .logo-3d-spin { box-shadow: 0 8px 20px rgba(245, 158, 11, 0.55); animation: pulseLogo3D 3s ease-in-out infinite; }
     @keyframes pulseLogo3D { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.06); } }
   </style>
@@ -83,13 +87,13 @@
         </a>
       </div>
       <nav class="hidden lg:flex items-center gap-5 text-xs font-bold text-slate-300">
-        <a href="#daily-thought" class="text-amber-400 hover:underline" data-en="Daily Thought" data-hi="शुभ विचार">शुभ विचार</a>
-        <a href="#homework" class="hover:text-white" data-en="Homework" data-hi="होमवर्क">होमवर्क</a>
-        <a href="#facilities" class="hover:text-white" data-en="Facilities & Van" data-hi="सुविधाएं">सुविधाएं</a>
-        <a href="#gallery" class="hover:text-white" data-en="Gallery" data-hi="गैलरी">गैलरी</a>
-        <a href="#fees" class="hover:text-white" data-en="Fees" data-hi="फीस">फीस</a>
-        <a href="#faculty" class="hover:text-white" data-en="Teachers" data-hi="शिक्षक">शिक्षक</a>
-        <a href="#result-portal" class="text-amber-400 hover:underline" data-en="Marksheet & TC" data-hi="मार्कशीट / TC">मार्कशीट / TC</a>
+        <a href="#daily-thought" class="text-amber-400 hover:underline">शुभ विचार</a>
+        <a href="#homework" class="hover:text-white">होमवर्क</a>
+        <a href="#facilities" class="hover:text-white">सुविधाएं</a>
+        <a href="#gallery" class="hover:text-white">गैलरी</a>
+        <a href="#fees" class="hover:text-white">फीस</a>
+        <a href="#faculty" class="hover:text-white">शिक्षक</a>
+        <a href="#result-portal" class="text-amber-400 hover:underline">मार्कशीट / TC</a>
       </nav>
       <button type="button" onclick="toggleMobileMenu()" class="lg:hidden w-10 h-10 rounded-xl border border-amber-400 bg-amber-400/20 flex items-center justify-center text-amber-400 shrink-0">
         <i class="fa-solid fa-bars text-base"></i>
@@ -109,7 +113,7 @@
 
   <!-- NOTICE BAR -->
   <div class="bg-gradient-to-r from-amber-500 via-amber-400 to-amber-500 text-[#08152B] py-1.5 px-2.5 flex items-center gap-2 shadow-md overflow-hidden border-b-2 border-amber-700">
-    <span class="bg-rose-600 text-white text-[9px] font-extrabold px-2 py-0.5 rounded uppercase shrink-0 shadow" data-en="NOTICE" data-hi="सूचना">सूचना</span>
+    <span class="bg-rose-600 text-white text-[9px] font-extrabold px-2 py-0.5 rounded uppercase shrink-0 shadow">सूचना</span>
     <marquee id="liveNoticeTicker" behavior="scroll" direction="left" scrollamount="4" class="text-xs font-extrabold flex-1">
       📢 सत्र 2026-27 के लिए प्रवेश प्रारंभ (नर्सरी से कक्षा 10वीं तक) • 🎓 डिजिटल PDF मार्कशीट एवं एडमिशन स्टेटस ट्रैकिंग अब ऑनलाइन उपलब्ध • 🚌 बसारी एवं आसपास के गाँवों के लिए सुरक्षित वैन सुविधा।
     </marquee>
@@ -141,6 +145,7 @@
           </a>
         </div>
       </div>
+      <!-- 3D INTERACTIVE VIEWPORT CONTAINER -->
       <div class="lg:col-span-5 relative flex justify-center items-center">
         <div id="hero-3d-container" class="w-full h-[320px] sm:h-[400px] rounded-3xl relative flex items-center justify-center">
           <div class="absolute bottom-4 bg-slate-900/90 backdrop-blur-md border border-amber-400/40 px-4 py-2 rounded-2xl text-[11px] font-extrabold text-amber-300 shadow-xl pointer-events-none flex items-center gap-2">
@@ -150,7 +155,7 @@
       </div>
     </div>
   </section>
-    <!-- DAILY THOUGHT & HOMEWORK -->
+   <!-- DAILY THOUGHT & HOMEWORK -->
   <section id="daily-thought" class="pt-10 px-4 max-w-7xl mx-auto">
     <div class="card-3d-magical p-6 sm:p-8 space-y-3">
       <div class="flex flex-wrap justify-between items-center gap-2">
@@ -206,7 +211,7 @@
       <h3 class="text-xl sm:text-3xl font-extrabold text-white">आधुनिक सुविधाएं एवं सुरक्षित स्कूल वैन रूट</h3>
     </div>
     <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 text-xs">
-      <div class="card-3d-magical p-5 space-y-2"><div class="w-12 h-12 rounded-2xl bg-amber-500/20 text-amber-400 flex items-center justify-center text-xl"><i class="fa-solid fa-chalkboard-user"></i></div><h4 class="font-extrabold text-white text-sm">स्मार्ट क्लासरूम</h4><p class="text-slate-300">डिजिटल विजुअल शिक्षा, हवादार कमरे और स्वच्छ आरओ (RO) पेयजल सुविधा।</p></div>
+      <div class="card-3d-magical p-5 space-y-2"><div class="w-12 h-12 rounded-2xl bg-amber-500/20 text-amber-400 flex items-center justify-center text-xl"><i class="fa-solid fa-chalkboard-user"></i></div><h4 class="font-extrabold text-white text-sm">स्मार्ट क्लासरूम</h4><p class="text-slate-300">डिजिटल विजुअल शिक्षा, हवादार कमरे और स्वच्छ आरओ (RO) पेयजल सुविधा。</p></div>
       <div class="card-3d-magical p-5 space-y-2"><div class="w-12 h-12 rounded-2xl bg-blue-500/20 text-blue-400 flex items-center justify-center text-xl"><i class="fa-solid fa-computer"></i></div><h4 class="font-extrabold text-white text-sm">कंप्यूटर एवं विज्ञान लैब</h4><p class="text-slate-300">व्यावहारिक कंप्यूटर शिक्षा और आधुनिक उपकरणों से सुसज्जित विज्ञान प्रयोगशाला।</p></div>
       <div class="card-3d-magical p-5 space-y-2"><div class="w-12 h-12 rounded-2xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-xl"><i class="fa-solid fa-van-shuttle"></i></div><h4 class="font-extrabold text-white text-sm">सुरक्षित ग्रामीण वैन सेवा</h4><p class="text-slate-300">बसारी, राजनगर, खजुराहो रोड और आसपास के गाँवों से सुरक्षित वाहन सुविधा।</p></div>
       <div class="card-3d-magical p-5 space-y-2"><div class="w-12 h-12 rounded-2xl bg-rose-500/20 text-rose-400 flex items-center justify-center text-xl"><i class="fa-solid fa-shield-halved"></i></div><h4 class="font-extrabold text-white text-sm">CCTV सुरक्षा एवं साप्ताहिक टेस्ट</h4><p class="text-slate-300">24x7 CCTV सुरक्षा निगरानी, साप्ताहिक परीक्षा एवं अभिभावकों को व्हाट्सएप अपडेट।</p></div>
@@ -220,7 +225,6 @@
   <section id="gallery" class="py-10 px-4 max-w-7xl mx-auto space-y-5">
     <div class="flex flex-wrap justify-between items-end gap-3">
       <div><span class="text-xs font-extrabold text-amber-400 uppercase tracking-wider">विद्यालय की झलकियाँ</span><h3 class="text-xl sm:text-3xl font-extrabold text-white">कैंपस फोटो गैलरी</h3></div>
-      <div class="flex gap-2 text-xs font-bold"><button type="button" onclick="filterGallery('All')" class="btn-3d-navy px-3.5 py-2 cursor-pointer">सभी</button></div>
     </div>
     <div id="publicGalleryGrid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5"></div>
   </section>
@@ -309,61 +313,9 @@
       <div id="legalModalBody" class="text-xs sm:text-sm text-slate-300 leading-relaxed space-y-3 max-h-[70vh] overflow-y-auto pr-1"></div>
     </div>
   </div>
-<!-- 🌟 THREE.JS REAL 3D ENGINE INTEGRATION -->
+
+  <!-- 🌟 ULTIMATE 3D LIBRARIES & ANIMATION ENGINES -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const container = document.getElementById('hero-3d-container');
-      if (container) {
-        const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(60, container.clientWidth / container.clientHeight, 0.1, 1000);
-        const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
-        renderer.setSize(container.clientWidth, container.clientHeight);
-        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-        container.appendChild(renderer.domElement);
-
-        const geometry = new THREE.TorusKnotGeometry(1.1, 0.35, 128, 32);
-        const material = new THREE.MeshStandardMaterial({ color: 0xf59e0b, metalness: 0.85, roughness: 0.2 });
-        const mesh = new THREE.Mesh(geometry, material);
-        scene.add(mesh);
-
-        const wireframeGeo = new THREE.WireframeGeometry(geometry);
-        const wireframeMat = new THREE.LineBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.2 });
-        const wireframe = new THREE.LineSegments(wireframeGeo, wireframeMat);
-        mesh.add(wireframe);
-
-        scene.add(new THREE.AmbientLight(0xffffff, 1.2));
-        const pLight = new THREE.PointLight(0x3b82f6, 3, 50); pLight.position.set(5, 5, 5); scene.add(pLight);
-
-        camera.position.z = 4.5;
-        let mouseX = 0, mouseY = 0, targetX = 0, targetY = 0;
-
-        container.addEventListener('mousemove', (e) => {
-          const rect = container.getBoundingClientRect();
-          mouseX = ((e.clientX - rect.left) / container.clientWidth) * 2 - 1;
-          mouseY = -((e.clientY - rect.top) / container.clientHeight) * 2 + 1;
-        });
-
-        const clock = new THREE.Clock();
-        function animate() {
-          requestAnimationFrame(animate);
-          const t = clock.getElapsedTime();
-          targetX += (mouseX - targetX) * 0.08;
-          targetY += (mouseY - targetY) * 0.08;
-          mesh.rotation.x = t * 0.4 + targetY * 1.2;
-          mesh.rotation.y = t * 0.5 + targetX * 1.2;
-          renderer.render(scene, camera);
-        }
-        animate();
-
-        window.addEventListener('resize', () => {
-          camera.aspect = container.clientWidth / container.clientHeight;
-          camera.updateProjectionMatrix();
-          renderer.setSize(container.clientWidth, container.clientHeight);
-        });
-      }
-    });
-  </script>
-  <script src="script.js?v=30"></script>
-</body>
-</html>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/l 
