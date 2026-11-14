@@ -3,621 +3,260 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Admin ERP | SDR Memorial Public High School, Basari</title>
+  <title>Admin ERP Portal | SDR Memorial Public High School, Basari</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
 </head>
-<body class="bg-slate-100 text-slate-800">
+<body class="bg-slate-100 text-slate-800 min-h-screen">
 
-  <!-- FIREBASE AUTH LOGIN SCREEN -->
-  <div id="adminLoginScreen" class="min-h-screen hero-bg flex items-center justify-center p-4">
-    <div class="bg-white max-w-md w-full rounded-3xl p-6 sm:p-8 shadow-2xl border-t-4 border-amber-400 space-y-4">
+  <!-- ADMIN LOGIN SCREEN -->
+  <div id="loginScreen" class="min-h-screen hero-bg flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-md w-full p-6 sm:p-8 shadow-2xl border-2 border-amber-400 space-y-5">
       <div class="text-center space-y-2">
-        <img src="logo.png" alt="SDR Logo" onerror="this.src='https://via.placeholder.com/70/0F2952/F59E0B?text=SDR'" class="w-16 h-16 rounded-full object-contain bg-white p-1 mx-auto shadow border-2 border-amber-400" />
-        <h2 class="text-lg font-extrabold text-[#0F2952]">SDR SCHOOL CLOUD ERP</h2>
-        <p class="text-xs text-slate-500 font-semibold">Secure Principal & Office Login</p>
+        <img src="1794621466353.png" alt="SDR Logo" class="w-20 h-20 rounded-full object-cover mx-auto border-2 border-amber-400 shadow-lg bg-[#08152B]" />
+        <h1 class="text-lg font-extrabold text-[#0F2952]">SDR MEMORIAL ERP ADMIN</h1>
+        <p class="text-xs text-slate-500 font-semibold">Basari, Chhatarpur (M.P.) • Secure Staff & Principal Login</p>
       </div>
-      <form id="adminLoginForm" class="space-y-3 text-xs">
+
+      <form onsubmit="adminLogin(event)" class="space-y-3.5 text-xs">
         <div>
-          <label class="font-bold text-slate-600">Admin Email *</label>
-          <input type="email" id="adminEmail" required placeholder="admin@sdrbasari.in" class="w-full border rounded-xl px-3.5 py-2.5 mt-1" />
+          <label class="font-bold text-slate-600 block mb-1">Admin Email ID *</label>
+          <input type="email" id="loginEmail" required placeholder="admin@sdrbasari.in" class="w-full border-2 border-slate-200 focus:border-[#0F2952] rounded-xl px-3.5 py-2.5 font-bold outline-none" />
         </div>
         <div>
-          <label class="font-bold text-slate-600">Password *</label>
-          <input type="password" id="adminPassword" required placeholder="••••••••" class="w-full border rounded-xl px-3.5 py-2.5 mt-1" />
+          <label class="font-bold text-slate-600 block mb-1">Password *</label>
+          <input type="password" id="loginPassword" required placeholder="••••••••" class="w-full border-2 border-slate-200 focus:border-[#0F2952] rounded-xl px-3.5 py-2.5 font-bold outline-none" />
         </div>
-        <p id="loginErrorMsg" class="hidden text-rose-600 font-bold bg-rose-50 p-2.5 rounded-xl border border-rose-200"></p>
-        <button type="submit" id="loginBtn" class="w-full btn-royal-gold font-extrabold py-3 rounded-xl text-sm cursor-pointer">🔒 Secure Login</button>
+        <button type="submit" id="loginBtn" class="w-full btn-royal-gold font-extrabold py-3 rounded-xl text-sm cursor-pointer">
+          🔐 Login to School ERP
+        </button>
       </form>
-      <div class="text-center pt-2">
+      <div class="text-center">
         <a href="index.html" class="text-xs font-bold text-[#0F2952] hover:underline">← Back to School Website</a>
       </div>
     </div>
   </div>
 
-  <!-- MAIN ERP DASHBOARD -->
-  <div id="adminDashboard" class="hidden min-h-screen flex flex-col">
-    <header class="bg-[#08152B] text-white py-3 px-4 sticky top-0 z-30 border-b-2 border-amber-400 shadow-lg">
-      <div class="max-w-7xl mx-auto flex justify-between items-center gap-2">
-        <div class="flex items-center gap-2.5">
-          <img src="logo.png" alt="SDR" class="w-9 h-9 rounded-full bg-white p-0.5 border border-amber-400" />
-          <div>
-            <h1 class="text-xs sm:text-sm font-extrabold text-amber-300">SDR MEMORIAL ERP PANEL</h1>
-            <p id="loggedAdminEmail" class="text-[10px] text-slate-300">Connected to Cloud</p>
+  <!-- MAIN ADMIN ERP WORKSPACE -->
+  <div id="adminWorkspace" class="hidden pb-12">
+
+    <!-- STICKY TOP ERP NAVBAR -->
+    <header class="bg-[#08152B] text-white sticky top-0 z-40 shadow-lg border-b-2 border-amber-500">
+      <div class="max-w-7xl mx-auto px-3 sm:px-6 py-2.5 flex justify-between items-center gap-2">
+        <div class="flex items-center gap-2.5 min-w-0">
+          <img src="1794621466353.png" alt="Logo" class="w-10 h-10 rounded-full object-cover border border-amber-400 shrink-0" />
+          <div class="min-w-0">
+            <h1 class="text-xs sm:text-sm font-extrabold text-amber-400 truncate">SDR MEMORIAL ERP PANEL</h1>
+            <p id="loggedAdminEmail" class="text-[10px] text-slate-300 truncate">Logged in as Admin</p>
           </div>
         </div>
-        <div class="flex items-center gap-2 text-xs">
-          <a href="index.html" target="_blank" class="bg-white/10 hover:bg-white/20 px-3 py-1.5 rounded-xl font-bold">🌐 Live Site</a>
-          <button type="button" onclick="logoutAdmin()" class="bg-rose-600 hover:bg-rose-700 px-3 py-1.5 rounded-xl font-bold cursor-pointer">Logout</button>
+        <div class="flex items-center gap-2 shrink-0">
+          <a href="index.html" target="_blank" class="bg-white/10 hover:bg-white/20 text-white text-[11px] font-bold px-3 py-1.5 rounded-lg">🌐 Live Site</a>
+          <button type="button" onclick="adminLogout()" class="bg-rose-600 hover:bg-rose-700 text-white text-[11px] font-extrabold px-3 py-1.5 rounded-lg cursor-pointer">Logout</button>
+        </div>
+      </div>
+
+      <!-- 9-SECTION HORIZONTAL SCROLLABLE TAB BAR -->
+      <div class="bg-[#0F2952] px-3 py-2 overflow-x-auto border-t border-white/10">
+        <div class="max-w-7xl mx-auto flex gap-2 text-[11px] font-extrabold whitespace-nowrap">
+          <button type="button" onclick="switchAdminTab('dashboard')" id="nav-dashboard" class="admin-tab px-3.5 py-1.5 rounded-xl bg-amber-400 text-[#08152B] cursor-pointer">📊 Live Dashboard</button>
+          <button type="button" onclick="switchAdminTab('admissions')" id="nav-admissions" class="admin-tab px-3.5 py-1.5 rounded-xl bg-white/10 text-white cursor-pointer">📥 Admissions (<span id="badgePendingAdm">0</span>)</button>
+          <button type="button" onclick="switchAdminTab('students')" id="nav-students" class="admin-tab px-3.5 py-1.5 rounded-xl bg-white/10 text-white cursor-pointer">👨‍🎓 Students</button>
+          <button type="button" onclick="switchAdminTab('attendance')" id="nav-attendance" class="admin-tab px-3.5 py-1.5 rounded-xl bg-white/10 text-white cursor-pointer">✅ Attendance (Student & Staff)</button>
+          <button type="button" onclick="switchAdminTab('fees')" id="nav-fees" class="admin-tab px-3.5 py-1.5 rounded-xl bg-white/10 text-white cursor-pointer">💰 Fees & Receipt</button>
+          <button type="button" onclick="switchAdminTab('marksheets')" id="nav-marksheets" class="admin-tab px-3.5 py-1.5 rounded-xl bg-white/10 text-white cursor-pointer">🎓 Marksheets & TC</button>
+          <button type="button" onclick="switchAdminTab('homework')" id="nav-homework" class="admin-tab px-3.5 py-1.5 rounded-xl bg-white/10 text-white cursor-pointer">📚 Daily Homework</button>
+          <button type="button" onclick="switchAdminTab('staff')" id="nav-staff" class="admin-tab px-3.5 py-1.5 rounded-xl bg-white/10 text-white cursor-pointer">👨‍🏫 Teachers & Van</button>
+          <button type="button" onclick="switchAdminTab('website')" id="nav-website" class="admin-tab px-3.5 py-1.5 rounded-xl bg-white/10 text-white cursor-pointer">🌐 Notice, Gallery & Toppers</button>
         </div>
       </div>
     </header>
 
-    <!-- ERP NAVIGATION TABS -->
-    <div class="bg-white border-b shadow-sm px-3 py-2.5 overflow-x-auto">
-      <div class="max-w-7xl mx-auto flex gap-2 text-xs font-bold whitespace-nowrap">
-        <button type="button" onclick="switchAdminTab('students', this)" class="adm-tab bg-[#0F2952] text-white px-3.5 py-2 rounded-xl">👨‍🎓 Students & ID Cards</button>
-        <button type="button" onclick="switchAdminTab('results', this)" class="adm-tab bg-slate-100 text-slate-700 px-3.5 py-2 rounded-xl">🎓 Marksheets (Unlimited)</button>
-        <button type="button" onclick="switchAdminTab('attendance', this)" class="adm-tab bg-slate-100 text-slate-700 px-3.5 py-2 rounded-xl">📱 WhatsApp Attendance</button>
-        <button type="button" onclick="switchAdminTab('gallery', this)" class="adm-tab bg-slate-100 text-slate-700 px-3.5 py-2 rounded-xl">📸 Photo Gallery</button>
-        <button type="button" onclick="switchAdminTab('portal', this)" class="adm-tab bg-slate-100 text-slate-700 px-3.5 py-2 rounded-xl">📢 Notice, Staff & TC</button>
-        <button type="button" onclick="switchAdminTab('admissions', this)" class="adm-tab bg-slate-100 text-slate-700 px-3.5 py-2 rounded-xl">📝 Online Admissions</button>
-      </div>
-    </div>
+    <!-- MAIN CONTENT CONTAINER -->
+    <main class="max-w-7xl mx-auto px-3 sm:px-6 pt-5 space-y-6">
 
-    <main class="max-w-7xl w-full mx-auto p-4 flex-1 space-y-6">
-            <!-- TAB 1: STUDENTS & ID CARDS -->
-      <section id="tab-students" class="adm-section space-y-5">
-        <div class="bg-white p-5 rounded-2xl shadow-sm border space-y-3">
-          <div class="flex flex-wrap justify-between items-center gap-2 border-b pb-2">
-            <h2 class="font-extrabold text-[#0F2952] text-sm">➕ Add / Update Student Profile</h2>
-            <button type="button" onclick="downloadPendingIdZip()" class="bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold px-3.5 py-2 rounded-xl shadow cursor-pointer">📦 Download Pending ID Card ZIP (Photos + CSV)</button>
+      <!-- TAB 1: LIVE DASHBOARD (TOTAL / PRESENT / ABSENT STUDENTS & TEACHERS) -->
+      <section id="tab-dashboard" class="admin-section space-y-5">
+        <div class="flex flex-wrap justify-between items-center gap-2">
+          <div>
+            <h2 class="text-lg sm:text-xl font-extrabold text-[#0F2952]">📊 Today's Live School Overview</h2>
+            <p id="todayDateLabel" class="text-xs text-slate-500 font-semibold"></p>
           </div>
-          <form id="studentProfileForm" class="grid sm:grid-cols-3 gap-3 text-xs">
-            <input type="text" id="stRoll" required placeholder="Roll / Scholar No *" class="border rounded-xl px-3 py-2.5" />
-            <input type="text" id="stName" required placeholder="Student Full Name *" class="border rounded-xl px-3 py-2.5" />
-            <input type="text" id="stFather" required placeholder="Father's Name *" class="border rounded-xl px-3 py-2.5" />
-            <input type="text" id="stMother" placeholder="Mother's Name" class="border rounded-xl px-3 py-2.5" />
-            <select id="stClass" class="border rounded-xl px-3 py-2.5">
-              <option value="Nursery">Nursery</option><option value="LKG">LKG</option><option value="UKG">UKG</option>
-              <option value="Class 1st">Class 1st</option><option value="Class 2nd">Class 2nd</option><option value="Class 3rd">Class 3rd</option>
-              <option value="Class 4th">Class 4th</option><option value="Class 5th">Class 5th</option><option value="Class 6th">Class 6th</option>
-              <option value="Class 7th">Class 7th</option><option value="Class 8th">Class 8th</option><option value="Class 9th">Class 9th</option><option value="Class 10th">Class 10th</option>
-            </select>
-            <input type="date" id="stDob" class="border rounded-xl px-3 py-2.5" />
-            <input type="tel" id="stMobile" required placeholder="Parent WhatsApp Mobile *" class="border rounded-xl px-3 py-2.5" />
-            <input type="text" id="stAadhaar" placeholder="Aadhaar / Samagra ID" class="border rounded-xl px-3 py-2.5" />
-            <input type="text" id="stAddress" placeholder="Village / Address" class="border rounded-xl px-3 py-2.5" />
-            <select id="stIdStatus" class="border rounded-xl px-3 py-2.5">
-              <option value="Pending">ID Card: Pending</option>
-              <option value="Printed">ID Card: Printed</option>
-            </select>
-            <div class="sm:col-span-2 flex items-center gap-2 border rounded-xl px-3 py-2 bg-slate-50">
-                    <!-- TAB 2: UNLIMITED RESULTS (sdr_results collection) -->
-      <section id="tab-results" class="adm-section hidden space-y-5">
-        <div class="bg-white p-5 rounded-2xl shadow-sm border space-y-3">
-          <h2 class="font-extrabold text-[#0F2952] text-sm border-b pb-2">🎓 Publish Student Marksheet (Unlimited Cloud Storage)</h2>
-          <form id="resultEntryForm" class="space-y-3 text-xs">
-            <div class="grid sm:grid-cols-4 gap-2.5">
-              <input type="text" id="resRoll" required placeholder="Roll No (e.g. 101) *" class="border rounded-xl px-3 py-2" />
-              <input type="text" id="resName" required placeholder="Student Name *" class="border rounded-xl px-3 py-2" />
-              <input type="text" id="resFather" required placeholder="Father's Name *" class="border rounded-xl px-3 py-2" />
-              <input type="text" id="resMother" placeholder="Mother's Name" class="border rounded-xl px-3 py-2" />
-              <input type="text" id="resClass" required placeholder="Class (e.g. Class 10th) *" class="border rounded-xl px-3 py-2" />
-              <input type="date" id="resDob" class="border rounded-xl px-3 py-2" />
-              <input type="text" id="resAttendance" value="94%" placeholder="Attendance %" class="border rounded-xl px-3 py-2" />
-              <input type="text" id="resExamTitle" value="ANNUAL PROGRESS REPORT 2026–27" class="border rounded-xl px-3 py-2" />
+          <button type="button" onclick="loadAllAdminData()" class="btn-royal-navy text-xs font-extrabold px-3.5 py-2 rounded-xl cursor-pointer">🔄 Refresh Live Data</button>
+        </div>
+
+        <!-- 4 LIVE SUMMARY CARDS -->
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <!-- STUDENTS LIVE CARD -->
+          <div class="bg-white rounded-3xl p-5 border-2 border-blue-200 shadow-sm space-y-2">
+            <div class="flex justify-between items-center">
+              <span class="text-xs font-extrabold text-slate-500 uppercase">Total Students</span>
+              <span class="w-9 h-9 rounded-xl bg-blue-100 text-blue-700 flex items-center justify-center font-extrabold">👨‍🎓</span>
             </div>
-            <div class="bg-slate-50 p-3 rounded-xl border space-y-2">
-              <p class="font-bold text-[#0F2952]">Subject-wise Marks (Max | Theory | Practical):</p>
-              <div id="subjectsContainer" class="space-y-2"></div>
-              <button type="button" onclick="addSubjectRow()" class="text-xs font-bold text-blue-700 underline">+ Add More Subject</button>
+            <p id="dashTotalStudents" class="text-3xl font-extrabold text-[#0F2952]">0</p>
+            <div class="flex gap-2 pt-1 text-[11px] font-extrabold">
+              <span class="bg-emerald-100 text-emerald-800 px-2.5 py-0.5 rounded-lg">Present: <b id="dashPresentStudents">0</b></span>
+              <span class="bg-rose-100 text-rose-800 px-2.5 py-0.5 rounded-lg">Absent: <b id="dashAbsentStudents">0</b></span>
             </div>
-            <button type="submit" class="w-full btn-royal-navy font-extrabold py-3 rounded-xl cursor-pointer">🚀 Publish Digital Marksheet</button>
-          </form>
+          </div>
+
+          <!-- TEACHERS LIVE CARD -->
+          <div class="bg-white rounded-3xl p-5 border-2 border-amber-200 shadow-sm space-y-2">
+            <div class="flex justify-between items-center">
+              <span class="text-xs font-extrabold text-slate-500 uppercase">Total Teachers</span>
+              <span class="w-9 h-9 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center font-extrabold">👨‍🏫</span>
+            </div>
+            <p id="dashTotalTeachers" class="text-3xl font-extrabold text-[#0F2952]">0</p>
+            <div class="flex gap-2 pt-1 text-[11px] font-extrabold">
+              <span class="bg-emerald-100 text-emerald-800 px-2.5 py-0.5 rounded-lg">Present: <b id="dashPresentTeachers">0</b></span>
+              <span class="bg-rose-100 text-rose-800 px-2.5 py-0.5 rounded-lg">Absent: <b id="dashAbsentTeachers">0</b></span>
+            </div>
+          </div>
+
+          <!-- PENDING ADMISSIONS CARD -->
+          <div onclick="switchAdminTab('admissions')" class="bg-white rounded-3xl p-5 border-2 border-purple-200 shadow-sm space-y-2 cursor-pointer hover-lift">
+            <div class="flex justify-between items-center">
+              <span class="text-xs font-extrabold text-slate-500 uppercase">Pending Admissions</span>
+              <span class="w-9 h-9 rounded-xl bg-purple-100 text-purple-700 flex items-center justify-center font-extrabold">📥</span>
+            </div>
+            <p id="dashPendingAdmissions" class="text-3xl font-extrabold text-purple-700">0</p>
+            <p class="text-[11px] font-bold text-slate-500 pt-1">Click to Verify & 1-Click Approve →</p>
+          </div>
+
+          <!-- FEE COLLECTION CARD -->
+          <div onclick="switchAdminTab('fees')" class="bg-white rounded-3xl p-5 border-2 border-emerald-200 shadow-sm space-y-2 cursor-pointer hover-lift">
+            <div class="flex justify-between items-center">
+              <span class="text-xs font-extrabold text-slate-500 uppercase">Total Fee Collected</span>
+              <span class="w-9 h-9 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center font-extrabold">💰</span>
+            </div>
+            <p id="dashTotalFees" class="text-3xl font-extrabold text-emerald-700">₹ 0</p>
+            <p class="text-[11px] font-bold text-slate-500 pt-1">Click to Collect Fee & Send Receipt →</p>
+          </div>
         </div>
 
-        <div class="bg-white p-5 rounded-2xl shadow-sm border space-y-3">
-          <input type="text" id="resultSearchBox" oninput="renderAdminResults()" placeholder="🔍 Search Published Marksheets by Roll No or Name..." class="w-full border rounded-xl px-3.5 py-2 text-xs" />
-          <div id="adminResultsList" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 text-xs"></div>
+        <!-- QUICK ACTION SHORTCUTS -->
+        <div class="bg-white rounded-3xl p-5 border shadow-sm space-y-3">
+          <h3 class="text-sm font-extrabold text-[#0F2952]">⚡ Quick Daily Operations</h3>
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs font-extrabold">
+            <button type="button" onclick="switchAdminTab('attendance')" class="p-3.5 rounded-2xl bg-emerald-50 hover:bg-emerald-100 text-emerald-900 border border-emerald-200 cursor-pointer">✅ Mark Today's Attendance</button>
+            <button type="button" onclick="switchAdminTab('admissions')" class="p-3.5 rounded-2xl bg-amber-50 hover:bg-amber-100 text-amber-900 border border-amber-200 cursor-pointer">📥 Approve New Admissions</button>
+            <button type="button" onclick="switchAdminTab('homework')" class="p-3.5 rounded-2xl bg-blue-50 hover:bg-blue-100 text-blue-900 border border-blue-200 cursor-pointer">📚 Post Class Homework</button>
+            <button type="button" onclick="switchAdminTab('marksheets')" class="p-3.5 rounded-2xl bg-rose-50 hover:bg-rose-100 text-rose-900 border border-rose-200 cursor-pointer">🎓 Generate Marksheet</button>
+          </div>
         </div>
       </section>
-
-      <!-- TAB 3: SMART WHATSAPP ATTENDANCE PARSER -->
-      <section id="tab-attendance" class="adm-section hidden space-y-4">
-        <div class="bg-white p-5 rounded-2xl shadow-sm border space-y-3 text-xs">
-          <h2 class="font-extrabold text-[#0F2952] text-sm border-b pb-2">📱 Smart WhatsApp Group Attendance</h2>
-          <p class="text-slate-600">Class Teacher ka WhatsApp message neeche paste karein (Jaise: <code>Class 10th Absent: Rohan Yadav, Priya</code>). System baaki sabhi ko <strong>Present</strong> kar dega aur absent bacchon ke parents ka WhatsApp alert taiyar kar dega!</p>
-          <textarea id="waAttendanceText" rows="3" placeholder="Paste WhatsApp message here..." class="w-full border rounded-xl p-3"></textarea>
-          <button type="button" onclick="parseWhatsAppAttendance()" class="btn-royal-gold font-extrabold px-5 py-2.5 rounded-xl cursor-pointer">⚡ Process & Save Attendance</button>
-          <div id="attendanceAlertList" class="space-y-2 pt-2"></div>
-        </div>
-      </section>
-            <!-- TAB 4: PHOTO GALLERY MANAGER -->
-      <section id="tab-gallery" class="adm-section hidden space-y-5">
-        <div class="bg-white p-5 rounded-2xl shadow-sm border space-y-3 text-xs">
-          <h2 class="font-extrabold text-[#0F2952] text-sm border-b pb-2">📸 Upload School Event / Campus Photo</h2>
-          <form id="galleryUploadForm" class="grid sm:grid-cols-3 gap-3">
-            <input type="text" id="galTitle" required placeholder="Photo Caption (e.g. Independence Day 2026) *" class="border rounded-xl px-3 py-2.5" />
-            <select id="galTag" class="border rounded-xl px-3 py-2.5 font-bold">
-              <option value="Campus">Campus</option>
-              <option value="Events">Events & Function</option>
-              <option value="Sports">Sports</option>
-              <option value="Academics">Smart Class / Lab</option>
-            </select>
-            <input type="file" id="galPhotoInput" accept="image/*" required class="border rounded-xl px-3 py-2 bg-slate-50" />
-            <button type="submit" class="sm:col-span-3 btn-royal-gold font-extrabold py-2.5 rounded-xl cursor-pointer">📤 Upload Photo to Live Gallery</button>
-          </form>
-        </div>
-        <div id="adminGalleryList" class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs"></div>
-      </section>
-
-      <!-- TAB 5: NOTICE, STAFF, TOPPERS & TC -->
-      <section id="tab-portal" class="adm-section hidden space-y-5 text-xs">
-        <div class="bg-white p-5 rounded-2xl shadow-sm border space-y-3">
-          <h2 class="font-extrabold text-[#0F2952] text-sm border-b pb-2">📢 Live Scrolling Notice & School Stats</h2>
-          <div class="grid sm:grid-cols-2 gap-3">
+            <!-- TAB 2: PENDING-TO-APPROVE ONLINE ADMISSIONS -->
+      <section id="tab-admissions" class="admin-section hidden space-y-4">
+        <div class="bg-white rounded-3xl p-5 sm:p-6 border shadow-sm space-y-4">
+          <div class="flex flex-wrap justify-between items-center gap-2 border-b pb-3">
             <div>
-              <label class="font-bold">Notice (English):</label>
-              <textarea id="admNoticeEn" rows="2" class="w-full border rounded-xl p-2.5 mt-1"></textarea>
+              <h2 class="text-base sm:text-lg font-extrabold text-[#0F2952]">📥 Online Admission Inquiries (Pending → Approve)</h2>
+              <p class="text-xs text-slate-500">Approve karne par student automatically Master Student Register mein add ho jayega.</p>
+            </div>
+          </div>
+          <div id="adminAdmissionsList" class="grid sm:grid-cols-2 gap-4 text-xs"></div>
+        </div>
+      </section>
+
+      <!-- TAB 3: MASTER STUDENT DATABASE (ADD / EDIT / DELETE + CSV EXPORT) -->
+      <section id="tab-students" class="admin-section hidden space-y-5">
+        <div class="bg-white rounded-3xl p-5 sm:p-6 border shadow-sm space-y-4">
+          <div class="flex flex-wrap justify-between items-center gap-2 border-b pb-3">
+            <h2 class="text-base sm:text-lg font-extrabold text-[#0F2952]">👨‍🎓 Add / Update Student Record</h2>
+            <button type="button" onclick="exportStudentsCSV()" class="bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-extrabold px-3.5 py-2 rounded-xl cursor-pointer">📥 Download Excel CSV (ID Cards)</button>
+          </div>
+
+          <form id="studentForm" onsubmit="saveStudentRecord(event)" class="grid sm:grid-cols-3 gap-3 text-xs">
+            <input type="hidden" id="stuEditId" />
+            <div>
+              <label class="font-bold text-slate-600 block mb-1">Roll / Scholar No *</label>
+              <input type="text" id="stuRoll" required placeholder="e.g. 101" class="w-full border rounded-xl px-3 py-2 font-bold" />
             </div>
             <div>
-              <label class="font-bold">Notice (हिंदी):</label>
-              <textarea id="admNoticeHi" rows="2" class="w-full border rounded-xl p-2.5 mt-1"></textarea>
+              <label class="font-bold text-slate-600 block mb-1">Student Full Name *</label>
+              <input type="text" id="stuName" required placeholder="Aarav Singh" class="w-full border rounded-xl px-3 py-2 font-bold" />
             </div>
-          </div>
-          <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
-            <input type="text" id="admStatAlumni" placeholder="Alumni (2,450+)" class="border rounded-xl px-3 py-2" />
-            <input type="text" id="admStatNew" placeholder="New Admissions (148)" class="border rounded-xl px-3 py-2" />
-            <input type="text" id="admStatCurrent" placeholder="Current Students (520+)" class="border rounded-xl px-3 py-2" />
-            <input type="text" id="admStatTeachers" placeholder="Staff Count (22)" class="border rounded-xl px-3 py-2" />
-          </div>
-          <button type="button" onclick="savePortalSettings()" class="btn-royal-navy font-extrabold px-5 py-2.5 rounded-xl cursor-pointer">💾 Update Notice & Stats</button>
+            <div>
+              <label class="font-bold text-slate-600 block mb-1">Father's Name *</label>
+              <input type="text" id="stuFather" required placeholder="Rajesh Singh" class="w-full border rounded-xl px-3 py-2 font-bold" />
+            </div>
+            <div>
+              <label class="font-bold text-slate-600 block mb-1">Class *</label>
+              <select id="stuClass" class="w-full border rounded-xl px-3 py-2 font-bold bg-white">
+                <option value="Nursery">Nursery</option><option value="LKG">LKG</option><option value="UKG">UKG</option>
+                <option value="Class 1st">Class 1st</option><option value="Class 2nd">Class 2nd</option><option value="Class 3rd">Class 3rd</option>
+                <option value="Class 4th">Class 4th</option><option value="Class 5th">Class 5th</option><option value="Class 6th">Class 6th</option>
+                <option value="Class 7th">Class 7th</option><option value="Class 8th">Class 8th</option><option value="Class 9th">Class 9th</option><option value="Class 10th">Class 10th</option>
+              </select>
+            </div>
+            <div>
+              <label class="font-bold text-slate-600 block mb-1">Parent WhatsApp Mobile *</label>
+              <input type="tel" id="stuPhone" required placeholder="9876543210" class="w-full border rounded-xl px-3 py-2 font-bold" />
+            </div>
+            <div>
+              <label class="font-bold text-slate-600 block mb-1">Village / Address</label>
+              <input type="text" id="stuAddress" placeholder="Basari, Chhatarpur" class="w-full border rounded-xl px-3 py-2 font-bold" />
+            </div>
+            <div class="sm:col-span-3 flex gap-2">
+              <button type="submit" class="btn-royal-gold font-extrabold px-5 py-2.5 rounded-xl cursor-pointer">💾 Save Student</button>
+              <button type="button" onclick="resetStudentForm()" class="bg-slate-200 font-bold px-4 py-2.5 rounded-xl cursor-pointer">Clear</button>
+            </div>
+          </form>
         </div>
 
-        <!-- ADD STAFF -->
-        <div class="bg-white p-5 rounded-2xl shadow-sm border space-y-3">
-          <h2 class="font-extrabold text-[#0F2952] text-sm border-b pb-2">👨‍🏫 Add Teaching Staff Member</h2>
-          <form id="addStaffForm" class="grid sm:grid-cols-3 gap-2.5">
-            <input type="text" id="stfName" required placeholder="Teacher Name *" class="border rounded-xl px-3 py-2" />
-            <input type="text" id="stfRole" required placeholder="Designation (e.g. Maths Teacher) *" class="border rounded-xl px-3 py-2" />
-            <select id="stfWing" class="border rounded-xl px-3 py-2">
-              <option value="High School">High School</option>
-              <option value="Middle">Middle</option>
-              <option value="Primary">Primary</option>
-            </select>
-            <input type="text" id="stfQual" placeholder="Qualification (M.Sc., B.Ed.)" class="border rounded-xl px-3 py-2" />
-            <input type="text" id="stfSince" placeholder="Teaching Since (2018)" class="border rounded-xl px-3 py-2" />
-            <input type="file" id="stfPhotoInput" accept="image/*" class="border rounded-xl px-2 py-1.5 bg-slate-50" />
-            <button type="submit" class="sm:col-span-3 btn-royal-gold font-extrabold py-2.5 rounded-xl">➕ Add Teacher</button>
-          </form>
-          <div id="adminStaffList" class="grid sm:grid-cols-3 gap-2.5 pt-2"></div>
-        </div>
-
-        <!-- ISSUE TC -->
-        <div class="bg-white p-5 rounded-2xl shadow-sm border space-y-3">
-          <h2 class="font-extrabold text-[#0F2952] text-sm border-b pb-2">📄 Issue Digital Transfer Certificate (TC)</h2>
-          <form id="addTcForm" class="grid sm:grid-cols-3 gap-2.5">
-            <input type="text" id="tcNo" required placeholder="TC Number (TC-2026-090) *" class="border rounded-xl px-3 py-2" />
-            <input type="text" id="tcStudent" required placeholder="Student Name *" class="border rounded-xl px-3 py-2" />
-            <input type="text" id="tcFather" required placeholder="Father's Name *" class="border rounded-xl px-3 py-2" />
-            <input type="text" id="tcClass" required placeholder="Class Passed (Class 10th) *" class="border rounded-xl px-3 py-2" />
-            <input type="date" id="tcDate" required class="border rounded-xl px-3 py-2" />
-            <input type="text" id="tcConduct" value="Excellent" class="border rounded-xl px-3 py-2" />
-            <button type="submit" class="sm:col-span-3 bg-emerald-600 text-white font-extrabold py-2.5 rounded-xl">✅ Register Official TC</button>
-          </form>
-          <div id="adminTcList" class="grid sm:grid-cols-3 gap-2 pt-2"></div>
+        <div class="bg-white rounded-3xl p-5 border shadow-sm space-y-3">
+          <div class="flex flex-wrap justify-between items-center gap-2">
+            <h3 class="font-extrabold text-[#0F2952] text-sm">Registered Students Directory</h3>
+            <input type="text" id="stuSearchInput" onkeyup="renderStudentsTable()" placeholder="Search name, roll or class..." class="border rounded-xl px-3 py-1.5 text-xs font-semibold" />
+          </div>
+          <div class="overflow-x-auto">
+            <table class="w-full text-left text-xs">
+              <thead class="bg-[#0F2952] text-white">
+                <tr>
+                  <th class="p-2.5">Roll</th>
+                  <th class="p-2.5">Student Name</th>
+                  <th class="p-2.5">Father Name</th>
+                  <th class="p-2.5">Class</th>
+                  <th class="p-2.5">Mobile</th>
+                  <th class="p-2.5">Actions</th>
+                </tr>
+              </thead>
+              <tbody id="adminStudentsTableBody" class="divide-y"></tbody>
+            </table>
+          </div>
         </div>
       </section>
 
-      <!-- TAB 6: ONLINE ADMISSION APPLICATIONS -->
-      <section id="tab-admissions" class="adm-section hidden space-y-3 text-xs">
-        <div class="bg-white p-5 rounded-2xl shadow-sm border">
-          <h2 class="font-extrabold text-[#0F2952] text-sm border-b pb-2 mb-3">📝 Online Admission Inquiries (From Website)</h2>
-          <div id="adminAdmissionsList" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-3"></div>
+      <!-- TAB 4: LIVE STUDENT & TEACHER ATTENDANCE REGISTER -->
+      <section id="tab-attendance" class="admin-section hidden space-y-5">
+        <div class="grid lg:grid-cols-2 gap-5">
+          <!-- TEACHER ATTENDANCE -->
+          <div class="bg-white rounded-3xl p-5 border shadow-sm space-y-3">
+            <div class="flex justify-between items-center border-b pb-2.5">
+              <h2 class="text-sm sm:text-base font-extrabold text-[#0F2952]">👨‍🏫 Today's Teacher Attendance</h2>
+              <span class="text-[11px] font-extrabold text-emerald-700" id="attTeacherSummary">0 Present / 0 Absent</span>
+            </div>
+            <div id="adminTeacherAttList" class="space-y-2 text-xs"></div>
+          </div>
+
+           <!-- STUDENT ATTENDANCE -->
+          <div class="bg-white rounded-3xl p-5 border shadow-sm space-y-3">
+            <div class="flex flex-wrap justify-between items-center gap-2 border-b pb-2.5">
+              <h2 class="text-sm sm:text-base font-extrabold text-[#0F2952]">👨‍🎓 Today's Student Attendance</h2>
+              <select id="attClassFilter" onchange="renderAttendanceLists()" class="border rounded-lg px-2.5 py-1 text-xs font-bold">
+                <option value="All">All Classes</option>
+                <option value="Nursery">Nursery</option><option value="LKG">LKG</option><option value="UKG">UKG</option>
+                <option value="Class 1st">Class 1st</option><option value="Class 2nd">Class 2nd</option><option value="Class 3rd">Class 3rd</option>
+                <option value="Class 4th">Class 4th</option><option value="Class 5th">Class 5th</option><option value="Class 6th">Class 6th</option>
+                <option value="Class 7th">Class 7th</option><option value="Class 8th">Class 8th</option><option value="Class 9th">Class 9th</option><option value="Class 10th">Class 10th</option>
+              </select>
+            </div>
+            <div id="adminStudentAttList" class="space-y-2 text-xs max-h-96 overflow-y-auto"></div>
+          </div>
         </div>
       </section>
-    </main>
-            </div>
-              <script>
-    const firebaseConfig = {
-      apiKey: "AIzaSyAXIF5CrQVNErK6Qefj7vAm2jNTwKbpVvE",
-      authDomain: "sdrmemorialschool.firebaseapp.com",
-      projectId: "sdrmemorialschool",
-      storageBucket: "sdrmemorialschool.firebasestorage.app",
-      messagingSenderId: "200886478103",
-      appId: "1:200886478103:web:bf8596fdc1c3793d100352"
-    };
-    if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
-    const auth = firebase.auth();
-    const db = firebase.firestore();
-
-    let studentsCache = [];
-    let resultsCache = [];
-    let galleryCache = [];
-    let admissionsCache = [];
-    let portalDoc = { noticeEn: "", notice: "", stats: {}, toppers: [], staff: [], holidays: [], tcs: [] };
-
-    // Auth State Observer
-    auth.onAuthStateChanged((user) => {
-      if (user) {
-        document.getElementById("adminLoginScreen").classList.add("hidden");
-        document.getElementById("adminDashboard").classList.remove("hidden");
-        document.getElementById("loggedAdminEmail").innerText = "Logged in: " + user.email;
-        loadAllAdminData();
-      } else {
-        document.getElementById("adminLoginScreen").classList.remove("hidden");
-        document.getElementById("adminDashboard").classList.add("hidden");
-      }
-    });
-
-    document.getElementById("adminLoginForm").addEventListener("submit", async (e) => {
-      e.preventDefault();
-      const email = document.getElementById("adminEmail").value.trim();
-      const pass = document.getElementById("adminPassword").value;
-      const errEl = document.getElementById("loginErrorMsg");
-      errEl.classList.add("hidden");
-      try {
-        await auth.signInWithEmailAndPassword(email, pass);
-      } catch (err) {
-        errEl.innerText = "❌ Login Failed: " + err.message;
-        errEl.classList.remove("hidden");
-      }
-    });
-
-    function logoutAdmin() {
-      auth.signOut();
-    }
-
-    function switchAdminTab(tab, btn) {
-      document.querySelectorAll(".adm-section").forEach(s => s.classList.add("hidden"));
-      document.getElementById("tab-" + tab).classList.remove("hidden");
-      document.querySelectorAll(".adm-tab").forEach(b => {
-        b.classList.remove("bg-[#0F2952]", "text-white");
-        b.classList.add("bg-slate-100", "text-slate-700");
-      });
-      btn.classList.remove("bg-slate-100", "text-slate-700");
-      btn.classList.add("bg-[#0F2952]", "text-white");
-    }
-
-    // Compress Photo to Clean Base64 JPEG
-    function compressImage(file, maxW = 360) {
-      return new Promise((resolve) => {
-        if (!file) return resolve("");
-        const reader = new FileReader();
-        reader.onload = (ev) => {
-          const img = new Image();
-          img.onload = () => {
-            const scale = Math.min(1, maxW / img.width);
-            const canvas = document.createElement("canvas");
-            canvas.width = img.width * scale;
-            canvas.height = img.height * scale;
-            canvas.getContext("2d").drawImage(img, 0, 0, canvas.width, canvas.height);
-            resolve(canvas.toDataURL("image/jpeg", 0.78));
-          };
-          img.src = ev.target.result;
-        };
-        reader.readAsDataURL(file);
-      });
-    }
-
-    async function loadAllAdminData() {
-      const [stSnap, resSnap, galSnap, admSnap, mainSnap] = await Promise.all([
-        db.collection("sdr_students").get(),
-        db.collection("sdr_results").get(),
-        db.collection("sdr_gallery").get(),
-        db.collection("sdr_admissions").get(),
-        db.collection("sdr_portal").doc("main_data").get()
-      ]);
-
-      studentsCache = stSnap.docs.map(d => d.data());
-      resultsCache = resSnap.docs.map(d => d.data());
-      galleryCache = galSnap.docs.map(d => ({ id: d.id, ...d.data() }));
-      admissionsCache = admSnap.docs.map(d => d.data());
-      if (mainSnap.exists) portalDoc = { ...portalDoc, ...mainSnap.data() };
-
-      document.getElementById("admNoticeEn").value = portalDoc.noticeEn || "";
-      document.getElementById("admNoticeHi").value = portalDoc.notice || "";
-      document.getElementById("admStatAlumni").value = portalDoc.stats?.alumni || "2,450+";
-      document.getElementById("admStatNew").value = portalDoc.stats?.newAdmissions || "148";
-      document.getElementById("admStatCurrent").value = portalDoc.stats?.currentStudents || "520+";
-      document.getElementById("admStatTeachers").value = portalDoc.stats?.teachers || "22";
-
-      renderAdminStudents();
-      renderAdminResults();
-      renderAdminGallery();
-      renderAdminStaffAndTc();
-      renderAdminAdmissions();
-    }
-
-    // Save Student Profile
-    document.getElementById("studentProfileForm").addEventListener("submit", async (e) => {
-      e.preventDefault();
-      const roll = document.getElementById("stRoll").value.trim();
-      const file = document.getElementById("stPhotoInput").files[0];
-      const existing = studentsCache.find(s => s.roll === roll);
-      const photo = file ? await compressImage(file, 320) : (existing?.photo || "");
-
-      const data = {
-        roll,
-        name: document.getElementById("stName").value.trim(),
-        father: document.getElementById("stFather").value.trim(),
-        mother: document.getElementById("stMother").value.trim(),
-        className: document.getElementById("stClass").value,
-        dob: document.getElementById("stDob").value,
-        mobile: document.getElementById("stMobile").value.trim(),
-        aadhaar: document.getElementById("stAadhaar").value.trim(),
-        address: document.getElementById("stAddress").value.trim(),
-        idStatus: document.getElementById("stIdStatus").value,
-        photo
-      };
-      await db.collection("sdr_students").doc(roll).set(data);
-      alert("✅ Student Profile Saved!");
-      e.target.reset();
-      loadAllAdminData();
-    });
-
-    function renderAdminStudents() {
-      const q = document.getElementById("studentSearchBox").value.trim().toLowerCase();
-      const cls = document.getElementById("studentClassFilter").value;
-      const filtered = studentsCache.filter(s =>
-        (cls === "All" || s.className === cls) &&
-        (!q || s.name.toLowerCase().includes(q) || s.roll.toLowerCase().includes(q) || (s.mobile || "").includes(q))
-      );
-      document.getElementById("adminStudentsList").innerHTML = filtered.map(s => `
-        <div class="border rounded-2xl p-3 flex items-center justify-between gap-2 bg-slate-50">
-          <div class="flex items-center gap-2.5 min-w-0">
-            <img src="${s.photo || 'https://via.placeholder.com/50?text=S'}" class="w-11 h-11 rounded-xl object-cover border shrink-0" />
-            <div class="min-w-0">
-              <p class="font-extrabold text-[#0F2952] truncate">${s.name} (${s.roll})</p>
-              <p class="text-[11px] text-slate-600">${s.className} • ${s.father}</p>
-              <span class="text-[10px] font-bold px-2 py-0.5 rounded ${s.idStatus === 'Pending' ? 'bg-amber-100 text-amber-800' : 'bg-emerald-100 text-emerald-800'}">ID: ${s.idStatus}</span>
-            </div>
-          </div>
-          <button type="button" onclick="deleteStudent('${s.roll}')" class="text-rose-600 font-bold px-2 py-1">🗑️</button>
-        </div>
-      `).join("") || "<p class='text-slate-400'>No students found.</p>";
-    }
-
-    async function deleteStudent(roll) {
-      if (!confirm("Delete student " + roll + "?")) return;
-      await db.collection("sdr_students").doc(roll).delete();
-      loadAllAdminData();
-    }
-
-    // 1-Click Pending ID Card ZIP Export
-    async function downloadPendingIdZip() {
-      const pending = studentsCache.filter(s => s.idStatus === "Pending");
-      if (!pending.length) return alert("Koi Pending ID Card student nahi hai!");
-      const zip = new JSZip();
-      const imgFolder = zip.folder("photos");
-      let csv = "Roll_No,Student_Name,Father_Name,Class,DOB,Mobile,Address,Photo_File\n";
-
-      pending.forEach(s => {
-        const photoFile = s.photo ? `${s.roll}_${s.name.replace(/\s+/g, "_")}.jpg` : "NO_PHOTO";
-        csv += `"${s.roll}","${s.name}","${s.father}","${s.className}","${s.dob || ''}","${s.mobile}","${s.address || ''}","${photoFile}"\n`;
-        if (s.photo && s.photo.includes(",")) {
-          imgFolder.file(photoFile, s.photo.split(",")[1], { base64: true });
-        }
-      });
-      zip.file("SDR_ID_Cards_Data.csv", csv);
-      const blob = await zip.generateAsync({ type: "blob" });
-      const a = document.createElement("a");
-      a.href = URL.createObjectURL(blob);
-      a.download = "SDR_Pending_ID_Cards.zip";
-      a.click();
-    }
-              </script>
-                <script>
-    // Dynamic Subject Rows for Marksheet
-    function addSubjectRow(name = "", max = 100, th = "", pr = 0) {
-      const div = document.createElement("div");
-      div.className = "grid grid-cols-12 gap-1.5 sub-row";
-      div.innerHTML = `
-        <input type="text" placeholder="Subject" value="${name}" required class="col-span-5 border rounded-lg px-2 py-1.5 sub-name" />
-        <input type="number" placeholder="Max" value="${max}" required class="col-span-2 border rounded-lg px-2 py-1.5 sub-max" />
-        <input type="number" placeholder="Theory" value="${th}" required class="col-span-2 border rounded-lg px-2 py-1.5 sub-th" />
-        <input type="number" placeholder="Prac" value="${pr}" required class="col-span-2 border rounded-lg px-2 py-1.5 sub-pr" />
-        <button type="button" onclick="this.parentElement.remove()" class="col-span-1 text-rose-600 font-bold">×</button>
-      `;
-      document.getElementById("subjectsContainer").appendChild(div);
-    }
-    ["Hindi", "English", "Mathematics", "Science", "Social Science"].forEach(s => addSubjectRow(s));
-
-    document.getElementById("resultEntryForm").addEventListener("submit", async (e) => {
-      e.preventDefault();
-      const roll = document.getElementById("resRoll").value.trim();
-      const stProfile = studentsCache.find(s => s.roll === roll);
-      const subjects = [];
-      document.querySelectorAll(".sub-row").forEach(row => {
-        subjects.push({
-          name: row.querySelector(".sub-name").value.trim(),
-          max: Number(row.querySelector(".sub-max").value),
-          theory: Number(row.querySelector(".sub-th").value),
-          practical: Number(row.querySelector(".sub-pr").value)
-        });
-      });
-
-      const resData = {
-        roll,
-        name: document.getElementById("resName").value.trim(),
-        fatherName: document.getElementById("resFather").value.trim(),
-        motherName: document.getElementById("resMother").value.trim(),
-        className: document.getElementById("resClass").value.trim(),
-        dob: document.getElementById("resDob").value,
-        attendance: document.getElementById("resAttendance").value.trim(),
-        examTitle: document.getElementById("resExamTitle").value.trim(),
-        photo: stProfile?.photo || "",
-        subjects
-      };
-      await db.collection("sdr_results").doc(roll).set(resData);
-      alert("🎓 Marksheet Published to Unlimited Cloud!");
-      loadAllAdminData();
-    });
-
-    function renderAdminResults() {
-      const q = document.getElementById("resultSearchBox").value.trim().toLowerCase();
-      const list = resultsCache.filter(r => !q || r.roll.toLowerCase().includes(q) || r.name.toLowerCase().includes(q));
-      document.getElementById("adminResultsList").innerHTML = list.map(r => `
-        <div class="border rounded-2xl p-3 flex justify-between items-center bg-slate-50">
-          <div><p class="font-extrabold text-[#0F2952]">${r.name} (Roll: ${r.roll})</p><p class="text-[11px] text-slate-600">${r.className} • ${r.examTitle}</p></div>
-          <button type="button" onclick="deleteResult('${r.roll}')" class="text-rose-600 font-bold">🗑️</button>
-        </div>
-      `).join("") || "<p class='text-slate-400'>No marksheets published yet.</p>";
-    }
-
-    async function deleteResult(roll) {
-      if (!confirm("Delete result " + roll + "?")) return;
-      await db.collection("sdr_results").doc(roll).delete();
-      loadAllAdminData();
-    }
-
-    // Smart WhatsApp Attendance Parser
-    async function parseWhatsAppAttendance() {
-      const txt = document.getElementById("waAttendanceText").value.trim();
-      if (!txt) return alert("Pehle WhatsApp message paste karein!");
-      const today = new Date().toISOString().split("T")[0];
-      await db.collection("sdr_attendance").doc(today + "_" + Date.now()).set({ rawText: txt, date: today });
-
-      const parts = txt.split(/absent\s*:/i);
-      const absentPart = parts[1] || "";
-      const absentNames = absentPart.split(/,|\n/).map(n => n.trim().toLowerCase()).filter(Boolean);
-      const matched = studentsCache.filter(s => absentNames.some(a => s.name.toLowerCase().includes(a)));
-
-      document.getElementById("attendanceAlertList").innerHTML = matched.length
-        ? matched.map(s => `
-            <div class="flex justify-between items-center bg-rose-50 border border-rose-200 p-2.5 rounded-xl">
-              <span><strong>${s.name}</strong> (${s.className}) — Absent</span>
-              <a href="https://wa.me/91${s.mobile}?text=${encodeURIComponent(`Namaste, aapka baccha ${s.name} (${s.className}) aaj (${today}) SDR Memorial School Basari mein anupasthit (Absent) hai.`)}" target="_blank" class="bg-emerald-600 text-white font-bold px-3 py-1.5 rounded-lg">📲 Send Parent Alert</a>
-            </div>
-          `).join("")
-        : "<p class='text-emerald-700 font-bold'>✅ Attendance saved! (Koi matching absent student database mein nahi mila)</p>";
-    }
-
-    // Photo Gallery Upload
-    document.getElementById("galleryUploadForm").addEventListener("submit", async (e) => {
-      e.preventDefault();
-      const file = document.getElementById("galPhotoInput").files[0];
-      const url = await compressImage(file, 720);
-      await db.collection("sdr_gallery").add({
-        title: document.getElementById("galTitle").value.trim(),
-        tag: document.getElementById("galTag").value,
-        url
-      });
-      alert("📸 Photo Added to Live Gallery!");
-      e.target.reset();
-      loadAllAdminData();
-    });
-
-    function renderAdminGallery() {
-      document.getElementById("adminGalleryList").innerHTML = galleryCache.map(g => `
-        <div class="border rounded-xl overflow-hidden bg-white relative">
-          <img src="${g.url}" class="w-full h-28 object-cover" />
-          <div class="p-2 flex justify-between items-center">
-            <span class="font-bold truncate">${g.title}</span>
-            <button type="button" onclick="deleteGalleryItem('${g.id}')" class="text-rose-600 font-bold">🗑️</button>
-          </div>
-        </div>
-      `).join("");
-    }
-
-    async function deleteGalleryItem(id) {
-      await db.collection("sdr_gallery").doc(id).delete();
-      loadAllAdminData();
-    }
-
-    // Save Notice & Stats
-    async function savePortalSettings() {
-      portalDoc.noticeEn = document.getElementById("admNoticeEn").value.trim();
-      portalDoc.notice = document.getElementById("admNoticeHi").value.trim();
-      portalDoc.stats = {
-        alumni: document.getElementById("admStatAlumni").value.trim(),
-        newAdmissions: document.getElementById("admStatNew").value.trim(),
-        currentStudents: document.getElementById("admStatCurrent").value.trim(),
-        teachers: document.getElementById("admStatTeachers").value.trim()
-      };
-      await db.collection("sdr_portal").doc("main_data").set(portalDoc, { merge: true });
-      alert("✅ Live Website Notice & Stats Updated!");
-    }
-
-    // Staff & TC Management
-    document.getElementById("addStaffForm").addEventListener("submit", async (e) => {
-      e.preventDefault();
-      const photo = await compressImage(document.getElementById("stfPhotoInput").files[0], 260);
-      portalDoc.staff = portalDoc.staff || [];
-      portalDoc.staff.push({
-        name: document.getElementById("stfName").value.trim(),
-        role: document.getElementById("stfRole").value.trim(),
-        wing: document.getElementById("stfWing").value,
-        qualification: document.getElementById("stfQual").value.trim(),
-        since: document.getElementById("stfSince").value.trim() || "2020",
-        photo
-      });
-      await db.collection("sdr_portal").doc("main_data").set(portalDoc, { merge: true });
-      e.target.reset();
-      loadAllAdminData();
-    });
-
-    document.getElementById("addTcForm").addEventListener("submit", async (e) => {
-      e.preventDefault();
-      portalDoc.tcs = portalDoc.tcs || [];
-      portalDoc.tcs.push({
-        tcNo: document.getElementById("tcNo").value.trim().toUpperCase(),
-        name: document.getElementById("tcStudent").value.trim(),
-        father: document.getElementById("tcFather").value.trim(),
-        classPassed: document.getElementById("tcClass").value.trim(),
-        issueDate: document.getElementById("tcDate").value,
-        conduct: document.getElementById("tcConduct").value.trim()
-      });
-      await db.collection("sdr_portal").doc("main_data").set(portalDoc, { merge: true });
-      alert("✅ TC Registered!");
-      e.target.reset();
-      loadAllAdminData();
-    });
-
-    function renderAdminStaffAndTc() {
-      document.getElementById("adminStaffList").innerHTML = (portalDoc.staff || []).map((s, i) => `
-        <div class="border p-2.5 rounded-xl flex justify-between items-center">
-          <span><strong>${s.name}</strong> (${s.wing})</span>
-          <button type="button" onclick="removeStaff(${i})" class="text-rose-600 font-bold">🗑️</button>
-        </div>
-      `).join("");
-
-      document.getElementById("adminTcList").innerHTML = (portalDoc.tcs || []).map((t, i) => `
-        <div class="border p-2.5 rounded-xl flex justify-between items-center">
-          <span><strong>${t.tcNo}</strong> — ${t.name}</span>
-          <button type="button" onclick="removeTc(${i})" class="text-rose-600 font-bold">🗑️</button>
-        </div>
-      `).join("");
-    }
-
-    async function removeStaff(idx) {
-      portalDoc.staff.splice(idx, 1);
-      await db.collection("sdr_portal").doc("main_data").set(portalDoc, { merge: true });
-      loadAllAdminData();
-    }
-    async function removeTc(idx) {
-      portalDoc.tcs.splice(idx, 1);
-      await db.collection("sdr_portal").doc("main_data").set(portalDoc, { merge: true });
-      loadAllAdminData();
-    }
-
-    function renderAdminAdmissions() {
-      document.getElementById("adminAdmissionsList").innerHTML = admissionsCache.map(a => `
-        <div class="border rounded-2xl p-3 bg-slate-50 space-y-1">
-          <div class="flex justify-between font-extrabold text-[#0F2952]"><span>${a.name}</span><span class="text-amber-700">${a.appId}</span></div>
-          <p>Father: ${a.father} • Class: <strong>${a.className}</strong></p>
-          <p>Mobile: <a href="tel:${a.mobile}" class="text-blue-700 underline">${a.mobile}</a> • ${a.address}</p>
-        </div>
-      `).join("") || "<p class='text-slate-400'>No online admission forms yet.</p>";
-    }
-  </script>
-</body>
-          </html>
-            
