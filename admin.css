@@ -1,0 +1,420 @@
+
+/* =====================================================
+   SDR MEMORIAL PUBLIC HIGH SCHOOL
+   PREMIUM COLORFUL ADMIN DASHBOARD
+   Version: 1.0
+   File: admin.css
+===================================================== */
+
+:root {
+  --sdr-navy: #0f2952;
+  --sdr-dark: #030712;
+  --sdr-gold: #f59e0b;
+  --sdr-blue: #3b82f6;
+  --sdr-green: #10b981;
+  --sdr-purple: #8b5cf6;
+  --sdr-red: #ef4444;
+  --sdr-bg: #f4f7fc;
+  --sdr-white: #ffffff;
+  --sdr-text: #1e293b;
+  --sdr-muted: #64748b;
+  --sdr-border: #e2e8f0;
+  --sdr-radius: 20px;
+  --sdr-shadow: 0 8px 28px rgba(15, 41, 82, 0.07);
+}
+
+/* BASE */
+
+html {
+  scroll-behavior: smooth;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  font-family: "Poppins", "Mukta", sans-serif;
+  color: var(--sdr-text);
+  background: var(--sdr-bg);
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+button {
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+a:focus-visible {
+  outline: 3px solid rgba(59, 130, 246, 0.4);
+  outline-offset: 3px;
+}
+
+::selection {
+  background: #dbeafe;
+  color: var(--sdr-navy);
+}
+
+/* SCROLLBAR */
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #eef2f7;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #b8c5d8;
+  border-radius: 20px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--sdr-navy);
+}
+
+/* LOGIN SCREEN */
+
+#loginScreen {
+  background:
+    radial-gradient(
+      circle at 15% 15%,
+      rgba(59, 130, 246, 0.25),
+      transparent 35%
+    ),
+    radial-gradient(
+      circle at 85% 85%,
+      rgba(245, 158, 11, 0.17),
+      transparent 35%
+    ),
+    linear-gradient(135deg, #030712, #0f2952 65%, #172554);
+}
+
+#loginScreen > div {
+  animation: sdrLoginAppear 0.65s ease both;
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.25);
+}
+
+#loginScreen input {
+  min-height: 46px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+#loginScreen input:focus {
+  border-color: var(--sdr-blue);
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.12);
+}
+
+/* ADMIN HEADER */
+
+#adminWorkspace > header {
+  background: linear-gradient(
+    115deg,
+    #030712 0%,
+    #0f2952 60%,
+    #173d70 100%
+  );
+  backdrop-filter: blur(14px);
+  box-shadow: 0 8px 25px rgba(3, 7, 18, 0.18);
+}
+
+#adminWorkspace > header img {
+  transition: transform 0.3s ease;
+}
+
+#adminWorkspace > header img:hover {
+  transform: rotate(-5deg) scale(1.06);
+}
+
+/* NAVIGATION */
+
+#adminWorkspace .admin-tab {
+  transition: all 0.22s ease;
+  border: 1px solid transparent;
+}
+
+#adminWorkspace .admin-tab:hover {
+  background: rgba(255, 255, 255, 0.17);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+/* DASHBOARD BACKGROUND */
+
+#adminWorkspace {
+  background: var(--sdr-bg);
+  min-height: 100vh;
+}
+
+#adminWorkspace main {
+  padding-bottom: 35px;
+}
+
+/* DASHBOARD CARDS */
+
+#tab-dashboard > .grid > div {
+  position: relative;
+  overflow: hidden;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+#tab-dashboard > .grid > div:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 14px 32px rgba(15, 41, 82, 0.11);
+}
+
+#tab-dashboard > .grid > div::after {
+  content: "";
+  position: absolute;
+  width: 90px;
+  height: 90px;
+  right: -38px;
+  bottom: -42px;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: 0.035;
+  pointer-events: none;
+}
+
+/* ALL CONTENT CARDS */
+
+#adminWorkspace .bg-white.rounded-3xl {
+  box-shadow: var(--sdr-shadow);
+  transition: box-shadow 0.25s ease;
+}
+
+#adminWorkspace .bg-white.rounded-3xl:hover {
+  box-shadow: 0 12px 32px rgba(15, 41, 82, 0.10);
+}
+
+/* SECTION HEADINGS */
+
+#adminWorkspace h2 {
+  letter-spacing: -0.35px;
+}
+
+#adminWorkspace h3 {
+  letter-spacing: -0.2px;
+}
+
+/* FORM INPUTS */
+
+#adminWorkspace input:not([type="checkbox"]):not([type="radio"]),
+#adminWorkspace select,
+#adminWorkspace textarea {
+  border-color: var(--sdr-border);
+  border-radius: 11px;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+#adminWorkspace input:focus,
+#adminWorkspace select:focus,
+#adminWorkspace textarea:focus {
+  border-color: var(--sdr-blue);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.10);
+}
+
+#adminWorkspace input::placeholder,
+#adminWorkspace textarea::placeholder {
+  color: #94a3b8;
+  font-weight: 400;
+}
+
+/* BUTTONS */
+
+#adminWorkspace button {
+  -webkit-tap-highlight-color: transparent;
+}
+
+#adminWorkspace button:active {
+  transform: scale(0.97);
+}
+
+#adminWorkspace .btn-royal-gold {
+  background: linear-gradient(135deg, #fbbf24, #f59e0b);
+  color: #08152b;
+  box-shadow: 0 5px 14px rgba(245, 158, 11, 0.20);
+}
+
+#adminWorkspace .btn-royal-gold:hover {
+  background: linear-gradient(135deg, #fcd34d, #f59e0b);
+  box-shadow: 0 8px 20px rgba(245, 158, 11, 0.30);
+  transform: translateY(-2px);
+}
+
+#adminWorkspace .btn-royal-navy {
+  background: linear-gradient(135deg, #173d70, #0f2952);
+  color: white;
+  box-shadow: 0 5px 14px rgba(15, 41, 82, 0.18);
+}
+
+#adminWorkspace .btn-royal-navy:hover {
+  background: linear-gradient(135deg, #1e40af, #0f2952);
+  transform: translateY(-2px);
+}
+
+/* TABLES */
+
+#adminWorkspace table {
+  border-collapse: separate;
+  border-spacing: 0;
+  width: 100%;
+}
+
+#adminWorkspace table thead th {
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+#adminWorkspace table tbody tr {
+  transition: background 0.18s ease;
+}
+
+#adminWorkspace table tbody tr:hover {
+  background: #f1f6ff;
+}
+
+#adminWorkspace table td {
+  vertical-align: middle;
+}
+
+/* BADGES */
+
+#adminWorkspace .bg-emerald-100,
+#adminWorkspace .bg-blue-100,
+#adminWorkspace .bg-purple-100,
+#adminWorkspace .bg-amber-100,
+#adminWorkspace .bg-rose-100 {
+  border-radius: 9px;
+}
+
+/* EMPTY AND LOADING STATES */
+
+#adminWorkspace .admin-section {
+  animation: sdrSectionAppear 0.3s ease both;
+}
+
+#adminWorkspace .admin-section.hidden {
+  display: none !important;
+}
+
+/* ANIMATIONS */
+
+@keyframes sdrLoginAppear {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes sdrSectionAppear {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* TABLET */
+
+@media (max-width: 768px) {
+  #adminWorkspace > header {
+    position: sticky;
+    top: 0;
+  }
+
+  #adminWorkspace > header > div:first-child {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  #adminWorkspace > header > div:last-child {
+    scrollbar-width: thin;
+  }
+
+  #adminWorkspace main {
+    padding-top: 16px;
+  }
+
+  #tab-dashboard > .grid > div {
+    border-radius: 18px;
+  }
+
+  #adminWorkspace .bg-white.rounded-3xl {
+    border-radius: 18px;
+  }
+}
+
+/* SMALL MOBILE */
+
+@media (max-width: 480px) {
+  body {
+    font-size: 14px;
+  }
+
+  #adminWorkspace main {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  #adminWorkspace > header .max-w-7xl {
+    gap: 8px;
+  }
+
+  #adminWorkspace > header a,
+  #adminWorkspace > header button {
+    font-size: 10px;
+    padding: 7px 9px;
+  }
+
+  #adminWorkspace .admin-tab {
+    padding: 8px 11px;
+    font-size: 10px;
+  }
+
+  #adminWorkspace input,
+  #adminWorkspace select,
+  #adminWorkspace textarea {
+    font-size: 13px;
+  }
+
+  #adminWorkspace table {
+    min-width: 620px;
+  }
+}
+
+/* REDUCE MOTION FOR ACCESSIBILITY */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
